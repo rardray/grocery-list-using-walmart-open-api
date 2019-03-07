@@ -1,0 +1,51 @@
+.input {
+  display: inline-block;
+  width: 50%;
+  background: #f0ffff;
+  opacity: 0.9;
+  margin-right: 0px;
+  margin: 3px;
+  padding-left: 10px;
+  border: none;
+  vertical-align: bottom;
+  padding-bottom: 0px;
+  font-family: Muli, sans-serif;
+  font-size: 16pt;
+  font-weight: 300;
+  padding-top: 8px;
+  text-align: left;
+}
+button {
+  width: 50%;
+  margin: 4px;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: Muli, sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  font-stretch: expanded;
+}
+
+label {
+  font-family: Muli, sans-serif;
+  font-weight: 300;
+  margin: 0px;
+  padding: 0px;
+}
+
+h1 {
+  font-size: 32pt;
+  font-weight: 700;
+  color: darkslategray;
+  font-family: Muli, sans-serif;
+  margin: 0px;
+}
+p {
+  font-family: Muli, sans-serif;
+  margin: 0px;
+  font-size: 10pt;
+  padding-bottom: 10px;
+  color: lightslategrey;
+}
