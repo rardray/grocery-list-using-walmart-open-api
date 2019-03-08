@@ -78,7 +78,6 @@ class Register extends React.Component {
           />
           <br />
           <Button
-            hover={Themes.button}
             label="S I G N  U P"
             theme={Themes.dark}
             click={this.handleSubmit}

@@ -1,4 +1,4 @@
-.input {
+input {
   display: inline-block;
   width: 50%;
   background: #f0ffff;
@@ -14,7 +14,16 @@
   font-weight: 300;
   padding-top: 8px;
   text-align: left;
+  border-radius: 6px;
+  border-bottom: 3px solid lightblue;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  line-height: 25px;
+  padding-bottom: 0px;
+  overflow: visible;
+  outline: none;
 }
+
 button {
   width: 50%;
   margin: 4px;
@@ -48,4 +57,7 @@ p {
   font-size: 10pt;
   padding-bottom: 10px;
   color: lightslategrey;
+}
+
+input {
 }

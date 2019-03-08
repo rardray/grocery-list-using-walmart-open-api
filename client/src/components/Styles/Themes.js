@@ -1,7 +1,15 @@
 import React from "react";
 import styled, { keyframes, css } from "styled-components";
 
-const highlight = keyframes`
+export const Nav = styled.nav`
+  width: 100%;
+  position: sticky;
+  top: 0px;
+  height: 50px;
+  background: #336699;
+  color: white;
+`;
+/*const highlight = keyframes`
   0% { background: black; }
   100% { background: grey; }
   `;
@@ -18,7 +26,7 @@ export const ButtonHover = styled.button`
 export const Button = styled.button`
   background: slategray;
   color: white;
-`;
+`; */
 //INPUTS***********************************
 
 const inputKeyframes = keyframes`
@@ -37,40 +45,20 @@ export const Input = styled.input`
   height: 2px;
 `;
 export const InputFocus = styled.input`
-  border-radius: 6px;
-  border-bottom: 3px solid lightblue;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  outline: none;
   animation: ${inputKeyframes} 0.2s ease-in-out 1;
-  line-height: 25px;
-  padding-bottom: 0px;
-  margin: 2px;
-  overflow: visible;
 `;
-export const InputAfterBlur = styled.input`
-  border-radius: 6px;
-  border-bottom: 3px solid lightblue;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  outline: none;
-  line-height: 25px;
-  padding-bottom: 0px;
-  margin: 2px;
-  overflow: visible;
-`;
+
+//commons//
+
+//commons//
+
+export const InputAfterBlur = styled.input``;
 const errAnimation = keyframes`
   0% {border-bottom: 3px solid lightred; }
   100% { border-bottom: 3px solid darkred;}`;
 
 export const InputError = styled.input`
-  border-radius: 6px;
   border-bottom: 3px solid red;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  outline: none;
-  line-height: 25px;
-  margin: 2px;
   animation: ${errAnimation} 1s ease-in-out infinite alternate;
 `;
 

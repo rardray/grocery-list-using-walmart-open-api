@@ -3,6 +3,7 @@ import "./main.css";
 import check from "./check.png";
 import x from "./x.png";
 import check2 from "./check2.png";
+import styled, { keyframes, css } from "styled-components";
 var Themes = require("./Themes");
 
 function validate(input, name) {
@@ -64,91 +65,82 @@ class Input extends React.Component {
     this.setState({ nextAn: false });
   };
   render() {
+    const {
+      name,
+      value,
+      type,
+      handleChange,
+      labelName,
+      label,
+      errorMessage
+    } = this.props;
+    const { blurred, focus, nextAn } = this.state;
     const validNoBlur = () => {
-      return validate(this.props.value, this.props.type);
+      return validate(value, type);
     };
     const validated = () => {
-      if (this.state.blurred) {
-        return validate(this.props.value, this.props.type);
+      if (blurred) {
+        return validate(value, type);
       } else {
         return true;
       }
     };
+    const valid = validated();
     const renderInput = () => {
       console.log("running");
       var classname = "input";
-      if (!validated()) {
+      if (!valid) {
         return (
           <Themes.InputError
             className={classname}
-            type={this.props.type}
-            name={this.props.name}
-            value={this.props.value}
-            onChange={this.props.handleChange}
+            type={type}
+            name={name}
+            value={value}
+            onChange={handleChange}
             onFocus={this.changeAn}
-            autoFocus={this.state.nextAn ? false : true}
+            autoFocus={nextAn ? false : true}
           />
         );
-      } else if (this.state.blurred) {
+      } else if (blurred) {
         return (
           <Themes.InputAfterBlur
             className={classname}
-            autoFocus={this.state.nextAn ? false : true}
-            type={this.props.type}
-            name={this.props.name}
-            value={this.props.value}
-            onChange={this.props.handleChange}
-            placeholder={this.props.lableName}
+            autoFocus={nextAn ? false : true}
+            type={type}
+            name={name}
+            value={value}
+            onChange={handleChange}
+            placeholder={labelName}
             onFocus={this.changeAn}
           />
         );
       } else {
         return (
           <Themes.InputFocus
-            id={this.props.name}
+            id={name}
             className={classname}
             autoFocus={true}
-            type={this.props.type}
-            name={this.props.name}
-            value={this.props.value}
-            onChange={this.props.handleChange}
+            type={type}
+            name={name}
+            value={value}
+            onChange={handleChange}
             onBlur={this.handleBlur}
-            placeholder={this.props.lableName}
+            placeholder={labelName}
           />
         );
       }
     };
+
     return (
       <div style={{ margin: 0, padding: 0, marginLeft: 25 }}>
-        {this.state.focus ? (
-          <div
-            style={{
-              zIndex: 0,
-              display: "inline-block",
-              position: "relative",
-              right: -100,
-              top: 45,
-              color: "blue",
-              textAlign: "right",
-              opacity: 0.9
-            }}
-          >
-            {this.props.labelName}
-          </div>
-        ) : null}
-        {this.props.label ? (
+        {label ? (
           <div>
-            {!this.state.focus ? (
-              <Themes.InputLabel
-                for={this.props.name}
-                onClick={this.handleFocus}
-              >
-                {this.props.labelName}
+            {!focus ? (
+              <Themes.InputLabel onClick={this.handleFocus}>
+                {labelName}
               </Themes.InputLabel>
-            ) : validated() ? (
-              <Themes.InputLabelFocus>
-                {this.props.labelName}
-              </Themes.InputLabelFocus>
+            ) : valid ? (
+              <Themes.InputLabelFocus>{labelName}</Themes.InputLabelFocus>
             ) : (
               <div
                 style={{
@@ -157,37 +149,36 @@ class Input extends React.Component {
                   padding: 0
                 }}
               >
-                <Themes.InputLabelError>
-                  {this.props.errorMessage}
-                </Themes.InputLabelError>
+                <Themes.InputLabelError>{errorMessage}</Themes.InputLabelError>
               </div>
             )}
           </div>
         ) : null}
-        {this.state.focus ? (
+        {focus ? (
           renderInput()
         ) : (
           <Themes.Input
             className="input"
             onFocus={this.handleFocus}
-            type={this.props.type}
-            name={this.props.name}
-            value={this.props.value}
-            onChange={this.props.handleChange}
-            id={this.props.name}
+            type={type}
+            name={name}
+            value={value}
+            onChange={handleChange}
+            id={name}
           />
         )}
         <span>
           {validNoBlur() ? (
-            <img src={check2} style={{ height: 25, width: 25 }} />
+            <img src={check2} alt={name} style={{ height: 25, width: 25 }} />
           ) : (
             <img
               src={x}
               style={{
                 width: 25,
                 height: 25,
-                visibility: validated() ? "hidden" : "visible"
+                visibility: valid ? "hidden" : "visible"
               }}
+              alt={name}
             />
           )}
         </span>
