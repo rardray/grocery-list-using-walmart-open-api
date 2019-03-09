@@ -14,7 +14,8 @@ class Button extends React.Component {
   state = {
     hover: false
   };
-  hover = () => {
+  hover = e => {
+    e.preventDefault();
     this.setState({ hover: !this.state.hover });
   };
   render() {
@@ -27,8 +28,9 @@ class Button extends React.Component {
     return (
       <div>
         <Btn
-          onMouseLeave={this.hover.bind(this)}
-          onMouseEnter={this.hover.bind(this)}
+          onMouseLeave={this.hover}
+          onMouseEnter={this.hover}
+          onClick={this.props.click}
         >
           {label}
         </Btn>

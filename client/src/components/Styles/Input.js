@@ -1,9 +1,7 @@
 import React from "react";
 import "./main.css";
-import check from "./check.png";
 import x from "./x.png";
 import check2 from "./check2.png";
-import styled, { keyframes, css } from "styled-components";
 var Themes = require("./Themes");
 
 function validate(input, name) {
@@ -87,7 +85,6 @@ class Input extends React.Component {
     };
     const valid = validated();
     const renderInput = () => {
-      console.log("running");
       var classname = "input";
       if (!valid) {
         return (

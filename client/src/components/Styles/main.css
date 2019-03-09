@@ -23,6 +23,11 @@ input {
   overflow: visible;
   outline: none;
 }
+input::placeholder {
+  color: lightsteelblue;
+  font-size: 12pt;
+  text-align: right;
+}
 
 button {
   width: 50%;
@@ -59,5 +64,14 @@ p {
   color: lightslategrey;
 }
 
-input {
+.nav-link {
+  color: white;
+  text-align: right;
+  padding: 14px;
+  font-family: Muli, sans-serif;
+  font-weight: 500;
+  font-size: 12pt;
+  float: right;
+  right: 20px;
+  text-decoration: none;
 }

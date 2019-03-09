@@ -1,8 +1,9 @@
 import React from "react";
-import Register from "./Register";
 import cookie from "react-cookies";
 import List from "./List";
 import NavBar from "./NavBar";
+import { Link } from "@reach/router";
+import "./Styles/main.css";
 var Themes = require("./Styles/Themes");
 
 class Home extends React.Component {
@@ -13,8 +14,25 @@ class Home extends React.Component {
     const { user } = this.state;
     return (
       <div>
-        <NavBar />
-        {user ? <Register /> : <Register />}
+        <NavBar>
+          <Link className="nav-link" to="/">
+            {user.firstName || "Home"}
+          </Link>{" "}
+          <span
+            className="nav-link"
+            style={{ paddingLeft: 0, paddingRight: 0 }}
+          >
+            {" "}
+            |{" "}
+          </span>
+          <Link className="nav-link" to="register">
+            Register
+          </Link>{" "}
+          <Link className="nav-link" to="login">
+            Log In
+          </Link>
+        </NavBar>
+        {this.props.children}
       </div>
     );
   }
