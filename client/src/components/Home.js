@@ -2,21 +2,19 @@ import React from "react";
 import cookie from "react-cookies";
 import List from "./List";
 import NavBar from "./NavBar";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import "./Styles/main.css";
+import axios from "axios";
+var formlogic = require("./formlogic");
 var Themes = require("./Styles/Themes");
 
 class Home extends React.Component {
-  state = {
-    user: cookie.load("user") || null
-  };
   render() {
-    const { user } = this.state;
     return (
       <div>
         <NavBar>
           <Link className="nav-link" to="/">
-            {user.firstName || "Home"}
+            {this.props.user.firstName || "Home"}
           </Link>{" "}
           <span
             className="nav-link"
@@ -31,6 +29,7 @@ class Home extends React.Component {
           <Link className="nav-link" to="login">
             Log In
           </Link>
+          {this.props.Searchbar}
         </NavBar>
         {this.props.children}
       </div>

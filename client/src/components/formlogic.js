@@ -24,6 +24,7 @@ export const handleSubmit = function(url, def, e) {
       if (!response.error) {
         cookie.save("user", response.data.user, { path: "/" });
         cookie.save("token", response.data.token, { path: "/" });
+        cookie.save("grocery-api", response.data.groceryApi, { path: "/" });
         this.setState(prevState => {
           return (prevState = def);
         });

@@ -56,6 +56,18 @@ h1 {
   font-family: Muli, sans-serif;
   margin: 0px;
 }
+h2 {
+  font-size: 20pt;
+  font-weight: 700;
+  color: darkslategray;
+  font-family: Muli, sans-serif;
+}
+h4 {
+  font-size: 14pt;
+  font-weight: 700;
+  color: darkslategray;
+  font-family: Muli, sans-serif;
+}
 p {
   font-family: Muli, sans-serif;
   margin: 0px;
@@ -74,4 +86,52 @@ p {
   float: right;
   right: 20px;
   text-decoration: none;
+}
+.list-items {
+  display: block;
+  margin: 10px;
+  margin-left: 25%;
+  border-bottom: 1px solid aliceblue;
+  padding: 10px;
+}
+.list-items img {
+  float: left;
+  height: 75px;
+  width: 75px;
+}
+.list-items h4 {
+  margin: 10px;
+  display: flex;
+}
+
+.list-items button {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  padding: 2px;
+  background: white;
+  color: darkSlateblue;
+  border-left: 1px solid lightslategrey;
+  border-radius: 0px;
+  border-right: 1px solid lightslategrey;
+  font-size: 16px;
+  height: 30px;
+}
+.list-items span {
+  display: inline-block;
+  position: relative;
+}
+
+.list-items #minus {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  background: aliceblue;
+  border: 1px solid;
+}
+.list-items #quantity {
+  width: 20px;
+  text-align: center;
 }
