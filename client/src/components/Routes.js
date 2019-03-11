@@ -1,12 +1,13 @@
 import React from "react";
 import Home from "./Home";
-import List from "./List";
 import Register from "./Register";
 import { Router } from "@reach/router";
 import Login from "./Login";
 import Search from "./Search";
 import Searchbar from "./Searchbar";
 import Items from "./Items";
+import List from "./List";
+import ListContainer from "./ListContainer";
 
 const Routes = props => {
   const {
@@ -15,7 +16,12 @@ const Routes = props => {
     handleChange,
     searchSubmit,
     user,
-    handleQuantity
+    handleQuantity,
+    groceryList,
+    addToList,
+    handleDrag,
+    onDragOver,
+    handleDrop
   } = props;
   return (
     <Router>
@@ -29,15 +35,22 @@ const Routes = props => {
             searchSubmit={searchSubmit}
           />
         }
+        ListBar={
+          <ListContainer onDragOver={onDragOver} handleDrop={handleDrop}>
+            <List groceryList={groceryList} />
+          </ListContainer>
+        }
       >
-        <Register path="register" />
-        <Login path="login" />
         <Search
           path="search/:query"
           productSearch={productSearch}
           handleQuantity={handleQuantity}
+          addToList={addToList}
+          handleDrag={handleDrag}
         />
       </Home>
+      <Register path="register" />
+      <Login path="login" setUser={props.setUser} />
     </Router>
   );
 };

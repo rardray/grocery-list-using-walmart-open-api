@@ -88,9 +88,11 @@ p {
   text-decoration: none;
 }
 .list-items {
-  display: block;
+  display: inline-block;
+  position: relative;
   margin: 10px;
-  margin-left: 25%;
+  width: 70%;
+
   border-bottom: 1px solid aliceblue;
   padding: 10px;
 }
@@ -134,4 +136,41 @@ p {
 .list-items #quantity {
   width: 20px;
   text-align: center;
+}
+.sidebar {
+  width: 25%;
+  background: white;
+  border-right: 1px solid aliceblue;
+  float: left;
+  height: 100%;
+  margin-top: 10px;
+  padding: 6px;
+  border-bottom: 1px solid aliceblue;
+}
+
+.sidebar img {
+  height: 40px;
+  width: 40px;
+  float: left;
+}
+.sidebar h4 {
+  font-size: 10pt;
+  display: flex;
+  margin: 2px;
+}
+.sidebar button {
+  display: inline-block;
+  position: relative;
+  font-size: 12pt;
+  height: 20px;
+  padding: 5px;
+  border-right: 1px solid lightslategrey;
+  border-left: 1px solid lightslategrey;
+  border-radius: 0px;
+}
+.sidebar #list-block {
+  margin-bottom: 8px;
+  margin-top: 20px;
+  border-bottom: 1px solid aliceblue;
+  padding-bottom: 6px;
 }

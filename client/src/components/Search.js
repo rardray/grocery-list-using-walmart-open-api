@@ -7,14 +7,18 @@ import Button from "./Styles/Button";
 
 const Search = props => {
   return (
-    <div>
+    <div className="list-items">
       <h2>Search Results</h2>
       {props.productSearch.map((e, i) => {
         return (
-          <div className="list-items" key={e.id}>
-            <img src={e.image} />
+          <div key={e.id}>
+            <img
+              src={e.image}
+              draggable={true}
+              onDragStart={props.handleDrag.bind(this, i)}
+            />
             <h4>{e.title}</h4>
-            <button>ADD TO LIST</button>
+            <button onClick={props.addToList.bind(this, i)}>ADD TO LIST</button>
             <span>Quantity:</span>
             <button
               name="minus"

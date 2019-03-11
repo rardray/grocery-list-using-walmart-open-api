@@ -3,6 +3,7 @@ import styled, { keyframes, css } from "styled-components";
 
 export const Nav = styled.nav`
   width: 100%;
+  display: block;
   position: sticky;
   top: 0px;
   height: 50px;

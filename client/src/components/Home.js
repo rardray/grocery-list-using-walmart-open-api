@@ -31,6 +31,7 @@ class Home extends React.Component {
           </Link>
           {this.props.Searchbar}
         </NavBar>
+        {this.props.ListBar}
         {this.props.children}
       </div>
     );
