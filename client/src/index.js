@@ -7,7 +7,7 @@ import WebFont from "webfontloader";
 
 WebFont.load({
   google: {
-    families: ["Muli web:300,700,900", "sans-serif"]
+    families: ["Muli", "sans-serif"]
   }
 });
 

@@ -31,5 +31,6 @@ export const handleSubmit = function(url, def, e) {
         navigate("/");
       }
     })
+    .then(this.props.setUser)
     .catch(error => error);
 };

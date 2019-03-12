@@ -1,7 +1,7 @@
 const mongoose = require("mongoose"),
   Schema = mongoose.Schema;
 
-const ListSchema = new Schema(
+const HistorySchema = new Schema(
   {
     id: {
       type: Number,
@@ -26,4 +26,4 @@ const ListSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("List", ListSchema);
+module.exports = mongoose.model("History", HistorySchema);

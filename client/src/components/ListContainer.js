@@ -1,5 +1,6 @@
 import React from "react";
 import "./Styles/main.css";
+import Button from "./Styles/Button";
 const ListContainer = props => {
   return (
     <div
@@ -9,6 +10,7 @@ const ListContainer = props => {
     >
       <h5>Grocery List</h5>
       {props.children}
+      <Button label="C L E A R  L I S T" click={props.clearList} />
     </div>
   );
 };

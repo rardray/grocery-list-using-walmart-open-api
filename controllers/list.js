@@ -1,9 +1,10 @@
 const List = require("../models/list");
+const History = require("../models/history");
 const config = require("../config/main");
 
 exports.getLists = function(req, res, next) {
   List.find()
-    .sort("-created_at")
+    .sort("+createdAt")
     .exec(function(err, list) {
       if (err) {
         res.send({ error: err });
@@ -47,4 +48,19 @@ exports.editList = function(req, res, next) {
       res.status(202).send(data), console.log(data);
     }
   );
+};
+exports.deleteList = function(req, res, next) {
+  var id = req.params.id;
+  console.log(id);
+  List.findOneAndDelete({ id: id }, function(err, data) {
+    if (err) return next(err);
+    res.status(202).send(data);
+  });
+};
+
+exports.clearList = function(req, res, next) {
+  List.deleteMany({}).exec(function(err, data) {
+    if (err) return next(err);
+    res.status(202).send(data);
+  });
 };

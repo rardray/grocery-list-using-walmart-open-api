@@ -40,6 +40,7 @@ button {
   font-size: 20px;
   font-weight: 900;
   font-stretch: expanded;
+  outline: none;
 }
 
 label {
@@ -90,9 +91,10 @@ p {
 .list-items {
   display: inline-block;
   position: relative;
-  margin: 10px;
-  width: 70%;
-
+  margin: 20px;
+  max-width: 60%;
+  min-width: 45%;
+  overflow: hidden;
   border-bottom: 1px solid aliceblue;
   padding: 10px;
 }
@@ -103,9 +105,18 @@ p {
 }
 .list-items h4 {
   margin: 10px;
+  margin-left: 80px;
+  max-width: 90%;
   display: flex;
 }
-
+.list-items #list-block {
+  margin-bottom: 8px;
+  margin-top: 20px;
+  border-bottom: 1px solid aliceblue;
+  padding-bottom: 6px;
+  overflow: hidden;
+  animation: additemlg 0.5s ease-in-out 1;
+}
 .list-items button {
   display: inline-block;
   position: relative;
@@ -118,6 +129,10 @@ p {
   border-right: 1px solid lightslategrey;
   font-size: 16px;
   height: 30px;
+}
+.list-items button:hover {
+  background: #d9f0f7;
+  color: green;
 }
 .list-items span {
   display: inline-block;
@@ -139,13 +154,17 @@ p {
 }
 .sidebar {
   width: 25%;
+  max-width: 90%;
   background: white;
-  border-right: 1px solid aliceblue;
+  border-right: 6px solid aliceblue;
   float: left;
+  position: sticky;
+  top: 50px;
   height: 100%;
   margin-top: 10px;
   padding: 6px;
-  border-bottom: 1px solid aliceblue;
+  padding-left: 20px;
+  overflow: hidden;
 }
 
 .sidebar img {
@@ -153,24 +172,68 @@ p {
   width: 40px;
   float: left;
 }
+.sidebar p {
+  display: inline-block;
+  position: relative;
+}
 .sidebar h4 {
   font-size: 10pt;
   display: flex;
   margin: 2px;
+  margin-left: 50px;
+}
+.sidebar span {
+  font-size: 9pt;
+  text-align: right;
+  float: right;
+  margin-right: 20px;
 }
 .sidebar button {
   display: inline-block;
   position: relative;
-  font-size: 12pt;
+  font-size: 8pt;
+  width: 100px;
   height: 20px;
   padding: 5px;
   border-right: 1px solid lightslategrey;
   border-left: 1px solid lightslategrey;
   border-radius: 0px;
 }
+.sidebar button:hover {
+  background: #d9f0f7;
+  color: darkred;
+}
 .sidebar #list-block {
   margin-bottom: 8px;
   margin-top: 20px;
   border-bottom: 1px solid aliceblue;
   padding-bottom: 6px;
+  overflow: hidden;
+  animation: additem 0.5s ease-in-out 1;
+}
+
+@keyframes additem {
+  0% {
+    height: 0px;
+    vertical-align: top;
+    opacity: 0.25;
+  }
+  100% {
+    height: 55px;
+    vertical-align: auto;
+    opacity: 1;
+  }
+}
+
+@keyframes additemlg {
+  0% {
+    height: 0px;
+    vertical-align: top;
+    opacity: 0.25;
+  }
+  100% {
+    height: 90px;
+    vertical-align: auto;
+    opacity: 1;
+  }
 }

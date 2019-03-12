@@ -8,6 +8,7 @@ import Searchbar from "./Searchbar";
 import Items from "./Items";
 import List from "./List";
 import ListContainer from "./ListContainer";
+import History from "./History";
 
 const Routes = props => {
   const {
@@ -21,7 +22,11 @@ const Routes = props => {
     addToList,
     handleDrag,
     onDragOver,
-    handleDrop
+    handleDrop,
+    handleDelete,
+    history,
+    historyCount,
+    clearList
   } = props;
   return (
     <Router>
@@ -36,8 +41,12 @@ const Routes = props => {
           />
         }
         ListBar={
-          <ListContainer onDragOver={onDragOver} handleDrop={handleDrop}>
-            <List groceryList={groceryList} />
+          <ListContainer
+            onDragOver={onDragOver}
+            handleDrop={handleDrop}
+            clearList={clearList}
+          >
+            <List groceryList={groceryList} handleDelete={handleDelete} />
           </ListContainer>
         }
       >
@@ -45,6 +54,13 @@ const Routes = props => {
           path="search/:query"
           productSearch={productSearch}
           handleQuantity={handleQuantity}
+          addToList={addToList}
+          handleDrag={handleDrag}
+        />
+        <History
+          path="history"
+          history={history}
+          handleQuantity={historyCount}
           addToList={addToList}
           handleDrag={handleDrag}
         />

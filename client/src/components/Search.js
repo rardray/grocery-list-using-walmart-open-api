@@ -6,35 +6,27 @@ import "./Styles/main.css";
 import Button from "./Styles/Button";
 
 const Search = props => {
+  const sTitle = window.location.pathname.slice(8).replace("%20", " ");
   return (
     <div className="list-items">
-      <h2>Search Results</h2>
+      <h2>Search Results for {sTitle}</h2>
+      {props.productSearch.length ? null : (
+        <h4>
+          Sorry, search returned no results. Try broadening your search query.
+        </h4>
+      )}
       {props.productSearch.map((e, i) => {
         return (
-          <div key={e.id}>
-            <img
-              src={e.image}
-              draggable={true}
-              onDragStart={props.handleDrag.bind(this, i)}
+          <div key={e.id} id="list-block">
+            <Items
+              id={e.id}
+              image={e.image}
+              handleDrag={props.handleDrag.bind(this, i, "search")}
+              title={e.title}
+              addToList={props.addToList.bind(this, i, "search")}
+              handleQuantity={props.handleQuantity.bind(this, i)}
+              count={e.count}
             />
-            <h4>{e.title}</h4>
-            <button onClick={props.addToList.bind(this, i)}>ADD TO LIST</button>
-            <span>Quantity:</span>
-            <button
-              name="minus"
-              id="minus"
-              onClick={props.handleQuantity.bind(this, i)}
-            >
-              -
-            </button>
-            <span id="quantity"> {e.count || 1} </span>
-            <button
-              name="plus"
-              id="minus"
-              onClick={props.handleQuantity.bind(this, i)}
-            >
-              +
-            </button>
           </div>
         );
       })}
