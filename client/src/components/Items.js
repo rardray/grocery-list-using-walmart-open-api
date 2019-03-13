@@ -15,7 +15,7 @@ const Items = props => {
       <button name="minus" id="minus" onClick={props.handleQuantity}>
         -
       </button>
-      <span id="quantity"> {props.count || 1} </span>
+      <span id="quantity"> {props.count} </span>
       <button name="plus" id="minus" onClick={props.handleQuantity}>
         +
       </button>

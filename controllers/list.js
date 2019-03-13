@@ -4,7 +4,7 @@ const config = require("../config/main");
 
 exports.getLists = function(req, res, next) {
   List.find()
-    .sort("+createdAt")
+    .sort("-createdAt")
     .exec(function(err, list) {
       if (err) {
         res.send({ error: err });
@@ -34,9 +34,7 @@ exports.postList = function(req, res, next) {
 
 exports.editList = function(req, res, next) {
   var id = req.body.id;
-  console.log(id);
   var count = req.body.count;
-  console.log(req.body);
   List.findOneAndUpdate(
     { id: id },
     { $set: { count: count } },
@@ -45,7 +43,7 @@ exports.editList = function(req, res, next) {
       if (err) {
         return next(err);
       }
-      res.status(202).send(data), console.log(data);
+      res.status(202).send(data);
     }
   );
 };

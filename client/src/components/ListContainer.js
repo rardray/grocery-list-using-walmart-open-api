@@ -7,6 +7,7 @@ const ListContainer = props => {
       className="sidebar"
       onDragOver={props.onDragOver}
       onDrop={props.handleDrop}
+      onMouseDown={props.handleSrollSidebar}
     >
       <h5>Grocery List</h5>
       {props.children}

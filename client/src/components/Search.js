@@ -15,17 +15,21 @@ const Search = props => {
           Sorry, search returned no results. Try broadening your search query.
         </h4>
       )}
-      {props.productSearch.map((e, i) => {
+      {props.productSearch.map((el, i) => {
         return (
-          <div key={e.id} id="list-block">
+          <div key={el.id} id="list-block">
             <Items
-              id={e.id}
-              image={e.image}
-              handleDrag={props.handleDrag.bind(this, i, "search")}
-              title={e.title}
-              addToList={props.addToList.bind(this, i, "search")}
-              handleQuantity={props.handleQuantity.bind(this, i)}
-              count={e.count}
+              id={el.id}
+              image={el.image}
+              handleDrag={props.handleDrag.bind(this, el, "productSearch")}
+              title={el.title}
+              addToList={props.addToList.bind(this, el, "productSearch")}
+              handleQuantity={props.handleQuantity.bind(
+                this,
+                i,
+                "productSearch"
+              )}
+              count={el.count}
             />
           </div>
         );

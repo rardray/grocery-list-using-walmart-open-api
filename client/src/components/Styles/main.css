@@ -237,3 +237,85 @@ p {
     opacity: 1;
   }
 }
+
+.spinner {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 12px dashed lightsteelblue;
+  border-top: 12px dashed slategrey;
+  display: inline-block;
+  padding: 0px;
+  overflow: visible;
+  margin: 10px;
+  animation: spin 2s linear infinite;
+  opacity: 0.2;
+  text-align: center;
+}
+.spinner #sub-spin {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 12px solid steelblue;
+  border-right: 12px solid aliceblue;
+  margin: -12px;
+  display: inline-block;
+  padding: 0px;
+  animation: spin1 2s linear infinite;
+  opacity: 0.75;
+}
+
+.spinner #sub-spin2 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 10px solid skyblue;
+  border-bottom: 10px solid steelblue;
+  padding: 0px;
+  animation: spin2 2s linear infinite;
+  opacity: 0.75;
+}
+.spinner #sub-spin3 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 10px solid rgba(255, 255, 255, 0);
+  border-left: 10px solid slategray;
+  margin: -10px;
+
+  padding: 0px;
+  animation: spin3 3s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(-360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spin1 {
+  0% {
+    transform: rotate(-270deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+@keyframes spin2 {
+  0% {
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+@keyframes spin3 {
+  0% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}

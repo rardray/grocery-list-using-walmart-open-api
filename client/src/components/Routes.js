@@ -9,6 +9,7 @@ import Items from "./Items";
 import List from "./List";
 import ListContainer from "./ListContainer";
 import History from "./History";
+import Loader from "./Loader";
 
 const Routes = props => {
   const {
@@ -25,8 +26,9 @@ const Routes = props => {
     handleDrop,
     handleDelete,
     history,
-    historyCount,
-    clearList
+    clearList,
+    pageLoad,
+    searchLoad
   } = props;
   return (
     <Router>
@@ -46,7 +48,11 @@ const Routes = props => {
             handleDrop={handleDrop}
             clearList={clearList}
           >
-            <List groceryList={groceryList} handleDelete={handleDelete} />
+            {pageLoad ? (
+              <List groceryList={groceryList} handleDelete={handleDelete} />
+            ) : (
+              <Loader />
+            )}
           </ListContainer>
         }
       >
@@ -57,13 +63,18 @@ const Routes = props => {
           addToList={addToList}
           handleDrag={handleDrag}
         />
-        <History
-          path="history"
-          history={history}
-          handleQuantity={historyCount}
-          addToList={addToList}
-          handleDrag={handleDrag}
-        />
+        {pageLoad ? (
+          <History
+            path="history"
+            history={history}
+            handleQuantity={handleQuantity}
+            addToList={addToList}
+            handleDrag={handleDrag}
+            pageLoad={pageLoad}
+          />
+        ) : (
+          <Loader path="history" />
+        )}
       </Home>
       <Register path="register" />
       <Login path="login" setUser={props.setUser} />
