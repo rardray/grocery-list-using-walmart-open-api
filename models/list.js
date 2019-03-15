@@ -19,6 +19,20 @@ const ListSchema = new Schema(
     count: {
       type: Number,
       required: true
+    },
+    inCart: {
+      type: Boolean,
+      default: false,
+      required: true
+    },
+    cartCount: {
+      type: Number,
+      required: true
+    },
+    favorite: {
+      type: Boolean,
+      required: true,
+      default: false
     }
   },
   {

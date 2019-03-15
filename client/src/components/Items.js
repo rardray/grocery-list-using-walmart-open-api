@@ -1,4 +1,5 @@
 import React from "react";
+import favorite from "./Styles/favourite.svg";
 
 const Items = props => {
   return (
@@ -19,6 +20,7 @@ const Items = props => {
       <button name="plus" id="minus" onClick={props.handleQuantity}>
         +
       </button>
+      <img src={favorite} id="favorite" />
     </div>
   );
 };

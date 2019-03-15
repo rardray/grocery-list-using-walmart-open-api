@@ -28,6 +28,7 @@ class Button extends React.Component {
     return (
       <div>
         <Btn
+          style={{ zIndex: 15 }}
           onMouseLeave={this.hover}
           onMouseEnter={this.hover}
           onClick={this.props.click}

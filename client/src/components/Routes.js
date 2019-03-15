@@ -19,7 +19,6 @@ const Routes = props => {
     searchSubmit,
     user,
     handleQuantity,
-    groceryList,
     addToList,
     handleDrag,
     onDragOver,
@@ -27,8 +26,7 @@ const Routes = props => {
     handleDelete,
     history,
     clearList,
-    pageLoad,
-    searchLoad
+    pageLoad
   } = props;
   return (
     <Router>
@@ -47,9 +45,13 @@ const Routes = props => {
             onDragOver={onDragOver}
             handleDrop={handleDrop}
             clearList={clearList}
+            handleMouseUp={props.handleMouseUp}
+            handleMouseMove={props.handleMouseMove}
+            handleScrollMsDown={props.handleScrollMsDown}
+            positionY={props.positionY}
           >
             {pageLoad ? (
-              <List groceryList={groceryList} handleDelete={handleDelete} />
+              <List history={history} handleDelete={handleDelete} />
             ) : (
               <Loader />
             )}
@@ -67,10 +69,22 @@ const Routes = props => {
           <History
             path="history"
             history={history}
-            handleQuantity={handleQuantity}
-            addToList={addToList}
-            handleDrag={handleDrag}
             pageLoad={pageLoad}
+            historyItems={history.map((el, i) => {
+              return (
+                <div key={el.id} id="list-block">
+                  <Items
+                    id={el.id}
+                    image={el.image}
+                    handleDrag={handleDrag.bind(this, el, "history")}
+                    title={el.title}
+                    addToList={addToList.bind(this, el, "history")}
+                    handleQuantity={handleQuantity.bind(this, i, "history")}
+                    count={el.count}
+                  />
+                </div>
+              );
+            })}
           />
         ) : (
           <Loader path="history" />

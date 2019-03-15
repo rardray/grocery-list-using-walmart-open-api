@@ -152,6 +152,17 @@ p {
   width: 20px;
   text-align: center;
 }
+.list-items #favorite {
+  height: 23px;
+  width: 23px;
+  display: inline-block;
+  position: relative;
+  float: none;
+  margin: 4px;
+  padding: 2px;
+  vertical-align: middle;
+  fill: red;
+}
 .sidebar {
   width: 25%;
   max-width: 90%;
@@ -198,6 +209,7 @@ p {
   border-right: 1px solid lightslategrey;
   border-left: 1px solid lightslategrey;
   border-radius: 0px;
+  z-index: 10;
 }
 .sidebar button:hover {
   background: #d9f0f7;
