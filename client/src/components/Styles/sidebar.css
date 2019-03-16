@@ -1,0 +1,115 @@
+.sidebar {
+  width: 25%;
+  max-width: 90%;
+  background: white;
+  border-right: 6px solid aliceblue;
+  float: left;
+  position: sticky;
+  top: 50px;
+  height: 100%;
+  margin-top: 10px;
+  padding: 6px;
+  padding-left: 20px;
+  overflow: hidden;
+}
+
+.sidebar img {
+  height: 40px;
+  width: 40px;
+  float: left;
+}
+.sidebar p {
+  display: inline-block;
+  position: relative;
+}
+.sidebar h4 {
+  font-size: 10pt;
+  display: flex;
+  margin: 2px;
+  margin-left: 50px;
+}
+.sidebar span {
+  font-size: 9pt;
+  text-align: right;
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+.sidebar button {
+  display: inline-block;
+  position: relative;
+  font-size: 8pt;
+  width: 100px;
+  height: 20px;
+  padding: 5px;
+  border-right: 1px solid lightslategrey;
+  border-left: 1px solid lightslategrey;
+  border-radius: 0px;
+  z-index: 10;
+}
+.sidebar #top-links {
+  text-align: left;
+  border: none;
+  font-size: 12pt;
+  height: 30px;
+  margin-left: 0px;
+  padding-left: 0px;
+  margin-right: 15px;
+}
+.sidebar #top-links:hover {
+  background: white;
+  color: black;
+  cursor: default;
+}
+.sidebar #top-unselected {
+  text-align: left;
+  border: none;
+  font-size: 12pt;
+  height: 30px;
+  margin-left: 0px;
+  padding-left: 0px;
+  margin-right: 15px;
+  color: lightslategrey;
+}
+.sidebar button:hover {
+  background: #d9f0f7;
+  color: darkred;
+}
+.sidebar #list-block {
+  margin-bottom: 8px;
+  margin-top: 20px;
+  border-bottom: 1px solid aliceblue;
+  padding-bottom: 6px;
+  overflow: hidden;
+  animation: additem 0.5s ease-in-out 1;
+}
+.sidebar #favorite {
+  height: 20px;
+  width: 20px;
+  fill: lightslategrey;
+  z-index: 5;
+}
+.sidebar #favorite:hover {
+  fill: #ffb8b8;
+}
+.sidebar #selected {
+  height: 20px;
+  width: 20px;
+  fill: #d6628a;
+  z-index: 5;
+}
+.sidebar #selected:hover {
+  fill: sienna;
+}
+@keyframes additem {
+  0% {
+    height: 0px;
+    vertical-align: top;
+    opacity: 0.25;
+  }
+  100% {
+    height: 55px;
+    vertical-align: auto;
+    opacity: 1;
+  }
+}

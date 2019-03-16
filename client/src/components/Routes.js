@@ -10,6 +10,7 @@ import List from "./List";
 import ListContainer from "./ListContainer";
 import History from "./History";
 import Loader from "./Loader";
+import SideBarLogic from "./SideBarLogic";
 
 const Routes = props => {
   const {
@@ -26,7 +27,10 @@ const Routes = props => {
     handleDelete,
     history,
     clearList,
-    pageLoad
+    pageLoad,
+    addFavorite,
+    addFavoriteFromSearch,
+    searchLoad
   } = props;
   return (
     <Router>
@@ -41,21 +45,16 @@ const Routes = props => {
           />
         }
         ListBar={
-          <ListContainer
+          <SideBarLogic
             onDragOver={onDragOver}
             handleDrop={handleDrop}
             clearList={clearList}
-            handleMouseUp={props.handleMouseUp}
-            handleMouseMove={props.handleMouseMove}
-            handleScrollMsDown={props.handleScrollMsDown}
-            positionY={props.positionY}
-          >
-            {pageLoad ? (
-              <List history={history} handleDelete={handleDelete} />
-            ) : (
-              <Loader />
-            )}
-          </ListContainer>
+            pageLoad={pageLoad}
+            history={history}
+            handleDelete={handleDelete}
+            addFavorite={addFavorite}
+            addToList={addToList}
+          />
         }
       >
         <Search
@@ -64,6 +63,7 @@ const Routes = props => {
           handleQuantity={handleQuantity}
           addToList={addToList}
           handleDrag={handleDrag}
+          addFavoriteFromSearch={addFavoriteFromSearch}
         />
         {pageLoad ? (
           <History
@@ -76,11 +76,13 @@ const Routes = props => {
                   <Items
                     id={el.id}
                     image={el.image}
-                    handleDrag={handleDrag.bind(this, el, "history")}
+                    handleDrag={handleDrag.bind(this, i, el)}
                     title={el.title}
-                    addToList={addToList.bind(this, el, "history")}
+                    addToList={addToList.bind(this, i, el)}
                     handleQuantity={handleQuantity.bind(this, i, "history")}
                     count={el.count}
+                    addFavorite={addFavorite.bind(this, i, el)}
+                    favorite={el.favorite}
                   />
                 </div>
               );

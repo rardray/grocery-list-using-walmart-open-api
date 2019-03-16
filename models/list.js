@@ -29,6 +29,9 @@ const ListSchema = new Schema(
       type: Number,
       required: true
     },
+    addedOn: {
+      type: Date
+    },
     favorite: {
       type: Boolean,
       required: true,

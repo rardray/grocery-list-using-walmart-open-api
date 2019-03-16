@@ -20,6 +20,8 @@ exports.postList = function(req, res, next) {
   var count = req.body.count;
   var cartCount = req.body.cartCount;
   var inCart = req.body.inCart;
+  var addedOn = req.body.addedOn;
+  var favorite = req.body.favorite;
   console.log(req.body.id);
   var list = new List({
     id: id,
@@ -27,11 +29,13 @@ exports.postList = function(req, res, next) {
     title: title,
     count: count,
     cartCount: cartCount,
-    inCart: inCart
+    inCart: inCart,
+    addedOn: addedOn,
+    favorite: favorite
   });
   list.save(function(err, list) {
     if (err) next(err);
-    res.status(201).json(list);
+    res.status(201).send(list), console.log(list);
   });
 };
 
@@ -42,12 +46,22 @@ exports.clearShoppingList = function(req, res, next) {
     { new: true },
     function(err, list) {
       if (err) next(err);
-      List.find({})
-        .sort("-createdAt")
-        .exec(function(err, lists) {
-          if (err) next(err);
-          res.status(202).send(lists), console.log(lists);
-        });
+      res.status(202).send(list), console.log(list);
+    }
+  );
+};
+
+exports.addFavorite = function(req, res, next) {
+  var id = req.params.id;
+  var favorite = req.body.favorite;
+  console.log(favorite);
+  List.findOneAndUpdate(
+    { id: id },
+    { $set: { favorite: favorite } },
+    { new: true },
+    function(err, list) {
+      if (err) next(err);
+      res.status(202).send(list);
     }
   );
 };
@@ -56,20 +70,25 @@ exports.editList = function(req, res, next) {
   var count = req.body.count;
   var inCart = req.body.inCart;
   var cartCount = req.body.cartCount;
+  var addedOn = req.body.addedOn;
+  var favorite = req.body.favorite;
   List.findOneAndUpdate(
     { id: id },
-    { $set: { count: count, inCart: inCart, cartCount: cartCount } },
+    {
+      $set: {
+        count: count,
+        inCart: inCart,
+        cartCount: cartCount,
+        addedOn: addedOn,
+        favorite: favorite
+      }
+    },
     { new: true },
-    function(err, data) {
+    function(err, list) {
       if (err) {
         return next(err);
       }
-      List.find({})
-        .sort("-createdAt")
-        .exec(function(err, lists) {
-          if (err) next(err);
-          res.status(202).send(lists), console.log(lists);
-        });
+      res.status(202).send(list);
     }
   );
 };

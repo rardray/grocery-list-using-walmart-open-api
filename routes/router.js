@@ -24,5 +24,6 @@ module.exports = function(app) {
   listRoutes.post("/post", requireAuth, ListController.postList);
   listRoutes.put("/edit", requireAuth, ListController.editList);
   listRoutes.put("/remove", requireAuth, ListController.clearShoppingList);
+  listRoutes.put("/favorite/:id", requireAuth, ListController.addFavorite);
   app.use("/", apiRoutes); //<---- calls login function from authentication and passport
 };

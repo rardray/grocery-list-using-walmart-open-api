@@ -5,7 +5,7 @@ import Routes from "./Routes";
 var httpRequests = require("./httpRequests");
 var formlogic = require("./formlogic");
 
-var searchURL = function(id) {
+const searchURL = function(id) {
   return `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/products/search?offset=0&number=10&query=${id}`;
 };
 const apiKeyGr = { "X-RapidAPI-Key": cookie.load("grocery-api") };
@@ -13,6 +13,13 @@ const editListUrl = "/list/edit";
 const postListUrl = "/list/post";
 const apiToken = { Authorization: cookie.load("token") };
 
+function findIndex(list, data) {
+  for (let x = 0; x < list.length; x++) {
+    if (list[x].id === data.id) {
+      return x;
+    }
+  }
+}
 class AppContainer extends React.Component {
   state = {
     user: cookie.load("user") || "",
@@ -21,10 +28,7 @@ class AppContainer extends React.Component {
     favorites: [],
     history: [],
     pageLoad: false,
-    searchLoad: true,
-    startPosition: 0,
-    positionY: 0,
-    mouseDown: false
+    searchLoad: false
   };
   handleChange = formlogic.handleChange.bind(this);
   getRequest = httpRequests.getRequest.bind(this);
@@ -44,15 +48,26 @@ class AppContainer extends React.Component {
 
   setProductSearch = data => {
     let list = data.data.products;
+    const { history } = this.state;
     list.forEach(el => {
+      for (let i = 0; i < history.length; i++) {
+        if (el.id === history[i].id && history[i].favorite) {
+          return (
+            (el.favorite = true),
+            (el.count = 1),
+            (el.inCart = false),
+            (el.cartCount = 0)
+          );
+        }
+      }
       return (
         (el.count = 1),
         (el.inCart = false),
-        (el.cartCount = 1),
+        (el.cartCount = 0),
         (el.favorite = false)
       );
     });
-    this.setState({ productSearch: list });
+    this.setState({ productSearch: list }, console.log(list));
   };
 
   searchSubmit = e => {
@@ -66,7 +81,7 @@ class AppContainer extends React.Component {
   handleDelete = (data, e) => {
     data.inCart = false;
     data.cartCount = 0;
-    this.putRequest(editListUrl, apiToken, data, this.getList);
+    this.putRequest(editListUrl, apiToken, data, this.setList);
   };
 
   handleQuantity = (i, name, e) => {
@@ -87,70 +102,112 @@ class AppContainer extends React.Component {
       }
     }
   };
-
-  addToList = (item, name) => {
-    const data = { ...item };
-    data.inCart = true;
-    const { history } = this.state;
-    const filtered = history.filter(el => {
-      return el.id === data.id;
-    });
-    if (filtered.length === 1) {
-      data.cartCount += data.count;
-      this.putRequest(editListUrl, apiToken, data, this.setList);
-    } else {
-      data.cartCount = data.count;
-      this.postRequest(postListUrl, apiToken, data, this.setList);
+  setFavorite = (data, i) => {
+    const { productSearch, history } = this.state;
+    history[i[1]] = data.data;
+    if (
+      productSearch.length > 0 &&
+      productSearch[i[0]].id === history[i[1]].id
+    ) {
+      productSearch[i[0]].favorite = data.data.favorite;
     }
+    this.setState({ history: history, productSearch: productSearch });
+  };
+  setPostFavorite = (data, i) => {
+    const { productSearch, history } = this.state;
+    productSearch[i[0]].favorite = data.data.favorite;
+    history.unshift(data.data);
+    this.setState(prevState => {
+      return {
+        productSearch: productSearch,
+        history: history
+      };
+    });
   };
 
-  handleDrag = (data, name, e) => {
+  addFavoriteFromSearch = (i, item) => {
+    const data = { ...item };
+    data.favorite = !data.favorite;
+    console.log(data);
+    this.editData(data, i, this.putFavorite, this.postFavorite);
+  };
+  putFavorite = (data, i, history, id) => {
+    this.putRequest(
+      `/list/favorite/${id}`,
+      apiToken,
+      data,
+      this.setFavorite,
+      i
+    );
+  };
+  postFavorite = (data, i) => {
+    this.postRequest(postListUrl, apiToken, data, this.setPostFavorite, i);
+  };
+  editData = (data, ind, cb1, cb2) => {
+    const { history } = this.state;
+    const id = data.id;
+    console.log(id);
+    let k = findIndex(history, data);
+    if (k || k === 0) {
+      cb1(data, [ind, k], history, id);
+    } else {
+      cb2(data, [ind, k]);
+    }
+  };
+  putUpdate = (data, i, history) => {
+    data.cartCount = history[i[1]].cartCount + data.count;
+    console.log(data);
+    this.putRequest(editListUrl, apiToken, data, this.setList, i[1]);
+  };
+  postUpdate = data => {
+    data.cartCount = data.count;
+    this.postRequest(postListUrl, apiToken, data, this.postList);
+  };
+  addToList = (i, item) => {
+    const data = { ...item };
+    if (!data.inCart) {
+      data.addedOn = Date.now();
+      data.inCart = true;
+    }
+    this.editData(data, i, this.putUpdate, this.postUpdate);
+  };
+  postList = data => {
+    const { history } = this.state;
+    history.unshift(data.data);
+    this.setState({ history: history });
+  };
+  handleDrag = (i, data, e) => {
     let js = JSON.stringify(data);
     e.dataTransfer.setData("index", js);
-    e.dataTransfer.setData("name", name);
-    console.log(js);
+    e.dataTransfer.setData("i", i);
   };
 
   onDragOver = e => {
     e.preventDefault();
   };
-  handleMouseMove = e => {
-    if (this.state.mouseDown) {
-      let { startPosition, positionY } = this.state;
-      let shift = e.clientY - startPosition;
-      if (shift >= 0) {
-        return this.setState({
-          positionY: 0,
-          startPosition: e.clientY - positionY
-        });
-      } else {
-        this.setState({ positionY: shift });
-      }
-    }
-  };
-  handleScrollMsDown = e => {
-    e.preventDefault();
-    const { positionY } = this.state;
-    this.setState({ startPosition: e.clientY - positionY, mouseDown: true });
-  };
-  handleMouseUp = e => {
-    e.preventDefault();
-    this.setState({ mouseDown: false });
-  };
   handleDrop = e => {
     let index = e.dataTransfer.getData("index");
-    let name = e.dataTransfer.getData("name");
     let data = JSON.parse(index);
-    this.addToList(data, name);
+    let i = e.dataTransfer.getData("i");
+    this.addToList(i, data);
   };
-  setList = data => {
-    this.setState({ history: data.data });
+  setList = (data, i) => {
+    const { history } = this.state;
+    history[i] = data.data;
+    this.setState({ history: history });
   };
   clearList = () => {
-    console.log(this.state);
-    this.putRequest("/list/remove", apiToken, null, this.setList);
+    this.putRequest("/list/remove", apiToken, null, this.setClearList);
   };
-
+  setClearList = (data, i) => {
+    if (!data.error) {
+      const { history } = this.state;
+      history.forEach(el => {
+        return (el.cartCount = 0), (el.inCart = false);
+      });
+      this.setState({ history: history });
+    }
+  };
   render() {
     return (
       <Routes
@@ -169,11 +226,8 @@ class AppContainer extends React.Component {
         history={this.state.history}
         clearList={this.clearList}
         pageLoad={this.state.pageLoad}
-        searchLoad={this.state.searchLoad}
-        handleMouseUp={this.handleMouseUp}
-        handleMouseMove={this.handleMouseMove}
-        handleScrollMsDown={this.handleScrollMsDown}
-        positionY={this.state.positionY}
+        addFavorite={this.addFavoriteFromSearch}
+        addFavoriteFromSearch={this.addFavoriteFromSearch}
       />
     );
   }

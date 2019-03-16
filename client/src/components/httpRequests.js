@@ -27,7 +27,7 @@ export function postRequest(url, header, data, payload, vb, redirect) {
     })
     .then(response => {
       if (!response.error) {
-        payload(data);
+        payload(response, vb);
       }
     })
     .then(redirect)

@@ -21,15 +21,17 @@ const Search = props => {
             <Items
               id={el.id}
               image={el.image}
-              handleDrag={props.handleDrag.bind(this, el, "productSearch")}
+              handleDrag={props.handleDrag.bind(this, i, el)}
               title={el.title}
-              addToList={props.addToList.bind(this, el, "productSearch")}
+              addToList={props.addToList.bind(this, i, el)}
               handleQuantity={props.handleQuantity.bind(
                 this,
                 i,
                 "productSearch"
               )}
               count={el.count}
+              favorite={el.favorite}
+              addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}
             />
           </div>
         );
