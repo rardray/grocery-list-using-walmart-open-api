@@ -22,15 +22,21 @@ export const handleSubmit = function(url, def, e) {
     .post("/auth" + url, data)
     .then(response => {
       if (!response.error) {
-        cookie.save("user", response.data.user, { path: "/" });
-        cookie.save("token", response.data.token, { path: "/" });
-        cookie.save("grocery-api", response.data.groceryApi, { path: "/" });
-        this.setState(prevState => {
-          return (prevState = def);
-        });
-        navigate("/");
+        return (
+          cookie.save("user", response.data.user, { path: "/" }),
+          console.log("done1"),
+          cookie.save("token", response.data.token, { path: "/" }),
+          console.log("done2"),
+          cookie.save("grocery-api", response.data.groceryApi, { path: "/" }),
+          console.log("done3"),
+          this.setState(prevState => {
+            return (prevState = def);
+          }),
+          navigate("/")
+        );
       }
     })
-    .then(this.props.setUser)
+    .then(() => this.props.setUser())
+    .then(() => this.props.getList())
     .catch(error => error);
 };

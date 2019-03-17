@@ -12,14 +12,16 @@ const Items = props => {
       />
       <h4>{props.title}</h4>
       <button onClick={props.addToList}>ADD TO LIST</button>
-      <span>Quantity:</span>
-      <button name="minus" id="minus" onClick={props.handleQuantity}>
-        -
-      </button>
-      <span id="quantity"> {props.count} </span>
-      <button name="plus" id="minus" onClick={props.handleQuantity}>
-        +
-      </button>
+      <div style={{ display: "inline-block" }}>
+        <span>Quantity:</span>
+        <button name="minus" id="minus" onClick={props.handleQuantity}>
+          -
+        </button>
+        <span id="quantity"> {props.count} </span>
+        <button name="plus" id="minus" onClick={props.handleQuantity}>
+          +
+        </button>
+      </div>
       <svg
         onClick={props.addFavorite}
         version="1.1"

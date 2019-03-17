@@ -10,11 +10,15 @@ const Searchbar = props => {
           name="query"
           value={props.query}
           style={{
-            width: "20%",
+            maxWidth: "40%",
+            minWidth: "15%",
             height: 20,
-            float: "right",
             border: "none",
-            marginTop: 10
+            marginTop: 10,
+            display: "inline-block",
+            position: "relative",
+
+            textAlign: "left"
           }}
           placeholder="Search"
         />

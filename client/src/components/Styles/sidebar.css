@@ -7,9 +7,10 @@
   position: sticky;
   top: 50px;
   height: 100%;
-  margin-top: 10px;
+  margin-top: 0px;
   padding: 6px;
   padding-left: 20px;
+  padding-top: 0px;
   overflow: hidden;
 }
 
@@ -17,6 +18,7 @@
   height: 40px;
   width: 40px;
   float: left;
+  margin-bottom: 15px;
 }
 .sidebar p {
   display: inline-block;
@@ -46,6 +48,17 @@
   border-left: 1px solid lightslategrey;
   border-radius: 0px;
   z-index: 10;
+}
+.sidebar #bar-header {
+  background: white;
+  margin-top: 0px;
+  position: sticky;
+  top: 0px;
+  z-index: 50;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid darkslateblue;
+  margin-bottom: 10px;
 }
 .sidebar #top-links {
   text-align: left;

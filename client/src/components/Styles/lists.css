@@ -1,19 +1,23 @@
 .nav-link {
-  color: white;
+  color: darkslategrey;
   text-align: right;
-  padding: 14px;
+  padding: 10px;
+  padding-right: 20px;
   font-family: Muli, sans-serif;
-  font-weight: 500;
-  font-size: 12pt;
-  float: right;
-  right: 20px;
+  font-weight: 900;
+  font-size: 14pt;
   text-decoration: none;
+  display: block;
+}
+.nav-link:hover {
+  background: lightblue;
+  color: white;
 }
 .list-items {
-  display: inline-block;
+  display: flexbox;
   position: relative;
   margin: 20px;
-  max-width: 60%;
+  max-width: 90%;
   min-width: 45%;
   overflow: hidden;
   border-bottom: 1px solid aliceblue;
@@ -23,12 +27,14 @@
   float: left;
   height: 75px;
   width: 75px;
+  margin-bottom: 40px;
 }
 .list-items h4 {
   margin: 10px;
   margin-left: 80px;
   max-width: 90%;
   display: flex;
+  font-size: 1em;
 }
 .list-items #list-block {
   margin-bottom: 8px;

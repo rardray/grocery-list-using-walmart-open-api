@@ -10,6 +10,7 @@ export const Nav = styled.nav`
   background: #336699;
   color: white;
   z-index: 50;
+  text-align: center;
 `;
 /*const highlight = keyframes`
   0% { background: black; }

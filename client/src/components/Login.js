@@ -16,6 +16,7 @@ const Login = props => {
       messages={utility.loginErrors}
       renderInputs={utility.renderInputs}
       setUser={props.setUser}
+      getList={props.getList}
     />
   );
 };

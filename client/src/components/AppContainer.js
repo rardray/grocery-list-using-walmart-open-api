@@ -8,10 +8,14 @@ var formlogic = require("./formlogic");
 const searchURL = function(id) {
   return `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/products/search?offset=0&number=10&query=${id}`;
 };
-const apiKeyGr = { "X-RapidAPI-Key": cookie.load("grocery-api") };
+const apiKeyGr = function() {
+  return { "X-RapidAPI-Key": cookie.load("grocery-api") };
+};
 const editListUrl = "/list/edit";
 const postListUrl = "/list/post";
-const apiToken = { Authorization: cookie.load("token") };
+const apiToken = function() {
+  return { Authorization: cookie.load("token") };
+};
 
 function findIndex(list, data) {
   for (let x = 0; x < list.length; x++) {
@@ -36,16 +40,24 @@ class AppContainer extends React.Component {
   postRequest = httpRequests.postRequest.bind(this);
   deleteRequest = httpRequests.deleteRequest.bind(this);
   componentDidMount() {
-    this.getList();
+    if (this.state.user) {
+      this.getList();
+    }
   }
   getList = () => {
-    this.getRequest("/list", apiToken, this.listState);
+    this.getRequest("/list", apiToken(), this.listState);
   };
   listState = data => {
-    this.setState({ history: data.data, pageLoad: true });
+    this.setState(
+      { history: data.data, pageLoad: true },
+      console.log(this.state.pageLoad)
+    );
   };
-  setUser = data => this.setState({ user: cookie.load("user") });
-
+  setUser = data =>
+    this.setState({ user: cookie.load("user") }, console.log(this.state.user));
+  logOutUser = () => {
+    this.setState({ user: "" });
+  };
   setProductSearch = data => {
     let list = data.data.products;
     const { history } = this.state;
@@ -73,7 +85,7 @@ class AppContainer extends React.Component {
   searchSubmit = e => {
     e.preventDefault();
     const query = this.state.query;
-    this.getRequest(searchURL(query), apiKeyGr, this.setProductSearch, () =>
+    this.getRequest(searchURL(query), apiKeyGr(), this.setProductSearch, () =>
       navigate(`/search/${query}`, this.setState({ query: "" }))
     );
   };
@@ -81,7 +93,7 @@ class AppContainer extends React.Component {
   handleDelete = (data, e) => {
     data.inCart = false;
     data.cartCount = 0;
-    this.putRequest(editListUrl, apiToken, data, this.setList);
+    this.putRequest(editListUrl, apiToken(), data, this.setList);
   };
 
   handleQuantity = (i, name, e) => {
@@ -134,7 +146,7 @@ class AppContainer extends React.Component {
   putFavorite = (data, i, history, id) => {
     this.putRequest(
       `/list/favorite/${id}`,
-      apiToken,
+      apiToken(),
       data,
       this.setFavorite,
       i
@@ -157,11 +169,11 @@ class AppContainer extends React.Component {
   putUpdate = (data, i, history) => {
     data.cartCount = history[i[1]].cartCount + data.count;
     console.log(data);
-    this.putRequest(editListUrl, apiToken, data, this.setList, i[1]);
+    this.putRequest(editListUrl, apiToken(), data, this.setList, i[1]);
   };
   postUpdate = data => {
     data.cartCount = data.count;
-    this.postRequest(postListUrl, apiToken, data, this.postList);
+    this.postRequest(postListUrl, apiToken(), data, this.postList);
   };
   addToList = (i, item) => {
     const data = { ...item };
@@ -197,7 +209,7 @@ class AppContainer extends React.Component {
     this.setState({ history: history });
   };
   clearList = () => {
-    this.putRequest("/list/remove", apiToken, null, this.setClearList);
+    this.putRequest("/list/remove", apiToken(), null, this.setClearList);
   };
   setClearList = (data, i) => {
     if (!data.error) {
@@ -228,6 +240,8 @@ class AppContainer extends React.Component {
         pageLoad={this.state.pageLoad}
         addFavorite={this.addFavoriteFromSearch}
         addFavoriteFromSearch={this.addFavoriteFromSearch}
+        logOutUser={this.logOutUser}
+        getList={this.getList}
       />
     );
   }

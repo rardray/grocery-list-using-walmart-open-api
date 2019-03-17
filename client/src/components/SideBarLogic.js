@@ -45,18 +45,21 @@ class SideBarLogic extends React.Component {
   render() {
     return (
       <div className="sidebar">
-        <button
-          id={this.state.grocery ? "top-links" : "top-unselected"}
-          onClick={this.handleColumn}
-        >
-          Grocery List
-        </button>
-        <button
-          id={this.state.grocery ? "top-unselected" : "top-links"}
-          onClick={this.handleColumn}
-        >
-          Favorites
-        </button>
+        <div id="bar-header">
+          <button
+            id={this.state.grocery ? "top-links" : "top-unselected"}
+            onClick={this.handleColumn}
+          >
+            Grocery List
+          </button>
+          <span />
+          <button
+            id={this.state.grocery ? "top-unselected" : "top-links"}
+            onClick={this.handleColumn}
+          >
+            Favorites
+          </button>
+        </div>
         <ListContainer
           startPosition={this.state.startPosition}
           positionY={this.state.positionY}
