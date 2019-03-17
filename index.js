@@ -14,10 +14,6 @@ mongoose.connect(config.database, { useNewUrlParser: true });
 app.use("/public", express.static(__dirname + "/public"));
 app.use(express.static(path.join(__dirname, "client/build")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
-
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
