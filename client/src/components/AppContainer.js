@@ -11,8 +11,8 @@ const searchURL = function(id) {
 const apiKeyGr = function() {
   return { "X-RapidAPI-Key": cookie.load("grocery-api") };
 };
-const editListUrl = "/list/edit";
-const postListUrl = "/list/post";
+const editListUrl = "/api/list/edit";
+const postListUrl = "/api/list/post";
 const apiToken = function() {
   return { Authorization: cookie.load("token") };
 };
@@ -45,7 +45,7 @@ class AppContainer extends React.Component {
     }
   }
   getList = () => {
-    this.getRequest("/list", apiToken(), this.listState);
+    this.getRequest("api/list", apiToken(), this.listState);
   };
   listState = data => {
     this.setState(
@@ -145,7 +145,7 @@ class AppContainer extends React.Component {
   };
   putFavorite = (data, i, history, id) => {
     this.putRequest(
-      `/list/favorite/${id}`,
+      `api/list/favorite/${id}`,
       apiToken(),
       data,
       this.setFavorite,

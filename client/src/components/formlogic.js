@@ -19,7 +19,7 @@ export const handleSubmit = function(url, def, e) {
     data.email = data.email.toLowerCase();
   }
   axios
-    .post("/auth" + url, data)
+    .post("api/auth" + url, data)
     .then(response => {
       if (!response.error) {
         return (
