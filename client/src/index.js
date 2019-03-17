@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import WebFont from "webfontloader";
-import { Router } from "@reach/router";
 
 WebFont.load({
   google: {
@@ -12,12 +11,7 @@ WebFont.load({
   }
 });
 
-ReactDOM.render(
-  <Router>
-    <App path="/" />
-  </Router>,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
