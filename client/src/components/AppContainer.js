@@ -44,15 +44,11 @@ class AppContainer extends React.Component {
     if (this.state.user) {
       this.getList();
     }
-    window.addEventListener("deviceorientation", this.handleSidebar());
+    window.addEventListener("deviceorientation", this.handleSidebar);
   }
 
   handleSidebar = e => {
-    if ($(window).height() > $(window).width()) {
-      return 1;
-    } else {
-      return 0;
-    }
+    return $(window).height() > $(window).width();
   };
   getList = () => {
     this.getRequest("/api/list", apiToken(), this.listState);
