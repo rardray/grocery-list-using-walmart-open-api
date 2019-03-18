@@ -48,7 +48,7 @@ const Routes = props => {
           />
         }
         ListBar={
-          handleSidebar ? null : (
+          handleSidebar() ? null : (
             <SideBarLogic
               onDragOver={onDragOver}
               handleDrop={handleDrop}
