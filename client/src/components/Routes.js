@@ -35,9 +35,9 @@ const Routes = props => {
     getList
   } = props;
   return (
-    <Router basename="/">
+    <Router>
       <Home
-        path="/"
+        path="/ja"
         user={user}
         logOutUser={logOutUser}
         Searchbar={
@@ -63,7 +63,7 @@ const Routes = props => {
         }
       >
         <Search
-          path="search/:query"
+          path="/search/:query"
           productSearch={productSearch}
           handleQuantity={handleQuantity}
           addToList={addToList}
@@ -72,7 +72,7 @@ const Routes = props => {
         />
         {pageLoad ? (
           <Favorites
-            path="favorites"
+            path="/favorites"
             history={history}
             handleQuantity={handleQuantity}
             addToList={addToList}
@@ -80,11 +80,11 @@ const Routes = props => {
             addFavoriteFromSearch={addFavoriteFromSearch}
           />
         ) : (
-          <Loader path="favorites" />
+          <Loader path="/favorites" />
         )}
         {pageLoad ? (
           <History
-            path="history"
+            path="/history"
             history={history}
             pageLoad={pageLoad}
             historyItems={history.map((el, i) => {
@@ -106,10 +106,10 @@ const Routes = props => {
             })}
           />
         ) : (
-          <Loader path="history" />
+          <Loader path="/history" />
         )}
-        <Register path="register" />
-        <Login path="login" setUser={props.setUser} getList={getList} />
+        <Register path="/register" />
+        <Login path="/login" setUser={props.setUser} getList={getList} />
       </Home>
     </Router>
   );
