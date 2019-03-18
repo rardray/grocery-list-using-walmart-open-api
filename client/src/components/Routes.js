@@ -37,7 +37,7 @@ const Routes = props => {
   return (
     <Router>
       <Home
-        path="/ja"
+        path="/"
         user={user}
         logOutUser={logOutUser}
         Searchbar={
