@@ -33,7 +33,8 @@ class AppContainer extends React.Component {
     favorites: [],
     history: [],
     pageLoad: false,
-    searchLoad: false
+    searchLoad: false,
+    window: false
   };
   handleChange = formlogic.handleChange.bind(this);
   getRequest = httpRequests.getRequest.bind(this);
@@ -48,7 +49,11 @@ class AppContainer extends React.Component {
   }
 
   handleSidebar = e => {
-    return $(window).height() > $(window).width();
+    if ($(window).height() > $(window).width()) {
+      return this.setState({ window: true });
+    } else {
+      this.setState({ window: false });
+    }
   };
   getList = () => {
     this.getRequest("/api/list", apiToken(), this.listState);
@@ -248,7 +253,7 @@ class AppContainer extends React.Component {
         addFavoriteFromSearch={this.addFavoriteFromSearch}
         logOutUser={this.logOutUser}
         getList={this.getList}
-        handleSidebar={this.handleSidebar}
+        window={this.state.window}
       />
     );
   }
