@@ -11,6 +11,11 @@ console.log("Server running on " + config.port);
 const path = require("path");
 
 mongoose.connect(config.database, { useNewUrlParser: true });
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("/history", function(req, res) {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
