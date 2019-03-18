@@ -13,6 +13,19 @@
   background: lightblue;
   color: white;
 }
+.nav-link-log {
+  position: relative;
+  right: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  float: right;
+  color: white;
+  text-align: right;
+  font-family: Muli, sans-serif;
+  font-weight: 900;
+  font-size: 14pt;
+  text-decoration: none;
+}
 .list-items {
   display: flexbox;
   position: relative;

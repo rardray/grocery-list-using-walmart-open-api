@@ -6,7 +6,8 @@ export const Nav = styled.nav`
   display: block;
   position: sticky;
   top: 0px;
-  height: 50px;
+  min-height: 50px;
+  max-height: 20%;
   background: #336699;
   color: white;
   z-index: 50;
@@ -104,7 +105,8 @@ export const dark = {
     paddingBottom: 50,
     color: "slateblue",
     verticalAlign: "middle",
-    width: "100%",
+    maxWidth: "100%",
+    minWidth: "75%",
     borderRadius: 10
   },
   h1: {

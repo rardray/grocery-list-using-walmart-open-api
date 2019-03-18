@@ -142,7 +142,7 @@ class Input extends React.Component {
               <div
                 style={{
                   textAlign: "right",
-                  marginRight: "25%",
+                  marginRight: "auto",
                   padding: 0
                 }}
               >

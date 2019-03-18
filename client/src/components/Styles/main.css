@@ -1,6 +1,7 @@
 input {
   display: inline-block;
-  width: 50%;
+  min-width: 50%;
+  max-width: 80%;
   background: #f0ffff;
   opacity: 0.9;
   margin-right: 0px;
@@ -84,7 +85,16 @@ svg {
   padding: 2px;
   vertical-align: top;
 }
-
+#page-title {
+  margin: 0px;
+  float: left;
+  padding: 6px;
+  padding-right: 10%;
+  font-family: "Scada", sans-serif;
+  font-weight: 300;
+  margin-left: 20px;
+  color: wheat;
+}
 .spinner {
   height: 60px;
   width: 60px;

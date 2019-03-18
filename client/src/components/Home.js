@@ -5,6 +5,7 @@ import "./Styles/main.css";
 import Menu from "./Menu";
 import MenuList from "./MenuList";
 import cookie from "react-cookies";
+import Licon from "./licon";
 
 class Home extends React.Component {
   handleLogout = () => {
@@ -14,13 +15,16 @@ class Home extends React.Component {
     navigate("/login");
     this.props.logOutUser();
   };
+
   render() {
     return (
       <div>
         <NavBar>
+          <h2 id="page-title">fundrayz grocery</h2>
           {this.props.user ? (
             <div>
-              {this.props.Searchbar}
+              <div>{this.props.Searchbar}</div>
+              <Licon />
               <Menu>
                 <MenuList
                   header={
@@ -45,10 +49,10 @@ class Home extends React.Component {
             </div>
           ) : (
             <div>
-              <Link className="nav-link" to="register">
+              <Link className="nav-link-log" to="register">
                 Register
               </Link>
-              <Link className="nav-link" to="login">
+              <Link className="nav-link-log" to="login">
                 Log In
               </Link>
             </div>

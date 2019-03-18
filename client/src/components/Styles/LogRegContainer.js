@@ -5,10 +5,12 @@ const Container = props => {
   return (
     <div
       style={{
-        padding: "25%",
+        textAlign: "center",
         display: "block",
         background: "black",
-        paddingTop: "10%"
+        paddingTop: "10%",
+        paddingBottom: "20%",
+        height: "100%"
       }}
     >
       <div style={Themes.dark.div}>

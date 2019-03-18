@@ -3,20 +3,29 @@ import React from "react";
 const Searchbar = props => {
   return (
     <div>
-      <form onSubmit={props.searchSubmit}>
+      <form
+        style={{
+          margin: 0,
+          padding: 0,
+          paddingTop: 10,
+          display: "inline-block",
+          position: "relative",
+          minWidth: "40%",
+          maxWidth: "90%",
+          textAlign: "center"
+        }}
+        onSubmit={props.searchSubmit}
+      >
         <input
           type="text"
           onChange={props.handleChange}
           name="query"
           value={props.query}
           style={{
-            maxWidth: "40%",
-            minWidth: "15%",
+            maxWidth: "100%",
+            minWidth: "90%",
             height: 20,
             border: "none",
-            marginTop: 10,
-            display: "inline-block",
-            position: "relative",
 
             textAlign: "left"
           }}
