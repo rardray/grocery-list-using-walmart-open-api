@@ -35,7 +35,7 @@ const Routes = props => {
     getList
   } = props;
   return (
-    <Router>
+    <Router basename="/">
       <Home
         path="/"
         user={user}
