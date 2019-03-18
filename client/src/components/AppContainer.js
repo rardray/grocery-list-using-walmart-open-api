@@ -45,7 +45,7 @@ class AppContainer extends React.Component {
     }
   }
   getList = () => {
-    this.getRequest("api/list", apiToken(), this.listState);
+    this.getRequest("/api/list", apiToken(), this.listState);
   };
   listState = data => {
     this.setState(
@@ -145,7 +145,7 @@ class AppContainer extends React.Component {
   };
   putFavorite = (data, i, history, id) => {
     this.putRequest(
-      `api/list/favorite/${id}`,
+      `/api/list/favorite/${id}`,
       apiToken(),
       data,
       this.setFavorite,
@@ -209,7 +209,7 @@ class AppContainer extends React.Component {
     this.setState({ history: history });
   };
   clearList = () => {
-    this.putRequest("/list/remove", apiToken(), null, this.setClearList);
+    this.putRequest("/api/list/remove", apiToken(), null, this.setClearList);
   };
   setClearList = (data, i) => {
     if (!data.error) {
