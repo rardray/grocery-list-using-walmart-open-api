@@ -2,6 +2,7 @@ import React from "react";
 import { navigate } from "@reach/router";
 import cookie from "react-cookies";
 import Routes from "./Routes";
+import $ from "jquery";
 var httpRequests = require("./httpRequests");
 var formlogic = require("./formlogic");
 
@@ -43,7 +44,12 @@ class AppContainer extends React.Component {
     if (this.state.user) {
       this.getList();
     }
+    window.addEventListener("deviceorientation", this.handleSidebar);
   }
+
+  handleSidebar = e => {
+    return $(window).height() > $(window).width();
+  };
   getList = () => {
     this.getRequest("/api/list", apiToken(), this.listState);
   };
@@ -242,6 +248,7 @@ class AppContainer extends React.Component {
         addFavoriteFromSearch={this.addFavoriteFromSearch}
         logOutUser={this.logOutUser}
         getList={this.getList}
+        handleSidebar={this.handleSidebar}
       />
     );
   }

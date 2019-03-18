@@ -30,7 +30,7 @@ const Routes = props => {
     pageLoad,
     addFavorite,
     addFavoriteFromSearch,
-    searchLoad,
+    handleSidebar,
     logOutUser,
     getList
   } = props;
@@ -48,7 +48,7 @@ const Routes = props => {
           />
         }
         ListBar={
-          $(window).height() > $(window).width() ? null : (
+          handleSidebar ? null : (
             <SideBarLogic
               onDragOver={onDragOver}
               handleDrop={handleDrop}

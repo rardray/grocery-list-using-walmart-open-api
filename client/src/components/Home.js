@@ -8,9 +8,9 @@ import cookie from "react-cookies";
 
 class Home extends React.Component {
   handleLogout = () => {
-    cookie.remove("user");
-    cookie.remove("token");
-    cookie.remove("grocery-api");
+    cookie.remove("user", { path: "/" });
+    cookie.remove("token", { path: "/" });
+    cookie.remove("grocery-api", { path: "/" });
     navigate("/login");
     this.props.logOutUser();
   };

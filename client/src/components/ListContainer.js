@@ -10,21 +10,6 @@ const ListContainer = props => {
     >
       {props.children}
       <Button label="C L E A R  L I S T" click={props.clearList} />
-      <div
-        style={{
-          zIndex: 0,
-          height: "100%",
-          width: "100%",
-          display: "inline-block",
-          position: "absolute",
-          top: 0,
-          left: 0
-        }}
-        onMouseDown={props.handleScrollMsDown}
-        onMouseMove={props.handleMouseMove}
-        onMouseUp={props.handleMouseUp}
-        onMouseLeave={props.handleMouseUp}
-      />
     </div>
   );
 };
