@@ -17,6 +17,9 @@ app.use(express.static(path.join(__dirname, "client/build")));
 app.get("/", function(req, res) {
   res.sendFile(path.resolve(__dirname + "/client/build/index.html"));
 });
+app.get("/*", function(req, res) {
+  res.sendFile(path.resolve(__dirname + "/client/build/index.html"));
+});
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
