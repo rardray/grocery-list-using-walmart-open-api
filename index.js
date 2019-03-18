@@ -11,13 +11,14 @@ console.log("Server running on " + config.port);
 const path = require("path");
 
 mongoose.connect(config.database, { useNewUrlParser: true });
+app.use(express.static(__dirname + "/public"));
 app.use(express.static(path.join(__dirname, "client/build")));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 app.get("/*", function(req, res) {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
