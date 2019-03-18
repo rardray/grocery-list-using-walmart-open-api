@@ -20,7 +20,7 @@ const Favorites = props => {
               handleDrag={props.handleDrag.bind(this, i, el)}
               title={el.title}
               addToList={props.addToList.bind(this, i, el)}
-              handleQuantity={props.handleQuantity.bind(this, i)}
+              handleQuantity={props.handleQuantity.bind(this, i, "history")}
               count={el.count}
               favorite={el.favorite}
               addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}

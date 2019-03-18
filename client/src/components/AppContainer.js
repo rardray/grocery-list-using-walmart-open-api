@@ -164,7 +164,7 @@ class AppContainer extends React.Component {
     );
   };
   postFavorite = (data, i) => {
-    this.postRequest(postListUrl, apiToken, data, this.setPostFavorite, i);
+    this.postRequest(postListUrl, apiToken(), data, this.setPostFavorite, i);
   };
   editData = (data, ind, cb1, cb2) => {
     const { history } = this.state;

@@ -29,8 +29,8 @@
 .list-items {
   display: flexbox;
   position: relative;
-  margin: 20px;
-  max-width: 90%;
+  margin: auto;
+  max-width: 95%;
   min-width: 45%;
   overflow: hidden;
   border-bottom: 1px solid aliceblue;
@@ -45,7 +45,7 @@
 .list-items h4 {
   margin: 10px;
   margin-left: 80px;
-  max-width: 90%;
+  max-width: 100%;
   display: flex;
   font-size: 1em;
 }

@@ -6,12 +6,14 @@ export const Nav = styled.nav`
   display: block;
   position: sticky;
   top: 0px;
-  min-height: 50px;
+  min-height: 65px;
   max-height: 20%;
-  background: #336699;
+  background: #1e193a;
   color: white;
   z-index: 50;
   text-align: center;
+  padding-top: 10px;
+  border-bottom: 4px solid #8490e0;
 `;
 /*const highlight = keyframes`
   0% { background: black; }

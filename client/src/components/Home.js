@@ -20,11 +20,13 @@ class Home extends React.Component {
     return (
       <div>
         <NavBar>
-          <h2 id="page-title">fundrayz grocery</h2>
+          <h1 id="page-title-c">F</h1>
+          <h2 id="page-title">undrayz Grocery</h2>
           {this.props.user ? (
             <div>
-              <div>{this.props.Searchbar}</div>
-              <Licon />
+              {this.props.Searchbar}
+
+              <Licon history={this.props.history} />
               <Menu>
                 <MenuList
                   header={

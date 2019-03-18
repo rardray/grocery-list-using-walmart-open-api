@@ -40,6 +40,7 @@ const Routes = props => {
         path="/"
         user={user}
         logOutUser={logOutUser}
+        history={history}
         Searchbar={
           <Searchbar
             handleChange={handleChange}

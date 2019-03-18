@@ -1,11 +1,11 @@
 .sidebar {
   width: 25%;
-  max-width: 90%;
   background: white;
   border-right: 6px solid aliceblue;
   float: left;
   position: sticky;
   top: 50px;
+  left: 0px;
   height: 100%;
   margin-top: 0px;
   padding: 6px;

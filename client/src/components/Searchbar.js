@@ -5,14 +5,14 @@ const Searchbar = props => {
     <div>
       <form
         style={{
-          margin: 0,
           padding: 0,
           paddingTop: 10,
-          display: "inline-block",
+          margin: "auto",
           position: "relative",
           minWidth: "40%",
-          maxWidth: "90%",
-          textAlign: "center"
+          maxWidth: "60%",
+          textAlign: "center",
+          zIndex: 0
         }}
         onSubmit={props.searchSubmit}
       >
