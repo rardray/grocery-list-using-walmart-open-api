@@ -37,33 +37,35 @@ const Routes = props => {
     getList
   } = props;
   return (
-    <Dash
-      user={user}
-      logOutUser={logOutUser}
-      history={history}
-      Searchbar={
-        <Searchbar
-          handleChange={handleChange}
-          query={query}
-          searchSubmit={searchSubmit}
-        />
-      }
-      ListBar={
-        window ? null : (
-          <SideBarLogic
-            onDragOver={onDragOver}
-            handleDrop={handleDrop}
-            clearList={clearList}
-            pageLoad={pageLoad}
-            history={history}
-            handleDelete={handleDelete}
-            addFavorite={addFavorite}
-            addToList={addToList}
+    <Router>
+      <Dash
+        path="/"
+        exact
+        user={user}
+        logOutUser={logOutUser}
+        history={history}
+        Searchbar={
+          <Searchbar
+            handleChange={handleChange}
+            query={query}
+            searchSubmit={searchSubmit}
           />
-        )
-      }
-    >
-      <Router>
+        }
+        ListBar={
+          window ? null : (
+            <SideBarLogic
+              onDragOver={onDragOver}
+              handleDrop={handleDrop}
+              clearList={clearList}
+              pageLoad={pageLoad}
+              history={history}
+              handleDelete={handleDelete}
+              addFavorite={addFavorite}
+              addToList={addToList}
+            />
+          )
+        }
+      >
         <Home path="/" />
         <Search
           path="/search/:query"
@@ -126,8 +128,8 @@ const Routes = props => {
         )}
         <Register path="/register" />
         <Login path="/login" setUser={props.setUser} getList={getList} />
-      </Router>
-    </Dash>
+      </Dash>
+    </Router>
   );
 };
 
