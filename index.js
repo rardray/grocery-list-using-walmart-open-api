@@ -13,19 +13,7 @@ const path = require("path");
 mongoose.connect(config.database, { useNewUrlParser: true });
 app.use(express.static(path.join(__dirname, "client/build")));
 
-app.get("/history", function(req, res) {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
-app.get("/favorites", function(req, res) {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
-app.get("/search/*", function(req, res) {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
-app.get("/login", function(req, res) {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
-app.get("/register", function(req, res) {
+app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 app.use(logger("dev"));

@@ -1,10 +1,11 @@
 import React from "react";
 import "./Styles/task.css";
+import { navigate } from "@reach/router";
 
 const Licon = props => {
   const count = props.history.filter(el => el.inCart).length;
   return (
-    <div className="svg-menu">
+    <div className="svg-menu" onClick={props.handleCartIcon}>
       {count ? <div id="notify">{count}</div> : null}
       <svg
         version="1.1"
@@ -70,7 +71,7 @@ const Licon = props => {
         <rect
           x="119.902"
           y="346.151"
-          classname="x"
+          className="x"
           width="124.142"
           height="65.025"
         />

@@ -1,67 +1,70 @@
 import React from "react";
-import NavBar from "./NavBar";
-import { Link, navigate } from "@reach/router";
-import "./Styles/main.css";
-import Menu from "./Menu";
-import MenuList from "./MenuList";
-import cookie from "react-cookies";
-import Licon from "./licon";
+import calander from "./cal";
 
 class Home extends React.Component {
-  handleLogout = () => {
-    cookie.remove("user", { path: "/" });
-    cookie.remove("token", { path: "/" });
-    cookie.remove("grocery-api", { path: "/" });
-    navigate("/login");
-    this.props.logOutUser();
+  state = {
+    year: null,
+    month: null,
+    day: null
   };
-
+  componentDidMount() {
+    this.checkDate();
+    setInterval(this.checkDate, 1000 * 60 * 60);
+  }
+  checkDate = () => {
+    const n = new Date();
+    this.setState(
+      {
+        year: n.getFullYear(),
+        month: n.getMonth(),
+        day: n.getDate()
+      },
+      console.log("time")
+    );
+  };
+  tHeader = () => {
+    return (
+      <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tues</th>
+        <th>Weds</th>
+        <th>Thurs</th>
+        <th>Fri</th>
+        <th>Sat</th>
+      </tr>
+    );
+  };
   render() {
+    const cal = calander
+      .filter(el => {
+        return el[0][0] === this.state.month && el[0][1] === this.state.year;
+      })
+      .map((el, i) => {
+        return (
+          <tr key={i}>
+            {el.map((ele, i) => {
+              if (ele[0]) {
+                return null;
+              }
+              return (
+                <td className="td" key={i}>
+                  <div id="date">{ele}</div>
+                  <div id={ele === this.state.day ? "highlighted" : ""} />
+                </td>
+              );
+            })}
+          </tr>
+        );
+      });
     return (
       <div>
-        <NavBar>
-          <h1 id="page-title-c">F</h1>
-          <h2 id="page-title">undrayz Grocery</h2>
-          {this.props.user ? (
-            <div>
-              {this.props.Searchbar}
-
-              <Licon history={this.props.history} />
-              <Menu>
-                <MenuList
-                  header={
-                    <Link className="nav-link" to="/">
-                      {this.props.user.firstName +
-                        " " +
-                        this.props.user.lastName || "Home"}
-                    </Link>
-                  }
-                >
-                  <Link className="nav-link" to="history">
-                    History
-                  </Link>
-                  <Link className="nav-link" to="favorites">
-                    Favorites
-                  </Link>
-                  <p className="nav-link" onClick={this.handleLogout}>
-                    Log Out
-                  </p>
-                </MenuList>
-              </Menu>
-            </div>
-          ) : (
-            <div>
-              <Link className="nav-link-log" to="register">
-                Register
-              </Link>
-              <Link className="nav-link-log" to="login">
-                Log In
-              </Link>
-            </div>
-          )}
-        </NavBar>
-        {this.props.user ? this.props.ListBar : null}
-        {this.props.children}
+        <table>
+          <tbody>
+            {this.tHeader()}
+            {cal}
+          </tbody>
+        </table>
       </div>
     );
   }

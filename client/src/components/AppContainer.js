@@ -169,7 +169,6 @@ class AppContainer extends React.Component {
   editData = (data, ind, cb1, cb2) => {
     const { history } = this.state;
     const id = data.id;
-    console.log(id);
     let k = findIndex(history, data);
     if (k || k === 0) {
       cb1(data, [ind, k], history, id);
@@ -179,7 +178,6 @@ class AppContainer extends React.Component {
   };
   putUpdate = (data, i, history) => {
     data.cartCount = history[i[1]].cartCount + data.count;
-    console.log(data);
     this.putRequest(editListUrl, apiToken(), data, this.setList, i[1]);
   };
   postUpdate = data => {

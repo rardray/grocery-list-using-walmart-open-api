@@ -19,7 +19,8 @@ const Favorites = props => {
               image={el.image}
               handleDrag={props.handleDrag.bind(this, i, el)}
               title={el.title}
-              addToList={props.addToList.bind(this, i, el)}
+              action={props.addToList.bind(this, i, el)}
+              bLabel="ADD TO CART"
               handleQuantity={props.handleQuantity.bind(this, i, "history")}
               count={el.count}
               favorite={el.favorite}

@@ -11,6 +11,8 @@ import History from "./History";
 import Loader from "./Loader";
 import SideBarLogic from "./SideBarLogic";
 import $ from "jquery";
+import Cart from "./Cart";
+import Dash from "./Dash";
 
 const Routes = props => {
   const {
@@ -35,34 +37,34 @@ const Routes = props => {
     getList
   } = props;
   return (
-    <Router>
-      <Home
-        path="/"
-        user={user}
-        logOutUser={logOutUser}
-        history={history}
-        Searchbar={
-          <Searchbar
-            handleChange={handleChange}
-            query={query}
-            searchSubmit={searchSubmit}
+    <Dash
+      user={user}
+      logOutUser={logOutUser}
+      history={history}
+      Searchbar={
+        <Searchbar
+          handleChange={handleChange}
+          query={query}
+          searchSubmit={searchSubmit}
+        />
+      }
+      ListBar={
+        window ? null : (
+          <SideBarLogic
+            onDragOver={onDragOver}
+            handleDrop={handleDrop}
+            clearList={clearList}
+            pageLoad={pageLoad}
+            history={history}
+            handleDelete={handleDelete}
+            addFavorite={addFavorite}
+            addToList={addToList}
           />
-        }
-        ListBar={
-          window ? null : (
-            <SideBarLogic
-              onDragOver={onDragOver}
-              handleDrop={handleDrop}
-              clearList={clearList}
-              pageLoad={pageLoad}
-              history={history}
-              handleDelete={handleDelete}
-              addFavorite={addFavorite}
-              addToList={addToList}
-            />
-          )
-        }
-      >
+        )
+      }
+    >
+      <Router>
+        <Home path="/" />
         <Search
           path="/search/:query"
           productSearch={productSearch}
@@ -84,6 +86,18 @@ const Routes = props => {
           <Loader path="/favorites" />
         )}
         {pageLoad ? (
+          <Cart
+            path="/cart"
+            history={history}
+            handleQuantity={handleQuantity}
+            handleDelete={handleDelete}
+            handleDrag={handleDrag}
+            addFavoriteFromSearch={addFavoriteFromSearch}
+          />
+        ) : (
+          <Loader path="/cart" />
+        )}
+        {pageLoad ? (
           <History
             path="/history"
             history={history}
@@ -96,7 +110,8 @@ const Routes = props => {
                     image={el.image}
                     handleDrag={handleDrag.bind(this, i, el)}
                     title={el.title}
-                    addToList={addToList.bind(this, i, el)}
+                    action={addToList.bind(this, i, el)}
+                    bLabel="ADD TO CART"
                     handleQuantity={handleQuantity.bind(this, i, "history")}
                     count={el.count}
                     addFavorite={addFavorite.bind(this, i, el)}
@@ -111,8 +126,8 @@ const Routes = props => {
         )}
         <Register path="/register" />
         <Login path="/login" setUser={props.setUser} getList={getList} />
-      </Home>
-    </Router>
+      </Router>
+    </Dash>
   );
 };
 
