@@ -1,6 +1,5 @@
 import React from "react";
 import Items from "./Items";
-import "./Styles/main.css";
 
 const Search = props => {
   const sTitle = window.location.pathname.slice(8).replace("%20", " ");

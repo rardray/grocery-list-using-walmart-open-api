@@ -71,7 +71,7 @@
   border-left: 1px solid lightslategrey;
   border-radius: 0px;
   border-right: 1px solid lightslategrey;
-  font-size: 16px;
+  font-size: 0.75em;
   height: 30px;
 }
 .list-items button:hover {

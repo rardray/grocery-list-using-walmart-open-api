@@ -1,5 +1,5 @@
 import React from "react";
-import "./Styles/task.css";
+import "../Styles/task.css";
 
 const Licon = props => {
   const count = props.history.filter(el => el.inCart).length;

@@ -1,6 +1,5 @@
 import React from "react";
 import Items from "./Items";
-import "./Styles/main.css";
 
 const Favorites = props => {
   const sTitle = "Favorites";

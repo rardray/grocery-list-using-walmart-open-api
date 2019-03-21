@@ -21,10 +21,10 @@ function validate(input, name) {
     const suffixes = [".com", ".net", ".org", ".biz", ".edu"];
     function matchSuff() {
       const matches = suffixes.map(e => {
-        if (input.match(e)) {
-          return e;
+        if (!input.match(e)) {
+          e = false;
         } else {
-          return null;
+          return e;
         }
       });
       var newOne = matches.filter(e => e !== undefined);
@@ -143,7 +143,7 @@ class Input extends React.Component {
             ) : (
               <div
                 style={{
-                  textAlign: "right",
+                  textAlign: "center",
                   marginRight: "auto",
                   padding: 0
                 }}

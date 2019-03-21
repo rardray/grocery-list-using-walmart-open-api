@@ -1,8 +1,8 @@
 import React from "react";
 import ListContainer from "./ListContainer";
 import List from "./List";
-import Loader from "./Loader";
-import "./Styles/sidebar.css";
+import Loader from "../Loader";
+import "../Styles/sidebar.css";
 
 class SideBarLogic extends React.Component {
   state = {

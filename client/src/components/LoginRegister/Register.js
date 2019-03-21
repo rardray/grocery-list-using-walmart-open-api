@@ -1,7 +1,6 @@
 import React from "react";
-import "./Styles/main.css";
 import RegLogData from "./RegLogData";
-const utility = require("./utility");
+const utility = require("../Utility/utility");
 
 const Register = props => {
   return (

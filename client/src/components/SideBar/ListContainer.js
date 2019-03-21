@@ -1,6 +1,5 @@
 import React from "react";
-import "./Styles/main.css";
-import Button from "./Styles/Button";
+import Button from "../Styles/Button";
 const ListContainer = props => {
   return (
     <div onDragOver={props.onDragOver} onDrop={props.handleDrop}>

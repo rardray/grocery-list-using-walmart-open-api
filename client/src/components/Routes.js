@@ -1,17 +1,17 @@
 import React from "react";
-import Home from "./Home";
-import Register from "./Register";
+import Home from "./Home/Home";
+import Register from "./LoginRegister/Register";
 import { Router } from "@reach/router";
-import Login from "./Login";
-import Search from "./Search";
-import Searchbar from "./Searchbar";
-import Items from "./Items";
-import Favorites from "./Favorites";
-import History from "./History";
+import Login from "./LoginRegister/Login";
+import Search from "./ListPages/Search";
+import Searchbar from "./Dash/Searchbar";
+import Items from "./ListPages/Items";
+import Favorites from "./ListPages/Favorites";
+import History from "./ListPages/History";
 import Loader from "./Loader";
-import SideBarLogic from "./SideBarLogic";
-import Cart from "./Cart";
-import Dash from "./Dash";
+import SideBarLogic from "./SideBar/SideBarLogic";
+import Cart from "./ListPages/Cart";
+import Dash from "./Dash/Dash";
 
 const Routes = props => {
   const {

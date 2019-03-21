@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "./Styles/Input";
+import Input from "../Styles/Input";
 
 //login register texts
 export const registerType = ["text", "text", "email", "password"];

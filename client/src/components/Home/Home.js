@@ -1,6 +1,6 @@
 import React from "react";
 import calander from "./cal";
-import "./Styles/home.css";
+import "../Styles/home.css";
 
 class Home extends React.Component {
   state = {

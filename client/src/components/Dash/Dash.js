@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 import { Link, navigate } from "@reach/router";
-import "./Styles/main.css";
+import "../Styles/main.css";
 import Menu from "./Menu";
 import MenuList from "./MenuList";
 import cookie from "react-cookies";
@@ -16,7 +16,7 @@ class Dash extends React.Component {
     this.props.logOutUser();
   };
 
-  handleCartIcon = e => navigate("/cart");
+  handleCartIcon = e => navigate("grocery/cart");
 
   render() {
     return (
