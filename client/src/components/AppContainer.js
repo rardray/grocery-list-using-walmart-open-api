@@ -4,7 +4,7 @@ import cookie from "react-cookies";
 import Routes from "./Routes";
 import $ from "jquery";
 var httpRequests = require("./Utility/httpRequests");
-var formlogic = require("./LoginRegister/formlogic");
+var formlogic = require("./Forms/formlogic");
 
 const searchURL = function(id) {
   return `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/products/search?offset=0&number=10&query=${id}`;
