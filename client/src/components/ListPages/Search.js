@@ -2,7 +2,7 @@ import React from "react";
 import Items from "./Items";
 
 const Search = props => {
-  const sTitle = window.location.pathname.slice(8).replace("%20", " ");
+  const sTitle = window.location.pathname.slice(16).replace("%20", " ");
   return (
     <div className="list-items">
       <h2>Search Results for {sTitle}</h2>
@@ -19,7 +19,8 @@ const Search = props => {
               image={el.image}
               handleDrag={props.handleDrag.bind(this, i, el)}
               title={el.title}
-              addToList={props.addToList.bind(this, i, el)}
+              action={props.addToList.bind(this, i, el)}
+              bLabel="ADD TO CART"
               handleQuantity={props.handleQuantity.bind(
                 this,
                 i,

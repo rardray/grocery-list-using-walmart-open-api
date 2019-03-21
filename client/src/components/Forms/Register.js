@@ -1,6 +1,6 @@
 import React from "react";
 import RegLogData from "./RegLogData";
-const utility = require("../Utility/utility");
+const utility = require("./utility");
 
 const Register = props => {
   return (

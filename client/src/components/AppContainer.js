@@ -33,7 +33,6 @@ class AppContainer extends React.Component {
     favorites: [],
     history: [],
     pageLoad: false,
-    searchLoad: false,
     window: false
   };
   handleChange = formlogic.handleChange.bind(this);
@@ -93,7 +92,7 @@ class AppContainer extends React.Component {
     e.preventDefault();
     const query = this.state.query;
     this.getRequest(searchURL(query), apiKeyGr(), this.setProductSearch, () =>
-      navigate(`/search/${query}`, this.setState({ query: "" }))
+      navigate(`/grocery/search/${query}`, this.setState({ query: "" }))
     );
   };
 
@@ -228,30 +227,7 @@ class AppContainer extends React.Component {
     }
   };
   render() {
-    return (
-      <Routes
-        handleChange={this.handleChange}
-        searchSubmit={this.searchSubmit}
-        productSearch={this.state.productSearch}
-        query={this.state.query}
-        user={this.state.user}
-        handleQuantity={this.handleQuantity}
-        addToList={this.addToList}
-        handleDrag={this.handleDrag}
-        onDragOver={this.onDragOver}
-        handleDrop={this.handleDrop}
-        setUser={this.setUser}
-        handleDelete={this.handleDelete}
-        history={this.state.history}
-        clearList={this.clearList}
-        pageLoad={this.state.pageLoad}
-        addFavorite={this.addFavoriteFromSearch}
-        addFavoriteFromSearch={this.addFavoriteFromSearch}
-        logOutUser={this.logOutUser}
-        getList={this.getList}
-        window={this.state.window}
-      />
-    );
+    return <Routes {...this} {...this.state} />;
   }
 }
 

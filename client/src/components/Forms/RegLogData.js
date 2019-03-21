@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Styles/Button";
-import Container from "../Styles/LogRegContainer";
+import Container from "./LogRegContainer";
 const formlogic = require("./formlogic");
 
 class RegLogData extends React.Component {

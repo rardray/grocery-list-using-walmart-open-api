@@ -34,20 +34,13 @@ class SideBarLogic extends React.Component {
             Favorites
           </button>
         </div>
-        <ListContainer
-          startPosition={this.state.startPosition}
-          onDragOver={this.props.onDragOver}
-          handleDrop={this.props.handleDrop}
-          clearList={this.props.clearList}
-        >
+        <ListContainer {...this.props} {...this.state}>
           {" "}
           {this.props.pageLoad ? (
             <List
-              history={this.props.history}
-              handleDelete={this.props.handleDelete}
-              addToList={this.props.addToList}
-              grocery={this.state.grocery}
-              addFavorite={this.props.addFavorite}
+              {...this.props}
+              {...this.state}
+              {...this}
               buttonLabel={this.state.grocery ? "R E M O V E " : "ADD TO CART"}
               filtervalue={this.state.grocery ? "inCart" : "favorite"}
               sortvalue={this.state.grocery ? "addedOn" : "updatedAt"}

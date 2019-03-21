@@ -1,5 +1,5 @@
 import React from "react";
-var Themes = require("./Themes");
+var Themes = require("../Styles/Themes");
 
 const Container = props => {
   return (

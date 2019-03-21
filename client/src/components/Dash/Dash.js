@@ -16,7 +16,7 @@ class Dash extends React.Component {
     this.props.logOutUser();
   };
 
-  handleCartIcon = e => navigate("grocery/cart");
+  handleCartIcon = e => navigate("/grocery/cart");
 
   render() {
     return (

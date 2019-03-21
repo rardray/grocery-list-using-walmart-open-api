@@ -1,8 +1,7 @@
 import React from "react";
-import "./main.css";
-import x from "./x.png";
-import check2 from "./check2.png";
-var Themes = require("./Themes");
+import x from "../Styles/x.png";
+import check2 from "../Styles/check2.png";
+var Themes = require("../Styles/Themes");
 
 function validate(input, name) {
   if (name === "text") {

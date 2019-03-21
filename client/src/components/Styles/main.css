@@ -10,7 +10,7 @@ input {
   border: none;
   vertical-align: bottom;
   padding-bottom: 0px;
-  font-family: Muli, sans-serif;
+  font-family: "Muli", sans-serif;
   font-size: 16pt;
   font-weight: 300;
   padding-top: 8px;
@@ -37,7 +37,7 @@ button {
   padding: 10px;
   border: none;
   cursor: pointer;
-  font-family: Muli, sans-serif;
+  font-family: "Muli", sans-serif;
   font-size: 20px;
   font-weight: 900;
   font-stretch: expanded;
@@ -45,7 +45,7 @@ button {
 }
 
 label {
-  font-family: Muli, sans-serif;
+  font-family: "Muli", sans-serif;
   font-weight: 300;
   margin: 0px;
   padding: 0px;
@@ -55,23 +55,23 @@ h1 {
   font-size: 32pt;
   font-weight: 700;
   color: darkslategray;
-  font-family: Muli, sans-serif;
+  font-family: "Muli", sans-serif;
   margin: 0px;
 }
 h2 {
   font-size: 20pt;
   font-weight: 700;
   color: darkslategray;
-  font-family: Muli, sans-serif;
+  font-family: "Muli", sans-serif;
 }
 h4 {
   font-size: 14pt;
   font-weight: 700;
   color: darkslategray;
-  font-family: Muli, sans-serif;
+  font-family: "Muli", sans-serif;
 }
 p {
-  font-family: Muli, sans-serif;
+  font-family: "Muli", sans-serif;
   margin: 0px;
   font-size: 10pt;
   padding-bottom: 10px;

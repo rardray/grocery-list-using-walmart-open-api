@@ -1,8 +1,8 @@
 import React from "react";
 import Home from "./Home/Home";
-import Register from "./LoginRegister/Register";
+import Register from "./Forms/Register";
 import { Router } from "@reach/router";
-import Login from "./LoginRegister/Login";
+import Login from "./Forms/Login";
 import Search from "./ListPages/Search";
 import Searchbar from "./Dash/Searchbar";
 import Items from "./ListPages/Items";
@@ -29,7 +29,6 @@ const Routes = props => {
     history,
     clearList,
     pageLoad,
-    addFavorite,
     addFavoriteFromSearch,
     window,
     logOutUser,
@@ -59,7 +58,7 @@ const Routes = props => {
               pageLoad={pageLoad}
               history={history}
               handleDelete={handleDelete}
-              addFavorite={addFavorite}
+              addFavorite={addFavoriteFromSearch}
               addToList={addToList}
             />
           )
@@ -102,7 +101,6 @@ const Routes = props => {
           <History
             path="grocery/history"
             history={history}
-            pageLoad={pageLoad}
             historyItems={history.map((el, i) => {
               return (
                 <div key={el.id} id="list-block">
@@ -115,7 +113,7 @@ const Routes = props => {
                     bLabel="ADD TO CART"
                     handleQuantity={handleQuantity.bind(this, i, "history")}
                     count={el.count}
-                    addFavorite={addFavorite.bind(this, i, el)}
+                    addFavorite={addFavoriteFromSearch.bind(this, i, el)}
                     favorite={el.favorite}
                   />
                 </div>
