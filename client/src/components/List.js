@@ -37,7 +37,7 @@ const List = props => {
       {sorted.map((el, i) => {
         return (
           <div key={el.id} id="list-block">
-            <img src={el.image} />
+            <img src={el.image} alt={el.title} />
             <h4>{el.title}</h4>
             <button
               onClick={

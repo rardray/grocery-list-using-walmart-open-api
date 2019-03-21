@@ -59,13 +59,9 @@ class AppContainer extends React.Component {
     this.getRequest("/api/list", apiToken(), this.listState);
   };
   listState = data => {
-    this.setState(
-      { history: data.data, pageLoad: true },
-      console.log(this.state.pageLoad)
-    );
+    this.setState({ history: data.data, pageLoad: true });
   };
-  setUser = data =>
-    this.setState({ user: cookie.load("user") }, console.log(this.state.user));
+  setUser = data => this.setState({ user: cookie.load("user") });
   logOutUser = () => {
     this.setState({ user: "" });
   };
@@ -90,7 +86,7 @@ class AppContainer extends React.Component {
         (el.favorite = false)
       );
     });
-    this.setState({ productSearch: list }, console.log(list));
+    this.setState({ productSearch: list });
   };
 
   searchSubmit = e => {
@@ -151,7 +147,7 @@ class AppContainer extends React.Component {
   addFavoriteFromSearch = (i, item) => {
     const data = { ...item };
     data.favorite = !data.favorite;
-    console.log(data);
+
     this.editData(data, i, this.putFavorite, this.postFavorite);
   };
   putFavorite = (data, i, history, id) => {
@@ -224,7 +220,9 @@ class AppContainer extends React.Component {
     if (!data.error) {
       const { history } = this.state;
       history.forEach(el => {
-        return (el.cartCount = 0), (el.inCart = false);
+        el.cartCount = 0;
+        el.inCart = false;
+        return el;
       });
       this.setState({ history: history });
     }

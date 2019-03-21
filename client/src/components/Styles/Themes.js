@@ -1,5 +1,4 @@
-import React from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Nav = styled.nav`
   width: 100%;
@@ -15,34 +14,12 @@ export const Nav = styled.nav`
   padding-top: 10px;
   border-bottom: 4px solid #8490e0;
 `;
-/*const highlight = keyframes`
-  0% { background: black; }
-  100% { background: grey; }
-  `;
-const animation = props =>
-  css`
-    ${highlight} .3s ease-in-out 1;
-  `;
-export const ButtonHover = styled.button`
-  background: grey;
-  color: white;
-  animation: ${animation};
-`;
 
-export const Button = styled.button`
-  background: slategray;
-  color: white;
-`; */
 //INPUTS***********************************
 
 const inputKeyframes = keyframes`
   0% {background: lightslategray; height: 2px; }
   100% {background: lightgrey; height: 22px;}`;
-const inputAnimation = props => {
-  css`
-    ${inputKeyframes} 5s ease-in-out 1;
-  `;
-};
 
 export const Input = styled.input`
   background: lightslategray;

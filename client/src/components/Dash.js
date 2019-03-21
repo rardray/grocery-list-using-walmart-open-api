@@ -12,7 +12,7 @@ class Dash extends React.Component {
     cookie.remove("user", { path: "/" });
     cookie.remove("token", { path: "/" });
     cookie.remove("grocery-api", { path: "/" });
-    navigate("/login");
+    navigate("grocery/login");
     this.props.logOutUser();
   };
 
@@ -42,10 +42,10 @@ class Dash extends React.Component {
                     </Link>
                   }
                 >
-                  <Link className="nav-link" to="history">
+                  <Link className="nav-link" to="grocery/history">
                     History
                   </Link>
-                  <Link className="nav-link" to="favorites">
+                  <Link className="nav-link" to="grocery/favorites">
                     Favorites
                   </Link>
                   <p className="nav-link" onClick={this.handleLogout}>
@@ -56,10 +56,10 @@ class Dash extends React.Component {
             </div>
           ) : (
             <div>
-              <Link className="nav-link-log" to="register">
+              <Link className="nav-link-log" to="grocery/register">
                 Register
               </Link>
-              <Link className="nav-link-log" to="login">
+              <Link className="nav-link-log" to="grocery/login">
                 Log In
               </Link>
             </div>

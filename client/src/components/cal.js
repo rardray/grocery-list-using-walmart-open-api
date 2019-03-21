@@ -26,7 +26,6 @@ var flattened = years.flat(2);
 flattened.splice(0, 5);
 
 var i,
-  j,
   temp,
   chunk = 7;
 var newArr = [];

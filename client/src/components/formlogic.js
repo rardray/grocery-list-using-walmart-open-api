@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import cookie from "react-cookies";
 import { navigate } from "@reach/router";
@@ -24,11 +23,8 @@ export const handleSubmit = function(url, def, e) {
       if (!response.error) {
         return (
           cookie.save("user", response.data.user, { path: "/" }),
-          console.log("done1"),
           cookie.save("token", response.data.token, { path: "/" }),
-          console.log("done2"),
           cookie.save("grocery-api", response.data.groceryApi, { path: "/" }),
-          console.log("done3"),
           this.setState(prevState => {
             return (prevState = def);
           }),

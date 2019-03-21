@@ -1,6 +1,5 @@
 import React from "react";
 import "./Styles/task.css";
-import { navigate } from "@reach/router";
 
 const Licon = props => {
   const count = props.history.filter(el => el.inCart).length;

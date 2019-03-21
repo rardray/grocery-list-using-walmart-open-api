@@ -78,8 +78,6 @@ p {
   color: lightslategrey;
 }
 svg {
-  display: inline-block;
-  position: relative;
   float: right;
   margin: 8px;
   padding: 2px;
@@ -187,66 +185,4 @@ svg {
   100% {
     transform: rotate(270deg);
   }
-}
-
-table {
-  display: table;
-  min-width: 60%;
-  max-width: 95%;
-  border-spacing: 0px;
-  padding: 40px;
-  text-align: center;
-  margin: auto;
-}
-tbody {
-  background: linear-gradient(to left, rgb(248, 251, 253), rgb(255, 255, 255));
-}
-th {
-  min-height: 100px;
-  max-height: 200px;
-  padding: 6px;
-  text-align: right;
-  font-family: "Open Sans Condensed", sans-serif;
-  font-weight: 300;
-  font-size: 2em;
-  color: steelblue;
-}
-tr {
-  overflow: hidden;
-}
-
-.td {
-  height: 80px;
-  max-width: 250px;
-  min-width: 50px;
-
-  border-spacing: 0px;
-  padding: 6px;
-  color: rgb(197, 207, 216);
-  font-size: 2em;
-  border-bottom: 1px solid lightblue;
-  vertical-align: top;
-  overflow: hidden;
-}
-.td #date {
-  font-family: "Open Sans Condensed", sans-serif;
-  font-weight: 100;
-  text-align: right;
-  z-index: -1;
-  float: right;
-  top: -10px;
-  padding: 0px;
-}
-.td #highlighted {
-  background: #ad0b47;
-  display: inline-table;
-  position: static;
-  height: 25px;
-  width: 25px;
-  z-index: 1;
-  border-radius: 50%;
-  opacity: 0.5;
-  padding: 0px;
-  margin: 0px;
-  vertical-align: bottom;
 }

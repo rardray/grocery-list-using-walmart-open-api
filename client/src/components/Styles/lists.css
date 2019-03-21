@@ -27,8 +27,9 @@
   text-decoration: none;
 }
 .list-items {
-  display: flexbox;
+  display: block;
   position: relative;
+
   margin: auto;
   max-width: 95%;
   min-width: 45%;
@@ -50,6 +51,9 @@
   font-size: 1em;
 }
 .list-items #list-block {
+  display: inline-block;
+  position: relative;
+  width: 95%;
   margin-bottom: 8px;
   margin-top: 20px;
   border-bottom: 1px solid aliceblue;
@@ -60,7 +64,7 @@
 .list-items button {
   display: inline-block;
   position: relative;
-  width: 150px;
+  width: 120px;
   padding: 2px;
   background: white;
   color: darkSlateblue;

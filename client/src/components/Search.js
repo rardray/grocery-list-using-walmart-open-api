@@ -1,9 +1,6 @@
 import React from "react";
-import axios from "axios";
-import { Router, navigate } from "@reach/router";
 import Items from "./Items";
 import "./Styles/main.css";
-import Button from "./Styles/Button";
 
 const Search = props => {
   const sTitle = window.location.pathname.slice(8).replace("%20", " ");

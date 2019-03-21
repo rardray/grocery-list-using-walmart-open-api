@@ -10,7 +10,6 @@ import Favorites from "./Favorites";
 import History from "./History";
 import Loader from "./Loader";
 import SideBarLogic from "./SideBarLogic";
-import $ from "jquery";
 import Cart from "./Cart";
 import Dash from "./Dash";
 
@@ -66,9 +65,9 @@ const Routes = props => {
           )
         }
       >
-        <Home path="/" />
+        <Home path="/" user={user} />
         <Search
-          path="/search/:query"
+          path="grocery/search/:query"
           productSearch={productSearch}
           handleQuantity={handleQuantity}
           addToList={addToList}
@@ -77,7 +76,7 @@ const Routes = props => {
         />
         {pageLoad ? (
           <Favorites
-            path="/favorites"
+            path="grocery/favorites"
             history={history}
             handleQuantity={handleQuantity}
             addToList={addToList}
@@ -85,11 +84,11 @@ const Routes = props => {
             addFavoriteFromSearch={addFavoriteFromSearch}
           />
         ) : (
-          <Loader path="/favorites" />
+          <Loader path="grocery/favorites" />
         )}
         {pageLoad ? (
           <Cart
-            path="/cart"
+            path="grocery/cart"
             history={history}
             handleQuantity={handleQuantity}
             handleDelete={handleDelete}
@@ -97,11 +96,11 @@ const Routes = props => {
             addFavoriteFromSearch={addFavoriteFromSearch}
           />
         ) : (
-          <Loader path="/cart" />
+          <Loader path="grocery/cart" />
         )}
         {pageLoad ? (
           <History
-            path="/history"
+            path="grocery/history"
             history={history}
             pageLoad={pageLoad}
             historyItems={history.map((el, i) => {
@@ -124,10 +123,10 @@ const Routes = props => {
             })}
           />
         ) : (
-          <Loader path="/history" />
+          <Loader path="grocery/history" />
         )}
-        <Register path="/register" />
-        <Login path="/login" setUser={props.setUser} getList={getList} />
+        <Register path="grocery/register" />
+        <Login path="grocery/login" setUser={props.setUser} getList={getList} />
       </Dash>
     </Router>
   );

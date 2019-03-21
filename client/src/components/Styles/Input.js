@@ -23,6 +23,8 @@ function validate(input, name) {
       const matches = suffixes.map(e => {
         if (input.match(e)) {
           return e;
+        } else {
+          return null;
         }
       });
       var newOne = matches.filter(e => e !== undefined);

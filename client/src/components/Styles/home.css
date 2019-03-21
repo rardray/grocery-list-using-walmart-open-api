@@ -1,0 +1,93 @@
+table {
+  display: table;
+  min-width: 85%;
+  max-width: 95%;
+  border-spacing: 0px;
+  padding: 20px;
+  text-align: center;
+  margin: auto;
+}
+th {
+  min-height: 40px;
+  max-height: 50px;
+  padding: 6px;
+  max-width: 100px;
+  min-width: 40px;
+  text-align: right;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  color: steelblue;
+}
+tr {
+  overflow: hidden;
+}
+
+td {
+  max-width: 150px;
+  min-width: 40px;
+
+  border-spacing: 0px;
+  padding: 6px;
+  color: rgb(197, 207, 216);
+  font-size: 2em;
+  border-bottom: 1px solid lightblue;
+  vertical-align: top;
+  overflow: hidden;
+}
+.td #date {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 100;
+  text-align: right;
+  z-index: -1;
+  float: right;
+  top: -10px;
+  padding: 0px;
+}
+.td {
+  height: 60px;
+  position: relative;
+}
+.td #highlighted {
+  background: #ad0b47;
+  display: inline-block;
+  position: absolute;
+  bottom: 10px;
+  height: 25px;
+  width: 25px;
+  z-index: 1;
+  border-radius: 50%;
+  opacity: 0.9;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: bottom;
+}
+
+.home {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  min-width: 70%;
+  text-align: center;
+}
+.home h2 {
+  text-align: right;
+  font-family: "Open Sans Condensed", sans-serif;
+}
+.home button {
+  z-index: 3;
+  position: absolute;
+  right: 30px;
+  height: 50px;
+  width: 20px;
+  margin: 0px;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 2em;
+  color: skyblue;
+}
+#cal-move-r {
+  right: 30px;
+}
+#cal-move-l {
+  left: 30px;
+}

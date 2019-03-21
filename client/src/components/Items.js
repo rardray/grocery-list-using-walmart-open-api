@@ -1,5 +1,4 @@
 import React from "react";
-import favorite from "./Styles/favourite.svg";
 
 const Items = props => {
   return (
