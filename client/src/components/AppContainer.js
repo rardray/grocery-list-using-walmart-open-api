@@ -30,7 +30,6 @@ class AppContainer extends React.Component {
     user: cookie.load("user") || "",
     query: "",
     productSearch: [],
-    favorites: [],
     history: [],
     pageLoad: false,
     window: false

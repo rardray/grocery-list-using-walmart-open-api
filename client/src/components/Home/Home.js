@@ -1,70 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Calander from "./Calander";
 import "../Styles/home.css";
 
-class Home extends React.Component {
-  state = {
-    year: null,
-    month: null,
-    day: null,
-    position: 0,
-    yPosition: 0
-  };
-  componentDidMount() {
-    this.checkDate();
-    setInterval(this.checkDate, 1000 * 60 * 60);
-  }
-  checkDate = () => {
+export default function Home(props) {
+  const [year, setYear] = useState(null);
+  const [month, setMonth] = useState(null);
+  const [day, setDay] = useState(null);
+  const [position, setPosition] = useState(0);
+  const [yPosition, setYPosition] = useState(0);
+
+  useEffect(() => {
     const n = new Date();
-    this.setState({
-      year: n.getFullYear(),
-      month: n.getMonth(),
-      day: n.getDate()
-    });
-  };
-  componentWillUnmount() {
-    clearInterval(this.checkDate, 1000 * 60 * 60);
-  }
-
-  moveUp = () => {
-    if (this.state.position + this.state.month === 11) {
-      this.setState(prevState => {
-        return {
-          position: 0 - prevState.month,
-          yPosition: prevState.yPosition + 1
-        };
-      });
+    function getDates() {
+      setYear(n.getFullYear());
+      setMonth(n.getMonth());
+      setDay(n.getDate());
+    }
+    setInterval(getDates, 1000 * 60 * 60);
+    getDates();
+    return function cleanup() {
+      clearInterval(getDates, 1000 * 60 * 60);
+    };
+  });
+  const moveUp = () => {
+    if (position + month === 11) {
+      setPosition(0 - month);
+      setYPosition(yPosition + 1);
     } else {
-      this.setState(prevState => {
-        return { position: prevState.position + 1 };
-      });
+      setPosition(position + 1);
     }
   };
-  moveDn = () => {
-    if (this.state.position + this.state.month === 0) {
-      this.setState(prevState => {
-        return {
-          position: 11 - prevState.month,
-          yPosition: prevState.yPosition - 1
-        };
-      });
+  const moveDn = () => {
+    if (position + month === 0) {
+      setPosition(11 - month);
+      setYPosition(yPosition - 1);
     } else {
-      this.setState(prevState => {
-        return { position: prevState.position - 1 };
-      });
+      setPosition(position - 1);
     }
   };
-
-  render() {
-    const { user } = this.props;
-
-    return (
-      <div className="home">
-        <h4>Welcome, {user.firstName}</h4>
-        <Calander {...this} {...this.state} />
-      </div>
-    );
-  }
+  const { user } = props;
+  return (
+    <div className="home">
+      <h4>Welcome, {user.firstName}</h4>
+      <Calander
+        {...{ year, month, day, position, yPosition, moveUp, moveDn }}
+      />
+    </div>
+  );
 }
-
-export default Home;
