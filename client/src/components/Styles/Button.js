@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./main.css";
 import styled, { keyframes, css } from "styled-components";
 
@@ -10,34 +10,25 @@ const animation = props =>
   css`
     ${highlight} .3s ease-in-out 1;
   `;
-class Button extends React.Component {
-  state = {
-    hover: false
-  };
-  hover = e => {
-    e.preventDefault();
-    this.setState({ hover: !this.state.hover });
-  };
-  render() {
-    const { label } = this.props;
-    const Btn = styled.button`
-      background: ${this.state.hover ? "grey" : "slategrey"};
-      color: white;
-      animation: ${this.state.hover ? animation : "none"};
-    `;
-    return (
-      <div>
-        <Btn
-          style={{ zIndex: 15 }}
-          onMouseLeave={this.hover}
-          onMouseEnter={this.hover}
-          onClick={this.props.click}
-        >
-          {label}
-        </Btn>
-      </div>
-    );
-  }
-}
 
-export default Button;
+export default function Button(props) {
+  const [hover, setHover] = useState(false);
+  const { label, click } = props;
+  const Btn = styled.button`
+    background: ${hover ? "grey" : "slategrey"};
+    color: white;
+    animation: ${hover ? animation : "none"};
+  `;
+  return (
+    <div>
+      <Btn
+        style={{ zIndex: 15 }}
+        onMouseLeave={() => setHover(!hover)}
+        onMouseEnter={() => setHover(!hover)}
+        onClick={click}
+      >
+        {label}
+      </Btn>
+    </div>
+  );
+}

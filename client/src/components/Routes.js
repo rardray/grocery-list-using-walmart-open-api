@@ -39,27 +39,21 @@ const Routes = props => {
       <Dash
         path="/"
         exact
-        user={user}
-        logOutUser={logOutUser}
-        history={history}
-        Searchbar={
-          <Searchbar
-            handleChange={handleChange}
-            query={query}
-            searchSubmit={searchSubmit}
-          />
-        }
+        {...{ user, logOutUser, history }}
+        Searchbar={<Searchbar {...{ handleChange, query, searchSubmit }} />}
         ListBar={
           window ? null : (
             <SideBarLogic
-              onDragOver={onDragOver}
-              handleDrop={handleDrop}
-              clearList={clearList}
-              pageLoad={pageLoad}
-              history={history}
-              handleDelete={handleDelete}
+              {...{
+                onDragOver,
+                handleDrop,
+                clearList,
+                pageLoad,
+                history,
+                handleDelete,
+                addToList
+              }}
               addFavorite={addFavoriteFromSearch}
-              addToList={addToList}
             />
           )
         }
@@ -67,20 +61,24 @@ const Routes = props => {
         <Home path="/" user={user} />
         <Search
           path="grocery/search/:query"
-          productSearch={productSearch}
-          handleQuantity={handleQuantity}
-          addToList={addToList}
-          handleDrag={handleDrag}
-          addFavoriteFromSearch={addFavoriteFromSearch}
+          {...{
+            productSearch,
+            handleQuantity,
+            addToList,
+            handleDrag,
+            addFavoriteFromSearch
+          }}
         />
         {pageLoad ? (
           <Favorites
             path="grocery/favorites"
-            history={history}
-            handleQuantity={handleQuantity}
-            addToList={addToList}
-            handleDrag={handleDrag}
-            addFavoriteFromSearch={addFavoriteFromSearch}
+            {...{
+              history,
+              handleQuantity,
+              addToList,
+              handleDrag,
+              addFavoriteFromSearch
+            }}
           />
         ) : (
           <Loader path="grocery/favorites" />

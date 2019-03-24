@@ -7,7 +7,7 @@ export const Nav = styled.nav`
   top: 0px;
   min-height: 65px;
   max-height: 20%;
-  background: #1e193a;
+  background: #0e324c;
   color: white;
   z-index: 50;
   text-align: center;

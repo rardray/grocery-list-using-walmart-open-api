@@ -35,7 +35,7 @@ const Cart = props => {
               image={el.image}
               handleDrag={props.handleDrag.bind(this, i, el)}
               title={el.title}
-              actiont={props.handleDelete.bind(this, i, el)}
+              action={props.handleDelete.bind(this, i, el)}
               bLabel="REMOVE"
               handleQuantity={props.handleQuantity.bind(this, i, "history")}
               count={el.cartCount}

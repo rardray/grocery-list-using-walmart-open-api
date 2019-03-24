@@ -87,7 +87,7 @@ svg {
   margin: 0px;
   float: left;
   padding: 0px;
-  font-family: "Mr Dafoe", cursive;
+  font-family: "Open Sans Condensed", sans-serif;
   font-weight: 900;
   margin-left: 25px;
   color: wheat;
@@ -99,9 +99,8 @@ svg {
   margin: 0px;
   float: left;
   padding: 3px;
-  font-family: "Mr Dafoe", cursive;
-  font-weight: 500;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 900;
   color: wheat;
   font-size: 1.75em;
-  text-decoration: underline wheat;
 }
