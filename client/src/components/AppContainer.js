@@ -3,28 +3,17 @@ import { navigate } from "@reach/router";
 import cookie from "react-cookies";
 import Routes from "./Routes";
 import $ from "jquery";
+import {
+  apiKeyGr,
+  apiToken,
+  searchURL,
+  editListUrl,
+  postListUrl,
+  findIndex
+} from "./Utility/appHelpers";
 var httpRequests = require("./Utility/httpRequests");
 var formlogic = require("./Forms/formlogic");
 
-const searchURL = function(id) {
-  return `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/products/search?offset=0&number=10&query=${id}`;
-};
-const apiKeyGr = function() {
-  return { "X-RapidAPI-Key": cookie.load("grocery-api") };
-};
-const editListUrl = "/api/list/edit";
-const postListUrl = "/api/list/post";
-const apiToken = function() {
-  return { Authorization: cookie.load("token") };
-};
-
-function findIndex(list, data) {
-  for (let x = 0; x < list.length; x++) {
-    if (list[x].id === data.id) {
-      return x;
-    }
-  }
-}
 class AppContainer extends React.Component {
   state = {
     user: cookie.load("user") || "",
@@ -38,7 +27,7 @@ class AppContainer extends React.Component {
   getRequest = httpRequests.getRequest.bind(this);
   putRequest = httpRequests.putRequest.bind(this);
   postRequest = httpRequests.postRequest.bind(this);
-  deleteRequest = httpRequests.deleteRequest.bind(this);
+
   componentDidMount() {
     if (this.state.user) {
       this.getList();
@@ -101,7 +90,8 @@ class AppContainer extends React.Component {
     this.putRequest(editListUrl, apiToken(), data, this.setList);
   };
 
-  handleQuantity = (i, name, e) => {
+  handleQuantity = (id, name, e) => {
+    let i = findIndex(this.state[name], id);
     const n = this.state[name][i].count;
     const setCount = val => {
       this.setState(prevState => {
@@ -145,7 +135,6 @@ class AppContainer extends React.Component {
   addFavoriteFromSearch = (i, item) => {
     const data = { ...item };
     data.favorite = !data.favorite;
-
     this.editData(data, i, this.putFavorite, this.postFavorite);
   };
   putFavorite = (data, i, history, id) => {

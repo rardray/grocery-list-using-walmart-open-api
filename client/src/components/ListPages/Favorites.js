@@ -20,7 +20,7 @@ const Favorites = props => {
               title={el.title}
               action={props.addToList.bind(this, i, el)}
               bLabel="ADD TO CART"
-              handleQuantity={props.handleQuantity.bind(this, i, "history")}
+              handleQuantity={props.handleQuantity.bind(this, el, "history")}
               count={el.count}
               favorite={el.favorite}
               addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}

@@ -37,7 +37,7 @@ const Cart = props => {
               title={el.title}
               action={props.handleDelete.bind(this, i, el)}
               bLabel="REMOVE"
-              handleQuantity={props.handleQuantity.bind(this, i, "history")}
+              handleQuantity={props.handleQuantity.bind(this, el, "history")}
               count={el.cartCount}
               favorite={el.favorite}
               addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}

@@ -23,7 +23,7 @@ const Search = props => {
               bLabel="ADD TO CART"
               handleQuantity={props.handleQuantity.bind(
                 this,
-                i,
+                el,
                 "productSearch"
               )}
               count={el.count}

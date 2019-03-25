@@ -109,7 +109,7 @@ const Routes = props => {
                     title={el.title}
                     action={addToList.bind(this, i, el)}
                     bLabel="ADD TO CART"
-                    handleQuantity={handleQuantity.bind(this, i, "history")}
+                    handleQuantity={handleQuantity.bind(this, el, "history")}
                     count={el.count}
                     addFavorite={addFavoriteFromSearch.bind(this, i, el)}
                     favorite={el.favorite}
