@@ -12,29 +12,10 @@ export default function validate(input, name) {
     );
   }
   if (name === "email") {
-    const suffixes = [".com", ".net", ".org", ".biz", ".edu"];
-    function matchSuff() {
-      const matches = suffixes.map(e => {
-        if (!input.match(e)) {
-          e = false;
-        } else {
-          return e;
-        }
-      });
-      var newOne = matches.filter(e => e !== undefined);
-      if (newOne.length === 1) {
-        return newOne.toString();
-      }
-    }
-    return (
-      input.length > 6 &&
-      input.length < 50 &&
-      matchSuff() &&
-      input.match("@") &&
-      input.indexOf("@") + 1 < input.indexOf(matchSuff()) &&
-      input.indexOf("@") > 1 &&
-      input.indexOf(matchSuff()) === input.length - 4 &&
-      !input.match(/ /)
+    const em = new RegExp(
+      /^([a-zA-Z0-9_\-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/
     );
+
+    return input.length > 6 && input.length < 50 && em.test(input);
   }
 }

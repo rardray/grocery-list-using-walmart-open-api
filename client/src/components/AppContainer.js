@@ -9,8 +9,14 @@ import {
   searchURL,
   editListUrl,
   postListUrl,
-  findIndex
+  findIndex,
+  editData
 } from "./Utility/appHelpers";
+import {
+  handleDrag,
+  handleDrop,
+  onDragOver
+} from "./Utility/dragAndDropHandlers";
 var httpRequests = require("./Utility/httpRequests");
 var formlogic = require("./Forms/formlogic");
 
@@ -27,14 +33,17 @@ class AppContainer extends React.Component {
   getRequest = httpRequests.getRequest.bind(this);
   putRequest = httpRequests.putRequest.bind(this);
   postRequest = httpRequests.postRequest.bind(this);
-
+  editData = editData.bind(this);
+  // Drag and Drop Handlers //
+  handleDrag = handleDrag.bind(this);
+  handleDrop = handleDrop.bind(this);
+  onDragOver = onDragOver.bind(this);
   componentDidMount() {
     if (this.state.user) {
       this.getList();
     }
     window.addEventListener("deviceorientation", this.handleSidebar);
   }
-
   handleSidebar = e => {
     if ($(window).height() > $(window).width()) {
       return this.setState({ window: true });
@@ -56,26 +65,18 @@ class AppContainer extends React.Component {
     let list = data.data.products;
     const { history } = this.state;
     list.forEach(el => {
+      el.count = 1;
+      el.inCart = false;
+      el.cartCount = 0;
+      el.favorite = false;
       for (let i = 0; i < history.length; i++) {
         if (el.id === history[i].id && history[i].favorite) {
-          return (
-            (el.favorite = true),
-            (el.count = 1),
-            (el.inCart = false),
-            (el.cartCount = 0)
-          );
+          return (el.favorite = true);
         }
       }
-      return (
-        (el.count = 1),
-        (el.inCart = false),
-        (el.cartCount = 0),
-        (el.favorite = false)
-      );
     });
     this.setState({ productSearch: list });
   };
-
   searchSubmit = e => {
     e.preventDefault();
     const query = this.state.query;
@@ -83,13 +84,11 @@ class AppContainer extends React.Component {
       navigate(`/grocery/search/${query}`, this.setState({ query: "" }))
     );
   };
-
   handleDelete = (data, e) => {
     data.inCart = false;
     data.cartCount = 0;
     this.putRequest(editListUrl, apiToken(), data, this.setList);
   };
-
   handleQuantity = (id, name, e) => {
     let i = findIndex(this.state[name], id);
     const n = this.state[name][i].count;
@@ -131,7 +130,6 @@ class AppContainer extends React.Component {
       };
     });
   };
-
   addFavoriteFromSearch = (i, item) => {
     const data = { ...item };
     data.favorite = !data.favorite;
@@ -148,16 +146,6 @@ class AppContainer extends React.Component {
   };
   postFavorite = (data, i) => {
     this.postRequest(postListUrl, apiToken(), data, this.setPostFavorite, i);
-  };
-  editData = (data, ind, cb1, cb2) => {
-    const { history } = this.state;
-    const id = data.id;
-    let k = findIndex(history, data);
-    if (k || k === 0) {
-      cb1(data, [ind, k], history, id);
-    } else {
-      cb2(data, [ind, k]);
-    }
   };
   putUpdate = (data, i, history) => {
     data.cartCount = history[i[1]].cartCount + data.count;
@@ -179,21 +167,6 @@ class AppContainer extends React.Component {
     const { history } = this.state;
     history.unshift(data.data);
     this.setState({ history: history });
-  };
-  handleDrag = (i, data, e) => {
-    let js = JSON.stringify(data);
-    e.dataTransfer.setData("index", js);
-    e.dataTransfer.setData("i", i);
-  };
-
-  onDragOver = e => {
-    e.preventDefault();
-  };
-  handleDrop = e => {
-    let index = e.dataTransfer.getData("index");
-    let data = JSON.parse(index);
-    let i = e.dataTransfer.getData("i");
-    this.addToList(i, data);
   };
   setList = (data, i) => {
     const { history } = this.state;
