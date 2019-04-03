@@ -53,11 +53,22 @@ $ npm install
 ```
 
 Sign up for spoonacular API at: https://rapidapi.com/spoonacular/api
+
 Sign up for Mongo Lab @ https://mlab.com
 
 ```
 $ export GROCERY_API="<your spoonacular API key>"
 $ export MONGOLAB_URI="<your mongo lab url>"
+```
+
+To run on local machine:
+
+```
+$ cd <root directory>
+$ nodemon index.js
+(open new terminal window)
+$ cd client
+$ yarn start or npm start
 ```
 
 To deploy to Heroku:
