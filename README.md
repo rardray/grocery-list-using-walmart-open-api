@@ -21,6 +21,8 @@ This application was created using React, Express, Reach Router and MongoDB.
 
 - Use 3rd party API with API key
 
+- Create fluid layout for mobile browser
+
 - Explore styled components
 
 - Explore some new React features such as React Hooks
