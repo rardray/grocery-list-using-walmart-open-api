@@ -2,7 +2,9 @@ import React from "react";
 import "../Styles/task.css";
 
 const Licon = props => {
-  const count = props.history.filter(el => el.inCart).length;
+  const count = props.history.reduce(function(acc, curr) {
+    return acc + curr.cartCount;
+  }, 0);
   return (
     <div className="svg-menu" onClick={props.handleCartIcon}>
       {count ? <div id="notify">{count}</div> : null}

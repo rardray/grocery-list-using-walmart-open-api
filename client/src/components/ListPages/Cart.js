@@ -19,11 +19,14 @@ const Cart = props => {
       return el.inCart;
     })
     .sort(comp);
+  const total = cart.reduce(function(acc, curr) {
+    return acc + curr.cartCount;
+  }, 0);
   return (
     <div className="list-items">
       <h2>{sTitle}</h2>
       {cart.length ? (
-        <p>Showing {cart.length} items in grocery list</p>
+        <p>Showing {total} items in grocery list</p>
       ) : (
         <h4>No Favorite Items.</h4>
       )}
