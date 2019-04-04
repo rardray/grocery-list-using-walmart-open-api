@@ -9,7 +9,11 @@ const Favorites = props => {
   return (
     <div className="list-items">
       <h2>{sTitle}</h2>
-      {favorites.length ? null : <h4>No Favorite Items.</h4>}
+      {favorites.length ? (
+        <p>{favorites.length} Favorite Items</p>
+      ) : (
+        <h4>No Favorite Items.</h4>
+      )}
       {favorites.map((el, i) => {
         return (
           <div key={el.id} id="list-block">

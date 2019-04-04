@@ -5,7 +5,6 @@ import { Router } from "@reach/router";
 import Login from "./Forms/Login";
 import Search from "./ListPages/Search";
 import Searchbar from "./Dash/Searchbar";
-import Items from "./ListPages/Items";
 import Favorites from "./ListPages/Favorites";
 import History from "./ListPages/History";
 import Loader from "./Loader";
@@ -98,25 +97,13 @@ const Routes = props => {
         {pageLoad ? (
           <History
             path="grocery/history"
-            history={history}
-            historyItems={history.map((el, i) => {
-              return (
-                <div key={el.id} id="list-block">
-                  <Items
-                    id={el.id}
-                    image={el.image}
-                    handleDrag={handleDrag.bind(this, i, el)}
-                    title={el.title}
-                    action={addToList.bind(this, i, el)}
-                    bLabel="ADD TO CART"
-                    handleQuantity={handleQuantity.bind(this, el, "history")}
-                    count={el.count}
-                    addFavorite={addFavoriteFromSearch.bind(this, i, el)}
-                    favorite={el.favorite}
-                  />
-                </div>
-              );
-            })}
+            {...{
+              handleDrag,
+              history,
+              addToList,
+              handleQuantity,
+              addFavoriteFromSearch
+            }}
           />
         ) : (
           <Loader path="grocery/history" />

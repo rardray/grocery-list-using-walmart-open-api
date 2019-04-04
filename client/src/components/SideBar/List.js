@@ -25,14 +25,14 @@ const List = props => {
     return el[filtervalue];
   });
   const sorted = filtered.sort(comp);
-  let total = 0;
-  for (let i = 0; i < filtered.length; i++) {
-    total += filtered[i][count];
-  }
+  let total = filtered.reduce(function(acc, curr) {
+    return acc + curr[count];
+  }, 0);
   return (
     <div>
       <p>
-        Products: {filtered.length} Total Items: {total}
+        Products: {filtered.length}{" "}
+        {count === "count" ? null : "Total Items:" + total}
       </p>
       {sorted.map((el, i) => {
         return (
