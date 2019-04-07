@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Calander from "./Calander";
+import RecipesPreview from "./RecipesPreview";
+import { apiToken } from "../Utility/appHelpers";
+import { getRequest, postRequest } from "../Utility/httpRequests";
 import "../Styles/home.css";
 
 export default function Home(props) {
@@ -8,6 +11,7 @@ export default function Home(props) {
   const [day, setDay] = useState(null);
   const [position, setPosition] = useState(0);
   const [yPosition, setYPosition] = useState(0);
+  const [recipes, setRecipe] = useState([]);
 
   useEffect(() => {
     const n = new Date();
@@ -16,12 +20,15 @@ export default function Home(props) {
       setMonth(n.getMonth());
       setDay(n.getDate());
     }
+
     setInterval(getDates, 1000 * 60 * 60);
     getDates();
+    getRequest("/api/recipe/all", apiToken(), data => setRecipe(data.data));
+
     return function cleanup() {
       clearInterval(getDates, 1000 * 60 * 60);
     };
-  });
+  }, {});
   const moveUp = () => {
     if (position + month === 11) {
       setPosition(0 - month);
@@ -38,6 +45,7 @@ export default function Home(props) {
       setPosition(position - 1);
     }
   };
+
   const { user } = props;
   return (
     <div className="home">
@@ -45,6 +53,7 @@ export default function Home(props) {
       <Calander
         {...{ year, month, day, position, yPosition, moveUp, moveDn }}
       />
+      <RecipesPreview {...{ recipes }} />
     </div>
   );
 }

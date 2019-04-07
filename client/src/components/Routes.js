@@ -11,6 +11,8 @@ import Loader from "./Loader";
 import SideBarLogic from "./SideBar/SideBarLogic";
 import Cart from "./ListPages/Cart";
 import Dash from "./Dash/Dash";
+import RecipesForm from "./RecipesForm";
+import Recipe from "./Recipe";
 
 const Routes = props => {
   const {
@@ -108,6 +110,8 @@ const Routes = props => {
         ) : (
           <Loader path="grocery/history" />
         )}
+        <RecipesForm path="grocery/addrecipe" {...props} />
+        <Recipe path="grocery/recipe/:id" {...props} />
         <Register path="grocery/register" />
         <Login path="grocery/login" setUser={props.setUser} getList={getList} />
       </Dash>

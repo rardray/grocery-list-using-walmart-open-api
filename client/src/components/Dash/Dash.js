@@ -42,6 +42,9 @@ export default function Dash(props) {
                 <Link className="nav-link" to="grocery/favorites">
                   Favorites
                 </Link>
+                <Link className="nav-link" to="grocery/addrecipe">
+                  Add Recipe
+                </Link>
                 <p className="nav-link" onClick={handleLogout}>
                   Log Out
                 </p>

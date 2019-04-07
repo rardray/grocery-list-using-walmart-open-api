@@ -1,0 +1,86 @@
+.recipe {
+  min-width: 20%;
+  max-width: 90%;
+  display: inline-block;
+
+  margin: auto;
+  font-family: "Muli", sans-serif;
+}
+.recipe #header {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  height: 150px;
+  color: white;
+  padding-top: 50px;
+  display: block;
+  margin-top: 20px;
+}
+#header h2 {
+  color: white;
+  margin-top: 90px;
+  padding-left: 10px;
+  background-image: linear-gradient(to right, slategrey, rgba(0, 0, 0, 0));
+}
+.recipe h3 {
+  font-weight: 500;
+  font-size: 1em;
+  margin: 6px;
+}
+.recipe #ingredients-block {
+  display: inline-block;
+  position: relative;
+  width: 48%;
+  padding: 4px;
+  border: 1px solid lightblue;
+  height: 65px;
+  overflow: hidden;
+}
+
+#ingredients-block img {
+  width: 60px;
+  display: inline-block;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+}
+
+#ingredients-block h4 {
+  display: inline-block;
+  position: relative;
+  margin-left: 70px;
+  font-weight: 300;
+  font-size: 0.75em;
+}
+
+#ingredients-block p {
+  display: inline-block;
+  position: absolute;
+  right: 4px;
+  top: 6px;
+  font-weight: 900;
+}
+
+.recipe button {
+  font-size: 0.75em;
+  display: inline-block;
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 70px;
+  padding: 4px;
+}
+.recipe-image {
+  min-width: 50%;
+  max-width: 80%;
+  height: 150px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+.recipe-image #r-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}

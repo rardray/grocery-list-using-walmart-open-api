@@ -29,7 +29,33 @@ input::placeholder {
   font-size: 12pt;
   text-align: right;
 }
-
+textarea {
+  display: inline-block;
+  min-width: 50%;
+  max-width: 80%;
+  background: #f0ffff;
+  opacity: 0.9;
+  margin-right: 0px;
+  margin: 3px;
+  padding-left: 10px;
+  border: none;
+  padding-bottom: 0px;
+  font-family: "Muli", sans-serif;
+  font-size: 10pt;
+  font-weight: 300;
+  padding-top: 8px;
+  text-align: left;
+  border-radius: 6px;
+  border-bottom: 3px solid lightblue;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  line-height: 25px;
+  padding-bottom: 0px;
+  overflow: visible;
+  outline: none;
+  resize: none;
+  height: 150px;
+}
 button {
   width: 50%;
   margin: 4px;
@@ -43,7 +69,30 @@ button {
   font-stretch: expanded;
   outline: none;
 }
-
+select {
+  display: inline-block;
+  background: #f0ffff;
+  opacity: 0.9;
+  margin-right: 0px;
+  margin: 3px;
+  padding-left: 10px;
+  border: none;
+  vertical-align: bottom;
+  padding-bottom: 0px;
+  font-family: "Muli", sans-serif;
+  font-size: 10pt;
+  font-weight: 300;
+  padding-top: 8px;
+  text-align: left;
+  border-radius: 6px;
+  border-bottom: 3px solid lightblue;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  line-height: 25px;
+  padding-bottom: 0px;
+  overflow: visible;
+  outline: none;
+}
 label {
   font-family: "Muli", sans-serif;
   font-weight: 300;
@@ -83,14 +132,22 @@ svg {
   padding: 2px;
   vertical-align: top;
 }
+.small-input {
+  display: inline-block;
+  min-width: 10%;
+  max-width: 40%;
+  font-size: 10pt;
+}
+.small-input::placeholder {
+  font-size: 8pt;
+}
 #page-title-c {
   margin: 0px;
   float: left;
   padding: 0px;
-  font-family: "Open Sans Condensed", sans-serif;
   font-weight: 900;
   margin-left: 25px;
-  color: wheat;
+  color: white;
   font-size: 2.5em;
   margin-top: -10px;
   margin-right: -10px;
@@ -99,8 +156,7 @@ svg {
   margin: 0px;
   float: left;
   padding: 3px;
-  font-family: "Open Sans Condensed", sans-serif;
   font-weight: 900;
-  color: wheat;
+  color: white;
   font-size: 1.75em;
 }
