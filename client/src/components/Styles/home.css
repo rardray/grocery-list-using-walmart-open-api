@@ -91,3 +91,22 @@ td {
 #cal-move-l {
   left: 30px;
 }
+#preview-img {
+  padding: 6px;
+  margin: 6px;
+  padding-left: 0px;
+  background-size: 100%;
+  min-width: 20%;
+  max-width: 48%;
+  display: inline-block;
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+#preview-img h4 {
+  color: white;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  padding: 4px;
+  background-image: linear-gradient(to right, slategrey, rgba(0, 0, 0, 0));
+}

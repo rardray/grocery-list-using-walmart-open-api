@@ -48,11 +48,13 @@ export default function Home(props) {
 
   const { user } = props;
   return (
-    <div className="home">
-      <h4>Welcome, {user.firstName}</h4>
-      <Calander
-        {...{ year, month, day, position, yPosition, moveUp, moveDn }}
-      />
+    <div>
+      <div className="home">
+        <h4>Welcome, {user.firstName}</h4>
+        <Calander
+          {...{ year, month, day, position, yPosition, moveUp, moveDn }}
+        />
+      </div>
       <RecipesPreview {...{ recipes }} />
     </div>
   );

@@ -4,10 +4,11 @@ export default function RecipesPreview(props) {
   return (
     <div>
       {props.recipes.map((el, i) => {
-        if (i > 4) {
-          return null;
-        }
-        return <h4>{el.title}</h4>;
+        return (
+          <div id="preview-img" style={{ backgroundImage: `url(${el.image})` }}>
+            <h4 id="header">{el.title}</h4>
+          </div>
+        );
       })}
     </div>
   );
