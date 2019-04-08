@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Calander from "./Calander";
 import RecipesPreview from "./RecipesPreview";
 import { apiToken } from "../Utility/appHelpers";
-import { getRequest, postRequest } from "../Utility/httpRequests";
+import { getRequest } from "../Utility/httpRequests";
 import "../Styles/home.css";
 
 export default function Home(props) {

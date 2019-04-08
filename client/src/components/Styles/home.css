@@ -101,6 +101,7 @@ td {
   display: inline-block;
   position: relative;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 #preview-img h4 {

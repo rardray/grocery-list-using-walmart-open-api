@@ -3,7 +3,9 @@ import Button from "./Styles/Button";
 import { postRequest } from "./Utility/httpRequests";
 import { apiToken } from "./Utility/appHelpers";
 import { navigate } from "@reach/router";
-import Loader from "./Loader";
+import RightRForm from "./RightRForm";
+import LeftRForm from "./LeftRForm";
+import IngredientsList from "./IngredientsList";
 
 export default function RecipesForm(props) {
   const [select, setSelect] = useState("");
@@ -29,25 +31,28 @@ export default function RecipesForm(props) {
       }
     }
   }
-  const uploadImage = e => {
-    if (!file) {
-      return null;
-    }
-    e.preventDefault();
-    setLoad(false);
-    const imgdata = new FormData();
-    imgdata.append("image", file);
-    postRequest(
-      "/api/upload",
-      apiToken(),
-      imgdata,
-      res => {
-        return setImage(res.data.imageUrl);
-      },
-      null,
-      () => setLoad(true)
-    );
-  };
+  useEffect(() => {
+    const uploadImage = () => {
+      if (!file) {
+        return null;
+      }
+      setLoad(false);
+      const imgdata = new FormData();
+      imgdata.append("image", file);
+      postRequest(
+        "/api/upload",
+        apiToken(),
+        imgdata,
+        res => {
+          return setImage(res.data.imageUrl);
+        },
+        null,
+        () => setLoad(true)
+      );
+    };
+    uploadImage();
+  }, [file]);
+
   const handleSubmit = () => {
     if (!title || !show) {
       return;
@@ -63,109 +68,45 @@ export default function RecipesForm(props) {
     });
   };
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <div className="list-items">
-        <div className="recipe-image">
-          {load ? <img src={image} id="r-image" alt="recipe" /> : <Loader />}
-        </div>
-        <br />
-        <div
-          style={{
-            display: "inline-block",
-            position: "relative",
-            maxWidth: "40%",
-            minWidth: "38%"
-          }}
-        >
-          <label>Recipe Name</label>
+        <div style={{ border: "1px solid blue", borderRadius: 10, padding: 6 }}>
           <br />
-          <input
-            style={{ width: "100%" }}
-            type="text"
-            value={title}
-            onChange={e => setTitle(e.target.value)}
+          <RightRForm
+            changeText={e => setInstructions(e.target.value)}
+            changeTitle={e => setTitle(e.target.value)}
+            {...{ title, instructions }}
           />
-          <br />
-          <label>Instructions</label>
-          <br />
-          <textarea
-            value={instructions}
-            onChange={e => setInstructions(e.target.value)}
-            style={{ width: "100%" }}
-          />
-        </div>
-        <div
-          style={{
-            display: "inline-block",
-            position: "relative",
-            maxWidth: "40%",
-            minWidth: "38%",
-            verticalAlign: "top"
-          }}
-        >
-          <label>Select Ingredient From History</label>
-          <br />
-          <select
-            type="number"
-            value={select}
-            onChange={e => setSelect(parseInt(e.target.value))}
-            style={{ width: "100%" }}
-          >
-            <option />
-            {props.history.map(el => {
-              return (
-                <option type="number" key={el.id} value={el.id}>
-                  {el.title}
-                </option>
-              );
-            })}
-          </select>
-          <br />
-          <input
-            type="text"
-            value={measure}
-            onChange={e => setMeasure(e.target.value)}
-            placeholder="Amount Required (ex. cups, oz)"
-            style={{ width: "100%" }}
-          />
-          <button
-            onClick={() => {
+          <LeftRForm
+            changeFile={e => {
+              setFile(e.target.files[0]);
+            }}
+            changeSelect={e => setSelect(parseInt(e.target.value))}
+            changeMeasure={e => setMeasure(e.target.value)}
+            submit={() => {
               setIngredients([
                 ...ingredients,
                 { items: select, measure: measure }
               ]);
               setMeasure("");
             }}
-          >
-            Add to Recipe
-          </button>
-          <form onSubmit={uploadImage}>
-            <input
-              type="file"
-              name="file"
-              accept="image/*"
-              onChange={e => {
-                setFile(e.target.files[0]);
-              }}
-            />
-            <button type="submit">Use Photo</button>
-          </form>
-        </div>
-        {show.map(el => {
-          return (
-            <div id="list-block" style={{ margin: 0, padding: 0 }}>
-              <img
-                style={{ height: 25, width: 25, margin: 10 }}
-                src={el.image}
-                alt={el.title}
-              />
-              <h4 style={{ marginLeft: 30 }}>{el.title}</h4>
-              <p>{el.measure}</p>
-            </div>
-          );
-        })}
-        <br />
+            lists={show.map(el => {
+              return (
+                <IngredientsList
+                  title={el.title}
+                  image={el.image}
+                  measure={el.measure}
+                />
+              );
+            })}
+            {...{ load, image, select, measure }}
+            history={props.history}
+          />
 
+          <br />
+        </div>
+      </div>
+      <div style={{ textAlign: "center" }}>
         <Button label="Save Recipe" click={handleSubmit} />
       </div>
     </div>

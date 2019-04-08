@@ -54,7 +54,7 @@ textarea {
   overflow: visible;
   outline: none;
   resize: none;
-  height: 150px;
+  height: 100px;
 }
 button {
   width: 50%;
@@ -98,6 +98,7 @@ label {
   font-weight: 300;
   margin: 0px;
   padding: 0px;
+  color: lightslategray;
 }
 
 h1 {
