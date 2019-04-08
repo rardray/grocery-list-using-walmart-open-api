@@ -2,8 +2,11 @@ import React from "react";
 import { navigate } from "@reach/router";
 export default function RecipesPreview(props) {
   return (
-    <div>
+    <div style={{ width: "95%", margin: "auto", zIndex: 0, textAlign: "left" }}>
       {props.recipes.map((el, i) => {
+        if (i > 5) {
+          return null;
+        }
         return (
           <div
             id="preview-img"

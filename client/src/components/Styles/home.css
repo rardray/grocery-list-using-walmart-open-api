@@ -96,8 +96,8 @@ td {
   margin: 6px;
   padding-left: 0px;
   background-size: 100%;
-  min-width: 20%;
-  max-width: 48%;
+  min-width: 30%;
+  max-width: 100%;
   display: inline-block;
   position: relative;
   background-repeat: no-repeat;

@@ -20,15 +20,15 @@ export default function Home(props) {
       setMonth(n.getMonth());
       setDay(n.getDate());
     }
-
     setInterval(getDates, 1000 * 60 * 60);
     getDates();
-    getRequest("/api/recipe/all", apiToken(), data => setRecipe(data.data));
-
     return function cleanup() {
       clearInterval(getDates, 1000 * 60 * 60);
     };
   }, {});
+  useEffect(() => {
+    getRequest("/api/recipe/all", apiToken(), data => setRecipe(data.data));
+  }, [recipes]);
   const moveUp = () => {
     if (position + month === 11) {
       setPosition(0 - month);
@@ -54,8 +54,9 @@ export default function Home(props) {
         <Calander
           {...{ year, month, day, position, yPosition, moveUp, moveDn }}
         />
+        <h4>Your Recipes</h4>
+        <RecipesPreview {...{ recipes }} />
       </div>
-      <RecipesPreview {...{ recipes }} />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Button from "./Styles/Button";
-import { postRequest } from "./Utility/httpRequests";
-import { apiToken } from "./Utility/appHelpers";
+import Button from "../Styles/Button";
+import { postRequest } from "../Utility/httpRequests";
+import { apiToken } from "../Utility/appHelpers";
 import { navigate } from "@reach/router";
 import RightRForm from "./RightRForm";
 import LeftRForm from "./LeftRForm";
@@ -101,8 +101,8 @@ export default function RecipesForm(props) {
             })}
             {...{ load, image, select, measure }}
             history={props.history}
+            window={props.window}
           />
-
           <br />
         </div>
       </div>

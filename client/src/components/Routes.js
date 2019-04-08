@@ -11,7 +11,7 @@ import Loader from "./Loader";
 import SideBarLogic from "./SideBar/SideBarLogic";
 import Cart from "./ListPages/Cart";
 import Dash from "./Dash/Dash";
-import RecipesForm from "./RecipesForm";
+import RecipesForm from "./RecipeForm/RecipesForm";
 import Recipe from "./Recipe";
 
 const Routes = props => {

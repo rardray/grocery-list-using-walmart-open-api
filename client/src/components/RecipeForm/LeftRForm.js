@@ -1,9 +1,12 @@
 import React from "react";
-import Loader from "./Loader";
+import Loader from "../Loader";
 
 export default function LeftRForm(props) {
   return (
-    <div className="r-form-container">
+    <div
+      className="r-form-container"
+      style={props.window ? { width: "100%" } : null}
+    >
       <div className="recipe-image">
         {props.load ? (
           <img src={props.image} id="r-image" alt="recipe" />
