@@ -35,7 +35,7 @@ exports.postList = function(req, res, next) {
   });
   list.save(function(err, list) {
     if (err) next(err);
-    res.status(201).send(list), console.log(list);
+    res.status(201).send(list);
   });
 };
 
@@ -46,7 +46,7 @@ exports.clearShoppingList = function(req, res, next) {
     { new: true },
     function(err, list) {
       if (err) next(err);
-      res.status(202).send(list), console.log(list);
+      res.status(202).send(list);
     }
   );
 };
@@ -94,7 +94,6 @@ exports.editList = function(req, res, next) {
 };
 exports.deleteList = function(req, res, next) {
   var id = req.params.id;
-  console.log(id);
   List.findOneAndDelete({ id: id }, function(err, data) {
     if (err) return next(err);
     res.status(202).send(data);

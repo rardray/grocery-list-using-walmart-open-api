@@ -1,32 +1,30 @@
+.svg-menu {
+  display: inline-block;
+  position: relative;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 6px;
+  vertical-align: middle;
+}
 .svg-menu #icon {
   height: 30px;
   fill: rgb(179, 201, 243);
   margin: 0px;
   background: #45265a;
-  padding: 0px;
   border-radius: 5px;
-  z-index: -1;
-  position: absolute;
-  right: 0px;
-}
-.svg-menu {
-  display: inline-block;
-  position: absolute;
-  right: 100px;
-  top: 20px;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
 }
 .svg-menu #notify {
   height: 20px;
   width: 20px;
-  background: lime;
-  float: right;
+  background: red;
+  display: inline-block;
+  position: absolute;
   top: -2px;
-  z-index: 1;
+  right: 0px;
   border-radius: 50%;
-  box-shadow: 0px 0px 8px lightgreen;
+  box-shadow: 0px 0px 8px black;
   border: 1px solid white;
   opacity: 0.9;
   font-size: 12pt;

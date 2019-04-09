@@ -10,8 +10,10 @@
   margin-top: 0px;
   padding: 6px;
   padding-left: 20px;
+  padding-right: 20px;
   padding-top: 0px;
   overflow: hidden;
+  text-align: left;
 }
 
 .sidebar img {
@@ -90,10 +92,11 @@
 }
 .sidebar #list-block {
   margin-bottom: 8px;
-  margin-top: 20px;
+  margin-top: 10px;
   border-bottom: 1px solid aliceblue;
   padding-bottom: 6px;
   overflow: hidden;
+  text-align: left;
   animation: additem 0.5s ease-in-out 1;
 }
 .sidebar #favorite {
@@ -101,6 +104,7 @@
   width: 20px;
   fill: lightslategrey;
   z-index: 5;
+  float: right;
 }
 .sidebar #favorite:hover {
   fill: #ffb8b8;
@@ -110,6 +114,7 @@
   width: 20px;
   fill: #d6628a;
   z-index: 5;
+  float: right;
 }
 .sidebar #selected:hover {
   fill: sienna;

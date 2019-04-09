@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import { Link, navigate } from "@reach/router";
 import "../Styles/main.css";
@@ -6,8 +6,15 @@ import Menu from "./Menu";
 import MenuList from "./MenuList";
 import cookie from "react-cookies";
 import Licon from "./licon";
+import title from "../Styles/title.svg";
+import searchicon from "../Styles/searchicon.svg";
+import menuicon from "../Styles/Untitled.svg";
+import Footer from "./Footer";
+import "../Styles/menu.css";
+import $ from "jquery";
 
 export default function Dash(props) {
+  const [showSearch, setShowSearch] = useState(false);
   const handleLogout = () => {
     cookie.remove("user", { path: "/" });
     cookie.remove("token", { path: "/" });
@@ -15,27 +22,37 @@ export default function Dash(props) {
     navigate("/grocery/login");
     props.logOutUser();
   };
-
+  useEffect(() => {
+    const focus = () => (showSearch ? $("#searchbar").focus() : null);
+    focus();
+  }, [showSearch]);
   const handleCartIcon = e => navigate("/grocery/cart");
 
   return (
-    <div>
+    <>
       <NavBar>
-        <h1 id="page-title-c">F</h1>
-        <h2 id="page-title">undrayz Grocery</h2>
+        <img src={title} id="page-title" style={{ width: 45 }} alt="search" />
+        <h2>fundrays grocery</h2>
         {props.user ? (
-          <div>
-            {props.Searchbar}
-
+          <>
+            <div
+              id="p-search"
+              className={showSearch ? "show-search" : "search-contain"}
+            >
+              {props.Searchbar}
+            </div>
+            <div
+              className="menu-anchor"
+              onClick={() => setShowSearch(!showSearch)}
+            >
+              <img src={searchicon} alt="search" />
+            </div>
             <Licon history={props.history} handleCartIcon={handleCartIcon} />
-            <Menu>
-              <MenuList
-                header={
-                  <Link className="nav-link" to="/">
-                    {props.user.firstName + " " + props.user.lastName || "Home"}
-                  </Link>
-                }
-              >
+            <Link to="/" className="nav-h4">
+              {props.user.firstName + " " + props.user.lastName}
+            </Link>
+            <Menu image={menuicon}>
+              <MenuList>
                 <Link className="nav-link" to="grocery/history">
                   History
                 </Link>
@@ -50,7 +67,7 @@ export default function Dash(props) {
                 </p>
               </MenuList>
             </Menu>
-          </div>
+          </>
         ) : (
           <div>
             <Link className="nav-link-log" to="grocery/register">
@@ -62,8 +79,22 @@ export default function Dash(props) {
           </div>
         )}
       </NavBar>
-      {props.user ? props.ListBar : null}
-      {props.children}
-    </div>
+      <div
+        style={{
+          background: "white",
+          marginLeft: 80,
+          marginRight: 80,
+          display: "inline-block",
+          position: "relative",
+          minWidth: "89%",
+          maxWidth: "100%",
+          textAlign: "center"
+        }}
+      >
+        {props.user ? props.ListBar : null}
+        {props.children}
+        <Footer />
+      </div>
+    </>
   );
 }

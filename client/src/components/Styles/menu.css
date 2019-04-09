@@ -1,37 +1,20 @@
 .menu-anchor {
-  height: 20px;
+  height: 30px;
   width: 30px;
-  border: 2px solid rgb(158, 180, 228);
-  float: right;
-  border-left: none;
-  border-right: none;
-  position: absolute;
-  right: 40px;
-  top: 22px;
-  text-align: center;
-  padding: 0px;
-  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  margin: 0px;
   opacity: 1;
   cursor: pointer;
-  z-index: 0;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-top: 10px;
 }
 .menu-anchor:hover {
-  background: #593673;
+  background: #597dcc;
 }
-.menu-anchor #line {
-  margin-top: 5px;
-  margin-left: 2px;
-  width: 26px;
-  height: 2px;
-  border-radius: 2px;
-  background: #4c80cc;
-  display: block;
-}
-.menu-anchor #menu-header {
-  width: 100%;
-  background: wheat;
-  color: white;
-}
+
 .menu-anchor #menu-list {
   height: auto;
   width: 200px;

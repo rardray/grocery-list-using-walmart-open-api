@@ -28,7 +28,7 @@ export default function Home(props) {
   }, {});
   useEffect(() => {
     getRequest("/api/recipe/all", apiToken(), data => setRecipe(data.data));
-  }, [recipes]);
+  }, {});
   const moveUp = () => {
     if (position + month === 11) {
       setPosition(0 - month);
@@ -48,15 +48,17 @@ export default function Home(props) {
 
   const { user } = props;
   return (
-    <div>
+    <>
       <div className="home">
-        <h4>Welcome, {user.firstName}</h4>
+        <div style={{ textAlign: "left" }}>
+          <h4>Welcome, {user.firstName}</h4>
+        </div>
         <Calander
           {...{ year, month, day, position, yPosition, moveUp, moveDn }}
         />
         <h4>Your Recipes</h4>
         <RecipesPreview {...{ recipes }} />
       </div>
-    </div>
+    </>
   );
 }

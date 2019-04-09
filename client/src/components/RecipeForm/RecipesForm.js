@@ -52,7 +52,9 @@ export default function RecipesForm(props) {
     };
     uploadImage();
   }, [file]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleSubmit = () => {
     if (!title || !show) {
       return;
@@ -69,8 +71,15 @@ export default function RecipesForm(props) {
   };
   return (
     <div style={{ textAlign: "center" }}>
-      <div className="list-items">
-        <div style={{ border: "1px solid blue", borderRadius: 10, padding: 6 }}>
+      <div className="list-items" style={{ marginBottom: 0 }}>
+        <div
+          style={{
+            border: "1px solid #8da0a7 ",
+            borderRadius: 10,
+            padding: 6,
+            textAlign: "center"
+          }}
+        >
           <br />
           <RightRForm
             changeText={e => setInstructions(e.target.value)}

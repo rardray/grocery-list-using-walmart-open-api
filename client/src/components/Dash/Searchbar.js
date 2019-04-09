@@ -2,22 +2,20 @@ import React from "react";
 
 const Searchbar = props => {
   return (
-    <div>
+    <>
       <form
         style={{
-          padding: 0,
-          paddingTop: 10,
-          margin: "auto",
-          position: "relative",
-          minWidth: "40%",
-          maxWidth: "60%",
-          textAlign: "center",
-          zIndex: 0
+          minWidth: "80%",
+          maxWidth: "95%",
+          zIndex: 0,
+          overflow: "hidden",
+          margin: 0
         }}
         onSubmit={props.searchSubmit}
       >
         <input
           type="text"
+          id="searchbar"
           onChange={props.handleChange}
           name="query"
           value={props.query}
@@ -32,7 +30,7 @@ const Searchbar = props => {
           placeholder="Search"
         />
       </form>
-    </div>
+    </>
   );
 };
 export default Searchbar;

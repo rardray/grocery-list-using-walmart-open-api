@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Items from "./Items";
 
 const History = props => {
@@ -9,6 +9,9 @@ const History = props => {
     handleQuantity,
     addFavoriteFromSearch
   } = props;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="list-items">
       <h2>History</h2>

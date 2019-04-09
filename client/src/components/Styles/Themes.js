@@ -5,14 +5,13 @@ export const Nav = styled.nav`
   display: block;
   position: sticky;
   top: 0px;
-  min-height: 65px;
+  min-height: 50px;
   max-height: 20%;
-  background: #0e324c;
+  background: black;
   color: white;
   z-index: 50;
   text-align: center;
-  padding-top: 10px;
-  border-bottom: 4px solid #8490e0;
+  border-bottom: 10px solid #7bacb1;
 `;
 
 //INPUTS***********************************

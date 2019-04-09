@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../Styles/menu.css";
 
 export default function Menu(props) {
   const [expanded, handleClick] = useState(false);
@@ -10,11 +9,17 @@ export default function Menu(props) {
       onMouseLeave={expanded ? () => handleClick(!expanded) : null}
     >
       {expanded ? props.children : null}
-      <div id="inner">
-        <div id="line" />
 
-        <div id="line" />
-      </div>
+      <img
+        src={props.image}
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          zIndex: -1
+        }}
+        alt="menu"
+      />
     </div>
   );
 }

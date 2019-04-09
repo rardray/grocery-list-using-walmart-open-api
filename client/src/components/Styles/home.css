@@ -1,7 +1,6 @@
 table {
   display: table;
-  min-width: 85%;
-  max-width: 95%;
+  width: 96%;
   border-spacing: 0px;
   padding: 20px;
   text-align: center;
@@ -64,19 +63,27 @@ td {
 }
 
 .home {
-  display: inline-block;
+  display: block;
   position: relative;
-  max-width: 100%;
-  min-width: 70%;
-  text-align: center;
+  margin: auto;
+  max-width: 90%;
+  min-width: 65%;
+  overflow: hidden;
+  border-bottom: 1px solid aliceblue;
+  padding: 10px;
+  margin-bottom: 100px;
+  text-align: right;
 }
 .home h2 {
+  display: inline-block;
   text-align: right;
   font-family: "Open Sans Condensed", sans-serif;
+  margin-right: 40px;
 }
 .home button {
   z-index: 3;
   position: absolute;
+  top: 130px;
   right: 30px;
   height: 50px;
   width: 20px;
@@ -86,10 +93,14 @@ td {
   color: skyblue;
 }
 #cal-move-r {
-  right: 30px;
+  right: 50px;
+  font-size: 2em;
+  background: none;
 }
 #cal-move-l {
-  left: 30px;
+  left: 50px;
+  font-size: 2em;
+  background: none;
 }
 #preview-img {
   padding: 6px;
@@ -110,4 +121,6 @@ td {
   margin-bottom: 10px;
   padding: 4px;
   background-image: linear-gradient(to right, slategrey, rgba(0, 0, 0, 0));
+  display: inline-block;
+  position: relative;
 }

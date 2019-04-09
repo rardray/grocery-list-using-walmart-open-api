@@ -8,6 +8,10 @@ export default function Recipe(props) {
   const [instructions, setInstructions] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [image, setImage] = useState("");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, {});
   useEffect(() => {
     getRequest(`/api/recipe/one/${props.id}`, apiToken(), data => {
       setTitle(data.data.title);
@@ -17,7 +21,7 @@ export default function Recipe(props) {
     });
   }, {});
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", height: "auto" }}>
       <div className="recipe">
         <div id="header" style={{ backgroundImage: `url(${image})` }}>
           <h2>{title}</h2>

@@ -13,7 +13,7 @@ exports.postRecipe = function(req, res, next) {
   });
   recipe.save(function(err, recipe) {
     if (err) next(err);
-    res.status(201).send(recipe), console.log(recipe);
+    res.status(201).send(recipe);
   });
 };
 
@@ -21,7 +21,7 @@ exports.getRecipe = function(req, res, next) {
   let id = req.params.id;
   Recipe.findById(id).exec(function(err, recipe) {
     if (err) next(err);
-    res.status(201).send(recipe), console.log(recipe);
+    res.status(201).send(recipe);
   });
 };
 
@@ -30,6 +30,6 @@ exports.getRecipes = function(req, res, next) {
     .sort("-createdAt")
     .exec(function(err, data) {
       if (err) next(err);
-      res.status(201).send(data), console.log(data);
+      res.status(201).send(data);
     });
 };

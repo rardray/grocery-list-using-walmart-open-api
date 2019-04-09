@@ -74,8 +74,7 @@ exports.register = function(req, res, next) {
         token: "JWT " + generateToken(userInfo), // <---generate token
         user: userInfo,
         groceryApi: process.env.GROCERY_API
-      }),
-        console.log(groceryApi);
+      });
     });
   });
 };
