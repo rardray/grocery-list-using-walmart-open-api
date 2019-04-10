@@ -69,7 +69,7 @@
   position: absolute;
   right: 4px;
   bottom: 4px;
-  width: 70px;
+  width: auto;
   padding: 4px;
 }
 .recipe-image {

@@ -33,7 +33,7 @@ export default function Dash(props) {
     <>
       <NavBar>
         <img src={title} id="page-title" style={{ width: 45 }} alt="search" />
-        <h2>fundrays grocery</h2>
+        {props.window ? null : <h2>fundrays grocery</h2>}
         {props.user ? (
           <>
             <div

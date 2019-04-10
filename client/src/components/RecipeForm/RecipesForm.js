@@ -85,6 +85,7 @@ export default function RecipesForm(props) {
             changeText={e => setInstructions(e.target.value)}
             changeTitle={e => setTitle(e.target.value)}
             {...{ title, instructions }}
+            window={props.window}
           />
           <LeftRForm
             changeFile={e => {
