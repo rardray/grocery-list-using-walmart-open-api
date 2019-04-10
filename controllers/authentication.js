@@ -60,9 +60,7 @@ exports.register = function(req, res, next) {
       password: password,
       profile: {
         firstName: firstName,
-        lastName: lastName,
-        profileImage: profileImage,
-        about: about
+        lastName: lastName
       }
     });
     user.save(function(err, user) {
