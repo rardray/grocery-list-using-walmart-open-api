@@ -11,6 +11,7 @@ import searchicon from "../Styles/searchicon.svg";
 import menuicon from "../Styles/Untitled.svg";
 import Footer from "./Footer";
 import "../Styles/menu.css";
+import List from "../Styles/list.svg";
 import $ from "jquery";
 
 export default function Dash(props) {
@@ -47,7 +48,11 @@ export default function Dash(props) {
             >
               <img src={searchicon} alt="search" />
             </div>
-            <Licon history={props.history} handleCartIcon={handleCartIcon} />
+            <Licon
+              history={props.history}
+              handleCartIcon={handleCartIcon}
+              svgs={List}
+            />
             <Link to="/" className="nav-h4">
               {props.user.firstName + " " + props.user.lastName}
             </Link>
@@ -82,12 +87,11 @@ export default function Dash(props) {
       <div
         style={{
           background: "white",
-          marginLeft: 80,
-          marginRight: 80,
+          margin: "auto",
           display: "inline-block",
           position: "relative",
-          minWidth: "89%",
-          maxWidth: "100%",
+          minWidth: "90%",
+          maxWidth: props.window ? "100%" : "90%",
           textAlign: "center"
         }}
       >

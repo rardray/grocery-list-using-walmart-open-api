@@ -13,6 +13,7 @@
 }
 .menu-anchor:hover {
   background: #597dcc;
+  animation: high 0.3s ease-in-out;
 }
 
 .menu-anchor #menu-list {
@@ -40,5 +41,16 @@
   100% {
     height: 180px;
     width: 200px;
+  }
+}
+
+@keyframes high {
+  0% {
+    opacity: 0.25;
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    background: #597dcc;
   }
 }

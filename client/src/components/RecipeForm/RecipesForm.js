@@ -102,6 +102,7 @@ export default function RecipesForm(props) {
             lists={show.map(el => {
               return (
                 <IngredientsList
+                  key={el._id}
                   title={el.title}
                   image={el.image}
                   measure={el.measure}
@@ -115,7 +116,7 @@ export default function RecipesForm(props) {
           <br />
         </div>
       </div>
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center", marginBottom: 75 }}>
         <Button label="Save Recipe" click={handleSubmit} />
       </div>
     </div>

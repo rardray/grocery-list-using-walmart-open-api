@@ -14,7 +14,7 @@ export default function LeftRForm(props) {
           <Loader />
         )}
       </div>
-      <label className="photo-button" for="file">
+      <label className="photo-button" htmlFor="file">
         Choose Photo
       </label>
       <input
@@ -36,7 +36,7 @@ export default function LeftRForm(props) {
         <option />
         {props.history.map(el => {
           return (
-            <option type="number" key={el.id} value={el.id}>
+            <option type="number" key={el._id} value={el.id}>
               {el.title}
             </option>
           );

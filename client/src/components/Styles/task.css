@@ -8,12 +8,12 @@
   margin-top: 6px;
   vertical-align: middle;
 }
+.svg-menu #icon:hover {
+  background: #45265a;
+}
 .svg-menu #icon {
   height: 30px;
-  fill: rgb(179, 201, 243);
   margin: 0px;
-  background: #45265a;
-  border-radius: 5px;
 }
 .svg-menu #notify {
   height: 20px;

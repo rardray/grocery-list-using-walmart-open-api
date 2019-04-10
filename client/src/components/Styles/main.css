@@ -181,7 +181,8 @@ p {
   color: #8da0a7;
 }
 .nav-contain {
-  width: 100%;
+  width: 98%;
+
   display: inline-block;
   position: relative;
   text-align: right;
@@ -254,4 +255,5 @@ p {
   font-size: 0.5em;
   padding-left: 20px;
   padding-right: 20px;
+  color: white;
 }

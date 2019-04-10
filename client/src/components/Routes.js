@@ -40,7 +40,7 @@ const Routes = props => {
       <Dash
         path="/"
         exact
-        {...{ user, logOutUser, history }}
+        {...{ user, logOutUser, history, window }}
         Searchbar={<Searchbar {...{ handleChange, query, searchSubmit }} />}
         ListBar={
           window ? null : (

@@ -50,8 +50,15 @@ export default function Home(props) {
   return (
     <>
       <div className="home">
-        <div style={{ textAlign: "left" }}>
-          <h4>Welcome, {user.firstName}</h4>
+        <div style={{ textAlign: "left" }} />
+        <div
+          style={{
+            textAlign: "right",
+            backgroundImage: "linear-gradient(to left, #8da0a7, rgba(0,0,0,0)",
+            borderRadius: 15
+          }}
+        >
+          <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
         </div>
         <Calander
           {...{ year, month, day, position, yPosition, moveUp, moveDn }}
