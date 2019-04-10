@@ -112,7 +112,11 @@ const Routes = props => {
         )}
         <RecipesForm path="grocery/addrecipe" {...props} />
         <Recipe path="grocery/recipe/:id" {...props} />
-        <Register path="grocery/register" />
+        <Register
+          path="grocery/register"
+          setUser={props.setUser}
+          getList={getList}
+        />
         <Login path="grocery/login" setUser={props.setUser} getList={getList} />
       </Dash>
     </Router>

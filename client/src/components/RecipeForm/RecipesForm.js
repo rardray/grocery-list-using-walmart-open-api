@@ -6,6 +6,7 @@ import { navigate } from "@reach/router";
 import RightRForm from "./RightRForm";
 import LeftRForm from "./LeftRForm";
 import IngredientsList from "./IngredientsList";
+import imageCompression from "browser-image-compression";
 
 export default function RecipesForm(props) {
   const [select, setSelect] = useState("");
@@ -32,13 +33,26 @@ export default function RecipesForm(props) {
     }
   }
   useEffect(() => {
-    const uploadImage = () => {
+    async function handleImage() {
       if (!file) {
         return null;
       }
       setLoad(false);
+      var options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1920,
+        useWebWorker: false
+      };
+      try {
+        const compressedFile = await imageCompression(file, options);
+        await imageUpload(compressedFile);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    function imageUpload(image) {
       const imgdata = new FormData();
-      imgdata.append("image", file);
+      imgdata.append("image", image);
       postRequest(
         "/api/upload",
         apiToken(),
@@ -49,8 +63,8 @@ export default function RecipesForm(props) {
         null,
         () => setLoad(true)
       );
-    };
-    uploadImage();
+    }
+    handleImage();
   }, [file]);
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -44,6 +44,7 @@ class AppContainer extends React.Component {
     }
     window.addEventListener("deviceorientation", this.handleSidebar);
   }
+
   handleSidebar = e => {
     if ($(window).height() > $(window).width()) {
       return this.setState({ window: true });
@@ -57,7 +58,8 @@ class AppContainer extends React.Component {
   listState = data => {
     this.setState({ history: data.data, pageLoad: true });
   };
-  setUser = data => this.setState({ user: cookie.load("user") });
+  setUser = data =>
+    this.setState({ user: cookie.load("user") }, console.log(this.state.user));
   logOutUser = () => {
     this.setState({ user: "" });
   };

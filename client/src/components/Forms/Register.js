@@ -14,6 +14,8 @@ const Register = props => {
       types={utility.registerType}
       messages={utility.registerErrors}
       renderInputs={utility.renderInputs}
+      setUser={props.setUser}
+      getList={props.getList}
     />
   );
 };
