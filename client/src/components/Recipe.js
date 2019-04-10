@@ -33,7 +33,7 @@ export default function Recipe(props) {
           return (
             <div
               id="ingredients-block"
-              style={{ maxWidth: props.window ? "98%" : "48%" }}
+              style={{ width: props.window ? "98%" : "48%" }}
               key={el.id}
             >
               <img src={el.image} alt={el.title} />

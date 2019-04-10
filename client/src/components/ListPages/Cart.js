@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Items from "./Items";
 
 const Cart = props => {
@@ -22,6 +22,9 @@ const Cart = props => {
   const total = cart.reduce(function(acc, curr) {
     return acc + curr.cartCount;
   }, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="list-items">
       <h2>{sTitle}</h2>

@@ -32,7 +32,6 @@
 .recipe #ingredients-block {
   display: inline-block;
   position: relative;
-  min-width: 48%;
   padding: 4px;
   border: 1px solid lightblue;
   height: 65px;

@@ -117,7 +117,7 @@ export default function RecipesForm(props) {
           <br />
         </div>
       </div>
-      <div style={{ textAlign: "center", marginBottom: 75 }}>
+      <div style={{ textAlign: "center", marginBottom: 125 }}>
         <Button label="Save Recipe" click={handleSubmit} />
       </div>
     </div>
