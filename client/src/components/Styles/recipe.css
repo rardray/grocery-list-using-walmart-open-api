@@ -1,6 +1,5 @@
 .recipe {
-  min-width: 20%;
-  max-width: 90%;
+  width: 90%;
   display: inline-block;
   text-align: left;
   margin: auto;
@@ -33,7 +32,7 @@
 .recipe #ingredients-block {
   display: inline-block;
   position: relative;
-  width: 48%;
+  min-width: 48%;
   padding: 4px;
   border: 1px solid lightblue;
   height: 65px;
@@ -108,7 +107,6 @@
 .r-form-container {
   display: inline-block;
   position: relative;
-  max-width: 40%;
   min-width: 38%;
   text-align: left;
   vertical-align: top;

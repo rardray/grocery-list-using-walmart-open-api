@@ -5,7 +5,7 @@ export default function LeftRForm(props) {
   return (
     <div
       className="r-form-container"
-      style={props.window ? { width: "100%" } : null}
+      style={{ maxWidth: props.window ? "98%" : "40%" }}
     >
       <div className="recipe-image">
         {props.load ? (

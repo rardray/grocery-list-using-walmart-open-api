@@ -31,7 +31,11 @@ export default function Recipe(props) {
         <h3>Ingredients</h3>
         {ingredients.map((el, i) => {
           return (
-            <div id="ingredients-block" key={el.id}>
+            <div
+              id="ingredients-block"
+              style={{ maxWidth: props.window ? "98%" : "48%" }}
+              key={el.id}
+            >
               <img src={el.image} alt={el.title} />
               <h4>{el.title}</h4>
               <p>{el.measure}</p>
