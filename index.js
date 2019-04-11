@@ -11,6 +11,7 @@ console.log("Server running on " + config.port);
 const path = require("path");
 
 mongoose.connect(config.database, { useNewUrlParser: true });
+app.use("/public", express.static(__dirname + "/public"));
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.get("/grocery/*", function(req, res) {
