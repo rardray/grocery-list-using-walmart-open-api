@@ -32,38 +32,40 @@ export default function RecipesForm(props) {
       }
     }
   }
-
-  async function handleImage() {
-    if (!file) {
-      return null;
+  useEffect(() => {
+    async function handleImage() {
+      if (!file) {
+        return null;
+      }
+      setLoad(false);
+      var options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 1920,
+        useWebWorker: false
+      };
+      try {
+        const compressedFile = await imageCompression(file, options);
+        await imageUpload(compressedFile);
+      } catch (error) {
+        console.log(error);
+      }
     }
-    setLoad(false);
-    var options = {
-      maxSizeMB: 1,
-      maxWidthOrHeight: 1920,
-      useWebWorker: false
-    };
-    try {
-      const compressedFile = await imageCompression(file, options);
-      await imageUpload(compressedFile);
-    } catch (error) {
-      console.log(error);
+    function imageUpload(image) {
+      const imgdata = new FormData();
+      imgdata.append("image", image);
+      postRequest(
+        "/api/upload",
+        apiToken(),
+        imgdata,
+        res => {
+          return setImage(res.data.imageUrl);
+        },
+        null,
+        () => setLoad(true)
+      );
     }
-  }
-  function imageUpload(image) {
-    const imgdata = new FormData();
-    imgdata.append("image", image);
-    postRequest(
-      "/api/upload",
-      apiToken(),
-      imgdata,
-      res => {
-        return setImage(res.data.imageUrl);
-      },
-      null,
-      () => setLoad(true)
-    );
-  }
+    handleImage();
+  }, [file]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -131,7 +133,6 @@ export default function RecipesForm(props) {
       </div>
       <div style={{ textAlign: "center", marginBottom: 125 }}>
         <Button label="Save Recipe" click={handleSubmit} />
-        <button onClick={() => handleImage()}>Uplaod</button>
       </div>
     </div>
   );
