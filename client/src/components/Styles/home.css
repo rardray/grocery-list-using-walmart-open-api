@@ -123,4 +123,5 @@ td {
   background-image: linear-gradient(to right, slategrey, rgba(0, 0, 0, 0));
   display: inline-block;
   position: relative;
+  width: 100%;
 }

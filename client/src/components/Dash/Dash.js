@@ -103,7 +103,7 @@ export default function Dash(props) {
       >
         {props.user ? props.ListBar : null}
         {props.children}
-        <Footer />
+        <Footer user={props.user} />
       </div>
     </>
   );

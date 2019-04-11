@@ -63,7 +63,9 @@ export default function Home(props) {
         <Calander
           {...{ year, month, day, position, yPosition, moveUp, moveDn }}
         />
-        <h4>Your Recipes</h4>
+        <div style={{ textAlign: "left" }}>
+          <h4>Your Recipes</h4>
+        </div>
         <RecipesPreview {...{ recipes }} />
       </div>
     </>
