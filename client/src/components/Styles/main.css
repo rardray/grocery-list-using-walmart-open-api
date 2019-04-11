@@ -68,6 +68,11 @@ button {
   font-weight: 900;
   font-stretch: expanded;
   outline: none;
+  background: #8da0a7;
+  color: white;
+}
+button:hover {
+  background: #7bacb1;
 }
 select {
   display: inline-block;

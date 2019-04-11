@@ -41,6 +41,8 @@
 }
 .sidebar button {
   display: inline-block;
+  color: black;
+  background: white;
   position: relative;
   font-size: 8pt;
   width: 100px;
