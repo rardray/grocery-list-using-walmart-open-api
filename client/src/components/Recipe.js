@@ -27,7 +27,7 @@ export default function Recipe(props) {
           <h2>{title}</h2>
         </div>
         <h3>Directions</h3>
-        <p>{instructions}</p>
+        <p style={{ whiteSpace: "pre-wrap" }}>{instructions}</p>
         <h3>Ingredients</h3>
         {ingredients.map((el, i) => {
           return (
