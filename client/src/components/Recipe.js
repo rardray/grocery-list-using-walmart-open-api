@@ -21,7 +21,7 @@ export default function Recipe(props) {
     });
   }, {});
   return (
-    <div style={{ display: "flex", height: "auto" }}>
+    <div style={{ display: "flex", height: "auto", marginBottom: 125 }}>
       <div className="recipe">
         <div id="header" style={{ backgroundImage: `url(${image})` }}>
           <h2>{title}</h2>
