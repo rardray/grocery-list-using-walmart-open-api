@@ -189,12 +189,11 @@ p {
   font-size: 1.5em;
 }
 .nav-contain {
-  width: 98%;
-
+  width: 96%;
   display: inline-block;
   position: relative;
   text-align: right;
-  padding: 6px;
+  padding: 4px;
 }
 .nav-h4 {
   display: inline-block;

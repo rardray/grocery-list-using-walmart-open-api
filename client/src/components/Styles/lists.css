@@ -96,8 +96,8 @@
   text-align: center;
 }
 .list-items #favorite {
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   fill: lightslategrey;
   float: right;
 }
@@ -105,8 +105,8 @@
   fill: #ffb8b8;
 }
 .list-items #selected {
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   fill: #d6628a;
   float: right;
 }

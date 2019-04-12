@@ -60,7 +60,7 @@ export default function Dash(props) {
               svgs={List}
             />
             <Link to="/" className="nav-h4">
-              {props.user.firstName + " " + props.user.lastName}
+              {props.user.firstName}
             </Link>
             <Menu image={menuicon}>
               <MenuList>
