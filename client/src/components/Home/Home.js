@@ -3,6 +3,7 @@ import Calander from "./Calander";
 import RecipesPreview from "./RecipesPreview";
 import { apiToken } from "../Utility/appHelpers";
 import { getRequest } from "../Utility/httpRequests";
+import DefaultHome from "./DefaultHome";
 import "../Styles/home.css";
 
 export default function Home(props) {
@@ -49,25 +50,32 @@ export default function Home(props) {
   const { user } = props;
   return (
     <>
-      <div className="home">
-        <div style={{ textAlign: "left" }} />
-        <div
-          style={{
-            textAlign: "right",
-            backgroundImage: "linear-gradient(to left, #8da0a7, rgba(0,0,0,0)",
-            borderRadius: 15
-          }}
-        >
-          <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
+      {user ? (
+        <div className="home">
+          <div style={{ textAlign: "left" }} />
+          <div
+            style={{
+              textAlign: "right",
+              backgroundImage:
+                "linear-gradient(to left, #8da0a7, rgba(0,0,0,0)",
+              borderRadius: 15
+            }}
+          >
+            <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
+          </div>
+          <Calander
+            {...{ year, month, day, position, yPosition, moveUp, moveDn }}
+          />
+          <div style={{ textAlign: "left" }}>
+            <h4>Your Recipes</h4>
+          </div>
+          <RecipesPreview {...{ recipes }} />
         </div>
-        <Calander
-          {...{ year, month, day, position, yPosition, moveUp, moveDn }}
-        />
-        <div style={{ textAlign: "left" }}>
-          <h4>Your Recipes</h4>
+      ) : (
+        <div className="home" style={{ textAlign: "center" }}>
+          <DefaultHome />
         </div>
-        <RecipesPreview {...{ recipes }} />
-      </div>
+      )}
     </>
   );
 }
