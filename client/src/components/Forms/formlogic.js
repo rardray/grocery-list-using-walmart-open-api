@@ -20,6 +20,9 @@ export const handleSubmit = function(url, def, e) {
   axios
     .post("/api/auth" + url, data)
     .then(response => {
+      if (response.status === 422) {
+        console.log(response.data);
+      }
       if (!response.error) {
         return (
           cookie.save("user", response.data.user, { path: "/" }),
@@ -34,5 +37,11 @@ export const handleSubmit = function(url, def, e) {
     })
     .then(() => this.props.setUser())
     .then(() => this.props.getList())
-    .catch(error => error);
+    .catch(err => {
+      if (err.response.status === 422) {
+        return this.props.setError(err.response.data.error);
+      } else {
+        return this.props.setError("incorrect user name or password");
+      }
+    });
 };

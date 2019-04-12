@@ -18,15 +18,20 @@ class RegLogData extends React.Component {
       return (prevState = this.props.state);
     });
   }
+
   render() {
     const { header, subheader, label, types, messages } = this.props;
     const { renderInputs } = this;
+
     return (
-      <Container header={header} subheader={subheader}>
-        {renderInputs(this.state, types, messages)}
-        <br />
-        <Button label={label} click={this.handleSubmit} />
-      </Container>
+      <>
+        <Container header={header} subheader={subheader}>
+          {this.props.error}
+          {renderInputs(this.state, types, messages)}
+          <br />
+          <Button label={label} click={this.handleSubmit} />
+        </Container>
+      </>
     );
   }
 }
