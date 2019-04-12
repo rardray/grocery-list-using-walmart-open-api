@@ -1,4 +1,5 @@
 import React from "react";
+import "../Styles/main.css";
 
 const List = props => {
   const {
@@ -38,7 +39,7 @@ const List = props => {
         return (
           <div key={el.id} id="list-block">
             <img src={el.image} alt={el.title} />
-            <h4>{el.title}</h4>
+            <h5>{el.title}</h5>
             <button
               onClick={
                 grocery

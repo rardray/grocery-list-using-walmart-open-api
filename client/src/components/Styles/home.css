@@ -13,7 +13,7 @@ th {
   max-width: 100px;
   min-width: 40px;
   text-align: right;
-  font-family: "Open Sans Condensed", sans-serif;
+
   font-weight: 300;
   font-size: 1em;
   color: steelblue;
@@ -35,8 +35,7 @@ td {
   overflow: hidden;
 }
 .td #date {
-  font-family: "Open Sans Condensed", sans-serif;
-  font-weight: 100;
+  font-weight: 300;
   text-align: right;
   z-index: -1;
   float: right;
@@ -73,11 +72,12 @@ td {
   padding: 10px;
   margin-bottom: 100px;
   text-align: right;
+  font-family: "Open Sans Condensed", sans-serif;
 }
 .home h2 {
   display: inline-block;
   text-align: right;
-  font-family: "Open Sans Condensed", sans-serif;
+
   margin-right: 40px;
 }
 .home button {
@@ -88,7 +88,7 @@ td {
   height: 50px;
   width: 20px;
   margin: 0px;
-  font-family: "Open Sans Condensed", sans-serif;
+
   font-size: 2em;
   color: skyblue;
 }
@@ -124,4 +124,5 @@ td {
   display: inline-block;
   position: relative;
   width: 100%;
+  font-family: "Muli", sans-serif;
 }

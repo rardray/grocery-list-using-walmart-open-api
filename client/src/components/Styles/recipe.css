@@ -4,7 +4,6 @@
   text-align: left;
   margin: auto;
   margin-bottom: 75px;
-  font-family: "Muli", sans-serif;
 }
 .recipe #header {
   text-align: left;
@@ -50,7 +49,6 @@
   display: inline-block;
   position: relative;
   margin-left: 70px;
-  font-weight: 300;
   font-size: 0.75em;
 }
 

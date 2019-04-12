@@ -10,6 +10,7 @@ export default function RightRForm(props) {
       <label>Recipe Name</label>
       <br />
       <input
+        className="input"
         style={{ width: "100%" }}
         type="text"
         value={props.title}
@@ -19,6 +20,7 @@ export default function RightRForm(props) {
       <label>Instructions</label>
       <br />
       <textarea
+        className="input"
         value={props.instructions}
         onChange={props.changeText}
         style={{ width: "100%" }}

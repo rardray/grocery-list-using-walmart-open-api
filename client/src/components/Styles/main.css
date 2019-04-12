@@ -1,7 +1,6 @@
-input {
+.input {
   display: inline-block;
-  min-width: 50%;
-  max-width: 80%;
+
   background: #f0ffff;
   opacity: 0.9;
   margin-right: 0px;
@@ -10,9 +9,7 @@ input {
   border: none;
   vertical-align: bottom;
   padding-bottom: 0px;
-  font-family: "Muli", sans-serif;
-  font-size: 16pt;
-  font-weight: 300;
+
   padding-top: 8px;
   text-align: left;
   border-radius: 6px;
@@ -23,6 +20,12 @@ input {
   padding-bottom: 0px;
   overflow: visible;
   outline: none;
+}
+input {
+  font-size: 1em;
+  font-weight: 300;
+  min-width: 50%;
+  max-width: 80%;
 }
 input::placeholder {
   color: lightsteelblue;
@@ -30,32 +33,14 @@ input::placeholder {
   text-align: right;
 }
 textarea {
-  display: inline-block;
-  min-width: 50%;
-  max-width: 80%;
-  background: #f0ffff;
-  opacity: 0.9;
-  margin-right: 0px;
-  margin: 3px;
-  padding-left: 10px;
-  border: none;
-  padding-bottom: 0px;
-  font-family: "Muli", sans-serif;
   font-size: 10pt;
   font-weight: 300;
-  padding-top: 8px;
-  text-align: left;
-  border-radius: 6px;
-  border-bottom: 3px solid lightblue;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  line-height: 25px;
-  padding-bottom: 0px;
-  overflow: visible;
-  outline: none;
   resize: none;
   height: 100px;
+  min-width: 50%;
+  max-width: 80%;
 }
+
 button {
   width: 50%;
   margin: 4px;
@@ -63,10 +48,9 @@ button {
   padding: 10px;
   border: none;
   cursor: pointer;
-  font-family: "Muli", sans-serif;
+
   font-size: 20px;
-  font-weight: 900;
-  font-stretch: expanded;
+
   outline: none;
   background: #8da0a7;
   color: white;
@@ -75,31 +59,11 @@ button:hover {
   background: #7bacb1;
 }
 select {
-  display: inline-block;
-  background: #f0ffff;
-  opacity: 0.9;
-  margin-right: 0px;
-  margin: 3px;
-  padding-left: 10px;
-  border: none;
-  vertical-align: bottom;
-  padding-bottom: 0px;
-  font-family: "Muli", sans-serif;
   font-size: 10pt;
   font-weight: 300;
-  padding-top: 8px;
-  text-align: left;
-  border-radius: 6px;
-  border-bottom: 3px solid lightblue;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  line-height: 25px;
-  padding-bottom: 0px;
-  overflow: visible;
-  outline: none;
+  width: 100%;
 }
 label {
-  font-family: "Muli", sans-serif;
   font-weight: 300;
   margin: 0px;
   padding: 0px;
@@ -110,23 +74,25 @@ h1 {
   font-size: 32pt;
   font-weight: 700;
   color: darkslategray;
-  font-family: "Muli", sans-serif;
+
   margin: 0px;
 }
 h2 {
   font-size: 20pt;
   font-weight: 700;
   color: darkslategray;
-  font-family: "Muli", sans-serif;
 }
 h4 {
-  font-size: 14pt;
+  font-size: 1em;
   font-weight: 700;
   color: darkslategray;
-  font-family: "Muli", sans-serif;
+}
+h5 {
+  font-size: 0.75em;
+  font-weight: 700;
+  color: darkslategray;
 }
 p {
-  font-family: "Muli", sans-serif;
   margin: 0px;
   font-size: 10pt;
   padding-bottom: 10px;
