@@ -9,7 +9,8 @@ const cors = require("cors");
 const server = app.listen(config.port);
 console.log("Server running on " + config.port);
 const path = require("path");
-
+const compression = require("compression");
+app.use(compression());
 mongoose.connect(config.database, { useNewUrlParser: true });
 app.use(express.static(path.join(__dirname, "client/build")));
 
