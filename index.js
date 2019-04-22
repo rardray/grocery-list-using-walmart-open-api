@@ -10,13 +10,16 @@ const server = app.listen(config.port);
 console.log("Server running on " + config.port);
 const path = require("path");
 const compression = require("compression");
-app.use(compression());
-mongoose.connect(config.database, { useNewUrlParser: true });
-app.use(express.static(path.join(__dirname, "client/build")));
 
-app.get("/grocery/*", function(req, res) {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
+if (process.env.NODE_ENV === "production") {
+  app.use(compression());
+  app.use(express.static(path.join(__dirname, "client/build")));
+
+  app.get("/grocery/*", function(req, res) {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  });
+}
+mongoose.connect(config.database, { useNewUrlParser: true });
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));

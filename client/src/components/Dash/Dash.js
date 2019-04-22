@@ -59,9 +59,6 @@ export default function Dash(props) {
               handleCartIcon={handleCartIcon}
               svgs={List}
             />
-            <Link to="/" className="nav-h4">
-              {props.user.firstName}
-            </Link>
             <Menu image={menuicon}>
               <MenuList>
                 <Link className="nav-link" to="grocery/history">

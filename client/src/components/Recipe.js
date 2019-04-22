@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getRequest } from "./Utility/httpRequests";
 import { apiToken } from "./Utility/appHelpers";
 import "./Styles/recipe.css";
+import RecipeRender from "./RecipeRender";
 
 export default function Recipe(props) {
   const [title, setTitle] = useState("");
@@ -21,31 +22,12 @@ export default function Recipe(props) {
     });
   }, {});
   return (
-    <div style={{ display: "flex", height: "auto", marginBottom: 125 }}>
-      <div className="recipe">
-        <div id="header" style={{ backgroundImage: `url(${image})` }}>
-          <h2>{title}</h2>
-        </div>
-        <h3>Directions</h3>
-        <p style={{ whiteSpace: "pre-wrap" }}>{instructions}</p>
-        <h3>Ingredients</h3>
-        {ingredients.map((el, i) => {
-          return (
-            <div
-              id="ingredients-block"
-              style={{ width: props.window ? "98%" : "48%" }}
-              key={el.id}
-            >
-              <img src={el.image} alt={el.title} />
-              <h4>{el.title}</h4>
-              <p>{el.measure}</p>
-              <button onClick={props.addToList.bind(this, i, el)}>
-                Add to List
-              </button>
-            </div>
-          );
-        })}
-      </div>
+    <div style={{ display: "flex", margin: "auto", marginBottom: 125 }}>
+      <RecipeRender
+        {...{ title, instructions, ingredients, image }}
+        window={props.window}
+        add={props.addToList}
+      />
     </div>
   );
 }

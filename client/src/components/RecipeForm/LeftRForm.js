@@ -51,7 +51,8 @@ export default function LeftRForm(props) {
         value={props.measure}
         onChange={props.changeMeasure}
         placeholder="Amount Required (ex. cups, oz)"
-        className="small-input"
+        className="input"
+        id="small-input"
       />
       <button onClick={props.submit}>Add Ingredient</button>
       <br />

@@ -13,8 +13,14 @@ export default function RecipesPreview(props) {
       }}
     >
       {props.recipes.map((el, i) => {
-        if (i > 5) {
-          return null;
+        if (!props.expanded) {
+          if (i > 5) {
+            return null;
+          }
+        } else {
+          if (i <= 5) {
+            return null;
+          }
         }
         return (
           <div

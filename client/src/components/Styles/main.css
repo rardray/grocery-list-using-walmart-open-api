@@ -1,6 +1,5 @@
 .input {
   display: inline-block;
-
   background: #f0ffff;
   opacity: 0.9;
   margin-right: 0px;
@@ -9,7 +8,6 @@
   border: none;
   vertical-align: bottom;
   padding-bottom: 0px;
-
   padding-top: 8px;
   text-align: left;
   border-radius: 6px;
@@ -24,8 +22,8 @@
 input {
   font-size: 1em;
   font-weight: 300;
-  min-width: 50%;
-  max-width: 80%;
+  min-width: 60%;
+  max-width: 90%;
 }
 input::placeholder {
   color: lightsteelblue;
@@ -37,8 +35,8 @@ textarea {
   font-weight: 300;
   resize: none;
   height: 100px;
-  min-width: 50%;
-  max-width: 80%;
+  min-width: 60%;
+  max-width: 90%;
 }
 
 button {
@@ -48,9 +46,7 @@ button {
   padding: 10px;
   border: none;
   cursor: pointer;
-
   font-size: 20px;
-
   outline: none;
   background: #8da0a7;
   color: white;
@@ -99,13 +95,13 @@ p {
   color: lightslategrey;
 }
 
-.small-input {
+#small-input {
   display: inline-block;
   min-width: 10%;
   max-width: 40%;
   font-size: 10pt;
 }
-.small-input::placeholder {
+#small-input::placeholder {
   font-size: 8pt;
 }
 

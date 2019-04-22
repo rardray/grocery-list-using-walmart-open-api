@@ -5,6 +5,7 @@ import { apiToken } from "../Utility/appHelpers";
 import { getRequest } from "../Utility/httpRequests";
 import DefaultHome from "./DefaultHome";
 import "../Styles/home.css";
+import RecipeDrawer from "./RecipeDrawer";
 
 export default function Home(props) {
   const [year, setYear] = useState(null);
@@ -46,7 +47,6 @@ export default function Home(props) {
       setPosition(position - 1);
     }
   };
-
   const { user } = props;
   return (
     <>
@@ -69,7 +69,12 @@ export default function Home(props) {
           <div style={{ textAlign: "left" }}>
             <h4>Your Recipes</h4>
           </div>
-          <RecipesPreview {...{ recipes }} />
+          <RecipesPreview {...{ recipes }} expanded={false} />
+          {recipes.length > 5 ? (
+            <RecipeDrawer {...{ recipes }}>
+              <RecipesPreview {...{ recipes }} expanded={true} />
+            </RecipeDrawer>
+          ) : null}
         </div>
       ) : (
         <div className="home" style={{ textAlign: "center" }}>

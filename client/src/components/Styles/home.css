@@ -126,3 +126,30 @@ td {
   width: 100%;
   font-family: "Muli", sans-serif;
 }
+
+.recipe-drawer-container {
+  overflow: hidden;
+  height: 0px;
+  visibility: hidden;
+}
+
+.recipe-drawer-container-show {
+  visibility: visible;
+  overflow: hidden;
+  animation: expand-recipes 0.8s ease-in-out;
+}
+
+@keyframes expand-recipes {
+  0% {
+    height: 0px;
+    visibility: visible;
+    opacity: 0.25;
+    overflow: hidden;
+  }
+  100% {
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+    overflow: hidden;
+  }
+}
