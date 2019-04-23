@@ -92,6 +92,8 @@ const Routes = props => {
             handleDelete={handleDelete}
             handleDrag={handleDrag}
             addFavoriteFromSearch={addFavoriteFromSearch}
+            getList={getList}
+            clearList={clearList}
           />
         ) : (
           <Loader path="grocery/cart" />

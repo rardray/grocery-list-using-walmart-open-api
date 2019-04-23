@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Items from "./Items";
 
 const Search = props => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, {});
   const sTitle = window.location.pathname.slice(16).replace("%20", " ");
   return (
     <div className="list-items">
