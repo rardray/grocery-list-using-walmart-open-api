@@ -42,6 +42,7 @@ class AppContainer extends React.Component {
     if (this.state.user) {
       this.getList();
     }
+    this.handleSidebar();
     window.addEventListener("deviceorientation", this.handleSidebar);
   }
 
