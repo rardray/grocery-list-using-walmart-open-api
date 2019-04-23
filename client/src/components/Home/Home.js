@@ -70,7 +70,7 @@ export default function Home(props) {
             <h4>Your Recipes</h4>
           </div>
           <RecipesPreview {...{ recipes }} expanded={false} />
-          {recipes.length > 5 ? (
+          {recipes.length > 6 ? (
             <RecipeDrawer {...{ recipes }}>
               <RecipesPreview {...{ recipes }} expanded={true} />
             </RecipeDrawer>

@@ -31,7 +31,8 @@ export default function RecipeDrawer(props) {
               height: 15,
               float: "left",
               margin: 6,
-              transform: expanded ? `rotate(0deg)` : `rotate(180deg)`
+              transform: expanded ? `rotate(0deg)` : `rotate(180deg)`,
+              transition: `transform ease-out 0.45s`
             }}
           />
           <p style={{ padding: 4 }}>

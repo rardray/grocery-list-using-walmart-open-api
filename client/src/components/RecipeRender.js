@@ -1,6 +1,12 @@
 import React from "react";
 
 export default function RecipeRender(props) {
+  function disableAdd(list, el) {
+    const val = list.filter(ele => {
+      return ele.id === el.id && ele.inCart;
+    });
+    return val.length === 0 ? false : true;
+  }
   return (
     <div className="recipe">
       <div id="header" style={{ backgroundImage: `url(${props.image})` }}>
@@ -19,7 +25,19 @@ export default function RecipeRender(props) {
             <img src={el.image} alt={el.title} />
             <h4>{el.title}</h4>
             <p>{el.measure}</p>
-            <button onClick={props.add.bind(this, i, el)}>Add to List</button>
+            {disableAdd(props.history, el) ? (
+              <button
+                style={{
+                  color: "slategray",
+                  background: "white",
+                  cursor: "default"
+                }}
+              >
+                In Cart
+              </button>
+            ) : (
+              <button onClick={props.add.bind(this, i, el)}>Add to List</button>
+            )}
           </div>
         );
       })}

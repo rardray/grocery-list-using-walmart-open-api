@@ -27,6 +27,7 @@ export default function Recipe(props) {
         {...{ title, instructions, ingredients, image }}
         window={props.window}
         add={props.addToList}
+        history={props.history}
       />
     </div>
   );
