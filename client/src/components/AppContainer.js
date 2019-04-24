@@ -27,7 +27,8 @@ class AppContainer extends React.Component {
     productSearch: [],
     history: [],
     pageLoad: false,
-    window: false
+    window: false,
+    xPosition: null
   };
   handleChange = formlogic.handleChange.bind(this);
   getRequest = httpRequests.getRequest.bind(this);
@@ -44,8 +45,29 @@ class AppContainer extends React.Component {
     }
     this.handleSidebar();
     window.addEventListener("deviceorientation", this.handleSidebar);
+    window.addEventListener("touchstart", this.swipeStart);
   }
+  touchLimit = () => {
+    window.removeEventListener("touchend", this.swipeEnd);
+  };
+  swipeStart = e => {
+    var clientX = e.touches[0].clientX;
+    console.log(clientX);
+    this.setState({ xPosition: clientX });
+    window.addEventListener("touchend", this.swipeEnd);
+    setTimeout(this.touchLimit, 3000);
+  };
 
+  swipeEnd = e => {
+    var deltaX = e.changedTouches[0].clientX;
+    console.log(deltaX - this.state.xPosition);
+    if (deltaX - this.state.xPosition < -120) {
+      window.history.back();
+    }
+    if (deltaX - this.state.xPosition > 120) {
+      window.history.forward();
+    }
+  };
   handleSidebar = e => {
     if ($(window).height() > $(window).width()) {
       return this.setState({ window: true });

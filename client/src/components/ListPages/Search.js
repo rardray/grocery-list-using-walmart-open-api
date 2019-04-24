@@ -8,7 +8,7 @@ const Search = props => {
   const sTitle = window.location.pathname.slice(16).replace("%20", " ");
   return (
     <div className="list-items">
-      <h2 id="list-block">Search Results for {sTitle}</h2>
+      <h2 className="list-block">Search Results for {sTitle}</h2>
       {props.productSearch.length ? null : (
         <h4>
           Sorry, search returned no results. Try broadening your search query.
@@ -16,7 +16,7 @@ const Search = props => {
       )}
       {props.productSearch.map((el, i) => {
         return (
-          <div key={el.id} id="list-block">
+          <div key={el.id} className="list-block">
             <Items
               id={el.id}
               image={el.image}

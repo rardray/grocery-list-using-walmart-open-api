@@ -13,18 +13,18 @@ const Items = props => {
       <button onClick={props.action}>{props.bLabel}</button>
       <div style={{ display: "inline-block" }}>
         <span>Quantity:</span>
-        <button name="minus" id="minus" onClick={props.handleQuantity}>
+        <button name="minus" className="minus" onClick={props.handleQuantity}>
           -
         </button>
-        <span id="quantity"> {props.count} </span>
-        <button name="plus" id="minus" onClick={props.handleQuantity}>
+        <span className="quantity"> {props.count} </span>
+        <button name="plus" className="minus" onClick={props.handleQuantity}>
           +
         </button>
       </div>
       <svg
         onClick={props.addFavorite}
         version="1.1"
-        id={props.favorite ? "selected" : "favorite"}
+        className={props.favorite ? "selected" : "favorite"}
         x="0px"
         y="0px"
         viewBox="0 0 370 370"

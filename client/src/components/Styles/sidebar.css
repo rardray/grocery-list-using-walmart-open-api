@@ -91,7 +91,7 @@
   background: #d9f0f7;
   color: darkred;
 }
-.sidebar #list-block {
+.sidebar .list-block {
   margin-bottom: 8px;
   margin-top: 10px;
   border-bottom: 1px solid aliceblue;
@@ -100,24 +100,24 @@
   text-align: left;
   animation: additem 0.5s ease-in-out 1;
 }
-.sidebar #favorite {
+.sidebar .favorite {
   height: 20px;
   width: 20px;
   fill: lightslategrey;
   z-index: 5;
   float: right;
 }
-.sidebar #favorite:hover {
+.sidebar .favorite:hover {
   fill: #ffb8b8;
 }
-.sidebar #selected {
+.sidebar .selected {
   height: 20px;
   width: 20px;
   fill: #d6628a;
   z-index: 5;
   float: right;
 }
-.sidebar #selected:hover {
+.sidebar .selected:hover {
   fill: sienna;
 }
 @keyframes additem {

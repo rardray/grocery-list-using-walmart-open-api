@@ -18,7 +18,7 @@ const History = props => {
       <p>showing last {props.history.length} items in search history</p>
       {history.map((el, i) => {
         return (
-          <div key={el.id} id="list-block">
+          <div key={el.id} className="list-block">
             <Items
               id={el.id}
               image={el.image}

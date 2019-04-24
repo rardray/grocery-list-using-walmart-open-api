@@ -49,7 +49,7 @@ const Cart = props => {
       )}
       {cart.map((el, i) => {
         return (
-          <div key={el.id} id="list-block">
+          <div key={el.id} className="list-block">
             <Items
               id={el.id}
               image={el.image}

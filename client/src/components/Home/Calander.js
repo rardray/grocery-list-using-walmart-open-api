@@ -36,13 +36,12 @@ const Calander = props => {
       <h2>
         {mn}, {year}
       </h2>
-      <button id="cal-move-l" onClick={props.moveDn}>
-        {" "}
+      <div className="cal-move" id="cal-move-l" onClick={props.moveDn}>
         {"<"}
-      </button>
-      <button id="cal-move-r" onClick={props.moveUp}>
-        >
-      </button>
+      </div>
+      <div className="cal-move" id="cal-move-r" onClick={props.moveUp}>
+        {">"}
+      </div>
       <table>
         <tbody>
           {tHeader()}
@@ -74,7 +73,7 @@ const Calander = props => {
                     return (
                       <td key={i}>
                         <div className="td">
-                          <div id="date">{ele}</div>
+                          <div className="date">{ele}</div>
                           <div
                             id={
                               ele === props.day &&

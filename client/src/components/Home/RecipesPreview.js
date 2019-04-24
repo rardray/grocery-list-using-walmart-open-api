@@ -25,11 +25,11 @@ export default function RecipesPreview(props) {
         return (
           <div
             key={el._id}
-            id="preview-img"
+            className="preview-img"
             style={{ backgroundImage: `url(${el.image})` }}
             onClick={() => navigate("/grocery/recipe/" + el._id)}
           >
-            <h4 id="header">{el.title}</h4>
+            <h4 className="header">{el.title}</h4>
           </div>
         );
       })}

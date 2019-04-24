@@ -37,7 +37,7 @@ const List = props => {
       </p>
       {sorted.map((el, i) => {
         return (
-          <div key={el.id} id="list-block">
+          <div key={el.id} className="list-block">
             <img src={el.image} alt={el.title} />
             <h5>{el.title}</h5>
             <button
@@ -52,7 +52,7 @@ const List = props => {
             <svg
               onClick={props.addFavorite.bind(this, i, el)}
               version="1.1"
-              id={el.favorite ? "selected" : "favorite"}
+              className={el.favorite ? "selected" : "favorite"}
               x="0px"
               y="0px"
               viewBox="0 0 370 370"

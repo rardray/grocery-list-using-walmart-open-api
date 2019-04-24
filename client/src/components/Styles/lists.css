@@ -48,7 +48,7 @@
   max-width: 100%;
   display: flex;
 }
-.list-items #list-block {
+.list-items .list-block {
   display: inline-block;
   position: relative;
   width: 95%;
@@ -79,7 +79,7 @@
   position: relative;
 }
 
-.list-items #minus {
+.list-items .minus {
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -88,20 +88,20 @@
   background: aliceblue;
   border: 1px solid;
 }
-.list-items #quantity {
+.list-items .quantity {
   width: 20px;
   text-align: center;
 }
-.list-items #favorite {
+.list-items .favorite {
   height: 20px;
   width: 20px;
   fill: lightslategrey;
   float: right;
 }
-.list-items #favorite:hover {
+.list-items .favorite:hover {
   fill: #ffb8b8;
 }
-.list-items #selected {
+.list-items .selected {
   height: 20px;
   width: 20px;
   fill: #d6628a;
