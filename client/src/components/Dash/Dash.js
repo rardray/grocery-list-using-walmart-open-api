@@ -87,20 +87,22 @@ export default function Dash(props) {
           </div>
         )}
       </NavBar>
-      <div
-        style={{
-          background: "white",
-          margin: "auto",
-          display: "inline-block",
-          position: "relative",
-          minWidth: "90%",
-          maxWidth: props.window ? "100%" : "90%",
-          textAlign: "center"
-        }}
-      >
-        {props.user ? props.ListBar : null}
-        {props.children}
-        <Footer user={props.user} />
+      <div style={props.transition}>
+        <div
+          style={{
+            background: "white",
+            margin: "auto",
+            display: "inline-block",
+            position: "relative",
+            minWidth: "90%",
+            maxWidth: props.window ? "100%" : "90%",
+            textAlign: "center"
+          }}
+        >
+          {props.user ? props.ListBar : null}
+          {props.children}
+          <Footer user={props.user} />
+        </div>
       </div>
     </>
   );

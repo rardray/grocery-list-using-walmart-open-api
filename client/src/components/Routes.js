@@ -33,14 +33,15 @@ const Routes = props => {
     addFavoriteFromSearch,
     window,
     logOutUser,
-    getList
+    getList,
+    transition
   } = props;
   return (
     <Router>
       <Dash
         path="/"
         exact
-        {...{ user, logOutUser, history, window }}
+        {...{ user, logOutUser, history, window, transition }}
         Searchbar={<Searchbar {...{ handleChange, query, searchSubmit }} />}
         ListBar={
           window ? null : (
