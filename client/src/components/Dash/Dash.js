@@ -13,6 +13,7 @@ import Footer from "./Footer";
 import "../Styles/menu.css";
 import List from "../Styles/list.svg";
 import $ from "jquery";
+import SwipeFunction from "./SwipeFunction";
 
 export default function Dash(props) {
   const [showSearch, setShowSearch] = useState(false);
@@ -87,7 +88,7 @@ export default function Dash(props) {
           </div>
         )}
       </NavBar>
-      <div style={props.transition}>
+      <SwipeFunction>
         <div
           style={{
             background: "white",
@@ -103,7 +104,7 @@ export default function Dash(props) {
           {props.children}
           <Footer user={props.user} />
         </div>
-      </div>
+      </SwipeFunction>
     </>
   );
 }

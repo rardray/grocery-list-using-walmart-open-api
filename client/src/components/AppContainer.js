@@ -27,12 +27,7 @@ class AppContainer extends React.Component {
     productSearch: [],
     history: [],
     pageLoad: false,
-    window: false,
-    xPosition: null,
-    transition: {
-      transform: `translateX(0px)`,
-      transition: `transform  ease-out 0.3s`
-    }
+    window: false
   };
   handleChange = formlogic.handleChange.bind(this);
   getRequest = httpRequests.getRequest.bind(this);
@@ -49,70 +44,7 @@ class AppContainer extends React.Component {
     }
     this.handleSidebar();
     window.addEventListener("deviceorientation", this.handleSidebar);
-    window.addEventListener("touchstart", this.swipeStart);
   }
-  touchLimit = () => {
-    window.removeEventListener("touchend", this.swipeEnd);
-  };
-  swipeStart = e => {
-    var clientX = e.touches[0].clientX;
-    console.log(clientX);
-    this.setState({ xPosition: clientX });
-    window.addEventListener("touchend", this.swipeEnd);
-    setTimeout(this.touchLimit, 2000);
-  };
-  finishAn = () => {
-    this.setState({
-      transition: {
-        transform: `translateX(0px)`,
-        transition: `transform  ease-out 0.3s`,
-        border: "none",
-        overflow: "hidden"
-      }
-    });
-  };
-  transAn = () => {
-    setTimeout(this.finishAn, 300);
-    this.setState({
-      transition: {
-        transform: `translateX(${$(window).width()}px)`,
-        transition: `transform 0.0s`
-      }
-    });
-  };
-  transAnB = () => {
-    setTimeout(this.finishAn, 300);
-    this.setState({
-      transition: {
-        transform: `translateX(-${$(window).width()}px)`,
-        transition: `transform 0.0s`
-      }
-    });
-  };
-  swipeEnd = e => {
-    var deltaX = e.changedTouches[0].clientX;
-    console.log(deltaX - this.state.xPosition);
-    if (deltaX - this.state.xPosition < -120) {
-      window.history.forward();
-      this.setState({
-        transition: {
-          transform: `translateX(-${$(window).width()}px)`,
-          transition: `transform  ease-out 0.3s`
-        }
-      });
-      setTimeout(this.transAn, 300);
-    }
-    if (deltaX - this.state.xPosition > 120) {
-      window.history.back();
-      this.setState({
-        transition: {
-          transform: `translateX(${$(window).width()}px)`,
-          transition: `transform ease-out 0.3s`
-        }
-      });
-      setTimeout(this.transAnB, 300);
-    }
-  };
   handleSidebar = e => {
     if ($(window).height() > $(window).width()) {
       return this.setState({ window: true });
