@@ -20,7 +20,7 @@ import {
 var httpRequests = require("./Utility/httpRequests");
 var formlogic = require("./Forms/formlogic");
 
-class AppContainer extends React.Component {
+export default class AppContainer extends React.Component {
   state = {
     user: cookie.load("user") || "",
     query: "",
@@ -193,5 +193,3 @@ class AppContainer extends React.Component {
     return <Routes {...this} {...this.state} />;
   }
 }
-
-export default AppContainer;
