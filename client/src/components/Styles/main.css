@@ -22,7 +22,7 @@
 input {
   font-size: 1em;
   font-weight: 300;
-  min-width: 60%;
+  min-width: 80%;
   max-width: 90%;
 }
 input::placeholder {
@@ -35,7 +35,7 @@ textarea {
   font-weight: 300;
   resize: none;
   height: 100px;
-  min-width: 60%;
+  min-width: 80%;
   max-width: 90%;
 }
 

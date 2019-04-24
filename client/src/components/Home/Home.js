@@ -8,9 +8,7 @@ import "../Styles/home.css";
 import RecipeDrawer from "./RecipeDrawer";
 
 export default function Home(props) {
-  const [year, setYear] = useState(null);
-  const [month, setMonth] = useState(null);
-  const [day, setDay] = useState(null);
+  const [date, setDate] = useState({ day: null, year: null, month: null });
   const [position, setPosition] = useState(0);
   const [yPosition, setYPosition] = useState(0);
   const [recipes, setRecipe] = useState([]);
@@ -18,9 +16,11 @@ export default function Home(props) {
   useEffect(() => {
     const n = new Date();
     function getDates() {
-      setYear(n.getFullYear());
-      setMonth(n.getMonth());
-      setDay(n.getDate());
+      setDate({
+        year: n.getFullYear(),
+        month: n.getMonth(),
+        day: n.getDate()
+      });
     }
     setInterval(getDates, 1000 * 60 * 60);
     getDates();
@@ -32,22 +32,23 @@ export default function Home(props) {
     getRequest("/api/recipe/all", apiToken(), data => setRecipe(data.data));
   }, {});
   const moveUp = () => {
-    if (position + month === 11) {
-      setPosition(0 - month);
+    if (position + date.month === 11) {
+      setPosition(0 - date.month);
       setYPosition(yPosition + 1);
     } else {
       setPosition(position + 1);
     }
   };
   const moveDn = () => {
-    if (position + month === 0) {
-      setPosition(11 - month);
+    if (position + date.month === 0) {
+      setPosition(11 - date.month);
       setYPosition(yPosition - 1);
     } else {
       setPosition(position - 1);
     }
   };
   const { user } = props;
+  const { day, month, year } = date;
   return (
     <>
       {user ? (
@@ -64,7 +65,7 @@ export default function Home(props) {
             <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
           </div>
           <Calander
-            {...{ year, month, day, position, yPosition, moveUp, moveDn }}
+            {...{ day, month, year, position, yPosition, moveUp, moveDn }}
           />
           <div style={{ textAlign: "left" }}>
             <h4>Your Recipes</h4>

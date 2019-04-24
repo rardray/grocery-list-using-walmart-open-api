@@ -106,6 +106,7 @@
   display: inline-block;
   position: relative;
   min-width: 45%;
+  max-width: 98%;
   text-align: left;
   vertical-align: top;
 }
