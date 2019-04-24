@@ -19,7 +19,7 @@ export default function SwipeFunction(props) {
       window.removeEventListener("touchend", swipeEnd);
     };
     const swipeStart = function(e) {
-      if (e.touches[1].clientX) {
+      if (e.touches[1]) {
         return;
       }
       let clientX = e.touches[0].clientX;
