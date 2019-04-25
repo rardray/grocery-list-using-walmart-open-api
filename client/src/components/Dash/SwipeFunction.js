@@ -40,7 +40,7 @@ export default function SwipeFunction(props) {
   const transAn = () => {
     let pathname = window.location.pathname;
     if (pathname === paths[4]) {
-      return navigate(paths[0]);
+      navigate(paths[0]);
     } else {
       let navi = paths.indexOf(pathname);
       navigate(paths[navi + 1]);
@@ -51,7 +51,7 @@ export default function SwipeFunction(props) {
   const transAnB = () => {
     let pathname = window.location.pathname;
     if (pathname === paths[0]) {
-      return navigate(paths[4]);
+      navigate(paths[4]);
     } else {
       let navi = paths.indexOf(pathname);
       navigate(paths[navi - 1]);
