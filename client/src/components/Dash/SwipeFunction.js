@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 import $ from "jquery";
+import { navigate } from "@reach/router";
+const SB_AD = "/grocery";
+const paths = [
+  `${SB_AD}/addrecipe`,
+  `${SB_AD}/cart`,
+  "/",
+  `${SB_AD}/favorites`,
+  `${SB_AD}/history`
+];
 
 const tf = [
   `translateX(0px)`,
@@ -13,15 +22,14 @@ export default function SwipeFunction(props) {
     transform: tf[0],
     transition: ts[0]
   });
+
   useEffect(() => {
     let xPos = null;
+    let pathname = window.location.pathname;
     const touchLimit = () => {
       window.removeEventListener("touchend", swipeEnd);
     };
     const swipeStart = function(e) {
-      if (e.touches[1]) {
-        return;
-      }
       let clientX = e.touches[0].clientX;
       xPos = clientX;
       window.addEventListener("touchend", swipeEnd);
@@ -32,12 +40,26 @@ export default function SwipeFunction(props) {
     };
     const transAn = () => {
       setTimeout(finishAn, 200);
-      window.history.forward();
+      paths.forEach((el, i) => {
+        if (i === 4) {
+          navigate(paths[0]);
+        }
+        if (el === pathname) {
+          navigate(paths[i + 1]);
+        }
+      });
       setTransition({ transform: tf[1], transition: ts[1] });
     };
     const transAnB = () => {
       setTimeout(finishAn, 200);
-      window.history.back();
+      paths.forEach((el, i) => {
+        if (i === 0) {
+          navigate(paths[4]);
+        }
+        if (el === pathname) {
+          navigate(paths[i - 1]);
+        }
+      });
       setTransition({ transform: tf[2], transition: ts[1] });
     };
     const swipeEnd = e => {

@@ -95,26 +95,21 @@ td {
 }
 #cal-move-r {
   right: 6px;
+  box-shadow: 4px 4px 8px lightgrey;
 }
 #cal-move-l {
   left: 6px;
+  box-shadow: -4px 4px 8px lightgrey;
 }
 .cal-move {
   display: inline-block;
   position: absolute;
-  font-size: 2em;
-  color: aliceblue;
-  background: black;
-  padding: 2px;
-  height: 24px;
+  background: white;
+  padding: 4px;
+  height: 30px;
   width: 30px;
   border-radius: 50%;
-  text-align: center;
   top: 275px;
-  font-weight: 900;
-  opacity: 0.3;
-  padding-bottom: 8px;
-  vertical-align: middle;
   cursor: pointer;
 }
 .preview-img {

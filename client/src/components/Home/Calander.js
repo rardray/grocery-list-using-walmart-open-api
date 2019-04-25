@@ -1,5 +1,6 @@
 import React from "react";
 import calander from "./cal";
+import Directional from "../Styles/expand-button.svg";
 
 const months = [
   "January",
@@ -36,12 +37,24 @@ const Calander = props => {
       <h2>
         {mn}, {year}
       </h2>
-      <div className="cal-move" id="cal-move-l" onClick={props.moveDn}>
-        {"<"}
-      </div>
-      <div className="cal-move" id="cal-move-r" onClick={props.moveUp}>
-        {">"}
-      </div>
+      <div
+        className="cal-move"
+        id="cal-move-l"
+        onClick={props.moveDn}
+        style={{
+          backgroundImage: `url(${Directional})`,
+          transform: "rotate(-90deg)"
+        }}
+      />
+      <div
+        className="cal-move"
+        id="cal-move-r"
+        onClick={props.moveUp}
+        style={{
+          backgroundImage: `url(${Directional})`,
+          transform: "rotate(90deg)"
+        }}
+      />
       <table>
         <tbody>
           {tHeader()}

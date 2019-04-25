@@ -6,6 +6,7 @@ import { getRequest } from "../Utility/httpRequests";
 import DefaultHome from "./DefaultHome";
 import "../Styles/home.css";
 import RecipeDrawer from "./RecipeDrawer";
+import { Link } from "@reach/router";
 
 export default function Home(props) {
   const [date, setDate] = useState({ day: null, year: null, month: null });
@@ -68,7 +69,14 @@ export default function Home(props) {
             {...{ day, month, year, position, yPosition, moveUp, moveDn }}
           />
           <div style={{ textAlign: "left" }}>
-            <h4>Your Recipes</h4>
+            <h4 style={{ marginTop: 2, marginBottom: 4 }}>Your Recipes</h4>
+            <Link
+              className="nav-link"
+              style={{ textAlign: "left" }}
+              to="/grocery/addrecipe"
+            >
+              new recipe...
+            </Link>
           </div>
           <RecipesPreview {...{ recipes }} expanded={false} />
           {recipes.length > 6 ? (
