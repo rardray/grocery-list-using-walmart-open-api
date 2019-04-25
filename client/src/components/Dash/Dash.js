@@ -14,6 +14,7 @@ import "../Styles/menu.css";
 import List from "../Styles/list.svg";
 import $ from "jquery";
 import SwipeFunction from "./SwipeFunction";
+import NavList from "./NavList";
 
 export default function Dash(props) {
   const [showSearch, setShowSearch] = useState(false);
@@ -32,7 +33,7 @@ export default function Dash(props) {
 
   return (
     <>
-      <NavBar>
+      <NavBar NavList={<NavList />}>
         <img
           src={title}
           id="page-title"
@@ -88,6 +89,7 @@ export default function Dash(props) {
           </div>
         )}
       </NavBar>
+
       <SwipeFunction>
         <div
           style={{

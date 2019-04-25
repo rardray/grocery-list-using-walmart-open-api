@@ -23,56 +23,55 @@ export default function SwipeFunction(props) {
     transition: ts[0]
   });
 
-  useEffect(() => {
-    let xPos = null;
+  let xPos = null;
+
+  const touchLimit = () => {
+    window.removeEventListener("touchend", swipeEnd);
+  };
+  const swipeStart = function(e) {
+    let clientX = e.touches[0].clientX;
+    xPos = clientX;
+    window.addEventListener("touchend", swipeEnd);
+    setTimeout(touchLimit, 1000);
+  };
+  const finishAn = () => {
+    setTransition({ transform: tf[0], transition: ts[0] });
+  };
+  const transAn = () => {
     let pathname = window.location.pathname;
-    const touchLimit = () => {
-      window.removeEventListener("touchend", swipeEnd);
-    };
-    const swipeStart = function(e) {
-      let clientX = e.touches[0].clientX;
-      xPos = clientX;
-      window.addEventListener("touchend", swipeEnd);
-      setTimeout(touchLimit, 1000);
-    };
-    const finishAn = () => {
-      setTransition({ transform: tf[0], transition: ts[0] });
-    };
-    const transAn = () => {
-      setTimeout(finishAn, 200);
-      paths.forEach((el, i) => {
-        if (i === 4) {
-          navigate(paths[0]);
-        }
-        if (el === pathname) {
-          navigate(paths[i + 1]);
-        }
-      });
-      setTransition({ transform: tf[1], transition: ts[1] });
-    };
-    const transAnB = () => {
-      setTimeout(finishAn, 200);
-      paths.forEach((el, i) => {
-        if (i === 0) {
-          navigate(paths[4]);
-        }
-        if (el === pathname) {
-          navigate(paths[i - 1]);
-        }
-      });
-      setTransition({ transform: tf[2], transition: ts[1] });
-    };
-    const swipeEnd = e => {
-      var deltaX = e.changedTouches[0].clientX;
-      if (deltaX - xPos < -100) {
-        setTransition({ transform: tf[2], transition: ts[0] });
-        setTimeout(transAn, 200);
-      }
-      if (deltaX - xPos > 100) {
-        setTransition({ transform: tf[1], transition: ts[0] });
-        setTimeout(transAnB, 200);
-      }
-    };
+    if (pathname === paths[4]) {
+      return navigate(paths[0]);
+    } else {
+      let navi = paths.indexOf(pathname);
+      navigate(paths[navi + 1]);
+    }
+    setTimeout(finishAn, 200);
+    setTransition({ transform: tf[1], transition: ts[1] });
+  };
+  const transAnB = () => {
+    let pathname = window.location.pathname;
+    if (pathname === paths[0]) {
+      return navigate(paths[4]);
+    } else {
+      let navi = paths.indexOf(pathname);
+      navigate(paths[navi - 1]);
+    }
+
+    setTimeout(finishAn, 200);
+    setTransition({ transform: tf[2], transition: ts[1] });
+  };
+  const swipeEnd = e => {
+    var deltaX = e.changedTouches[0].clientX;
+    if (deltaX - xPos < -100) {
+      setTransition({ transform: tf[2], transition: ts[0] });
+      setTimeout(transAn, 200);
+    }
+    if (deltaX - xPos > 100) {
+      setTransition({ transform: tf[1], transition: ts[0] });
+      setTimeout(transAnB, 200);
+    }
+  };
+  useEffect(() => {
     window.addEventListener("touchstart", swipeStart);
   }, {});
 
