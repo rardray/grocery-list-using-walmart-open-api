@@ -14,8 +14,7 @@
   margin-top: 10px;
 }
 .menu-anchor:hover {
-  background: #597dcc;
-  animation: high 0.3s ease-in-out;
+  animation: high 0.3s ease-in-out alternate 1;
 }
 
 .menu-anchor #menu-list {
@@ -41,7 +40,7 @@
     opacity: 1;
   }
   100% {
-    height: 180px;
+    height: 100px;
     width: 200px;
   }
 }

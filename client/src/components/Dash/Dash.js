@@ -33,7 +33,7 @@ export default function Dash(props) {
 
   return (
     <>
-      <NavBar NavList={<NavList />}>
+      <NavBar NavList={props.user ? <NavList /> : null}>
         <img
           src={title}
           id="page-title"
@@ -63,14 +63,8 @@ export default function Dash(props) {
             />
             <Menu image={menuicon}>
               <MenuList>
-                <Link className="nav-link" to="grocery/history">
-                  History
-                </Link>
-                <Link className="nav-link" to="grocery/favorites">
-                  Favorites
-                </Link>
-                <Link className="nav-link" to="grocery/addrecipe">
-                  Add Recipe
+                <Link to="/grocery/settings" className="nav-link">
+                  Settings...
                 </Link>
                 <p className="nav-link" onClick={handleLogout}>
                   Log Out

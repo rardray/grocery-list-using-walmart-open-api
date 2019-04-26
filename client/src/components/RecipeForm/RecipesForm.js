@@ -91,7 +91,8 @@ export default function RecipesForm(props) {
             border: "1px solid #8da0a7 ",
             borderRadius: 10,
             padding: 6,
-            textAlign: "center"
+            textAlign: "center",
+            marginTop: 25
           }}
         >
           <br />

@@ -50,19 +50,24 @@ export default function SwipeFunction(props) {
   };
   const transAnB = () => {
     let pathname = window.location.pathname;
-    if (pathname === paths[0]) {
+    if (paths.indexOf(pathname) === -1) {
+      navigate("/");
+    } else if (pathname === paths[0]) {
       navigate(paths[4]);
     } else {
       let navi = paths.indexOf(pathname);
       navigate(paths[navi - 1]);
     }
-
     setTimeout(finishAn, 200);
     setTransition({ transform: tf[2], transition: ts[1] });
   };
   const swipeEnd = e => {
     var deltaX = e.changedTouches[0].clientX;
     if (deltaX - xPos < -100) {
+      let pathname = window.location.pathname;
+      if (paths.indexOf(pathname) === -1) {
+        return;
+      }
       setTransition({ transform: tf[2], transition: ts[0] });
       setTimeout(transAn, 200);
     }
