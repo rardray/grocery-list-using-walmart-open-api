@@ -15,6 +15,7 @@ import List from "../Styles/list.svg";
 import $ from "jquery";
 import SwipeFunction from "./SwipeFunction";
 import NavList from "./NavList";
+import MainContainer from "./MainContainer";
 
 export default function Dash(props) {
   const [showSearch, setShowSearch] = useState(false);
@@ -73,34 +74,31 @@ export default function Dash(props) {
             </Menu>
           </>
         ) : (
-          <div>
+          <>
             <Link className="nav-link-log" to="grocery/register">
               Register
             </Link>
             <Link className="nav-link-log" to="grocery/login">
               Log In
             </Link>
-          </div>
+          </>
         )}
       </NavBar>
-
-      <SwipeFunction>
-        <div
-          style={{
-            background: "white",
-            margin: "auto",
-            display: "inline-block",
-            position: "relative",
-            minWidth: "90%",
-            maxWidth: props.window ? "100%" : "90%",
-            textAlign: "center"
-          }}
-        >
-          {props.user ? props.ListBar : null}
+      {props.user ? (
+        <SwipeFunction>
+          <MainContainer window={props.window}>
+            {props.user ? props.ListBar : null}
+            {props.children}
+            <Footer user={props.user} />
+          </MainContainer>
+        </SwipeFunction>
+      ) : (
+        <MainContainer window={props.window}>
           {props.children}
           <Footer user={props.user} />
-        </div>
-      </SwipeFunction>
+        </MainContainer>
+      )}
+      )
     </>
   );
 }

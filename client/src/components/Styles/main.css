@@ -221,15 +221,73 @@ p {
   text-decoration: none;
   font-family: sans-serif;
 }
+.sub-links-in {
+  color: lightgrey;
+  font-size: 0.85em;
+  font-weight: 500;
+  z-index: 5;
+  margin-left: 6px;
+  margin-right: 6px;
+  text-decoration: none;
+  font-family: sans-serif;
+  animation: highlights-in 0.2s ease-in 1;
+}
+.sub-links-in2 {
+  color: lightgrey;
+  font-size: 0.85em;
+  font-weight: 500;
+  z-index: 5;
+  margin-left: 6px;
+  margin-right: 6px;
+  text-decoration: none;
+  font-family: sans-serif;
+  animation: highlights-in2 0.2s ease-in 1;
+}
 .sub-links-selected {
   color: white;
   font-weight: 900;
+  font-size: 1.2em;
   z-index: 5;
   margin-left: 6px;
   margin-right: 6px;
   text-decoration: none;
   font-family: sans-serif;
   animation: highlights 0.2s ease-in 1;
+}
+.sub-links-selected2 {
+  color: white;
+  font-weight: 900;
+  font-size: 1.2em;
+  z-index: 5;
+  margin-left: 6px;
+  margin-right: 6px;
+  text-decoration: none;
+  font-family: sans-serif;
+  animation: highlights2 0.2s ease-in 1;
+}
+@keyframes highlights-in {
+  0% {
+    font-size: 0.5em;
+    font-weight: 300;
+    color: grey;
+  }
+  100% {
+    font-size: 0.85em;
+    font-weight: 500;
+    color: lightgrey;
+  }
+}
+@keyframes highlights-in2 {
+  0% {
+    font-size: 0.5em;
+    font-weight: 300;
+    color: grey;
+  }
+  100% {
+    font-size: 0.85em;
+    font-weight: 500;
+    color: lightgrey;
+  }
 }
 @keyframes highlights {
   0% {
@@ -238,7 +296,19 @@ p {
     color: lightgray;
   }
   100% {
-    font-size: 1em;
+    font-size: 1.2em;
+    font-weight: 900;
+    color: white;
+  }
+}
+@keyframes highlights2 {
+  0% {
+    font-size: 0.75em;
+    font-weight: 500;
+    color: lightgray;
+  }
+  100% {
+    font-size: 1.2em;
     font-weight: 900;
     color: white;
   }

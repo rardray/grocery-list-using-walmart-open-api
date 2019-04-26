@@ -78,6 +78,9 @@ export default function SwipeFunction(props) {
   };
   useEffect(() => {
     window.addEventListener("touchstart", swipeStart);
+    return function cleanup() {
+      window.removeEventListener("touchstart", swipeStart);
+    };
   }, {});
 
   return <div style={transition}>{props.children}</div>;
