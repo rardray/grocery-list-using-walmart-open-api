@@ -1,57 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
+import { paths, titles } from "../Utility/appHelpers";
 
 export default function NavList(props) {
   const [path, setPath] = useState(null);
   useEffect(() => {
     setPath(window.location.pathname);
   });
+
+  let links = [];
+  for (let i = 0; i < paths.length; i++) {
+    links[i] = (
+      <Link
+        key={i}
+        to={paths[i]}
+        className={path === paths[i] ? "sub-links-selected" : "sub-links"}
+      >
+        {titles[i]}
+      </Link>
+    );
+  }
   return (
     <div className="sub-nav">
-      <div style={{ padding: 2 }}>
-        <Link
-          to="/grocery/addrecipe"
-          className={
-            path === "/grocery/addrecipe" ? "sub-links-selected" : "sub-links"
-          }
-        >
-          new recipe
-        </Link>{" "}
-        |
-        <Link
-          to="/grocery/cart"
-          className={
-            path === "/grocery/cart" ? "sub-links-selected" : "sub-links"
-          }
-        >
-          cart
-        </Link>{" "}
-        |
-        <Link
-          to="/"
-          className={path === "/" ? "sub-links-selected" : "sub-links"}
-        >
-          home
-        </Link>{" "}
-        |
-        <Link
-          to="/grocery/favorites"
-          className={
-            path === "/grocery/favorites" ? "sub-links-selected" : "sub-links"
-          }
-        >
-          favorites
-        </Link>{" "}
-        |
-        <Link
-          to="/grocery/history"
-          className={
-            path === "/grocery/history" ? "sub-links-selected" : "sub-links"
-          }
-        >
-          history
-        </Link>
-      </div>
+      <div style={{ padding: 2 }}>{links}</div>
     </div>
   );
 }

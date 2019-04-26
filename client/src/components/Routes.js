@@ -13,6 +13,7 @@ import Cart from "./ListPages/Cart";
 import Dash from "./Dash/Dash";
 import RecipesForm from "./RecipeForm/RecipesForm";
 import Recipe from "./Recipe";
+import { paths, SB_AD } from "./Utility/appHelpers";
 
 const Routes = props => {
   const {
@@ -39,7 +40,7 @@ const Routes = props => {
   return (
     <Router>
       <Dash
-        path="/"
+        path={paths[2]}
         exact
         {...{ user, logOutUser, history, window, transition }}
         Searchbar={<Searchbar {...{ handleChange, query, searchSubmit }} />}
@@ -60,9 +61,9 @@ const Routes = props => {
           )
         }
       >
-        <Home path="/" user={user} addToList={addToList} />
+        <Home path={paths[2]} user={user} addToList={addToList} />
         <Search
-          path="grocery/search/:query"
+          path={`${SB_AD}/search/:query`}
           {...{
             productSearch,
             handleQuantity,
@@ -73,7 +74,7 @@ const Routes = props => {
         />
         {pageLoad ? (
           <Favorites
-            path="grocery/favorites"
+            path={paths[3]}
             {...{
               history,
               handleQuantity,
@@ -83,11 +84,11 @@ const Routes = props => {
             }}
           />
         ) : (
-          <Loader path="grocery/favorites" />
+          <Loader path={paths[3]} />
         )}
         {pageLoad ? (
           <Cart
-            path="grocery/cart"
+            path={paths[1]}
             history={history}
             handleQuantity={handleQuantity}
             handleDelete={handleDelete}
@@ -97,11 +98,11 @@ const Routes = props => {
             clearList={clearList}
           />
         ) : (
-          <Loader path="grocery/cart" />
+          <Loader path={paths[1]} />
         )}
         {pageLoad ? (
           <History
-            path="grocery/history"
+            path={paths[4]}
             {...{
               handleDrag,
               history,
@@ -111,16 +112,20 @@ const Routes = props => {
             }}
           />
         ) : (
-          <Loader path="grocery/history" />
+          <Loader path={paths[4]} />
         )}
-        <RecipesForm path="grocery/addrecipe" {...props} />
-        <Recipe path="grocery/recipe/:id" {...props} />
+        <RecipesForm path={paths[0]} {...props} />
+        <Recipe path={`${SB_AD}/recipe/:id`} {...props} />
         <Register
-          path="grocery/register"
+          path={`${SB_AD}/register`}
           setUser={props.setUser}
           getList={getList}
         />
-        <Login path="grocery/login" setUser={props.setUser} getList={getList} />
+        <Login
+          path={`${SB_AD}/login`}
+          setUser={props.setUser}
+          getList={getList}
+        />
       </Dash>
     </Router>
   );

@@ -11,20 +11,20 @@ import menuicon from "../Styles/Untitled.svg";
 import Footer from "./Footer";
 import "../Styles/menu.css";
 import List from "../Styles/list.svg";
-import $ from "jquery";
 import SwipeFunction from "./SwipeFunction";
 import NavList from "./NavList";
 import MainContainer from "./MainContainer";
+import { paths, SB_AD } from "../Utility/appHelpers";
 
 export default function Dash(props) {
   const handleLogout = () => {
     cookie.remove("user", { path: "/" });
     cookie.remove("token", { path: "/" });
     cookie.remove("grocery-api", { path: "/" });
-    navigate("/grocery/login");
+    navigate(`${SB_AD}/login`);
     props.logOutUser();
   };
-  const handleCartIcon = e => navigate("/grocery/cart");
+  const handleCartIcon = e => navigate(paths[1]);
 
   return (
     <>
@@ -49,7 +49,7 @@ export default function Dash(props) {
             />
             <Menu image={menuicon}>
               <MenuList>
-                <Link to="/grocery/settings" className="nav-link">
+                <Link to={`${SB_AD}/settings`} className="nav-link">
                   Settings...
                 </Link>
                 <p className="nav-link" onClick={handleLogout}>
@@ -60,10 +60,10 @@ export default function Dash(props) {
           </>
         ) : (
           <>
-            <Link className="nav-link-log" to="grocery/register">
+            <Link className="nav-link-log" to={`${SB_AD}/register`}>
               Register
             </Link>
-            <Link className="nav-link-log" to="grocery/login">
+            <Link className="nav-link-log" to={`${SB_AD}/login`}>
               Log In
             </Link>
           </>
@@ -74,16 +74,15 @@ export default function Dash(props) {
           <MainContainer window={props.window}>
             {props.user ? props.ListBar : null}
             {props.children}
-            <Footer user={props.user} />
+            <Footer user={props.user} handleLogout={handleLogout} />
           </MainContainer>
         </SwipeFunction>
       ) : (
         <MainContainer window={props.window}>
           {props.children}
-          <Footer user={props.user} />
+          <Footer user={props.user} handleLogout={handleLogout} />
         </MainContainer>
       )}
-      )
     </>
   );
 }

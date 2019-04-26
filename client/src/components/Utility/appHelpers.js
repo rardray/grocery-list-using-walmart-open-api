@@ -30,3 +30,14 @@ export function editData(data, ind, cb1, cb2) {
     cb2(data, [ind, k]);
   }
 }
+
+export const SB_AD = "/grocery";
+export const paths = [
+  `${SB_AD}/addrecipe`,
+  `${SB_AD}/cart`,
+  "/",
+  `${SB_AD}/favorites`,
+  `${SB_AD}/history`
+];
+
+export const titles = ["new recipe", "cart", "home", "favorites", "history"];

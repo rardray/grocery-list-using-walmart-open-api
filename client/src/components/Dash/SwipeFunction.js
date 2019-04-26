@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import $ from "jquery";
 import { navigate } from "@reach/router";
-const SB_AD = "/grocery";
-const paths = [
-  `${SB_AD}/addrecipe`,
-  `${SB_AD}/cart`,
-  "/",
-  `${SB_AD}/favorites`,
-  `${SB_AD}/history`
-];
+import { paths } from "../Utility/appHelpers";
 
 const tf = [
   `translateX(0px)`,
