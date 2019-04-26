@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import NavBar from "./NavBar";
 import { Link, navigate } from "@reach/router";
 import "../Styles/main.css";
@@ -7,7 +7,6 @@ import MenuList from "./MenuList";
 import cookie from "react-cookies";
 import Licon from "./licon";
 import title from "../Styles/title.svg";
-import searchicon from "../Styles/searchicon.svg";
 import menuicon from "../Styles/Untitled.svg";
 import Footer from "./Footer";
 import "../Styles/menu.css";
@@ -18,7 +17,6 @@ import NavList from "./NavList";
 import MainContainer from "./MainContainer";
 
 export default function Dash(props) {
-  const [showSearch, setShowSearch] = useState(false);
   const handleLogout = () => {
     cookie.remove("user", { path: "/" });
     cookie.remove("token", { path: "/" });
@@ -26,10 +24,6 @@ export default function Dash(props) {
     navigate("/grocery/login");
     props.logOutUser();
   };
-  useEffect(() => {
-    const focus = () => (showSearch ? $("#searchbar").focus() : null);
-    focus();
-  }, [showSearch]);
   const handleCartIcon = e => navigate("/grocery/cart");
 
   return (
@@ -45,17 +39,8 @@ export default function Dash(props) {
         {props.window ? null : <h2>fundrays grocery</h2>}
         {props.user ? (
           <>
-            <div
-              id="p-search"
-              className={showSearch ? "show-search" : "search-contain"}
-            >
+            <div id="p-search" className={"show-search"}>
               {props.Searchbar}
-            </div>
-            <div
-              className="menu-anchor"
-              onClick={() => setShowSearch(!showSearch)}
-            >
-              <img src={searchicon} alt="search" />
             </div>
             <Licon
               history={props.history}

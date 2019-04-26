@@ -1,12 +1,12 @@
 import React from "react";
+import SearchIco from "../Styles/searchicon.svg";
 
 const Searchbar = props => {
   return (
     <>
       <form
         style={{
-          minWidth: "80%",
-          maxWidth: "95%",
+          width: "100%",
           zIndex: 0,
           overflow: "hidden",
           margin: 0
@@ -20,10 +20,10 @@ const Searchbar = props => {
           name="query"
           value={props.query}
           style={{
-            maxWidth: "100%",
-            minWidth: "90%",
+            width: "100%",
             height: 20,
             border: "none",
+            backgroundImage: `url(${SearchIco})`,
 
             textAlign: "left"
           }}
