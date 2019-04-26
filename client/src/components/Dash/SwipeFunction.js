@@ -44,7 +44,11 @@ export default function SwipeFunction(props) {
   const transAnB = () => {
     let pathname = window.location.pathname;
     if (paths.indexOf(pathname) === -1) {
-      navigate("/");
+      if (pathname.includes("/recipe")) {
+        navigate("/");
+      } else {
+        window.history.back();
+      }
     } else if (pathname === paths[0]) {
       navigate(paths[4]);
     } else {

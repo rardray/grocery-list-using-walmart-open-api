@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import { Link, navigate } from "@reach/router";
 import "../Styles/main.css";
@@ -15,8 +15,14 @@ import SwipeFunction from "./SwipeFunction";
 import NavList from "./NavList";
 import MainContainer from "./MainContainer";
 import { paths, SB_AD } from "../Utility/appHelpers";
+import BackButton from "./BackButton";
 
 export default function Dash(props) {
+  const [path, setPath] = useState(null);
+
+  useEffect(() => {
+    setPath(window.location.pathname);
+  });
   const handleLogout = () => {
     cookie.remove("user", { path: "/" });
     cookie.remove("token", { path: "/" });
@@ -28,17 +34,12 @@ export default function Dash(props) {
 
   return (
     <>
-      <NavBar NavList={props.user ? <NavList /> : null}>
-        <img
-          src={title}
-          id="page-title"
-          style={{ width: 45 }}
-          alt="search"
-          onClick={() => navigate("/")}
-        />
+      <NavBar NavList={props.user ? <NavList {...{ path }} /> : null}>
+        <img src={title} id="page-title" style={{ width: 45 }} alt="search" />
         {props.window ? null : <h2>fundrays grocery</h2>}
         {props.user ? (
           <>
+            <BackButton {...{ path }} />
             <div id="p-search" className={"show-search"}>
               {props.Searchbar}
             </div>
