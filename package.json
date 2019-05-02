@@ -1,6 +1,6 @@
 {
   "name": "grocerylist",
-  "version": "1.0.0",
+  "version": "0.8.3",
   "description": "grocery list app using walmart api",
   "main": "index.js",
   "dependencies": {
