@@ -23,8 +23,7 @@ export default function SwipeFunction(props) {
   };
   const swipeStart = function(e) {
     let clientX = e.touches[0].clientX;
-    let clientX2 = e.touches[1];
-    if (clientX2) {
+    if (e.touches.length > 1) {
       return;
     }
     xPos = clientX;
