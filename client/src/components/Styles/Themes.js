@@ -11,7 +11,6 @@ export const Nav = styled.nav`
   color: white;
   z-index: 50;
   text-align: center;
-  border-bottom: 10px solid #7bacb1;
 `;
 
 //INPUTS***********************************

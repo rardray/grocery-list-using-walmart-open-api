@@ -7,7 +7,7 @@ const Container = props => {
       style={{
         textAlign: "center",
         display: "block",
-        background: "#7bacb1",
+        background: "#0e5896",
         paddingTop: "10%",
         paddingBottom: "20%",
         height: "100%"

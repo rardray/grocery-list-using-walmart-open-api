@@ -52,7 +52,7 @@ button {
   color: white;
 }
 button:hover {
-  background: #7bacb1;
+  background: #0e5896;
 }
 select {
   font-size: 10pt;
@@ -231,7 +231,6 @@ p {
   left: 0px;
   text-align: center;
   background: black;
-  border-top: 10px solid #7bacb1;
   color: white;
 }
 .footer a {

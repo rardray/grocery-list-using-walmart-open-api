@@ -52,7 +52,7 @@
   display: inline-block;
   position: relative;
   width: 95%;
-  border-bottom: 1px solid aliceblue;
+  border-bottom: 1px solid #2893ef;
   padding-bottom: 6px;
   overflow: hidden;
   animation: additemlg 0.5s ease-in-out 1;
@@ -62,17 +62,12 @@
   position: relative;
   width: 90px;
   padding: 2px;
-  background: white;
-  color: darkSlateblue;
-
-  border-radius: 0px;
-  font-weight: 900;
   font-size: 0.75em;
   height: auto;
 }
 .list-items button:hover {
   background: #d9f0f7;
-  color: green;
+  color: #2893ef;
 }
 .list-items span {
   display: inline-block;
@@ -87,6 +82,7 @@
   position: relative;
   background: aliceblue;
   border: 1px solid;
+  color: #2893ef;
 }
 .list-items .quantity {
   width: 20px;

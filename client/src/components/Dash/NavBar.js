@@ -9,7 +9,7 @@ const NavBar = props => {
     setScrollPos(window.scrollY);
   }
   function setHide() {
-    if (window.scrollY - scrollPos > 140) {
+    if (window.scrollY > scrollPos) {
       setHidden(true);
     } else {
       setHidden(false);
@@ -17,9 +17,15 @@ const NavBar = props => {
   }
   useEffect(() => {
     window.addEventListener("touchstart", setscroll);
-  });
+    return function cleanup() {
+      window.removeEventListener("touchstart", setscroll);
+    };
+  }, {});
   useEffect(() => {
     window.addEventListener("scroll", setHide);
+    return function cleanup() {
+      window.removeEventListener("scroll", setHide);
+    };
   });
   return (
     <Themes.Nav
