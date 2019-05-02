@@ -5,13 +5,13 @@ import { paths, titles, SB_AD } from "../Utility/appHelpers";
 export default function Footer(props) {
   let links = [];
   let logout = (
-    <a
+    <p
       style={{ cursor: "pointer", display: "inline-block" }}
       onClick={props.handleLogout}
       key={paths.length + 1}
     >
       log out
-    </a>
+    </p>
   );
   for (let i = 0; i < paths.length; i++) {
     links[i] = (

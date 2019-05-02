@@ -17,13 +17,15 @@ const History = props => {
   function handleScroll() {
     let doc = $(document).height();
     let scroll = window.scrollY;
-    console.log(doc, scroll, $(window).height());
     if (doc - scroll < $(window).height() + 100) {
       setLoad(prevLoad => prevLoad + 20);
     }
   }
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    return function cleanup() {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, {});
   return (
     <div className="list-items">
@@ -31,7 +33,7 @@ const History = props => {
       <p>showing last {props.history.length} items in search history</p>
       {history.map((el, i) => {
         if (i >= load + 20) {
-          return;
+          return null;
         }
         return (
           <div key={el.id} id={el.id} className="list-block">

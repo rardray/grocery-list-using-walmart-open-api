@@ -8,7 +8,6 @@ export default function Heart(props) {
       className={props.favorite ? "selected" : "favorite"}
       width="25px"
       viewBox="0 0 50 50"
-      version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       style={{ fill: "slategrey" }}
     >
