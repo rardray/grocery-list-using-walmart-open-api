@@ -9,7 +9,7 @@ const NavBar = props => {
     setScrollPos(window.scrollY);
   }
   function setHide() {
-    if (window.scrollY > scrollPos) {
+    if (window.scrollY > scrollPos + 50) {
       setHidden(true);
     } else {
       setHidden(false);

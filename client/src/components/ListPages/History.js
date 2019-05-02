@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Items from "./Items";
+import $ from "jquery";
 
 const History = props => {
+  const [load, setLoad] = useState(0);
   const {
     handleDrag,
     history,
@@ -11,14 +13,28 @@ const History = props => {
   } = props;
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, {});
+  function handleScroll() {
+    let doc = $(document).height();
+    let scroll = window.scrollY;
+    console.log(doc, scroll, $(window).height());
+    if (doc - scroll < $(window).height() + 100) {
+      setLoad(prevLoad => prevLoad + 20);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, {});
   return (
     <div className="list-items">
       <h2>History</h2>
       <p>showing last {props.history.length} items in search history</p>
       {history.map((el, i) => {
+        if (i >= load + 20) {
+          return;
+        }
         return (
-          <div key={el.id} className="list-block">
+          <div key={el.id} id={el.id} className="list-block">
             <Items
               id={el.id}
               image={el.image}
