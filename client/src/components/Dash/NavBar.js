@@ -6,23 +6,33 @@ const NavBar = props => {
   const [scrollPos, setScrollPos] = useState(0);
   const [hide, setHidden] = useState(false);
 
-  const setscroll = () => {
-    setScrollPos(window.scrollY);
-  };
-  const setHide = () => {
-    if (window.scrollY > scrollPos + 50) {
-      setHidden(true);
-    } else if (window.scrollY < scrollPos - 50 || window.scrollY === 0) {
-      setHidden(false);
-    }
-  };
   useEffect(() => {
+    const touchEnd = () => {
+      window.addEventListener("touchend", setscroll);
+      window.removeEventListener("touchend", setscroll);
+    };
+    const setscroll = () => {
+      let yPos = window.scrollY;
+      touchEnd();
+      setScrollPos(prevScrollPos =>
+        prevScrollPos !== yPos ? yPos : scrollPos
+      );
+    };
     window.addEventListener("touchstart", setscroll);
     return function cleanup() {
       window.removeEventListener("touchstart", setscroll);
+      window.removeEventListener("touchend", setscroll);
     };
-  }, {});
+  }, []);
   useEffect(() => {
+    const setHide = () => {
+      let yPos = window.scrollY;
+      if (yPos > scrollPos + 50) {
+        setHidden(prevHide => true);
+      } else if (yPos < scrollPos - 50 || yPos === 0) {
+        setHidden(prevHide => false);
+      }
+    };
     window.addEventListener("scroll", setHide);
     return function cleanup() {
       window.removeEventListener("scroll", setHide);
