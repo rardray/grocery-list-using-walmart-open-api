@@ -13,7 +13,9 @@ export default function BackButton(props) {
   return (
     <>
       {paths.indexOf(props.path) === -1 ? (
-        <div style={{ position: "fixed", top: 50, left: 10 }}>
+        <div
+          style={{ position: "fixed", top: 50, left: 10, cursor: "pointer" }}
+        >
           <div
             onClick={handleClick}
             style={{

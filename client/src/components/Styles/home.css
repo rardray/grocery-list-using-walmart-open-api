@@ -68,12 +68,12 @@ td {
   max-width: 90%;
   min-width: 65%;
   overflow: hidden;
-  border-bottom: 1px solid aliceblue;
+  border-bottom: 1px solid #c3ddf3;
   padding: 10px;
   margin-bottom: 100px;
   text-align: right;
   font-family: "Open Sans Condensed", sans-serif;
-  margin-top: 24px;
+  padding-top: 90px;
 }
 .home h2 {
   display: inline-block;

@@ -71,7 +71,7 @@ export default function Dash(props) {
         )}
       </NavBar>
       {props.user ? (
-        <SwipeFunction>
+        <SwipeFunction window={props.window}>
           <MainContainer window={props.window}>
             {props.user ? props.ListBar : null}
             {props.children}

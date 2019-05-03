@@ -11,10 +11,29 @@ export default function Heart(props) {
       xmlns="http://www.w3.org/2000/svg"
       style={{ fill: "slategrey" }}
     >
+      <defs>
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop
+            offset="0%"
+            style={{ stopColor: "slategray", stopOpacity: 1 }}
+          />
+          <stop
+            offset="100%"
+            style={{ stopColor: "#c3ddf3", stopOpacity: 1 }}
+          />
+        </linearGradient>
+        <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style={{ stopColor: "#fdb4cd", stopOpacity: 1 }} />
+          <stop
+            offset="100%"
+            style={{ stopColor: "#d6628a", stopOpacity: 1 }}
+          />
+        </linearGradient>
+      </defs>
       <g transform="matrix(0.103301,0,0,0.103301,5.88917,5.88923)">
         <path
           d="M339.266,65.896C319.429,46.068 293.06,35.148 265.012,35.148C248.764,35.148 233.304,38.676 219.063,45.635L185.004,62.283L150.934,45.63C136.697,38.675 121.24,35.147 104.995,35.147C76.944,35.147 50.568,46.073 30.722,65.914C11.073,85.566 0.162,111.719 0.002,139.554C-0.158,167.357 10.424,193.613 29.8,213.484C30.624,214.329 31.48,215.146 32.365,215.925L153.396,322.888C162.422,330.864 173.712,334.853 185.002,334.853C196.292,334.853 207.582,330.864 216.608,322.888L337.651,215.916C338.539,215.129 339.399,214.314 340.227,213.462C359.592,193.588 370.166,167.335 369.999,139.532C369.831,111.702 358.92,85.555 339.266,65.896Z"
-          style={{ fill: props.favorite ? "#ff669b" : "lightgrey" }}
+          style={{ fill: props.favorite ? "url(#grad3)" : "url(#grad2)" }}
         />
       </g>
       <g transform="matrix(0.103301,0,0,0.103301,5.88917,5.88923)">

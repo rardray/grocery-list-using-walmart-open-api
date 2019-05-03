@@ -1,7 +1,7 @@
 .sidebar {
   width: 25%;
   background: white;
-  border-right: 6px solid aliceblue;
+  border-right: 6px solid #c3ddf3;
   float: left;
   position: sticky;
   top: 70px;
@@ -87,14 +87,10 @@
   margin-right: 15px;
   color: lightslategrey;
 }
-.sidebar button:hover {
-  background: #d9f0f7;
-  color: darkred;
-}
+
 .sidebar .list-block {
   margin-bottom: 8px;
   margin-top: 10px;
-  border-bottom: 1px solid aliceblue;
   padding-bottom: 6px;
   overflow: hidden;
   text-align: left;

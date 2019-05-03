@@ -25,7 +25,14 @@ export default function Recipe(props) {
     });
   }, {});
   return (
-    <div style={{ display: "flex", margin: "auto", marginBottom: 125 }}>
+    <div
+      style={{
+        display: "flex",
+        margin: "auto",
+        marginBottom: 125,
+        paddingTop: 90
+      }}
+    >
       {loading ? (
         <RecipeRender
           {...{ title, instructions, ingredients, image }}

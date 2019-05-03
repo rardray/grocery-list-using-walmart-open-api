@@ -9,7 +9,7 @@
   display: block;
 }
 .nav-link:hover {
-  background: lightblue;
+  background: #e6562b;
   color: white;
 }
 .nav-link-log {
@@ -32,9 +32,10 @@
   max-width: 95%;
   min-width: 45%;
   overflow: hidden;
-  border-bottom: 1px solid aliceblue;
+  border-bottom: 1px solid #c3ddf3;
   padding: 10px;
   margin-bottom: 125px;
+  padding-top: 80px;
 }
 .list-items img {
   float: left;
@@ -52,7 +53,7 @@
   display: inline-block;
   position: relative;
   width: 95%;
-  border-bottom: 1px solid #2893ef;
+  border-bottom: 1px solid #c3ddf3;
   padding-bottom: 6px;
   overflow: hidden;
   animation: additemlg 0.5s ease-in-out 1;
@@ -65,10 +66,7 @@
   font-size: 0.75em;
   height: auto;
 }
-.list-items button:hover {
-  background: #d9f0f7;
-  color: #2893ef;
-}
+
 .list-items span {
   display: inline-block;
   position: relative;
@@ -80,7 +78,7 @@
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  background: aliceblue;
+  background: #c3ddf3;
   border: 1px solid;
   color: #2893ef;
 }
@@ -91,7 +89,6 @@
 .list-items .favorite {
   height: 20px;
   width: 20px;
-  fill: lightslategrey;
   float: right;
 }
 .list-items .favorite:hover {
@@ -100,7 +97,6 @@
 .list-items .selected {
   height: 20px;
   width: 20px;
-  fill: #d6628a;
   float: right;
 }
 @keyframes additemlg {

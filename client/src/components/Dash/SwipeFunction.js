@@ -15,6 +15,9 @@ export default function SwipeFunction(props) {
     transform: tf[0],
     transition: ts[0]
   });
+  useEffect(() => {
+    $(window).width();
+  }, [props.window]);
 
   let xPos = null;
 
