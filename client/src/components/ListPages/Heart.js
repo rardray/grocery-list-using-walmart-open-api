@@ -5,7 +5,7 @@ export default function Heart(props) {
     <svg
       onClick={props.addFavorite}
       version="1.1"
-      className={props.favorite ? "selected" : "favorite"}
+      className={"favorite"}
       width="25px"
       viewBox="0 0 50 50"
       xmlns="http://www.w3.org/2000/svg"

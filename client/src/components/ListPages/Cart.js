@@ -65,7 +65,12 @@ const Cart = props => {
           </div>
         );
       })}
-      <button onClick={props.clearList}>Clear List</button>
+      <button
+        onClick={props.clearList}
+        style={{ width: "100%", background: "#0e5896", height: 30 }}
+      >
+        Clear List
+      </button>
     </div>
   );
 };
