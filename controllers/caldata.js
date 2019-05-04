@@ -16,7 +16,7 @@ exports.postCaldata = function(req, res, next) {
   });
   caldata.save(function(err, cal) {
     if (err) next(err);
-    res.status(201).send(cal), console.log(cal);
+    res.status(201).send(cal);
   });
 };
 
@@ -45,6 +45,6 @@ exports.getCaldatas = function(req, res, next) {
     })
     .exec(function(err, cal) {
       if (err) next(err);
-      res.status(201).send(cal), console.log(cal);
+      res.status(201).send(cal);
     });
 };

@@ -1,0 +1,45 @@
+.meal {
+  display: block;
+  position: relative;
+  text-align: left;
+  margin: auto;
+  max-width: 95%;
+  min-width: 45%;
+  overflow: hidden;
+  border-bottom: 1px solid #c3ddf3;
+  padding: 10px;
+  margin-bottom: 125px;
+  padding-top: 80px;
+}
+.meals {
+  vertical-align: bottom;
+  display: inline-block;
+  position: relative;
+  width: 95%;
+  padding: 10px;
+}
+
+.meals img {
+  float: left;
+  left: 0px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.meals button {
+  width: auto;
+  height: auto;
+  padding: 4px;
+  font-size: 0.75em;
+}
+
+.meals label {
+  color: darkslategrey;
+}
+
+.meals select {
+  min-width: 60%;
+  max-width: 75%;
+}
