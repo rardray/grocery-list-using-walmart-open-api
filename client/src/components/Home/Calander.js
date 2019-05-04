@@ -1,8 +1,9 @@
 import React from "react";
 import calander from "./cal";
+import { navigate } from "@reach/router";
 import Directional from "../Styles/expand-button.svg";
 
-const months = [
+export const months = [
   "January",
   "February",
   "March",
@@ -32,6 +33,13 @@ const tHeader = function() {
 const Calander = props => {
   const mn = months[props.month + props.position];
   const year = props.year + props.yPosition;
+  function handleClick(el, ele, e) {
+    if (ele === "") {
+      return;
+    }
+    e.preventDefault();
+    navigate("/grocery/addplan/" + el[0] + "/" + el[1] + "/" + ele);
+  }
   return (
     <div>
       <h2>
@@ -66,6 +74,9 @@ const Calander = props => {
               );
             })
             .map((el, i) => {
+              let data = props.meals.filter(elem => {
+                return elem.dow[0] === el[0][0] && elem.dow[1] === el[0][1];
+              });
               if (
                 el[1] === "" &&
                 el[2] === "" &&
@@ -80,12 +91,27 @@ const Calander = props => {
               return (
                 <tr key={i}>
                   {el.map((ele, i) => {
+                    let newData = data.filter(element => {
+                      return element.dow[2] === ele;
+                    });
                     if (ele[0] || ele[0] === 0) {
                       return null;
                     }
                     return (
                       <td key={i}>
-                        <div className="td">
+                        <div
+                          className="td"
+                          onClick={
+                            newData.length > 0
+                              ? () =>
+                                  navigate("/grocery/meal/" + newData[0]._id)
+                              : handleClick.bind(this, el[0], ele)
+                          }
+                          style={{
+                            cursor: "pointer",
+                            color: newData.length > 0 ? "red" : null
+                          }}
+                        >
                           <div className="date">{ele}</div>
                           <div
                             id={

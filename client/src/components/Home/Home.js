@@ -13,6 +13,7 @@ export default function Home(props) {
   const [position, setPosition] = useState(0);
   const [yPosition, setYPosition] = useState(0);
   const [recipes, setRecipe] = useState([]);
+  const [meals, setMeals] = useState([]);
 
   useEffect(() => {
     const n = new Date();
@@ -31,6 +32,10 @@ export default function Home(props) {
   }, {});
   useEffect(() => {
     getRequest("/api/recipe/all", apiToken(), data => setRecipe(data.data));
+  }, {});
+
+  useEffect(() => {
+    getRequest("/api/caldata/all", apiToken(), data => setMeals(data.data));
   }, {});
   const moveUp = () => {
     if (position + date.month === 11) {
@@ -66,7 +71,16 @@ export default function Home(props) {
             <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
           </div>
           <Calander
-            {...{ day, month, year, position, yPosition, moveUp, moveDn }}
+            {...{
+              day,
+              month,
+              year,
+              position,
+              yPosition,
+              moveUp,
+              moveDn,
+              meals
+            }}
           />
           <div style={{ textAlign: "left" }}>
             <h4 style={{ marginTop: 2, marginBottom: 4 }}>Your Recipes</h4>

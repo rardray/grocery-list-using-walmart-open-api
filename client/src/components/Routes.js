@@ -14,6 +14,7 @@ import Dash from "./Dash/Dash";
 import RecipesForm from "./RecipeForm/RecipesForm";
 import Recipe from "./Recipe";
 import { paths, SB_AD } from "./Utility/appHelpers";
+import AddPlan from "./AddPlan";
 
 const Routes = props => {
   const {
@@ -114,6 +115,7 @@ const Routes = props => {
         ) : (
           <Loader path={paths[4]} />
         )}
+        <AddPlan path="/grocery/addplan/:mo/:ye/:dy" history={history} />
         <RecipesForm path={paths[0]} {...props} />
         <Recipe path={`${SB_AD}/recipe/:id`} {...props} />
         <Register

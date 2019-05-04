@@ -4,7 +4,8 @@ const AuthenticationController = require("../controllers/authentication"),
   passport = require("passport"),
   ListController = require("../controllers/list"),
   RecipeController = require("../controllers/recipe"),
-  UploadController = require("../controllers/upload");
+  UploadController = require("../controllers/upload"),
+  CaldataController = require("../controllers/caldata");
 
 //middleware
 const requireAuth = passport.authenticate("jwt", { session: false });
@@ -15,7 +16,8 @@ module.exports = function(app) {
     authRoutes = express.Router(),
     listRoutes = express.Router(),
     recipeRoutes = express.Router(),
-    uploadRoutes = express.Router();
+    uploadRoutes = express.Router(),
+    caldataRoutes = express.Router();
 
   apiRoutes.use("/auth", authRoutes);
   //login Route
@@ -36,6 +38,10 @@ module.exports = function(app) {
   //file upload
   apiRoutes.use("/upload", uploadRoutes);
   uploadRoutes.post("/", requireAuth, UploadController.postImage);
+  //calendar data
+  apiRoutes.use("/caldata", caldataRoutes);
+  caldataRoutes.post("/add", requireAuth, CaldataController.postCaldata);
+  caldataRoutes.get("/all", requireAuth, CaldataController.getCaldatas);
 
   app.use("/api", apiRoutes); //<---- calls login function from authentication and passport
 };
