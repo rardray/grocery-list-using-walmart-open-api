@@ -43,7 +43,7 @@ td {
   padding: 0px;
 }
 .td {
-  height: 60px;
+  height: 50px;
   position: relative;
 }
 .td #highlighted {
@@ -106,7 +106,7 @@ td {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  top: 270px;
+  top: 310px;
   cursor: pointer;
 }
 .preview-img {
@@ -164,18 +164,25 @@ td {
   display: block;
   position: relative;
   width: 90%;
-  height: 75px;
+  height: 120px;
   margin: 10px;
   margin-bottom: 25px;
   padding: 10px;
   text-align: left;
   box-shadow: 0px 2px 4px #0c3450;
+  overflow: hidden;
+}
+.food-today h3 {
+  display: inline-block;
+  position: relative;
+  margin: 2px;
+  margin-left: 10px;
 }
 .food-today h4 {
-  padding: 4px;
   display: inline-block;
   position: relative;
   vertical-align: top;
+  font-weight: 700;
   margin: 4px;
 }
 .food-today img {
@@ -186,7 +193,15 @@ td {
   vertical-align: top;
   margin: 4px;
 }
-
+.food-today a {
+  color: #0c3450;
+  font-family: sans-serif;
+  text-decoration: none;
+  font-weight: 500;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size: 0.75em;
+}
 .r-contain {
   display: block;
   position: relative;

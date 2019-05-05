@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <path d="M22.555,16.078C23.905,16.078 25,14.983 25,13.633C25,9.134 25,0 25,0L50,25L25,50C25,50 25,38.108 25,33.471C25,32.989 24.808,32.525 24.467,32.184C24.125,31.843 23.662,31.651 23.179,31.651C17.424,31.651 0,31.651 0,31.651C0,31.651 0,31.65 0,31.65C0,27.52 1.641,23.559 4.561,20.639C7.481,17.718 11.442,16.078 15.572,16.078C18.294,16.078 20.808,16.078 22.555,16.078Z" style="fill:url(#_Linear1);"/>
+    <g transform="matrix(1.48049,0,0,1.38887,0,-11.082)">
+        <clipPath id="_clip2">
+            <path d="M0,33.641L10.424,33.81C10.423,33.81 10.423,33.81 10.423,33.81C7.493,35.488 5.87,38.949 6.37,42.454C6.564,43.589 6.444,44.069 6.063,43.966C6.063,43.966 6.063,43.966 6.062,43.966C2.648,43.712 0,40.686 0,37.037C0,35.177 0,33.641 0,33.641"/>
+        </clipPath>
+        <g clip-path="url(#_clip2)">
+            <g transform="matrix(0.675452,-0,-0,0.720008,-0,7.97915)">
+                <use xlink:href="#_Image3" x="0" y="37.231" width="15.432px" height="14.359px" transform="matrix(0.964516,0,0,0.957281,0,0)"/>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear1" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(28.7184,28.7184,-28.7184,28.7184,0,-7.54952e-15)"><stop offset="0" style="stop-color:rgb(223,251,255);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(14,88,150);stop-opacity:1"/></linearGradient>
+        <image id="_Image3" width="16px" height="15px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiElEQVQokZ2Syw3EIAwF39jUto1tR2lw9xBIwISEwAXJYt7Hgs93+2nhmCEDpRXYDQFyWxDw7Pw6ATpj1/eUAGgHCmzIZwUOOENU8GMFQIYax+kK5Mjt0s49+F0CGDt6ERolaODKjS7NxT+Ibn2Ffp5G8LDC1RLfOEaxdAzioziPgiXBnfpMhT9WogVMlOCo6wAAAABJRU5ErkJggg=="/>
+    </defs>
+</svg>
