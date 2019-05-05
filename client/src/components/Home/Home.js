@@ -7,6 +7,7 @@ import DefaultHome from "./DefaultHome";
 import "../Styles/home.css";
 import RecipeDrawer from "./RecipeDrawer";
 import { Link } from "@reach/router";
+import MealForDay from "./MealForDay";
 
 export default function Home(props) {
   const [date, setDate] = useState({ day: null, year: null, month: null });
@@ -70,6 +71,7 @@ export default function Home(props) {
           >
             <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
           </div>
+          <MealForDay {...{ day, month, year, meals }} />
           <Calander
             {...{
               day,
@@ -82,22 +84,28 @@ export default function Home(props) {
               meals
             }}
           />
-          <div style={{ textAlign: "left" }}>
-            <h4 style={{ marginTop: 2, marginBottom: 4 }}>Your Recipes</h4>
-            <Link
-              className="nav-link"
-              style={{ textAlign: "left" }}
-              to="/grocery/addrecipe"
-            >
-              new recipe...
-            </Link>
+          <div className="r-contain" style={{ height: "auto" }}>
+            <div style={{ textAlign: "center" }}>
+              <h2
+                style={{
+                  marginTop: 2,
+                  marginBottom: 8,
+                  width: "100%",
+                  background: "#e6562b",
+                  color: "white",
+                  boxShadow: "0px 2px 4px lightgrey"
+                }}
+              >
+                Your Recipes
+              </h2>
+            </div>
+            <RecipesPreview {...{ recipes }} expanded={false} />
+            {recipes.length > 6 ? (
+              <RecipeDrawer {...{ recipes }}>
+                <RecipesPreview {...{ recipes }} expanded={true} />
+              </RecipeDrawer>
+            ) : null}
           </div>
-          <RecipesPreview {...{ recipes }} expanded={false} />
-          {recipes.length > 6 ? (
-            <RecipeDrawer {...{ recipes }}>
-              <RecipesPreview {...{ recipes }} expanded={true} />
-            </RecipeDrawer>
-          ) : null}
         </div>
       ) : (
         <div className="home" style={{ textAlign: "center" }}>

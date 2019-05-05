@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Default from "./Styles/default.svg";
 
 export default function MealSelect(props) {
@@ -29,7 +29,11 @@ export default function MealSelect(props) {
         <select value={props.value} onChange={props.change} className="input">
           <option />
           {(single ? props.history : props.recipes).map(el => {
-            return <option value={el._id}>{el.title}</option>;
+            return (
+              <option key={el._id} value={el._id}>
+                {el.title}
+              </option>
+            );
           })}
         </select>
       </div>

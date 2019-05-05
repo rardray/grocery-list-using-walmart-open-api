@@ -5,7 +5,7 @@ import { months } from "./Home/Calander";
 import MealSelect from "./MealSelect";
 
 import "./Styles/meals.css";
-import { navigate } from "@reach/router/lib/history";
+import { navigate } from "@reach/router";
 
 export default function AddPlan(props) {
   const [recipes, setRecipes] = useState([]);
@@ -17,7 +17,7 @@ export default function AddPlan(props) {
     getRequest("/api/recipe/all", apiToken(), data => setRecipes(data.data));
   }, {});
 
-  function handleSubmit(e) {
+  const handleSubmit = e => {
     e.preventDefault();
     if (!main) {
       return;
@@ -28,9 +28,15 @@ export default function AddPlan(props) {
       sideOneId: sideOne,
       sideTwoId: sideTwo
     };
-    postRequest("/api/caldata/add", apiToken(), data);
-    window.history.back();
-  }
+    postRequest(
+      "/api/caldata/add",
+      apiToken(),
+      data,
+      data => console.log(data),
+      null,
+      () => navigate("/")
+    );
+  };
 
   return (
     <>
@@ -62,7 +68,10 @@ export default function AddPlan(props) {
           sideX={sideTwo}
         />
         <div style={{ textAlign: "center" }}>
-          <button onClick={handleSubmit} style={{ width: "95%" }}>
+          <button
+            onClick={handleSubmit}
+            style={{ width: "95%", background: "#0e5896" }}
+          >
             Save
           </button>
         </div>

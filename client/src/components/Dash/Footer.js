@@ -15,12 +15,9 @@ export default function Footer(props) {
   );
   for (let i = 0; i < paths.length; i++) {
     links[i] = (
-      <>
-        <Link to={paths[i]} key={i}>
-          {titles[i]}
-        </Link>{" "}
-        {" | "}
-      </>
+      <div key={i} style={{ display: "inline-block" }}>
+        <Link to={paths[i]}>{titles[i]}</Link> {" | "}
+      </div>
     );
   }
   links.push(logout);
