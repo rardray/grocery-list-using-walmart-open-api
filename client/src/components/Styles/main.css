@@ -54,18 +54,37 @@ button {
 button:hover {
   background: #0e5896;
 }
-select {
-  font-size: 10pt;
-  font-weight: 300;
-  width: 100%;
-}
+
 label {
   font-weight: 300;
   margin: 0px;
   padding: 0px;
   color: lightslategray;
+  padding-bottom: 4px;
 }
-
+.cust-select {
+  font-size: 16px;
+  font-weight: 300;
+  width: 100%;
+  font-family: sans-serif;
+  color: #0e5896;
+  line-height: 1;
+  padding: 0.3em 1.4em 0.3em 0.8em;
+  max-width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #0e5896;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 0.5em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: aliceblue;
+  background-image: url("./select.svg"),
+    linear-gradient(to bottom, aliceblue 0%, azure 100%);
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 1.2em auto, 100%;
+}
 h1 {
   font-size: 32pt;
   font-weight: 700;

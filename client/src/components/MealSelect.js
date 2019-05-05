@@ -26,7 +26,11 @@ export default function MealSelect(props) {
             {single ? "Single Item" : "Recipe"}
           </button>
         )}
-        <select value={props.value} onChange={props.change} className="input">
+        <select
+          className="cust-select"
+          value={props.value}
+          onChange={props.change}
+        >
           <option />
           {(single ? props.history : props.recipes).map(el => {
             return (
