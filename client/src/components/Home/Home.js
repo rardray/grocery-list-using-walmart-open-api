@@ -6,9 +6,9 @@ import { getRequest } from "../Utility/httpRequests";
 import DefaultHome from "./DefaultHome";
 import "../Styles/home.css";
 import RecipeDrawer from "./RecipeDrawer";
-import { Link } from "@reach/router";
 import MealForDay from "./MealForDay";
-
+import Loader from "../Loader";
+import { useLoaderState } from "../Hooks";
 export default function Home(props) {
   const [date, setDate] = useState({ day: null, year: null, month: null });
   const [position, setPosition] = useState(0);
@@ -16,6 +16,19 @@ export default function Home(props) {
   const [recipes, setRecipe] = useState([]);
   const [meals, setMeals] = useState([]);
 
+  const loadState = useLoaderState(
+    getRequest,
+    "/api/caldata/all",
+    apiToken(),
+    data => setMeals(data.data)
+  );
+
+  const loadRecipe = useLoaderState(
+    getRequest,
+    "/api/recipe/all",
+    apiToken(),
+    data => setRecipe(data.data)
+  );
   useEffect(() => {
     const n = new Date();
     function getDates() {
@@ -31,13 +44,7 @@ export default function Home(props) {
       clearInterval(getDates, 1000 * 60 * 60);
     };
   }, {});
-  useEffect(() => {
-    getRequest("/api/recipe/all", apiToken(), data => setRecipe(data.data));
-  }, {});
 
-  useEffect(() => {
-    getRequest("/api/caldata/all", apiToken(), data => setMeals(data.data));
-  }, {});
   const moveUp = () => {
     if (position + date.month === 11) {
       setPosition(0 - date.month);
@@ -68,29 +75,32 @@ export default function Home(props) {
           >
             <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
           </div>
-          <MealForDay {...{ day, month, year, meals }} />
-          <Calander
-            {...{
-              day,
-              month,
-              year,
-              position,
-              yPosition,
-              moveUp,
-              moveDn,
-              meals
-            }}
-          />
+          {loadState || <MealForDay {...{ day, month, year, meals }} />}
+          {loadState || (
+            <Calander
+              {...{
+                day,
+                month,
+                year,
+                position,
+                yPosition,
+                moveUp,
+                moveDn,
+                meals
+              }}
+            />
+          )}
           <div className="r-contain" style={{ height: "auto" }}>
             <div style={{ textAlign: "center" }}>
               <h2 className="header-orange">Your Recipes</h2>
             </div>
-            <RecipesPreview {...{ recipes }} expanded={false} />
+            {loadRecipe || <RecipesPreview {...{ recipes }} expanded={false} />}
             {recipes.length > 6 ? (
               <RecipeDrawer {...{ recipes }}>
                 <RecipesPreview {...{ recipes }} expanded={true} />
               </RecipeDrawer>
             ) : null}
+            }
           </div>
         </div>
       ) : (

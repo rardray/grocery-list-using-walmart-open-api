@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Button from "../Styles/Button";
 import { postRequest } from "../Utility/httpRequests";
 import { apiToken } from "../Utility/appHelpers";
 import { navigate } from "@reach/router";

@@ -39,12 +39,16 @@
 .list-items img {
   display: inline-block;
   position: absolute;
-  height: 65px;
-  width: 65px;
+  height: 75px;
+  width: 75px;
   left: 6px;
   top: 6px;
   padding: 4px;
-  border-radius: 6px;
+  border-radius: 50%;
+  border: 6px solid #387fbb;
+  box-sizing: border-box;
+  margin: 0px;
+  box-shadow: 0 2px 8px lightgrey;
 }
 .list-items h4 {
   margin: 4px;
@@ -56,6 +60,7 @@
   overflow: hidden;
   animation: additemlg 0.5s ease-in-out 1;
   background: white;
+  border-radius: 50px 0 0 0;
 }
 .list-block button {
   display: inline-block;
@@ -93,9 +98,8 @@
   width: 20px;
   position: relative;
   vertical-align: middle;
-  margin: 4px;
+  margin: 4px 10px 4px 10px;
   padding: 2px;
-  margin-left: 10px;
 }
 
 @keyframes additemlg {

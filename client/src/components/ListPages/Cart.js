@@ -50,12 +50,13 @@ const Cart = props => {
       {cart.map((el, i) => {
         return (
           <Items
+            key={el.id}
             id={el.id}
             image={el.image}
             handleDrag={props.handleDrag.bind(this, i, el)}
             title={el.title}
             action={props.handleDelete.bind(this, el)}
-            bLabel="REMOVE"
+            bLabel="Remove"
             handleQuantity={handleUpdate.bind(this, el)}
             count={el.cartCount}
             favorite={el.favorite}

@@ -4,26 +4,29 @@ import { apiToken } from "./Utility/appHelpers";
 import "./Styles/recipe.css";
 import RecipeRender from "./RecipeRender";
 import Loader from "./Loader";
+import { useLoaderState } from "./Hooks";
 
 export default function Recipe(props) {
-  const [title, setTitle] = useState("");
-  const [instructions, setInstructions] = useState("");
-  const [ingredients, setIngredients] = useState([]);
-  const [image, setImage] = useState("");
-  const [loading, setLoad] = useState(false);
+  const [state, setState] = useState({
+    title: "",
+    instructions: "",
+    ingredients: [],
+    image: ""
+  });
 
+  const load = useLoaderState(
+    getRequest,
+    `/api/recipe/one/${props.id}`,
+    apiToken(),
+    data => {
+      setState({ ...data.data });
+    }
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
   }, {});
-  useEffect(() => {
-    getRequest(`/api/recipe/one/${props.id}`, apiToken(), data => {
-      setTitle(data.data.title);
-      setInstructions(data.data.instructions);
-      setImage(data.data.image);
-      setIngredients(data.data.ingredients);
-      setLoad(true);
-    });
-  }, {});
+
+  const { title, instructions, ingredients, image } = state;
   return (
     <div
       style={{
@@ -33,15 +36,13 @@ export default function Recipe(props) {
         marginTop: 20
       }}
     >
-      {loading ? (
+      {load || (
         <RecipeRender
           {...{ title, instructions, ingredients, image }}
           window={props.window}
           add={props.addToList}
           history={props.history}
         />
-      ) : (
-        <Loader />
       )}
     </div>
   );

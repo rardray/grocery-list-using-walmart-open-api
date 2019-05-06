@@ -48,10 +48,11 @@ button {
   border-radius: 5px;
   padding: 10px;
   border: none;
-  font-size: 20px;
+  font-size: 1.25em;
   outline: none;
-  background: #dc5c36;
+  background: #377fbb;
   color: white;
+  font-weight: 600;
 }
 button:hover {
   background: #0e5896;
@@ -116,7 +117,7 @@ p {
   margin: 0px;
   font-size: 0.75em;
   padding-bottom: 10px;
-  color: #377fbb;
+  color: #0e5896;
 }
 a {
   text-decoration: none;

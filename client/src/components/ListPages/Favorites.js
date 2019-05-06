@@ -20,12 +20,13 @@ const Favorites = props => {
       {favorites.map((el, i) => {
         return (
           <Items
+            key={el.id}
             id={el.id}
             image={el.image}
             handleDrag={props.handleDrag.bind(this, i, el)}
             title={el.title}
             action={props.addToList.bind(this, i, el)}
-            bLabel="ADD TO CART"
+            bLabel="Add to List"
             handleQuantity={props.handleQuantity.bind(this, el, "history")}
             count={el.count}
             favorite={el.favorite}
