@@ -41,39 +41,50 @@ export default function AddPlan(props) {
   return (
     <>
       <div className="meal">
-        <h2 style={{ textAlign: "right", width: "100%", display: "block" }}>
-          Create Meal for {months[props.mo]} {props.dy}, {props.ye}
-        </h2>
-
-        <MealSelect
-          recipes={recipes}
-          change={e => setMain(e.target.value)}
-          value={main}
-          history={props.history}
-          sideX={main}
-          main={true}
-        />
-        <MealSelect
-          recipes={recipes}
-          change={e => setSideOne(e.target.value)}
-          value={sideOne}
-          history={props.history}
-          sideX={sideOne}
-        />
-        <MealSelect
-          recipes={recipes}
-          change={e => setSideTwo(e.target.value)}
-          value={sideTwo}
-          history={props.history}
-          sideX={sideTwo}
-        />
-        <div style={{ textAlign: "center" }}>
-          <button
-            onClick={handleSubmit}
-            style={{ width: "95%", background: "#0e5896" }}
+        <div className="r-contain" style={{ marginTop: 20 }}>
+          <h2
+            style={{
+              textAlign: "center",
+              width: "100%",
+              display: "block",
+              color: "white",
+              background: "#dc5c36",
+              margin: 0,
+              padding: 6,
+              boxSizing: "border-box"
+            }}
           >
-            Save
-          </button>
+            Create Meal for {months[props.mo]} {props.dy}, {props.ye}
+          </h2>
+          <div className="form-con">
+            <MealSelect
+              recipes={recipes}
+              change={e => setMain(e.target.value)}
+              value={main}
+              history={props.history}
+              sideX={main}
+              main={true}
+            />
+            <MealSelect
+              recipes={recipes}
+              change={e => setSideOne(e.target.value)}
+              value={sideOne}
+              history={props.history}
+              sideX={sideOne}
+            />
+            <MealSelect
+              recipes={recipes}
+              change={e => setSideTwo(e.target.value)}
+              value={sideTwo}
+              history={props.history}
+              sideX={sideTwo}
+            />
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <button onClick={handleSubmit} className="button-blue-full">
+              Save
+            </button>
+          </div>
         </div>
       </div>
     </>

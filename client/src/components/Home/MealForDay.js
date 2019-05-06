@@ -16,21 +16,25 @@ export default function MealForDay(props) {
     <div style={{ textAlign: "center" }}>
       <div className="food-today">
         {today[0] ? <img src={today[0].mainId.image} alt="meal" /> : null}
-        <h3>What's For Dinner...</h3>
-        <h3>
-          {today[0] ? today[0].mainId.title : "Nothing planned for today."}
-        </h3>
+        <div style={{ display: "inline-block" }}>
+          <h4>What's For Dinner...</h4>
+          <br />
+          <h3>
+            {today[0] ? today[0].mainId.title : "Nothing planned for today."}
+          </h3>
+        </div>
         <div
           style={{
             display: "inline-block",
             position: "absolute",
             bottom: 4,
             left: 0,
-            width: "98%",
+            boxSizing: "border-box",
+            width: "100%",
             textAlign: "center",
             padding: 0,
             paddingTop: 6,
-            borderTop: "1px solid lightslategrey"
+            borderTop: "1px solid #377fbb"
           }}
         >
           <div
@@ -109,7 +113,12 @@ export default function MealForDay(props) {
                 <img
                   src={go}
                   alt="add"
-                  style={{ width: 25, height: 25, margin: 0, borderRadius: 0 }}
+                  style={{
+                    width: 25,
+                    height: 25,
+                    margin: 0,
+                    borderRadius: 0
+                  }}
                 />
                 <br />
                 view meal

@@ -4,7 +4,7 @@ export default function MainContainer(props) {
   return (
     <div
       style={{
-        background: "white",
+        background: "#dceaf5",
         margin: "auto",
         display: "inline-block",
         position: "relative",

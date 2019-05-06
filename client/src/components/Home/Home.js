@@ -63,10 +63,7 @@ export default function Home(props) {
           <div style={{ textAlign: "left" }} />
           <div
             style={{
-              textAlign: "right",
-              backgroundImage:
-                "linear-gradient(to left, #8da0a7, rgba(0,0,0,0)",
-              borderRadius: 15
+              background: "#dc5c36"
             }}
           >
             <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
@@ -86,18 +83,7 @@ export default function Home(props) {
           />
           <div className="r-contain" style={{ height: "auto" }}>
             <div style={{ textAlign: "center" }}>
-              <h2
-                style={{
-                  marginTop: 2,
-                  marginBottom: 8,
-                  width: "100%",
-                  background: "#e6562b",
-                  color: "white",
-                  boxShadow: "0px 2px 4px lightgrey"
-                }}
-              >
-                Your Recipes
-              </h2>
+              <h2 className="header-orange">Your Recipes</h2>
             </div>
             <RecipesPreview {...{ recipes }} expanded={false} />
             {recipes.length > 6 ? (

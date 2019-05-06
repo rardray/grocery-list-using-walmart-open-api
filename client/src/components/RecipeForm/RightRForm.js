@@ -6,7 +6,9 @@ export default function RightRForm(props) {
       className="r-form-container"
       style={{ width: props.window ? "100%" : "40%" }}
     >
-      <h2 style={{ marginTop: 0 }}>Create New Recipe</h2>
+      <h2 className="header-orange" style={{ padding: 10 }}>
+        Create New Recipe
+      </h2>
       <label>Recipe Name</label>
       <br />
       <input

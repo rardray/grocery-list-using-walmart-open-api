@@ -28,7 +28,7 @@ export default function LeftRForm(props) {
       <label>Select Ingredient From History</label>
       <br />
       <select
-        className="input"
+        className="cust-select"
         type="number"
         value={props.select}
         onChange={props.changeSelect}

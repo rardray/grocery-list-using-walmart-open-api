@@ -15,36 +15,38 @@ export default function SideBarLogic(props) {
   };
   return (
     <div className="sidebar">
-      <div id="bar-header">
-        <button
-          id={grocery ? "top-links" : "top-unselected"}
-          onClick={handleColumn}
-        >
-          Grocery List
-        </button>
-        <span />
-        <button
-          id={grocery ? "top-unselected" : "top-links"}
-          onClick={handleColumn}
-        >
-          Favorites
-        </button>
+      <div className="r-contain">
+        <div id="bar-header">
+          <button
+            id={grocery ? "top-links" : "top-unselected"}
+            onClick={handleColumn}
+          >
+            Grocery List
+          </button>
+          <span />
+          <button
+            id={grocery ? "top-unselected" : "top-links"}
+            onClick={handleColumn}
+          >
+            Favorites
+          </button>
+        </div>
+        <ListContainer {...props} {...{ grocery }}>
+          {" "}
+          {props.pageLoad ? (
+            <List
+              {...props}
+              {...{ grocery, handleColumn }}
+              buttonLabel={grocery ? "R E M O V E " : "ADD TO CART"}
+              filtervalue={grocery ? "inCart" : "favorite"}
+              sortvalue={grocery ? "addedOn" : "updatedAt"}
+              count={grocery ? "cartCount" : "count"}
+            />
+          ) : (
+            <Loader />
+          )}
+        </ListContainer>
       </div>
-      <ListContainer {...props} {...{ grocery }}>
-        {" "}
-        {props.pageLoad ? (
-          <List
-            {...props}
-            {...{ grocery, handleColumn }}
-            buttonLabel={grocery ? "R E M O V E " : "ADD TO CART"}
-            filtervalue={grocery ? "inCart" : "favorite"}
-            sortvalue={grocery ? "addedOn" : "updatedAt"}
-            count={grocery ? "cartCount" : "count"}
-          />
-        ) : (
-          <Loader />
-        )}
-      </ListContainer>
     </div>
   );
 }

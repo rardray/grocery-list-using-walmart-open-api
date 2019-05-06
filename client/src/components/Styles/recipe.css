@@ -1,9 +1,10 @@
 .recipe {
-  width: 90%;
+  width: 100%;
+  padding: 10px;
   display: inline-block;
   text-align: left;
-  margin: auto;
   margin-bottom: 75px;
+  box-sizing: border-box;
 }
 .recipe #header {
   text-align: left;
@@ -26,18 +27,21 @@
 .recipe h3 {
   font-weight: 500;
   font-size: 1em;
-  margin: 6px;
+  margin: 10px;
 }
-.recipe #ingredients-block {
+.recipe .ingredients-block {
   display: inline-block;
   position: relative;
   padding: 4px;
-  border: 1px solid lightblue;
+  border: 1px solid #dceaf5;
   height: 65px;
   overflow: hidden;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-#ingredients-block img {
+.ingredients-block img {
   width: 60px;
   display: inline-block;
   position: absolute;
@@ -45,14 +49,14 @@
   top: 4px;
 }
 
-#ingredients-block h4 {
+.ingredients-block h4 {
   display: inline-block;
   position: relative;
   margin-left: 70px;
   font-size: 0.75em;
 }
 
-#ingredients-block p {
+.ingredients-block p {
   display: inline-block;
   position: absolute;
   right: 4px;
@@ -73,16 +77,20 @@
 .recipe-image {
   width: 100%;
   height: 100px;
-  float: right;
   position: relative;
   overflow: hidden;
-  margin-bottom: 5px;
+  margin: 0 0 5px 0;
+  box-sizing: border-box;
 }
 .recipe-image #r-image {
   object-fit: cover;
   width: 100%;
   height: 100%;
-  margin: 0px;
+  padding: 0px;
+  top: 0px;
+  left: 0px;
+  border-radius: 0px;
+  box-sizing: content-box;
 }
 
 .photo-button {
@@ -105,8 +113,10 @@
 .r-form-container {
   display: inline-block;
   position: relative;
-  min-width: 45%;
-  max-width: 98%;
+  box-sizing: border-box;
+  min-width: 50%;
+  max-width: 100%;
   text-align: left;
   vertical-align: top;
+  margin: 0 0 20px 0;
 }

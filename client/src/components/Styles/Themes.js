@@ -16,11 +16,11 @@ export const Nav = styled.nav`
 //INPUTS***********************************
 
 const inputKeyframes = keyframes`
-  0% {background: lightslategray; height: 2px; }
+  0% {background: #377fbb; height: 2px; }
   100% {background: lightgrey; height: 22px;}`;
 
 export const Input = styled.input`
-  background: lightslategray;
+  background: #377fbb;
   border-bottom: 1px solid slategray;
   padding: 0px;
   height: 2px;

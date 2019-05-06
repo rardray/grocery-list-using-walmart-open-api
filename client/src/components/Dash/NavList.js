@@ -10,7 +10,9 @@ export default function NavList(props) {
         <Link
           to={paths[i]}
           className={
-            props.path === paths[i] ? "sub-links-selected" : "sub-links"
+            props.path === paths[i]
+              ? "sub-links sub-links-selected"
+              : "sub-links"
           }
         >
           {titles[i]}

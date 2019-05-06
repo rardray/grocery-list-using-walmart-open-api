@@ -41,7 +41,7 @@ const Cart = props => {
   }, []);
   return (
     <div className="list-items">
-      <h2>{sTitle}</h2>
+      <h2 className="header-orange">{sTitle}</h2>
       {cart.length ? (
         <p>Showing {total} items in grocery list</p>
       ) : (
@@ -49,26 +49,21 @@ const Cart = props => {
       )}
       {cart.map((el, i) => {
         return (
-          <div key={el.id} className="list-block">
-            <Items
-              id={el.id}
-              image={el.image}
-              handleDrag={props.handleDrag.bind(this, i, el)}
-              title={el.title}
-              action={props.handleDelete.bind(this, el)}
-              bLabel="REMOVE"
-              handleQuantity={handleUpdate.bind(this, el)}
-              count={el.cartCount}
-              favorite={el.favorite}
-              addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}
-            />
-          </div>
+          <Items
+            id={el.id}
+            image={el.image}
+            handleDrag={props.handleDrag.bind(this, i, el)}
+            title={el.title}
+            action={props.handleDelete.bind(this, el)}
+            bLabel="REMOVE"
+            handleQuantity={handleUpdate.bind(this, el)}
+            count={el.cartCount}
+            favorite={el.favorite}
+            addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}
+          />
         );
       })}
-      <button
-        onClick={props.clearList}
-        style={{ width: "100%", background: "#0e5896", height: 30 }}
-      >
+      <button onClick={props.clearList} className="button-blue-full">
         Clear List
       </button>
     </div>

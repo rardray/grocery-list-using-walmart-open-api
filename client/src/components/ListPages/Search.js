@@ -16,24 +16,22 @@ const Search = props => {
       )}
       {props.productSearch.map((el, i) => {
         return (
-          <div key={el.id} className="list-block">
-            <Items
-              id={el.id}
-              image={el.image}
-              handleDrag={props.handleDrag.bind(this, i, el)}
-              title={el.title}
-              action={props.addToList.bind(this, i, el)}
-              bLabel="ADD TO CART"
-              handleQuantity={props.handleQuantity.bind(
-                this,
-                el,
-                "productSearch"
-              )}
-              count={el.count}
-              favorite={el.favorite}
-              addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}
-            />
-          </div>
+          <Items
+            id={el.id}
+            image={el.image}
+            handleDrag={props.handleDrag.bind(this, i, el)}
+            title={el.title}
+            action={props.addToList.bind(this, i, el)}
+            bLabel="ADD TO CART"
+            handleQuantity={props.handleQuantity.bind(
+              this,
+              el,
+              "productSearch"
+            )}
+            count={el.count}
+            favorite={el.favorite}
+            addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}
+          />
         );
       })}
     </div>

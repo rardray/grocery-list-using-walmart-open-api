@@ -3,7 +3,12 @@ import Heart from "./Heart";
 
 const Items = props => {
   return (
-    <>
+    <div
+      key={props.id}
+      id={props.id}
+      className="r-contain list-block"
+      style={{ marginTop: 0, marginBottom: 10 }}
+    >
       <div style={{ display: "block", marginBottom: 34, minHeight: 65 }}>
         <img
           src={props.image}
@@ -18,8 +23,12 @@ const Items = props => {
           display: "block",
           position: "absolute",
           bottom: 6,
+          right: 0,
           width: "100%",
-          textAlign: "right"
+          textAlign: "right",
+          boxSizing: "border-box",
+          borderTop: "1px solid #0c3450",
+          background: "white"
         }}
       >
         <div
@@ -43,7 +52,7 @@ const Items = props => {
           <Heart addFavorite={props.addFavorite} favorite={props.favorite} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

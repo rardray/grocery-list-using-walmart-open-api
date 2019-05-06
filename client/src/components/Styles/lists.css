@@ -1,15 +1,14 @@
 .nav-link {
-  color: darkslategrey;
+  color: #0c3450;
   text-align: right;
   padding: 10px;
   padding-right: 20px;
   font-weight: 900;
   font-size: 14pt;
-  text-decoration: none;
   display: block;
 }
 .nav-link:hover {
-  background: #e6562b;
+  background: #dc5c36;
   color: white;
 }
 .nav-link-log {
@@ -22,20 +21,20 @@
   text-align: right;
   font-weight: 700;
   font-size: 14pt;
-  text-decoration: none;
 }
 .list-items {
   display: block;
   position: relative;
   text-align: left;
   margin: auto;
-  max-width: 95%;
-  min-width: 45%;
+  max-width: 100%;
+  min-width: 75%;
   overflow: hidden;
-  border-bottom: 1px solid #c3ddf3;
   padding: 10px;
-  margin-bottom: 125px;
-  padding-top: 80px;
+  margin-bottom: 80px;
+  padding-top: 90px;
+  box-sizing: border-box;
+  background: #dceaf5;
 }
 .list-items img {
   display: inline-block;
@@ -53,16 +52,12 @@
   margin-right: 20px;
   display: flex;
 }
-.list-items .list-block {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  border-bottom: 3px solid #c3ddf3;
+.list-block {
   overflow: hidden;
   animation: additemlg 0.5s ease-in-out 1;
-  height: 100%;
+  background: white;
 }
-.list-items button {
+.list-block button {
   display: inline-block;
   position: relative;
   width: 90px;
@@ -85,9 +80,9 @@
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  background: #c3ddf3;
+  background: #dbeaf5;
   border: 1px solid;
-  color: #2893ef;
+  color: #387fbb;
 }
 .list-items .quantity {
   width: 20px;

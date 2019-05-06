@@ -30,7 +30,7 @@ export default function Recipe(props) {
         display: "flex",
         margin: "auto",
         marginBottom: 125,
-        paddingTop: 90
+        marginTop: 20
       }}
     >
       {loading ? (

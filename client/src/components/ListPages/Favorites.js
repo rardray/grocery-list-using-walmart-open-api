@@ -11,7 +11,7 @@ const Favorites = props => {
   }, []);
   return (
     <div className="list-items">
-      <h2>{sTitle}</h2>
+      <h2 className="header-orange">{sTitle}</h2>
       {favorites.length ? (
         <p>{favorites.length} Favorite Items</p>
       ) : (
@@ -19,20 +19,18 @@ const Favorites = props => {
       )}
       {favorites.map((el, i) => {
         return (
-          <div key={el.id} className="list-block">
-            <Items
-              id={el.id}
-              image={el.image}
-              handleDrag={props.handleDrag.bind(this, i, el)}
-              title={el.title}
-              action={props.addToList.bind(this, i, el)}
-              bLabel="ADD TO CART"
-              handleQuantity={props.handleQuantity.bind(this, el, "history")}
-              count={el.count}
-              favorite={el.favorite}
-              addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}
-            />
-          </div>
+          <Items
+            id={el.id}
+            image={el.image}
+            handleDrag={props.handleDrag.bind(this, i, el)}
+            title={el.title}
+            action={props.addToList.bind(this, i, el)}
+            bLabel="ADD TO CART"
+            handleQuantity={props.handleQuantity.bind(this, el, "history")}
+            count={el.count}
+            favorite={el.favorite}
+            addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}
+          />
         );
       })}
     </div>

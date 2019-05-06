@@ -16,7 +16,7 @@ th {
 
   font-weight: 300;
   font-size: 1em;
-  color: steelblue;
+  color: #377fbb;
 }
 tr {
   overflow: hidden;
@@ -28,9 +28,9 @@ td {
 
   border-spacing: 0px;
   padding: 6px;
-  color: rgb(197, 207, 216);
+  color: #377fbb;
   font-size: 2em;
-  border-bottom: 1px solid lightblue;
+  border-bottom: 1px solid #dceaf5;
   vertical-align: top;
   overflow: hidden;
 }
@@ -62,34 +62,22 @@ td {
 .home {
   display: block;
   position: relative;
-  margin: auto;
-  max-width: 90%;
+  margin: 0px 0px 100px 0;
+  max-width: 100%;
   min-width: 65%;
   overflow: hidden;
-  border-bottom: 1px solid #c3ddf3;
-  padding: 10px;
-  margin-bottom: 100px;
+  padding: 90px 10px 10px 10px;
   text-align: center;
   font-family: "Open Sans Condensed", sans-serif;
-  padding-top: 90px;
+  box-sizing: border-box;
+  background: white;
 }
 .home h2 {
   display: inline-block;
   margin-top: 4px;
   margin-bottom: 4px;
 }
-.home button {
-  z-index: 3;
-  position: absolute;
-  top: 130px;
-  right: 30px;
-  height: 50px;
-  width: 20px;
-  margin: 0px;
 
-  font-size: 2em;
-  color: skyblue;
-}
 #cal-move-r {
   right: 6px;
   box-shadow: 4px 4px 8px lightgrey;
@@ -110,12 +98,10 @@ td {
   cursor: pointer;
 }
 .preview-img {
-  padding: 6px;
   margin-bottom: 6px;
-  padding-left: 0px;
   background-size: cover;
-
-  width: 44%;
+  box-sizing: border-box;
+  width: 48%;
   display: inline-flex;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -123,8 +109,7 @@ td {
 
 .preview-img h4 {
   color: white;
-  margin-top: 40px;
-  margin-bottom: 10px;
+  margin: 40px 0 10px 0;
   padding: 4px;
   background-image: linear-gradient(to right, slategrey, rgba(0, 0, 0, 0));
   display: inline-block;
@@ -163,9 +148,10 @@ td {
 .food-today {
   display: block;
   position: relative;
-  width: 90%;
-  height: 120px;
-  margin: 10px;
+  width: 100%;
+  height: 140px;
+  margin-top: 10px;
+  box-sizing: border-box;
   margin-bottom: 25px;
   padding: 10px;
   text-align: left;
@@ -175,8 +161,7 @@ td {
 .food-today h3 {
   display: inline-block;
   position: relative;
-  margin: 2px;
-  margin-left: 10px;
+  margin: 4px;
 }
 .food-today h4 {
   display: inline-block;
@@ -186,17 +171,16 @@ td {
   margin: 4px;
 }
 .food-today img {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
+  box-sizing: border-box;
   object-fit: cover;
   border-radius: 50%;
   vertical-align: top;
-  margin: 4px;
 }
 .food-today a {
   color: #0c3450;
   font-family: sans-serif;
-  text-decoration: none;
   font-weight: 500;
   vertical-align: middle;
   cursor: pointer;
@@ -205,11 +189,10 @@ td {
 .r-contain {
   display: block;
   position: relative;
-  width: 90%;
-  height: 75px;
-  margin: 10px;
-  margin-bottom: 25px;
-  margin-top: 40px;
+  box-sizing: border-box;
+  width: 100%;
+  background: white;
+  margin: 40px 0 25px 0;
   padding: 10px;
   text-align: center;
   box-shadow: 0px 2px 4px #0c3450;

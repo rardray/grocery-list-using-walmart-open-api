@@ -86,15 +86,7 @@ export default function RecipesForm(props) {
   return (
     <div style={{ textAlign: "center" }}>
       <div className="list-items" style={{ marginBottom: 0 }}>
-        <div
-          style={{
-            border: "1px solid #8da0a7 ",
-            borderRadius: 10,
-            padding: 6,
-            textAlign: "center",
-            marginTop: 25
-          }}
-        >
+        <div className="r-contain" style={{ marginTop: 10 }}>
           <br />
           <RightRForm
             changeText={e => setInstructions(e.target.value)}
@@ -130,11 +122,12 @@ export default function RecipesForm(props) {
             window={props.window}
           />
           <br />
+          <button className="button-blue-full" onClick={handleSubmit}>
+            Save Recipe
+          </button>
         </div>
       </div>
-      <div style={{ textAlign: "center", marginBottom: 125 }}>
-        <Button label="Save Recipe" click={handleSubmit} />
-      </div>
+      <div style={{ textAlign: "center", marginBottom: 125 }} />
     </div>
   );
 }

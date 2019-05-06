@@ -6,7 +6,6 @@
   max-width: 95%;
   min-width: 45%;
   overflow: hidden;
-  border-bottom: 1px solid #c3ddf3;
   padding: 10px;
   margin-bottom: 125px;
   padding-top: 80px;
@@ -15,15 +14,18 @@
   vertical-align: bottom;
   display: inline-block;
   position: relative;
-  width: 95%;
-  padding: 10px;
+  box-sizing: border-box;
+  text-align: left;
+  width: 100%;
+  padding: 10px 0px 10px 0px;
 }
 
 .meals img {
   float: left;
+  padding: 10px;
   left: 0px;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -36,10 +38,16 @@
 }
 
 .meals label {
-  color: darkslategrey;
+  color: #0c3450;
 }
 
 .meals select {
-  min-width: 60%;
-  max-width: 75%;
+  min-width: 75%;
+  max-width: 80%;
+}
+
+.form-con {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
 }
