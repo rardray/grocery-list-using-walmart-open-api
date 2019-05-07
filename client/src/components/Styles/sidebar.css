@@ -80,6 +80,7 @@
   padding-bottom: 6px;
   overflow: hidden;
   text-align: left;
+  border-radius: 0px;
   animation: additem 0.5s ease-in-out 1;
 }
 .sidebar .favorite {

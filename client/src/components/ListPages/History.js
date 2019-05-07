@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Items from "./Items";
 import $ from "jquery";
+import Loader from "../Loader";
 
 const History = props => {
   const [load, setLoad] = useState(0);

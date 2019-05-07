@@ -9,8 +9,7 @@ const Loader = props => {
         textAlign: "center",
         verticalAlign: "center",
         height: "100%",
-        width: "100%",
-        marginTop: 80
+        width: "100%"
       }}
     >
       <div className="spinner">

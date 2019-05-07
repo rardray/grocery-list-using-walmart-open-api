@@ -124,9 +124,10 @@ a {
 }
 #small-input {
   display: inline-block;
-  min-width: 45%;
+  min-width: 47%;
   max-width: 50%;
   font-size: 10pt;
+  box-sizing: border-box;
 }
 #small-input::placeholder {
   font-size: 8pt;
@@ -142,7 +143,8 @@ a {
 #searchbar {
   background: #0c3450;
   background-repeat: no-repeat;
-  background-position-x: right;
+  background-position-x: 98%;
+  background-size: 20px;
   color: white;
   outline: none;
 }

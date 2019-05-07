@@ -3,7 +3,6 @@ import { getRequest } from "./Utility/httpRequests";
 import { apiToken } from "./Utility/appHelpers";
 import "./Styles/recipe.css";
 import RecipeRender from "./RecipeRender";
-import Loader from "./Loader";
 import { useLoaderState } from "./Hooks";
 
 export default function Recipe(props) {

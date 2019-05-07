@@ -75,7 +75,7 @@ export default function Home(props) {
           >
             <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
           </div>
-          {loadState || <MealForDay {...{ day, month, year, meals }} />}
+          <MealForDay {...{ day, month, year, meals }} loader={loadState} />
           {loadState || (
             <Calander
               {...{
@@ -100,7 +100,6 @@ export default function Home(props) {
                 <RecipesPreview {...{ recipes }} expanded={true} />
               </RecipeDrawer>
             ) : null}
-            }
           </div>
         </div>
       ) : (

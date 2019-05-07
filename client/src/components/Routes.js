@@ -73,48 +73,37 @@ const Routes = props => {
             addFavoriteFromSearch
           }}
         />
-        {pageLoad ? (
-          <Favorites
-            path={paths[3]}
-            {...{
-              history,
-              handleQuantity,
-              addToList,
-              handleDrag,
-              addFavoriteFromSearch
-            }}
-          />
-        ) : (
-          <Loader path={paths[3]} />
-        )}
-        {pageLoad ? (
-          <Cart
-            path={paths[1]}
-            history={history}
-            handleQuantity={handleQuantity}
-            handleDelete={handleDelete}
-            handleDrag={handleDrag}
-            addFavoriteFromSearch={addFavoriteFromSearch}
-            getList={getList}
-            clearList={clearList}
-          />
-        ) : (
-          <Loader path={paths[1]} />
-        )}
-        {pageLoad ? (
-          <History
-            path={paths[4]}
-            {...{
-              handleDrag,
-              history,
-              addToList,
-              handleQuantity,
-              addFavoriteFromSearch
-            }}
-          />
-        ) : (
-          <Loader path={paths[4]} />
-        )}
+        <Favorites
+          path={paths[3]}
+          {...{
+            history,
+            handleQuantity,
+            addToList,
+            handleDrag,
+            addFavoriteFromSearch
+          }}
+        />
+        <Cart
+          path={paths[1]}
+          history={history}
+          handleQuantity={handleQuantity}
+          handleDelete={handleDelete}
+          handleDrag={handleDrag}
+          addFavoriteFromSearch={addFavoriteFromSearch}
+          getList={getList}
+          clearList={clearList}
+        />
+        <History
+          path={paths[4]}
+          {...{
+            handleDrag,
+            history,
+            addToList,
+            handleQuantity,
+            addFavoriteFromSearch
+          }}
+        />
+
         <AddPlan path="/grocery/addplan/:mo/:ye/:dy" history={history} />
         <RecipesForm path={paths[0]} {...props} />
         <Recipe path={`${SB_AD}/recipe/:id`} {...props} />
