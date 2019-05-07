@@ -7,7 +7,6 @@ import DefaultHome from "./DefaultHome";
 import "../Styles/home.css";
 import RecipeDrawer from "./RecipeDrawer";
 import MealForDay from "./MealForDay";
-import Loader from "../Loader";
 import { useLoaderState } from "../Hooks";
 export default function Home(props) {
   const [date, setDate] = useState({ day: null, year: null, month: null });

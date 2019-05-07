@@ -7,7 +7,6 @@ import Search from "./ListPages/Search";
 import Searchbar from "./Dash/Searchbar";
 import Favorites from "./ListPages/Favorites";
 import History from "./ListPages/History";
-import Loader from "./Loader";
 import SideBarLogic from "./SideBar/SideBarLogic";
 import Cart from "./ListPages/Cart";
 import Dash from "./Dash/Dash";
