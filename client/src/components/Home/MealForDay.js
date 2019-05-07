@@ -1,8 +1,8 @@
 import React from "react";
 import plus from "../Styles/plus.svg";
 import edit from "../Styles/edit.svg";
-import { Link } from "@reach/router";
 import go from "../Styles/go.svg";
+import ButtonLinks from "./ButtonLinks";
 
 export default function MealForDay(props) {
   const today = props.meals.filter(el => {
@@ -48,86 +48,31 @@ export default function MealForDay(props) {
                   justifyContent: "space-evenly"
                 }}
               >
+                <ButtonLinks
+                  url="/grocery/addrecipe"
+                  image={plus}
+                  label="new recipe"
+                />
                 {today[0] ? (
-                  <div
-                    style={{
-                      display: "inline-block",
-                      position: "relative",
-                      marginLeft: 10,
-                      marginRight: 10
-                    }}
-                  >
-                    <Link to="/recipe/caldata/edit">
-                      <img
-                        src={edit}
-                        alt="edit"
-                        style={{ width: 25, height: 25, margin: 0 }}
-                      />
-                      <br />
-                      edit meal
-                    </Link>
-                  </div>
+                  <>
+                    <ButtonLinks
+                      url="/recipe/caldata/edit"
+                      image={edit}
+                      label="edit meal"
+                    />
+                    <ButtonLinks
+                      url="/grocery/recipe"
+                      image={go}
+                      label="view meal"
+                    />
+                  </>
                 ) : (
-                  <div
-                    style={{
-                      display: "inline-block",
-                      position: "relative",
-                      marginLeft: 10,
-                      marginRight: 10
-                    }}
-                  >
-                    <Link to="/grocery/addplan/:mo/:ye/:dy">
-                      <img
-                        src={plus}
-                        alt="add"
-                        style={{ width: 25, height: 25, margin: 0 }}
-                      />
-                      <br />
-                      add meal
-                    </Link>
-                  </div>
+                  <ButtonLinks
+                    url="/grocery/addplan/:mo/:ye/:dy"
+                    image={plus}
+                    label="add meal"
+                  />
                 )}
-                <div
-                  style={{
-                    display: "inline-block",
-                    position: "relative",
-                    marginLeft: 10,
-                    marginRight: 10
-                  }}
-                >
-                  <Link to="/grocery/addrecipe">
-                    <img
-                      src={plus}
-                      alt="add"
-                      style={{ width: 25, height: 25, margin: 0 }}
-                    />
-                    <br />
-                    new recipe
-                  </Link>
-                </div>
-                <div
-                  style={{
-                    display: "inline-block",
-                    position: "relative",
-                    marginLeft: 10,
-                    marginRight: 10
-                  }}
-                >
-                  <Link to="/grocery/recipe">
-                    <img
-                      src={go}
-                      alt="add"
-                      style={{
-                        width: 25,
-                        height: 25,
-                        margin: 0,
-                        borderRadius: 0
-                      }}
-                    />
-                    <br />
-                    view meal
-                  </Link>
-                </div>
               </div>
             </div>
           </>

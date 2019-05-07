@@ -35,14 +35,13 @@ export default function Recipe(props) {
         marginTop: 20
       }}
     >
-      {load || (
-        <RecipeRender
-          {...{ title, instructions, ingredients, image }}
-          window={props.window}
-          add={props.addToList}
-          history={props.history}
-        />
-      )}
+      <RecipeRender
+        {...{ title, instructions, ingredients, image }}
+        window={props.window}
+        add={props.addToList}
+        history={props.history}
+        load={load}
+      />
     </div>
   );
 }
