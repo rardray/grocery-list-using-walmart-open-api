@@ -14,107 +14,40 @@ import RecipesForm from "./RecipeForm/RecipesForm";
 import Recipe from "./Recipe";
 import { paths, SB_AD } from "./Utility/appHelpers";
 import AddPlan from "./AddPlan";
+import DefaultHome from "./Home/DefaultHome";
 
 const Routes = props => {
-  const {
-    productSearch,
-    query,
-    handleChange,
-    searchSubmit,
-    user,
-    handleQuantity,
-    addToList,
-    handleDrag,
-    onDragOver,
-    handleDrop,
-    handleDelete,
-    history,
-    clearList,
-    pageLoad,
-    addFavoriteFromSearch,
-    window,
-    logOutUser,
-    getList,
-    transition
-  } = props;
   return (
     <Router>
       <Dash
         path={paths[2]}
         exact
-        {...{ user, logOutUser, history, window, transition }}
-        Searchbar={<Searchbar {...{ handleChange, query, searchSubmit }} />}
-        ListBar={
-          window ? null : (
-            <SideBarLogic
-              {...{
-                onDragOver,
-                handleDrop,
-                clearList,
-                pageLoad,
-                history,
-                handleDelete,
-                addToList
-              }}
-              addFavorite={addFavoriteFromSearch}
-            />
-          )
-        }
+        {...props}
+        Searchbar={<Searchbar {...props} />}
+        ListBar={props.device ? null : <SideBarLogic {...props} />}
       >
-        <Home path={paths[2]} user={user} addToList={addToList} />
-        <Search
-          path={`${SB_AD}/search/:query`}
-          {...{
-            productSearch,
-            handleQuantity,
-            addToList,
-            handleDrag,
-            addFavoriteFromSearch
-          }}
-        />
-        <Favorites
-          path={paths[3]}
-          {...{
-            history,
-            handleQuantity,
-            addToList,
-            handleDrag,
-            addFavoriteFromSearch
-          }}
-        />
-        <Cart
-          path={paths[1]}
-          history={history}
-          handleQuantity={handleQuantity}
-          handleDelete={handleDelete}
-          handleDrag={handleDrag}
-          addFavoriteFromSearch={addFavoriteFromSearch}
-          getList={getList}
-          clearList={clearList}
-        />
-        <History
-          path={paths[4]}
-          {...{
-            handleDrag,
-            history,
-            addToList,
-            handleQuantity,
-            addFavoriteFromSearch
-          }}
-        />
+        {props.user ? (
+          <Home path={paths[2]} {...props} />
+        ) : (
+          <DefaultHome path="/" />
+        )}
+        <Search path={`${SB_AD}/search/:query`} {...props} />
+        <Favorites path={paths[3]} {...props} />
+        <Cart path={paths[1]} {...props} />
+        <History path={paths[4]} {...props} />
 
-        <AddPlan path="/grocery/addplan/:mo/:ye/:dy" history={history} />
+        <AddPlan path="/grocery/addplan/:mo/:ye/:dy" {...props} />
         <RecipesForm path={paths[0]} {...props} />
         <Recipe path={`${SB_AD}/recipe/:id`} {...props} />
         <Register
           path={`${SB_AD}/register`}
           setUser={props.setUser}
-          getList={getList}
+          getList={props.getList}
         />
         <Login
           path={`${SB_AD}/login`}
           setUser={props.setUser}
-          getList={getList}
+          getList={props.getList}
         />
       </Dash>
     </Router>

@@ -4,6 +4,7 @@ const mongoose = require("mongoose"),
 const CaldataSchema = new Schema(
   {
     dow: [{ type: Number, required: true }],
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     mainId: { type: Schema.Types.ObjectId, ref: "Recipe" },
     sideOneId: { type: Schema.Types.ObjectId, ref: "Recipe" },
     sideOneSingleId: { type: Schema.Types.ObjectId, ref: "List" },

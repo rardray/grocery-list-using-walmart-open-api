@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchIco from "../Styles/searchicon.svg";
+import { navigate } from "@reach/router";
+import { getRequest } from "../Utility/httpRequests";
+import { searchURL, apiKeyGr } from "../Utility/appHelpers";
 
 const Searchbar = props => {
+  const [query, setQuery] = useState("");
+  console.log(query);
+  const searchSubmit = e => {
+    e.preventDefault();
+    getRequest(
+      searchURL(query),
+      apiKeyGr(),
+      props.setProductSearches,
+      navigate,
+      "/grocery/search/" + query,
+      setQuery("")
+    );
+  };
+
   return (
     <>
       <form
@@ -11,14 +28,14 @@ const Searchbar = props => {
           overflow: "hidden",
           margin: 0
         }}
-        onSubmit={props.searchSubmit}
+        onSubmit={searchSubmit}
       >
         <input
           type="text"
           id="searchbar"
-          onChange={props.handleChange}
+          onChange={e => setQuery(e.target.value)}
           name="query"
-          value={props.query}
+          value={query}
           style={{
             width: "100%",
             height: 20,

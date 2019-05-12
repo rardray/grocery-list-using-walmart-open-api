@@ -1,70 +1,63 @@
 import React, { useEffect } from "react";
 import Items from "./Items";
-import { apiToken, editListUrl } from "../Utility/appHelpers";
-import { putRequest } from "../Utility/httpRequests";
+import {
+  clearList,
+  handleDelete,
+  addFavoriteFromSearch,
+  handleQuantity,
+  updateCartCount
+} from "./listActions";
 
 const Cart = props => {
-  const handleUpdate = (data, e) => {
-    if (e.target.name === "plus") {
-      data.cartCount += 1;
-    }
-    if (e.target.name === "minus") {
-      if (data.cartCount === 1) {
-        return;
-      }
-      data.cartCount -= 1;
-    }
-    putRequest(editListUrl, apiToken(), data, props.getList);
-  };
   const sTitle = "Grocery List";
-  function comp(a, b) {
-    const upA = a.addedOn;
-    const upB = b.addedOn;
-    let compare = 0;
-    if (upA > upB) {
-      compare = 1;
-    } else if (upA < upB) {
-      compare = -1;
-    }
-    return compare * -1;
-  }
-  const cart = props.history
-    .filter(el => {
-      return el.inCart;
-    })
-    .sort(comp);
-  const total = cart.reduce(function(acc, curr) {
-    return acc + curr.cartCount;
+
+  const total = props.cart.reduce(function(acc, curr) {
+    return acc + curr.count;
   }, 0);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div className="list-items">
       <h2 className="header-orange">{sTitle}</h2>
-      {cart.length ? (
+      {props.cart.length ? (
         <p>Showing {total} items in grocery list</p>
       ) : (
         <h4>Shopping Cart Empty.</h4>
       )}
-      {cart.map((el, i) => {
+      {props.cart.map((el, i) => {
         return (
           <Items
-            key={el.id}
-            id={el.id}
-            image={el.image}
-            handleDrag={props.handleDrag.bind(this, i, el)}
-            title={el.title}
-            action={props.handleDelete.bind(this, el)}
+            key={el._id}
+            id={el._id}
+            image={el.historyId.image}
+            title={el.historyId.title}
+            action={() =>
+              setTimeout(() => handleDelete(i, el, props.deleteOne), 300)
+            }
+            handleQuantity={handleQuantity.bind(
+              this,
+              i,
+              el.count,
+              updateCartCount,
+              props.cart,
+              props.updateCart
+            )}
             bLabel="Remove"
-            handleQuantity={handleUpdate.bind(this, el)}
-            count={el.cartCount}
-            favorite={el.favorite}
-            addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}
+            del={true}
+            count={el.count}
+            favorite={el.historyId.favorite}
+            addFavorite={() =>
+              addFavoriteFromSearch(i, el.historyId, props.user, props.getList)
+            }
           />
         );
       })}
-      <button onClick={props.clearList} className="button-blue-full">
+      <button
+        onClick={() => clearList(props.user, props.clearAll)}
+        className="button-blue-full"
+      >
         Clear List
       </button>
     </div>

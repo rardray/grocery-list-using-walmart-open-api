@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export function getRequest(url, header, payLoad, redirect) {
+export function getRequest(url, header, payLoad, redirect, path) {
   axios
     .get(url, {
       headers: header
     })
     .then(response => payLoad(response))
-    .then(redirect)
+    .then(() => redirect(path))
     .catch(err => console.log(err));
 }
 
@@ -34,11 +34,11 @@ export function postRequest(url, header, data, payload, vb, redirect) {
     .catch(err => console.log(err));
 }
 
-export function deleteRequest(url, header, payload) {
+export function deleteRequest(url, header, payload, i) {
   axios
     .delete(url, {
       headers: header
     })
-    .then(response => payload(response))
+    .then(response => payload(response, i))
     .catch(error => error);
 }

@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Items from "./Items";
 import $ from "jquery";
-import Loader from "../Loader";
+import {
+  addToList,
+  addFavoriteFromSearch,
+  handleQuantity
+} from "./listActions";
 
 const History = props => {
   const [load, setLoad] = useState(0);
-  const {
-    handleDrag,
-    history,
-    addToList,
-    handleQuantity,
-    addFavoriteFromSearch
-  } = props;
+  const { handleDrag, history } = props;
   useEffect(() => {
     window.scrollTo(0, 0);
   }, {});
@@ -38,16 +36,24 @@ const History = props => {
         }
         return (
           <Items
-            key={el.id}
-            id={el.id}
+            key={el._id}
+            id={el._id}
             image={el.image}
-            handleDrag={handleDrag.bind(this, i, el)}
             title={el.title}
-            action={addToList.bind(this, i, el)}
+            action={() => addToList(i, el, props.user, props.getCart)}
+            handleQuantity={handleQuantity.bind(
+              this,
+              i,
+              el.count,
+              props.addCount,
+              props.history,
+              null
+            )}
             bLabel="Add to List"
-            handleQuantity={handleQuantity.bind(this, el, "history")}
             count={el.count}
-            addFavorite={addFavoriteFromSearch.bind(this, i, el)}
+            addFavorite={() =>
+              addFavoriteFromSearch(i, el, props.user, props.setHist)
+            }
             favorite={el.favorite}
           />
         );

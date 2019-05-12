@@ -6,7 +6,7 @@
   border: none;
   vertical-align: bottom;
   text-align: left;
-  border-bottom: 3px solid #dceaf5;
+  border-bottom: 2px solid #377fbb;
   border-radius: 6px 6px 0px 0px;
   line-height: 25px;
   overflow: visible;
@@ -14,7 +14,7 @@
   box-sizing: border-box;
 }
 input {
-  font-size: 1em;
+  font-size: 16px;
   font-weight: 300;
   min-width: 80%;
   max-width: 100%;
@@ -26,14 +26,19 @@ input::placeholder {
   text-align: right;
 }
 textarea {
-  font-size: 12pt;
+  font-size: 16px;
   font-weight: 300;
   resize: none;
   height: 100px;
   min-width: 80%;
   max-width: 100%;
+  color: #0e5896;
 }
-
+textarea::placeholder {
+  color: #377fbb;
+  font-size: 12pt;
+  text-align: right;
+}
 .header-orange {
   margin: 2px 0 8px 0;
   padding: 6px;

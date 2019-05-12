@@ -22,11 +22,11 @@ export default function RecipesForm(props) {
   const show = [];
   for (let i = 0; i < ingredients.length; i++) {
     for (let j = 0; j < props.history.length; j++) {
-      if (ingredients[i].items === props.history[j].id) {
+      if (ingredients[i].historyId === props.history[j]._id) {
         show[i] = {
           ...props.history[j],
           count: 1,
-          measure: ingredients[i].measure
+          measure: ingredients[i].amount
         };
       }
     }
@@ -68,15 +68,17 @@ export default function RecipesForm(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const handleSubmit = () => {
     if (!title || !show) {
       return;
     }
     const submitData = {
       title: title,
+      userId: props.user._id,
       instructions: instructions,
       image: image,
-      ingredients: show
+      ingredients: ingredients
     };
     postRequest("/api/recipe/post", apiToken(), submitData, function(data) {
       return navigate("/grocery/recipe/" + data.data._id);
@@ -91,18 +93,18 @@ export default function RecipesForm(props) {
             changeText={e => setInstructions(e.target.value)}
             changeTitle={e => setTitle(e.target.value)}
             {...{ title, instructions }}
-            window={props.window}
+            device={props.device}
           />
           <LeftRForm
             changeFile={e => {
               setFile(e.target.files[0]);
             }}
-            changeSelect={e => setSelect(parseInt(e.target.value))}
+            changeSelect={e => setSelect(e.target.value)}
             changeMeasure={e => setMeasure(e.target.value)}
             submit={() => {
               setIngredients([
                 ...ingredients,
-                { items: select, measure: measure }
+                { historyId: select, amount: measure }
               ]);
               setMeasure("");
             }}
@@ -118,7 +120,7 @@ export default function RecipesForm(props) {
             })}
             {...{ load, image, select, measure }}
             history={props.history}
-            window={props.window}
+            device={props.device}
           />
           <br />
           <button className="button-blue-full" onClick={handleSubmit}>

@@ -3,7 +3,6 @@ import Calander from "./Calander";
 import RecipesPreview from "./RecipesPreview";
 import { apiToken } from "../Utility/appHelpers";
 import { getRequest } from "../Utility/httpRequests";
-import DefaultHome from "./DefaultHome";
 import "../Styles/home.css";
 import RecipeDrawer from "./RecipeDrawer";
 import MealForDay from "./MealForDay";
@@ -17,14 +16,14 @@ export default function Home(props) {
 
   const loadState = useLoaderState(
     getRequest,
-    "/api/caldata/all",
+    "/api/caldata/all/" + props.user._id,
     apiToken(),
     data => setMeals(data.data)
   );
 
   const loadRecipe = useLoaderState(
     getRequest,
-    "/api/recipe/all",
+    "/api/recipe/all/" + props.user._id,
     apiToken(),
     data => setRecipe(data.data)
   );
@@ -42,7 +41,7 @@ export default function Home(props) {
     return function cleanup() {
       clearInterval(getDates, 1000 * 60 * 60);
     };
-  }, {});
+  }, []);
 
   const moveUp = () => {
     if (position + date.month === 11) {
@@ -64,48 +63,42 @@ export default function Home(props) {
   const { day, month, year } = date;
   return (
     <>
-      {user ? (
-        <div className="home">
-          <div style={{ textAlign: "left" }} />
-          <div
-            style={{
-              background: "#dc5c36"
+      <div className="home" style={{ width: props.device ? "100%" : null }}>
+        <div style={{ textAlign: "left" }} />
+        <div
+          style={{
+            background: "#dc5c36"
+          }}
+        >
+          <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
+        </div>
+        <MealForDay {...{ day, month, year, meals }} loader={loadState} />
+        {loadState || (
+          <Calander
+            {...{
+              day,
+              month,
+              year,
+              position,
+              yPosition,
+              moveUp,
+              moveDn,
+              meals
             }}
-          >
-            <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
+          />
+        )}
+        <div className="r-contain" style={{ height: "auto" }}>
+          <div style={{ textAlign: "center" }}>
+            <h2 className="header-orange">Your Recipes</h2>
           </div>
-          <MealForDay {...{ day, month, year, meals }} loader={loadState} />
-          {loadState || (
-            <Calander
-              {...{
-                day,
-                month,
-                year,
-                position,
-                yPosition,
-                moveUp,
-                moveDn,
-                meals
-              }}
-            />
-          )}
-          <div className="r-contain" style={{ height: "auto" }}>
-            <div style={{ textAlign: "center" }}>
-              <h2 className="header-orange">Your Recipes</h2>
-            </div>
-            {loadRecipe || <RecipesPreview {...{ recipes }} expanded={false} />}
-            {recipes.length > 6 ? (
-              <RecipeDrawer {...{ recipes }}>
-                <RecipesPreview {...{ recipes }} expanded={true} />
-              </RecipeDrawer>
-            ) : null}
-          </div>
+          {loadRecipe || <RecipesPreview {...{ recipes }} expanded={false} />}
+          {recipes.length > 6 ? (
+            <RecipeDrawer {...{ recipes }}>
+              <RecipesPreview {...{ recipes }} expanded={true} />
+            </RecipeDrawer>
+          ) : null}
         </div>
-      ) : (
-        <div className="home" style={{ textAlign: "center" }}>
-          <DefaultHome />
-        </div>
-      )}
+      </div>
     </>
   );
 }

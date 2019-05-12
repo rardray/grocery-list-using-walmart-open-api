@@ -3,11 +3,13 @@ const Caldata = require("../models/caldata");
 exports.postCaldata = function(req, res, next) {
   let dow = req.body.dow;
   let mainId = req.body.mainId;
+  let userId = req.body.userId;
   let sideOneId = req.body.sideOneId;
   let sideTwoId = req.body.sideTwoId;
 
   var caldata = new Caldata({
     dow: dow,
+    userId: userId,
     mainId: mainId,
     sideOneId: sideOneId,
     sideTwoId: sideTwoId,
@@ -21,7 +23,7 @@ exports.postCaldata = function(req, res, next) {
 };
 
 exports.getCaldatas = function(req, res, next) {
-  Caldata.find({})
+  Caldata.find({ userId: req.params.id })
     .sort("-createdAt")
     .populate({
       path: "mainId",
@@ -45,6 +47,6 @@ exports.getCaldatas = function(req, res, next) {
     })
     .exec(function(err, cal) {
       if (err) next(err);
-      res.status(201).send(cal);
+      res.status(200).send(cal);
     });
 };

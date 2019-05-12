@@ -14,8 +14,10 @@ export default function AddPlan(props) {
   const [sideTwo, setSideTwo] = useState("");
 
   useEffect(() => {
-    getRequest("/api/recipe/all", apiToken(), data => setRecipes(data.data));
-  }, {});
+    getRequest("/api/recipe/all/" + props.user._id, apiToken(), data =>
+      setRecipes(data.data)
+    );
+  }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -24,6 +26,7 @@ export default function AddPlan(props) {
     }
     let data = {
       dow: [props.mo, props.ye, props.dy],
+      userId: props.user._id,
       mainId: main,
       sideOneId: sideOne,
       sideTwoId: sideTwo
@@ -32,7 +35,7 @@ export default function AddPlan(props) {
       "/api/caldata/add",
       apiToken(),
       data,
-      data => console.log(data),
+      data => console.log(data.status),
       null,
       () => navigate("/")
     );

@@ -9,7 +9,7 @@ export default function MainContainer(props) {
         display: "inline-block",
         position: "relative",
         minWidth: "90%",
-        maxWidth: props.window ? "100%" : "90%",
+        width: props.device ? "100%" : "90%",
         textAlign: "center"
       }}
     >

@@ -1,31 +1,32 @@
 import React from "react";
-
+import Input from "../Forms/Input";
+import TextArea from "../Forms/TextArea";
 export default function RightRForm(props) {
   return (
     <div
       className="r-form-container"
-      style={{ width: props.window ? "100%" : "40%" }}
+      style={{ width: props.device ? "100%" : "40%" }}
     >
       <h2 className="header-orange" style={{ padding: 10 }}>
         Create New Recipe
       </h2>
-      <label>Recipe Name</label>
-      <br />
-      <input
-        className="input"
-        style={{ width: "100%" }}
+      <Input
         type="text"
         value={props.title}
-        onChange={props.changeTitle}
+        handleChange={props.changeTitle}
+        labelName="Recipe Name"
+        name={"title"}
+        width="100%"
+        validation={false}
       />
-      <br />
-      <label>Instructions</label>
-      <br />
-      <textarea
-        className="input"
+      <TextArea
+        type="text"
         value={props.instructions}
-        onChange={props.changeText}
-        style={{ width: "100%" }}
+        handleChange={props.changeText}
+        labelName={"Instructions"}
+        name="instructions"
+        width="100%"
+        validation={false}
       />
     </div>
   );

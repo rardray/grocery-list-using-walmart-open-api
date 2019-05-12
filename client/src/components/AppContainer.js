@@ -1,195 +1,153 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { navigate } from "@reach/router";
 import cookie from "react-cookies";
 import Routes from "./Routes";
 import $ from "jquery";
-import {
-  apiKeyGr,
-  apiToken,
-  searchURL,
-  editListUrl,
-  postListUrl,
-  findIndex,
-  editData
-} from "./Utility/appHelpers";
-import {
-  handleDrag,
-  handleDrop,
-  onDragOver
-} from "./Utility/dragAndDropHandlers";
-var httpRequests = require("./Utility/httpRequests");
-var formlogic = require("./Forms/formlogic");
+import { apiKeyGr, apiToken, searchURL } from "./Utility/appHelpers";
+import { getRequest } from "./Utility/httpRequests";
 
-export default class AppContainer extends React.Component {
-  state = {
-    user: cookie.load("user") || "",
-    query: "",
-    productSearch: [],
-    history: [],
-    pageLoad: false,
-    window: false
+export default function AppContainer(props) {
+  const [user, setUse] = useState(cookie.load("user") || "");
+  const [cart, setCart] = useState([]);
+  const [history, setHistory] = useState([]);
+  const [device, setWindow] = useState(false);
+  const [productSearch, setProductSearch] = useState([]);
+  const [query, setQuery] = useState("");
+  const [favorites, setFavorites] = useState([]);
+
+  const setUser = data => setUse(() => cookie.load("user"));
+  const handleChange = e => {
+    setQuery(e.target.value);
   };
-  handleChange = formlogic.handleChange.bind(this);
-  getRequest = httpRequests.getRequest.bind(this);
-  putRequest = httpRequests.putRequest.bind(this);
-  postRequest = httpRequests.postRequest.bind(this);
-  editData = editData.bind(this);
-  // Drag and Drop Handlers //
-  handleDrag = handleDrag.bind(this);
-  handleDrop = handleDrop.bind(this);
-  onDragOver = onDragOver.bind(this);
-  componentDidMount() {
-    if (this.state.user) {
-      this.getList();
+  const logOutUser = () => {
+    setUse(() => "");
+  };
+  useEffect(() => {
+    function handleSideBar() {
+      if ($(window).height() > $(window).width()) {
+        setWindow(true);
+      } else {
+        setWindow(false);
+      }
     }
-    this.handleSidebar();
-    window.addEventListener("deviceorientation", this.handleSidebar);
-  }
-  handleSidebar = e => {
-    if ($(window).height() > $(window).width()) {
-      return this.setState({ window: true });
-    } else {
-      this.setState({ window: false });
+    handleSideBar();
+    window.addEventListener("deviceorientation", handleSideBar);
+    return function() {
+      window.removeEventListener("deviceorientation", handleSideBar);
+    };
+  });
+  const getList = () => {
+    getRequest("/api/list/" + user._id, apiToken(), data =>
+      setHistory(data.data)
+    );
+  };
+  const getCart = () => {
+    getRequest("/api/cart/" + user._id, apiToken(), data => setCart(data.data));
+  };
+  const getFavorites = () => {
+    getRequest("/api/list/favorites/" + user._id, apiToken(), data =>
+      setFavorites(data.data)
+    );
+  };
+  useEffect(() => {
+    if (user && history.length) {
+      getFavorites();
     }
-  };
-  getList = () => {
-    this.getRequest("/api/list", apiToken(), this.listState);
-  };
-  listState = data => {
-    this.setState({ history: data.data, pageLoad: true });
-  };
-  setUser = data =>
-    this.setState({ user: cookie.load("user") }, console.log(this.state.user));
-  logOutUser = () => {
-    this.setState({ user: "" });
-  };
-  setProductSearch = data => {
+  }, [history]);
+
+  useEffect(() => {
+    if (user) {
+      getList();
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (user && history.length) {
+      getCart();
+    }
+  }, [history]);
+
+  const setProductSearches = data => {
     let list = data.data.products;
-    const { history } = this.state;
     list.forEach(el => {
       el.count = 1;
-      el.inCart = false;
-      el.cartCount = 0;
+      el.searchId = el.id;
       el.favorite = false;
       for (let i = 0; i < history.length; i++) {
-        if (el.id === history[i].id && history[i].favorite) {
+        if (el.id === history[i].searchId && history[i].favorite) {
           return (el.favorite = true);
         }
       }
     });
-    this.setState({ productSearch: list });
+    setProductSearch(list);
   };
-  searchSubmit = e => {
-    e.preventDefault();
-    const query = this.state.query;
-    this.getRequest(searchURL(query), apiKeyGr(), this.setProductSearch, () =>
-      navigate(`/grocery/search/${query}`, this.setState({ query: "" }))
-    );
+
+  const clearAll = () => setCart(() => []);
+  const deleteOne = (data, i) => {
+    let obj = cart.filter(el => {
+      return el !== cart[i];
+    });
+    setCart(() => obj);
   };
-  handleDelete = (data, e) => {
-    data.inCart = false;
-    data.cartCount = 0;
-    this.putRequest(editListUrl, apiToken(), data, this.setList);
-  };
-  handleQuantity = (id, name, e) => {
-    let i = findIndex(this.state[name], id);
-    const n = this.state[name][i].count;
-    const setCount = val => {
-      this.setState(prevState => {
-        return (prevState[name][i].count = val);
-      });
-    };
-    if (e.target.name === "plus") {
-      return setCount(n + 1);
-    }
-    if (e.target.name === "minus") {
-      if (n <= 1) {
-        return;
-      } else {
-        return setCount(n - 1);
-      }
-    }
-  };
-  setFavorite = (data, i) => {
-    const { productSearch, history } = this.state;
-    history[i[1]] = data.data;
-    if (
-      productSearch.length > 0 &&
-      productSearch[i[0]].id === history[i[1]].id
-    ) {
-      productSearch[i[0]].favorite = data.data.favorite;
-    }
-    this.setState({ history: history, productSearch: productSearch });
-  };
-  setPostFavorite = (data, i) => {
-    const { productSearch, history } = this.state;
-    productSearch[i[0]].favorite = data.data.favorite;
-    history.unshift(data.data);
-    this.setState(prevState => {
-      return {
-        productSearch: productSearch,
-        history: history
-      };
+  const setHist = (data, i) => {
+    let list = history;
+    list[i].favorite = data.data.favorite;
+    setHistory(prevHistory => {
+      return [...list];
     });
   };
-  addFavoriteFromSearch = (i, item) => {
-    const data = { ...item };
-    data.favorite = !data.favorite;
-    this.editData(data, i, this.putFavorite, this.postFavorite);
+  const setSearch = (data, i) => {
+    let list = productSearch;
+    list[i].favorite = data.data.favorite;
+    setProductSearch(prevProductSearch => {
+      return [...list];
+    });
+    getList();
   };
-  putFavorite = (data, i, history, id) => {
-    this.putRequest(
-      `/api/list/favorite/${id}`,
-      apiToken(),
-      data,
-      this.setFavorite,
-      i
-    );
+  const updateCart = (data, i) => {
+    let obj = cart;
+    cart[i] = data.data;
+    setCart(() => {
+      return [...obj];
+    });
   };
-  postFavorite = (data, i) => {
-    this.postRequest(postListUrl, apiToken(), data, this.setPostFavorite, i);
-  };
-  putUpdate = (data, i, history) => {
-    data.cartCount = history[i[1]].cartCount + data.count;
-    this.putRequest(editListUrl, apiToken(), data, this.setList, i[1]);
-  };
-  postUpdate = data => {
-    data.cartCount = data.count;
-    this.postRequest(postListUrl, apiToken(), data, this.postList);
-  };
-  addToList = (i, item) => {
-    const data = { ...item };
-    if (!data.inCart) {
-      data.addedOn = Date.now();
-      data.inCart = true;
-    }
-    this.editData(data, i, this.putUpdate, this.postUpdate);
-  };
-  postList = data => {
-    const { history } = this.state;
-    history.unshift(data.data);
-    this.setState({ history: history });
-  };
-  setList = (data, i) => {
-    const { history } = this.state;
-    history[i] = data.data;
-    this.setState({ history: history });
-  };
-  clearList = () => {
-    this.putRequest("/api/list/remove", apiToken(), null, this.setClearList);
-  };
-  setClearList = (data, i) => {
-    if (!data.error) {
-      const { history } = this.state;
-      history.forEach(el => {
-        el.cartCount = 0;
-        el.inCart = false;
-        return el;
-      });
-      this.setState({ history: history });
-    }
-  };
-  render() {
-    return <Routes {...this} {...this.state} />;
-  }
+  return (
+    <Routes
+      addCount={data =>
+        setHistory(() => {
+          return [...data];
+        })
+      }
+      addSearch={data =>
+        setProductSearch(() => {
+          return [...data];
+        })
+      }
+      addFavCount={data =>
+        setFavorites(() => {
+          return [...data];
+        })
+      }
+      {...{
+        setProductSearches,
+        favorites,
+        updateCart,
+        setSearch,
+        getCart,
+        setHist,
+        getList,
+        setUser,
+        logOutUser,
+        history,
+        cart,
+        device,
+        productSearch,
+        query,
+        user,
+        handleChange,
+        clearAll,
+        deleteOne
+      }}
+    />
+  );
 }

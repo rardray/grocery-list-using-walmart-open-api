@@ -1,64 +1,61 @@
 import React from "react";
-import Heart from "../ListPages/Heart";
+import {
+  addToList,
+  addFavoriteFromSearch,
+  handleDelete
+} from "../ListPages/listActions";
+
 import "../Styles/main.css";
+import Lists from "./Lists";
 
 const List = props => {
-  const {
-    history,
-    filtervalue,
-    sortvalue,
-    count,
-    buttonLabel,
-    grocery
-  } = props;
-  function comp(a, b) {
-    const upA = a[sortvalue];
-    const upB = b[sortvalue];
-    let compare = 0;
-    if (upA > upB) {
-      compare = 1;
-    } else if (upA < upB) {
-      compare = -1;
-    }
-    return compare * -1;
-  }
-
-  const filtered = history.filter((el, i) => {
-    return el[filtervalue];
-  });
-  const sorted = filtered.sort(comp);
-  let total = filtered.reduce(function(acc, curr) {
+  const { filtervalue, count, grocery } = props;
+  let total = props[filtervalue].reduce(function(acc, curr) {
     return acc + curr[count];
   }, 0);
   return (
     <div>
       <p>
-        Products: {filtered.length}{" "}
-        {count === "count" ? null : "Total Items:" + total}
+        Products: {props[filtervalue].length} {"Total Items:" + total}
       </p>
-      {sorted.map((el, i) => {
-        return (
-          <div key={el.id} className="list-block">
-            <img src={el.image} alt={el.title} />
-            <h5>{el.title}</h5>
-            <button
-              onClick={
-                grocery
-                  ? props.handleDelete.bind(this, el)
-                  : props.addToList.bind(this, i, el)
-              }
-            >
-              {buttonLabel}
-            </button>
-
-            <Heart
-              addFavorite={props.addFavorite.bind(this, i, el)}
-              favorite={el.favorite}
-            />
-            <span>Quantity: {el[count]} </span>
-          </div>
-        );
-      })}
+      {grocery
+        ? props.cart.map((el, i) => {
+            return (
+              <Lists
+                key={el.historyId._id}
+                image={el.historyId.image}
+                title={el.historyId.title}
+                favorite={el.historyId.favorite}
+                count={el.count}
+                action={() => handleDelete(i, el, props.deleteOne)}
+                buttonLabel="Remove"
+                addFavorite={() =>
+                  addFavoriteFromSearch(
+                    i,
+                    el.historyId,
+                    props.user,
+                    props.getList
+                  )
+                }
+              />
+            );
+          })
+        : props.favorites.map((el, i) => {
+            return (
+              <Lists
+                key={el._id}
+                image={el.image}
+                title={el.title}
+                favorite={el.favorite}
+                count={el.count}
+                action={() => addToList(i, el, props.user, props.getCart)}
+                buttonLabel="Add to Cart"
+                addFavorite={() =>
+                  addFavoriteFromSearch(i, el, props.user, props.getList)
+                }
+              />
+            );
+          })}
     </div>
   );
 };

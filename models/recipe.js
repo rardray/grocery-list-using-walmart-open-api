@@ -4,9 +4,15 @@ const mongoose = require("mongoose"),
 const RecipeSchema = new Schema(
   {
     title: { type: String, required: true },
+    userId: { type: Schema.Types.ObjectId, ref: "User" },
     instructions: { type: String },
     image: { type: String },
-    ingredients: [{ type: Object }]
+    ingredients: [
+      {
+        historyId: { type: Schema.Types.ObjectId, ref: "List" },
+        amount: { type: String }
+      }
+    ]
   },
   {
     timestamps: true

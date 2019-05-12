@@ -32,14 +32,16 @@ export default function Recipe(props) {
         display: "flex",
         margin: "auto",
         marginBottom: 125,
-        marginTop: 20
+        marginTop: 40
       }}
     >
       <RecipeRender
         {...{ title, instructions, ingredients, image }}
-        window={props.window}
-        add={props.addToList}
-        history={props.history}
+        device={props.device}
+        cart={props.cart}
+        getList={props.getList}
+        getCart={props.getCart}
+        user={props.user}
         load={load}
       />
     </div>

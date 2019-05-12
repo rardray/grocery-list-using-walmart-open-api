@@ -7,13 +7,16 @@ const Container = props => {
       style={{
         textAlign: "center",
         display: "block",
-        background: "black",
+        background: "#377fbb",
         paddingTop: "20%",
         paddingBottom: "20%",
         height: "100%"
       }}
     >
-      <div style={Themes.dark.div}>
+      <div
+        className="r-contain"
+        style={{ width: "90%", textAlign: "center", margin: "auto" }}
+      >
         <h1>{props.header}</h1>
         <p>{props.subheader}</p>
         {props.children}

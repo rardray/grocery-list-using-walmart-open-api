@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
 import Items from "./Items";
+import {
+  addToList,
+  addFavoriteFromSearch,
+  handleQuantity
+} from "./listActions";
 
 const Search = props => {
   useEffect(() => {
@@ -20,18 +25,22 @@ const Search = props => {
             key={el.id}
             id={el.id}
             image={el.image}
-            handleDrag={props.handleDrag.bind(this, i, el)}
             title={el.title}
-            action={props.addToList.bind(this, i, el)}
+            action={() => addToList(i, el, props.user, props.getList)}
             bLabel="Add to List"
-            handleQuantity={props.handleQuantity.bind(
+            handleQuantity={handleQuantity.bind(
               this,
-              el,
-              "productSearch"
+              i,
+              el.count,
+              props.addSearch,
+              props.productSearch,
+              null
             )}
             count={el.count}
             favorite={el.favorite}
-            addFavorite={props.addFavoriteFromSearch.bind(this, i, el)}
+            addFavorite={() =>
+              addFavoriteFromSearch(i, el, props.user, props.setSearch)
+            }
           />
         );
       })}

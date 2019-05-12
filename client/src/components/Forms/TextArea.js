@@ -42,7 +42,7 @@ export default function Input(props) {
     width: props.width || null
   };
   const Label = {
-    color: validation ? (valid ? null : "red") : null,
+    color: props.validation ? null : valid ? null : "red",
     margin: 0,
     padding: 0,
     fontSize: focus ? (blurred ? "10pt" : 0) : "12pt",
@@ -77,7 +77,7 @@ export default function Input(props) {
           {valid ? labelName : errorMessage}
         </label>
       </div>
-      <input
+      <textarea
         className="input"
         style={Input}
         id={name}

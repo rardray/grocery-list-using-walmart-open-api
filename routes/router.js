@@ -5,7 +5,8 @@ const AuthenticationController = require("../controllers/authentication"),
   ListController = require("../controllers/list"),
   RecipeController = require("../controllers/recipe"),
   UploadController = require("../controllers/upload"),
-  CaldataController = require("../controllers/caldata");
+  CaldataController = require("../controllers/caldata"),
+  CartController = require("../controllers/cart");
 
 //middleware
 const requireAuth = passport.authenticate("jwt", { session: false });
@@ -17,7 +18,8 @@ module.exports = function(app) {
     listRoutes = express.Router(),
     recipeRoutes = express.Router(),
     uploadRoutes = express.Router(),
-    caldataRoutes = express.Router();
+    caldataRoutes = express.Router(),
+    cartRoutes = express.Router();
 
   apiRoutes.use("/auth", authRoutes);
   //login Route
@@ -25,23 +27,32 @@ module.exports = function(app) {
   authRoutes.post("/login", requireLogin, AuthenticationController.login);
   //list Routes
   apiRoutes.use("/list", listRoutes);
-  listRoutes.get("/", requireAuth, ListController.getLists);
+  listRoutes.get("/:id", requireAuth, ListController.getLists);
   listRoutes.post("/post", requireAuth, ListController.postList);
-  listRoutes.put("/edit", requireAuth, ListController.editList);
-  listRoutes.put("/remove", requireAuth, ListController.clearShoppingList);
-  listRoutes.put("/favorite/:id", requireAuth, ListController.addFavorite);
+  listRoutes.post("/favorite", requireAuth, ListController.addFavorite);
+  listRoutes.get("/favorites/:id", requireAuth, ListController.getFavorites);
   //recipe routes
   apiRoutes.use("/recipe", recipeRoutes);
   recipeRoutes.post("/post", requireAuth, RecipeController.postRecipe);
   recipeRoutes.get("/one/:id", requireAuth, RecipeController.getRecipe);
-  recipeRoutes.get("/all", requireAuth, RecipeController.getRecipes);
+  recipeRoutes.get("/all/:id", requireAuth, RecipeController.getRecipes);
   //file upload
   apiRoutes.use("/upload", uploadRoutes);
   uploadRoutes.post("/", requireAuth, UploadController.postImage);
   //calendar data
   apiRoutes.use("/caldata", caldataRoutes);
   caldataRoutes.post("/add", requireAuth, CaldataController.postCaldata);
-  caldataRoutes.get("/all", requireAuth, CaldataController.getCaldatas);
+  caldataRoutes.get("/all/:id", requireAuth, CaldataController.getCaldatas);
+  //cart routes
+  apiRoutes.use("/cart", cartRoutes);
+  cartRoutes.get("/:id", requireAuth, CartController.getCart);
+  cartRoutes.delete(
+    "/clearone/:id",
+    requireAuth,
+    CartController.deleteCartItem
+  );
+  cartRoutes.delete("/clearall/:id", requireAuth, CartController.clearCart);
+  cartRoutes.put("/update/:id", requireAuth, CartController.editCart);
 
   app.use("/api", apiRoutes); //<---- calls login function from authentication and passport
 };

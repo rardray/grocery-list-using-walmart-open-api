@@ -3,11 +3,11 @@ const mongoose = require("mongoose"),
 
 const ListSchema = new Schema(
   {
-    id: {
+    searchId: {
       type: Number,
-      required: true,
-      unique: true
+      required: true
     },
+    userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
     title: {
       type: String,
       required: true
@@ -18,19 +18,8 @@ const ListSchema = new Schema(
     },
     count: {
       type: Number,
-      required: true
-    },
-    inCart: {
-      type: Boolean,
-      default: false,
-      required: true
-    },
-    cartCount: {
-      type: Number,
-      required: true
-    },
-    addedOn: {
-      type: Date
+      required: true,
+      default: 1
     },
     favorite: {
       type: Boolean,

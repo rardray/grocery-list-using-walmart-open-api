@@ -36,7 +36,7 @@ export default function Dash(props) {
     <>
       <NavBar NavList={props.user ? <NavList {...{ path }} /> : null}>
         <img src={title} id="page-title" style={{ width: 45 }} alt="search" />
-        {props.window ? null : <h2>fundrays grocery</h2>}
+        {props.device ? null : <h2>fundrays grocery</h2>}
         {props.user ? (
           <>
             <BackButton {...{ path }} />
@@ -44,7 +44,7 @@ export default function Dash(props) {
               {props.Searchbar}
             </div>
             <Licon
-              history={props.history}
+              cart={props.cart}
               handleCartIcon={handleCartIcon}
               svgs={List}
             />
@@ -71,15 +71,15 @@ export default function Dash(props) {
         )}
       </NavBar>
       {props.user ? (
-        <SwipeFunction window={props.window}>
-          <MainContainer window={props.window}>
+        <SwipeFunction device={props.device}>
+          <MainContainer device={props.device}>
             {props.user ? props.ListBar : null}
             {props.children}
             <Footer user={props.user} handleLogout={handleLogout} />
           </MainContainer>
         </SwipeFunction>
       ) : (
-        <MainContainer window={props.window}>
+        <MainContainer device={props.device}>
           {props.children}
           <Footer user={props.user} handleLogout={handleLogout} />
         </MainContainer>

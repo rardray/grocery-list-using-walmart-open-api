@@ -32,6 +32,7 @@ export const renderInputs = function(state, ty, msg) {
         label={true}
         labelName={n.charAt(0).toUpperCase() + n.slice(1)}
         errorMessage={msg[i]}
+        validation={true}
       />
     );
   }

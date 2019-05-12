@@ -22,7 +22,7 @@ export function findIndex(list, data) {
 
 export function editData(data, ind, cb1, cb2) {
   const { history } = this.state;
-  const id = data.id;
+  const id = data._id;
   let k = findIndex(history, data);
   if (k || k === 0) {
     cb1(data, [ind, k], history, id);

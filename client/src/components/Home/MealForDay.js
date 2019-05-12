@@ -68,7 +68,9 @@ export default function MealForDay(props) {
                   </>
                 ) : (
                   <ButtonLinks
-                    url="/grocery/addplan/:mo/:ye/:dy"
+                    url={`/grocery/addplan/${props.month}/${props.year}/${
+                      props.day
+                    }`}
                     image={plus}
                     label="add meal"
                   />

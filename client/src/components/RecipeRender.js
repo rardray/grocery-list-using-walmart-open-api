@@ -1,9 +1,10 @@
 import React from "react";
+import { addToList } from "./ListPages/listActions";
 
 export default function RecipeRender(props) {
   function disableAdd(list, el) {
     const val = list.filter(ele => {
-      return ele.id === el.id && ele.inCart;
+      return ele.historyId._id === el.historyId._id;
     });
     return val.length === 0 ? false : true;
   }
@@ -27,11 +28,11 @@ export default function RecipeRender(props) {
             </div>
             {props.ingredients.map((el, i) => {
               return (
-                <div className="ingredients-block" key={el.id}>
-                  <img src={el.image} alt={el.title} />
-                  <h4>{el.title}</h4>
-                  <p>{el.measure}</p>
-                  {disableAdd(props.history, el) ? (
+                <div className="ingredients-block" key={el._id}>
+                  <img src={el.historyId.image} alt={el.historyId.title} />
+                  <h4>{el.historyId.title}</h4>
+                  <p>{el.amount}</p>
+                  {disableAdd(props.cart, el) ? (
                     <button
                       style={{
                         color: "slategray",
@@ -42,7 +43,11 @@ export default function RecipeRender(props) {
                       In Cart
                     </button>
                   ) : (
-                    <button onClick={props.add.bind(this, i, el)}>
+                    <button
+                      onClick={() =>
+                        addToList(i, el.historyId, props.user, props.getCart)
+                      }
+                    >
                       Add to List
                     </button>
                   )}

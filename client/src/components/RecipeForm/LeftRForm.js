@@ -1,11 +1,12 @@
 import React from "react";
 import Loader from "../Loader";
+import Input from "../Forms/Input";
 
 export default function LeftRForm(props) {
   return (
     <div
       className="r-form-container"
-      style={{ maxWidth: props.window ? "98%" : "40%" }}
+      style={{ maxWidth: props.device ? "98%" : "40%" }}
     >
       <div className="recipe-image">
         {props.load ? (
@@ -29,7 +30,7 @@ export default function LeftRForm(props) {
       <br />
       <select
         className="cust-select"
-        type="number"
+        type="text"
         value={props.select}
         onChange={props.changeSelect}
         style={{ width: "100%" }}
@@ -37,25 +38,24 @@ export default function LeftRForm(props) {
         <option />
         {props.history.map(el => {
           return (
-            <option type="number" key={el._id} value={el.id}>
+            <option type="text" key={el._id} value={el._id}>
               {el.title}
             </option>
           );
         })}
       </select>
-      <br />
-      <label>Amount</label>
-      <br />
-      <input
-        type="text"
-        value={props.measure}
-        onChange={props.changeMeasure}
-        placeholder="Amount Required (ex. cups, oz)"
-        className="input"
-        id="small-input"
-      />
+      <div style={{ display: "inline-block", boxSizing: "border-box" }}>
+        <Input
+          type={"text"}
+          name="amount"
+          handleChange={props.changeMeasure}
+          value={props.measure}
+          width={"100%"}
+          labelName={"amount"}
+          validation={false}
+        />
+      </div>
       <button onClick={props.submit}>Add Ingredient</button>
-      <br />
       <label>Ingredients:</label>
       {props.lists}
     </div>
