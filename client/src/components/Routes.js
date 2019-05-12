@@ -18,39 +18,31 @@ import DefaultHome from "./Home/DefaultHome";
 
 const Routes = props => {
   return (
-    <Router>
-      <Dash
-        path={paths[2]}
-        exact
-        {...props}
-        Searchbar={<Searchbar {...props} />}
-        ListBar={props.device ? null : <SideBarLogic {...props} />}
-      >
+    <Dash
+      path={paths[2]}
+      exact
+      {...props}
+      Searchbar={<Searchbar {...props} />}
+      ListBar={props.device ? null : <SideBarLogic {...props} />}
+    >
+      <Router>
         {props.user ? (
           <Home path={paths[2]} {...props} />
         ) : (
           <DefaultHome path="/" />
         )}
         <Search path={`${SB_AD}/search/:query`} {...props} />
-        <Favorites path={paths[3]} {...props} />
-        <Cart path={paths[1]} {...props} />
-        <History path={paths[4]} {...props} />
+        <Favorites path={paths[3]} />
+        <Cart path={paths[1]} />
+        <History path={paths[4]} />
 
         <AddPlan path="/grocery/addplan/:mo/:ye/:dy" {...props} />
         <RecipesForm path={paths[0]} {...props} />
-        <Recipe path={`${SB_AD}/recipe/:id`} {...props} />
-        <Register
-          path={`${SB_AD}/register`}
-          setUser={props.setUser}
-          getList={props.getList}
-        />
-        <Login
-          path={`${SB_AD}/login`}
-          setUser={props.setUser}
-          getList={props.getList}
-        />
-      </Dash>
-    </Router>
+        <Recipe path={`${SB_AD}/recipe/:id`} />
+        <Register path={`${SB_AD}/register`} setUser={props.setUser} />
+        <Login path={`${SB_AD}/login`} setUser={props.setUser} />
+      </Router>
+    </Dash>
   );
 };
 

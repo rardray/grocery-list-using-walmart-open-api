@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getRequest, postRequest } from "./Utility/httpRequests";
 import { apiToken } from "./Utility/appHelpers";
 import { months } from "./Home/Calander";
 import MealSelect from "./MealSelect";
+import HistoryContext from "./contextComponents/history.context";
 
 import "./Styles/meals.css";
 import { navigate } from "@reach/router";
@@ -12,7 +13,7 @@ export default function AddPlan(props) {
   const [main, setMain] = useState("");
   const [sideOne, setSideOne] = useState("");
   const [sideTwo, setSideTwo] = useState("");
-
+  const { history } = useContext(HistoryContext);
   useEffect(() => {
     getRequest("/api/recipe/all/" + props.user._id, apiToken(), data =>
       setRecipes(data.data)
@@ -64,7 +65,7 @@ export default function AddPlan(props) {
               recipes={recipes}
               change={e => setMain(e.target.value)}
               value={main}
-              history={props.history}
+              history={history}
               sideX={main}
               main={true}
             />
@@ -72,14 +73,14 @@ export default function AddPlan(props) {
               recipes={recipes}
               change={e => setSideOne(e.target.value)}
               value={sideOne}
-              history={props.history}
+              history={history}
               sideX={sideOne}
             />
             <MealSelect
               recipes={recipes}
               change={e => setSideTwo(e.target.value)}
               value={sideTwo}
-              history={props.history}
+              history={history}
               sideX={sideTwo}
             />
           </div>

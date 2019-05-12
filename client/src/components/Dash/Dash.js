@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import NavBar from "./NavBar";
 import { Link, navigate } from "@reach/router";
 import "../Styles/main.css";
@@ -16,12 +16,16 @@ import NavList from "./NavList";
 import MainContainer from "./MainContainer";
 import { paths, SB_AD } from "../Utility/appHelpers";
 import BackButton from "./BackButton";
+import CartContext from "../contextComponents/cart.context";
 
 export default function Dash(props) {
   const [path, setPath] = useState(null);
-
+  const { cart } = useContext(CartContext);
   useEffect(() => {
-    setPath(window.location.pathname);
+    function path() {
+      return setPath(window.location.pathname);
+    }
+    path();
   });
   const handleLogout = () => {
     cookie.remove("user", { path: "/" });
@@ -43,11 +47,7 @@ export default function Dash(props) {
             <div id="p-search" className={"show-search"}>
               {props.Searchbar}
             </div>
-            <Licon
-              cart={props.cart}
-              handleCartIcon={handleCartIcon}
-              svgs={List}
-            />
+            <Licon cart={cart} handleCartIcon={handleCartIcon} svgs={List} />
             <Menu image={menuicon}>
               <MenuList>
                 <Link to={`${SB_AD}/settings`} className="nav-link">

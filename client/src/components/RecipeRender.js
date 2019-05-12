@@ -44,9 +44,7 @@ export default function RecipeRender(props) {
                     </button>
                   ) : (
                     <button
-                      onClick={() =>
-                        addToList(i, el.historyId, props.user, props.getCart)
-                      }
+                      onClick={() => addToList(i, el.historyId, props.getCart)}
                     >
                       Add to List
                     </button>

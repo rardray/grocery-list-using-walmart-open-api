@@ -6,7 +6,6 @@ import { searchURL, apiKeyGr } from "../Utility/appHelpers";
 
 const Searchbar = props => {
   const [query, setQuery] = useState("");
-  console.log(query);
   const searchSubmit = e => {
     e.preventDefault();
     getRequest(

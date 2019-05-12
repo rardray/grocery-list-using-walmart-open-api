@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getRequest } from "./Utility/httpRequests";
 import { apiToken } from "./Utility/appHelpers";
 import "./Styles/recipe.css";
 import RecipeRender from "./RecipeRender";
 import { useLoaderState } from "./Hooks";
+import CartContext from "./contextComponents/cart.context";
+import HistoryContext from "./contextComponents/history.context";
 
 export default function Recipe(props) {
+  const { cart, getCart } = useContext(CartContext);
+  const { getList } = useContext(HistoryContext);
   const [state, setState] = useState({
     title: "",
     instructions: "",
@@ -38,9 +42,9 @@ export default function Recipe(props) {
       <RecipeRender
         {...{ title, instructions, ingredients, image }}
         device={props.device}
-        cart={props.cart}
-        getList={props.getList}
-        getCart={props.getCart}
+        cart={cart}
+        getList={getList}
+        getCart={getCart}
         user={props.user}
         load={load}
       />

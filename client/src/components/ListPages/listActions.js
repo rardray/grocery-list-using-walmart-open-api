@@ -4,13 +4,16 @@ import {
   deleteRequest
 } from "../Utility/httpRequests";
 import { postListUrl, apiToken } from "../Utility/appHelpers";
+import cookie from "react-cookies";
 
-export const addToList = (i, item, user, callback) => {
+const user = cookie.load("user");
+
+export const addToList = (i, item, callback) => {
   const data = { ...item, userId: user._id };
   postRequest(postListUrl, apiToken(), data, callback, i);
 };
 
-export const clearList = (user, callback) => {
+export const clearList = callback => {
   let id = user._id;
   deleteRequest("/api/cart/clearall/" + id, apiToken(), callback);
 };
@@ -20,7 +23,7 @@ export const handleDelete = (i, data, callback) => {
   deleteRequest(`/api/cart/clearone/${id}`, apiToken(), callback, i);
 };
 
-export const addFavoriteFromSearch = (i, item, user, callback) => {
+export const addFavoriteFromSearch = (i, item, callback) => {
   const data = { ...item, userId: user._id };
   data.favorite = !data.favorite;
   postRequest("/api/list/favorite", apiToken(), data, callback, i);

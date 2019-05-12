@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Items from "./Items";
 import $ from "jquery";
 import {
@@ -6,10 +6,14 @@ import {
   addFavoriteFromSearch,
   handleQuantity
 } from "./listActions";
+import HistoryContext from "../contextComponents/history.context";
+import CartContext from "../contextComponents/cart.context";
 
 const History = props => {
   const [load, setLoad] = useState(0);
-  const { handleDrag, history } = props;
+  const { history, addHistCount, setHist } = useContext(HistoryContext);
+  const { cart, getCart } = useContext(CartContext);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, {});
@@ -29,7 +33,7 @@ const History = props => {
   return (
     <div className="list-items">
       <h2 className="header-orange">History</h2>
-      <p>showing last {props.history.length} items in search history</p>
+      <p>showing last {history.length} items in search history</p>
       {history.map((el, i) => {
         if (i >= load + 20) {
           return null;
@@ -40,20 +44,18 @@ const History = props => {
             id={el._id}
             image={el.image}
             title={el.title}
-            action={() => addToList(i, el, props.user, props.getCart)}
+            action={() => addToList(i, el, getCart)}
             handleQuantity={handleQuantity.bind(
               this,
               i,
               el.count,
-              props.addCount,
-              props.history,
+              addHistCount,
+              history,
               null
             )}
             bLabel="Add to List"
             count={el.count}
-            addFavorite={() =>
-              addFavoriteFromSearch(i, el, props.user, props.setHist)
-            }
+            addFavorite={() => addFavoriteFromSearch(i, el, setHist)}
             favorite={el.favorite}
           />
         );

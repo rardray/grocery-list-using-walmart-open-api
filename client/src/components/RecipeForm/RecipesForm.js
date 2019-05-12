@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { postRequest } from "../Utility/httpRequests";
 import { apiToken } from "../Utility/appHelpers";
 import { navigate } from "@reach/router";
@@ -6,6 +6,7 @@ import RightRForm from "./RightRForm";
 import LeftRForm from "./LeftRForm";
 import IngredientsList from "./IngredientsList";
 import imageCompression from "browser-image-compression";
+import HistoryContext from "../contextComponents/history.context";
 
 export default function RecipesForm(props) {
   const [select, setSelect] = useState("");
@@ -18,6 +19,7 @@ export default function RecipesForm(props) {
     "https://rardrayrails.s3.amazonaws.com/1554662862340"
   );
   const [load, setLoad] = useState(true);
+  const { history } = useContext(HistoryContext);
 
   const show = [];
   for (let i = 0; i < ingredients.length; i++) {
@@ -119,7 +121,7 @@ export default function RecipesForm(props) {
               );
             })}
             {...{ load, image, select, measure }}
-            history={props.history}
+            history={history}
             device={props.device}
           />
           <br />
