@@ -23,10 +23,10 @@ export default function RecipesForm(props) {
 
   const show = [];
   for (let i = 0; i < ingredients.length; i++) {
-    for (let j = 0; j < props.history.length; j++) {
-      if (ingredients[i].historyId === props.history[j]._id) {
+    for (let j = 0; j < history.length; j++) {
+      if (ingredients[i].historyId === history[j]._id) {
         show[i] = {
-          ...props.history[j],
+          ...history[j],
           count: 1,
           measure: ingredients[i].amount
         };
