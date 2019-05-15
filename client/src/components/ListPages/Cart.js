@@ -7,6 +7,7 @@ import {
   handleQuantity,
   updateCartCount
 } from "./listActions";
+import ListWrapper from "./ListWrapper";
 import CartContext from "../contextComponents/cart.context";
 import HistoryContext from "../contextComponents/history.context";
 
@@ -23,13 +24,12 @@ const Cart = props => {
   }, []);
 
   return (
-    <div className="list-items">
-      <h2 className="header-orange">{sTitle}</h2>
-      {cart.length ? (
-        <p>Showing {total} items in grocery list</p>
-      ) : (
-        <h4>Shopping Cart Empty.</h4>
-      )}
+    <ListWrapper
+      header={sTitle}
+      subheader={
+        cart.length ? `Shwoing ${total} items on grocery list` : "List is empty"
+      }
+    >
       {cart.map((el, i) => {
         return (
           <Items
@@ -57,7 +57,7 @@ const Cart = props => {
       <button onClick={() => clearList(clearAll)} className="button-blue-full">
         Clear List
       </button>
-    </div>
+    </ListWrapper>
   );
 };
 

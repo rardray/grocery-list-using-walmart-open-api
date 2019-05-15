@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import SearchIco from "../Styles/searchicon.svg";
 import { navigate } from "@reach/router";
-import { getRequest } from "../Utility/httpRequests";
+import axios from "axios";
 import { searchURL, apiKeyGr } from "../Utility/appHelpers";
+import ProductSearchContext from "../contextComponents/productSearch.context";
+import FavoritesContext from "../contextComponents/favorites.context";
 
 const Searchbar = props => {
+  const { getProductSearch } = useContext(ProductSearchContext);
+  const { favorites } = useContext(FavoritesContext);
   const [query, setQuery] = useState("");
   const searchSubmit = e => {
     e.preventDefault();
-    getRequest(
-      searchURL(query),
-      apiKeyGr(),
-      props.setProductSearches,
-      navigate,
-      "/grocery/search/" + query,
-      setQuery("")
-    );
+    axios
+      .get(searchURL(query), {
+        headers: apiKeyGr()
+      })
+      .then(response => getProductSearch(response, favorites))
+      .then(() => navigate("/grocery/search/" + query))
+      .catch(err => err);
+
+    setQuery("");
   };
 
   return (

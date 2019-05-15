@@ -1,5 +1,5 @@
 node_modules
-client/src/components/AppT.js
+client/src/components/appT.js
 client/src/components/AppTmp.js
 client/src/components/ListPages/Cart-back.js
 /db

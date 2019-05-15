@@ -6,13 +6,14 @@ import {
   addFavoriteFromSearch,
   handleQuantity
 } from "./listActions";
+import ListWrapper from "./ListWrapper";
 import HistoryContext from "../contextComponents/history.context";
 import CartContext from "../contextComponents/cart.context";
 
 const History = props => {
   const [load, setLoad] = useState(0);
   const { history, addHistCount, setHist } = useContext(HistoryContext);
-  const { cart, getCart } = useContext(CartContext);
+  const { getCart } = useContext(CartContext);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -30,10 +31,12 @@ const History = props => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, {});
+
   return (
-    <div className="list-items">
-      <h2 className="header-orange">History</h2>
-      <p>showing last {history.length} items in search history</p>
+    <ListWrapper
+      header={"History"}
+      subheader={`showing last ${history.length} items in search history`}
+    >
       {history.map((el, i) => {
         if (i >= load + 20) {
           return null;
@@ -60,7 +63,7 @@ const History = props => {
           />
         );
       })}
-    </div>
+    </ListWrapper>
   );
 };
 

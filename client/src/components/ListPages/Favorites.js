@@ -5,6 +5,7 @@ import {
   addFavoriteFromSearch,
   handleQuantity
 } from "./listActions";
+import ListWrapper from "./ListWrapper";
 import FavoritesContext from "../contextComponents/favorites.context";
 import HistoryContext from "../contextComponents/history.context";
 import CartContext from "../contextComponents/cart.context";
@@ -18,13 +19,14 @@ const Favorites = props => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="list-items">
-      <h2 className="header-orange">{sTitle}</h2>
-      {favorites.length ? (
-        <p>{favorites.length} Favorite Items</p>
-      ) : (
-        <h4>No Favorite Items.</h4>
-      )}
+    <ListWrapper
+      header={sTitle}
+      subheader={
+        favorites.length
+          ? `${favorites.length} favorite items`
+          : "No favorites yet."
+      }
+    >
       {favorites.map((el, i) => {
         return (
           <Items
@@ -51,7 +53,7 @@ const Favorites = props => {
           />
         );
       })}
-    </div>
+    </ListWrapper>
   );
 };
 
