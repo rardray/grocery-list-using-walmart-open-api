@@ -1,4 +1,4 @@
-import React, { render } from "react";
+import React from "react";
 import HistoryProvider from "./contextComponents/HistoryProvider";
 import CartProvider from "./contextComponents/CartProvider";
 import FavoritesProvider from "./contextComponents/FavoritesProvider";

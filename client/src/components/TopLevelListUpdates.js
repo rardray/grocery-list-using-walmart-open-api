@@ -10,19 +10,17 @@ export default function(props) {
   const { user } = props;
 
   useEffect(() => {
-    if (user && history.length) {
+    if (history.length) {
       getFavorites();
     }
   }, [history]);
 
   useEffect(() => {
-    if (user) {
-      getList();
-    }
+    getList();
   }, [user]);
 
   useEffect(() => {
-    if (user && history.length) {
+    if (history.length) {
       getCart();
     }
   }, [history]);

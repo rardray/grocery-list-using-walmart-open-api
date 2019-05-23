@@ -17,6 +17,7 @@ import MainContainer from "./MainContainer";
 import { paths, SB_AD } from "../Utility/appHelpers";
 import BackButton from "./BackButton";
 import CartContext from "../contextComponents/cart.context";
+import TopLevelListUpdates from "../TopLevelListUpdates";
 
 export default function Dash(props) {
   const [path, setPath] = useState(null);
@@ -72,6 +73,7 @@ export default function Dash(props) {
       </NavBar>
       {props.user ? (
         <SwipeFunction device={props.device}>
+          <TopLevelListUpdates user={props.user} />
           <MainContainer device={props.device}>
             {props.user ? props.ListBar : null}
             {props.children}

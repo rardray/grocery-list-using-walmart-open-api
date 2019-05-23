@@ -15,12 +15,10 @@ import Recipe from "./Recipe";
 import { paths, SB_AD } from "./Utility/appHelpers";
 import AddPlan from "./AddPlan";
 import DefaultHome from "./Home/DefaultHome";
-import TopLevelListUpdates from "./TopLevelListUpdates";
 
 const Routes = props => {
   return (
     <>
-      <TopLevelListUpdates user={props.user} />
       <Router>
         <Dash
           path={paths[2]}
