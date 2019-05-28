@@ -1,7 +1,7 @@
 import React from "react";
 import calander from "./cal";
 import { navigate } from "@reach/router";
-import Directional from "../Styles/expand-button.svg";
+import Directional from "../../Styles/expand-button.svg";
 
 export const months = [
   "January",

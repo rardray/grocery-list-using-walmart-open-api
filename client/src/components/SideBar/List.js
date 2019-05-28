@@ -3,7 +3,7 @@ import {
   addToList,
   addFavoriteFromSearch,
   handleDelete
-} from "../ListPages/listActions";
+} from "../Utility/listActions";
 import CartContext from "../contextComponents/cart.context";
 import HistoryContext from "../contextComponents/history.context";
 import FavoritesContext from "../contextComponents/favorites.context";

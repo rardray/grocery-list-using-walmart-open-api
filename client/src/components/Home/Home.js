@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Calander from "./Calander";
-import RecipesPreview from "./RecipesPreview";
+import Calander from "./Calender/Calander";
+import RecipesPreview from "./RecipeBlock/RecipesPreview";
 import { apiToken } from "../Utility/appHelpers";
 import { getRequest } from "../Utility/httpRequests";
 import "../Styles/home.css";
-import RecipeDrawer from "./RecipeDrawer";
-import MealForDay from "./MealForDay";
-import { useLoaderState } from "../Hooks";
+import RecipeDrawer from "./RecipeBlock/RecipeDrawer";
+import MealForDay from "./Daily/MealForDay";
+import { useLoaderState } from "../Utility/Hooks";
 export default function Home(props) {
   const [date, setDate] = useState({ day: null, year: null, month: null });
   const [position, setPosition] = useState(0);

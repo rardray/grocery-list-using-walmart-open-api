@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from "react";
-import Items from "./Items";
+import Items from "./SharedStateless/Items";
 import {
   addToList,
   addFavoriteFromSearch,
   handleQuantity
-} from "./listActions";
-import ListWrapper from "./ListWrapper";
+} from "../Utility/listActions";
+import ListWrapper from "./SharedStateless/ListWrapper";
 import ProductSearchContext from "../contextComponents/productSearch.context";
 import HistoryContext from "../contextComponents/history.context";
 

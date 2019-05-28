@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Expand from "../Styles/expand-button.svg";
+import Expand from "../../Styles/expand-button.svg";
 
 export default function RecipeDrawer(props) {
   const [expanded, setExpand] = useState(false);

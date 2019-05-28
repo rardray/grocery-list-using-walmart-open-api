@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-var Themes = require("../Styles/Themes");
+var Themes = require("../../Styles/Themes");
 
 const NavBar = props => {
   const [scrollPos, setScrollPos] = useState(0);

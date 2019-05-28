@@ -50,3 +50,22 @@ exports.getCaldatas = function(req, res, next) {
       res.status(200).send(cal);
     });
 };
+
+exports.getCaldata = function(req, res, next) {
+  Caldata.findOne({ _id: req.params.id })
+    .populate({
+      path: "mainId",
+      select: "title image"
+    })
+    .populate({
+      path: "sideOneId",
+      select: "title image"
+    })
+    .populate({ path: "sideTwoId", select: "title image" })
+    .populate({ path: "sideOneSingleId", select: "title image" })
+    .populate({ path: "sideTwoSingleId", select: "title image" })
+    .exec(function(err, cal) {
+      if (err) next(err);
+      res.status(200).send(cal);
+    });
+};

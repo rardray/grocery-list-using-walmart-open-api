@@ -47,6 +47,15 @@ textarea::placeholder {
   color: white;
   box-shadow: 0px 2px 4px lightgrey;
 }
+
+.header-blue {
+  margin: 2px 0 8px 0;
+  padding: 6px;
+  width: 100%;
+  background: #377fbb;
+  color: white;
+  box-shadow: 0px 2px 4px lightgrey;
+}
 button {
   width: 50%;
   margin: 4px;

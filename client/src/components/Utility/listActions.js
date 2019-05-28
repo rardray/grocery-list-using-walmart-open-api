@@ -1,9 +1,5 @@
-import {
-  postRequest,
-  putRequest,
-  deleteRequest
-} from "../Utility/httpRequests";
-import { postListUrl, apiToken } from "../Utility/appHelpers";
+import { postRequest, putRequest, deleteRequest } from "./httpRequests";
+import { postListUrl, apiToken } from "./appHelpers";
 import cookie from "react-cookies";
 
 const user = cookie.load("user");

@@ -1,5 +1,5 @@
 import React from "react";
-import Loader from "../Loader";
+import Loader from "../Utility/Loader";
 import Input from "../Forms/Input";
 
 export default function LeftRForm(props) {

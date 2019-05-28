@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getRequest, postRequest } from "./Utility/httpRequests";
-import { apiToken } from "./Utility/appHelpers";
-import { months } from "./Home/Calander";
+import { getRequest, postRequest } from "../Utility/httpRequests";
+import { apiToken } from "../Utility/appHelpers";
+import { months } from "../Home/Calender/Calander";
 import MealSelect from "./MealSelect";
-import HistoryContext from "./contextComponents/history.context";
-
-import "./Styles/meals.css";
+import HistoryContext from "../contextComponents/history.context";
+import "../Styles/meals.css";
 import { navigate } from "@reach/router";
 
 export default function AddPlan(props) {
   const [recipes, setRecipes] = useState([]);
-  const [main, setMain] = useState("");
-  const [sideOne, setSideOne] = useState("");
-  const [sideTwo, setSideTwo] = useState("");
+  const [main, setMain] = useState(props.main);
+  const [sideOne, setSideOne] = useState(props.sideOne);
+  const [sideTwo, setSideTwo] = useState(props.sideTwo);
   const { history } = useContext(HistoryContext);
   useEffect(() => {
     getRequest("/api/recipe/all/" + props.user._id, apiToken(), data =>
@@ -41,7 +40,6 @@ export default function AddPlan(props) {
       () => navigate("/")
     );
   };
-
   return (
     <>
       <div className="meal">

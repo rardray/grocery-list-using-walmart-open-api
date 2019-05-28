@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
-import SearchIco from "../Styles/searchicon.svg";
+import SearchIco from "../../Styles/searchicon.svg";
 import { navigate } from "@reach/router";
 import axios from "axios";
-import { searchURL, apiKeyGr } from "../Utility/appHelpers";
-import ProductSearchContext from "../contextComponents/productSearch.context";
-import FavoritesContext from "../contextComponents/favorites.context";
+import { searchURL, apiKeyGr } from "../../Utility/appHelpers";
+import ProductSearchContext from "../../contextComponents/productSearch.context";
+import FavoritesContext from "../../contextComponents/favorites.context";
 
 const Searchbar = props => {
   const { getProductSearch } = useContext(ProductSearchContext);

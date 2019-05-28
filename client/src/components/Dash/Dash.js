@@ -1,23 +1,23 @@
 import React, { useState, useEffect, useContext } from "react";
-import NavBar from "./NavBar";
+import NavBar from "./Navigator/NavBar";
 import { Link, navigate } from "@reach/router";
 import "../Styles/main.css";
-import Menu from "./Menu";
-import MenuList from "./MenuList";
+import Menu from "./Menu/Menu";
+import MenuList from "./Menu/MenuList";
 import cookie from "react-cookies";
-import Licon from "./licon";
+import Licon from "./Navigator/licon";
 import title from "../Styles/title.svg";
 import menuicon from "../Styles/Untitled.svg";
-import Footer from "./Footer";
+import Footer from "./Footer/Footer";
 import "../Styles/menu.css";
 import List from "../Styles/list.svg";
 import SwipeFunction from "./SwipeFunction";
-import NavList from "./NavList";
+import NavList from "./Navigator/NavList";
 import MainContainer from "./MainContainer";
 import { paths, SB_AD } from "../Utility/appHelpers";
 import BackButton from "./BackButton";
 import CartContext from "../contextComponents/cart.context";
-import TopLevelListUpdates from "../TopLevelListUpdates";
+import TopLevelListUpdates from "../Utility/TopLevelListUpdates";
 
 export default function Dash(props) {
   const [path, setPath] = useState(null);

@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
-import HistoryContext from "./contextComponents/history.context";
-import CartContext from "./contextComponents/cart.context";
-import FavoritesContext from "./contextComponents/favorites.context";
+import HistoryContext from "../contextComponents/history.context";
+import CartContext from "../contextComponents/cart.context";
+import FavoritesContext from "../contextComponents/favorites.context";
 
 export default function(props) {
   const { getFavorites } = useContext(FavoritesContext);

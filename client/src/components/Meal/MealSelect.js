@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Default from "./Styles/default.svg";
+import Default from "../Styles/default.svg";
 
 export default function MealSelect(props) {
   const [single, setSingle] = useState(false);
@@ -23,7 +23,7 @@ export default function MealSelect(props) {
         </label>
         {props.main ? null : (
           <button onClick={handleRec}>
-            {single ? "Single Item" : "Recipe"}
+            {single ? "Recipe" : "Single Item"}
           </button>
         )}
         <select

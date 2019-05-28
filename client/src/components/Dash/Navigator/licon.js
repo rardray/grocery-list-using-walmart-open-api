@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/task.css";
+import "../../Styles/task.css";
 
 const Licon = props => {
   const count = props.cart.reduce(function(acc, curr) {

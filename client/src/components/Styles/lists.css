@@ -113,3 +113,18 @@
     opacity: 1;
   }
 }
+
+.meal-items {
+  display: block;
+  position: relative;
+  text-align: left;
+  margin: auto;
+  max-width: 100%;
+  min-width: 75%;
+  overflow: hidden;
+  padding: 10px;
+  margin-bottom: 80px;
+  padding-top: 90px;
+  box-sizing: border-box;
+  background: #dceaf5;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import Heart from "../ListPages/Heart";
+import Heart from "../ListPages/SharedStateless/Heart";
 
 export default function Lists(props) {
   return (

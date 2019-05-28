@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { paths, titles, SB_AD } from "../Utility/appHelpers";
+import { paths, titles, SB_AD } from "../../Utility/appHelpers";
 
 export default function Footer(props) {
   let links = [];

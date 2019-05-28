@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
-import { paths, titles } from "../Utility/appHelpers";
+import { paths, titles } from "../../Utility/appHelpers";
 
 export default function NavList(props) {
   let links = [];
@@ -17,7 +17,9 @@ export default function NavList(props) {
         >
           {titles[i]}
         </Link>
-        {i !== paths.length - 1 ? " | " : null}
+        {i !== paths.length - 1 ? (
+          <span style={{ color: "lightgrey", opacity: 0.1 }}>{" | "}</span>
+        ) : null}
       </div>
     );
   }

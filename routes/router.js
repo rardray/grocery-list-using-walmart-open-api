@@ -43,6 +43,7 @@ module.exports = function(app) {
   apiRoutes.use("/caldata", caldataRoutes);
   caldataRoutes.post("/add", requireAuth, CaldataController.postCaldata);
   caldataRoutes.get("/all/:id", requireAuth, CaldataController.getCaldatas);
+  caldataRoutes.get("/one/:id", requireAuth, CaldataController.getCaldata);
   //cart routes
   apiRoutes.use("/cart", cartRoutes);
   cartRoutes.get("/:id", requireAuth, CartController.getCart);

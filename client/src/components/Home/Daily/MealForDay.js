@@ -1,7 +1,7 @@
 import React from "react";
-import plus from "../Styles/plus.svg";
-import edit from "../Styles/edit.svg";
-import go from "../Styles/go.svg";
+import plus from "../../Styles/plus.svg";
+import edit from "../../Styles/edit.svg";
+import go from "../../Styles/go.svg";
 import ButtonLinks from "./ButtonLinks";
 
 export default function MealForDay(props) {
