@@ -30,6 +30,7 @@ export default function MealSelect(props) {
           className="cust-select"
           value={props.value}
           onChange={props.change}
+          placeholder={props.value}
         >
           <option />
           {(single ? props.history : props.recipes).map(el => {

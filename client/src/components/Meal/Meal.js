@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import MealWrapper from "./MealWrapper";
 import { months } from "../Home/Calender/Calander";
 import { useLoaderState } from "../Utility/Hooks";
 import { getRequest } from "../Utility/httpRequests";
 import { apiToken } from "../Utility/appHelpers";
 import Recipe from "../Recipe/Recipe";
+import { addToList, deleteCaldata } from "../Utility/listActions";
+import SingleItem from "./SingleItem";
+import HistoryContext from "../contextComponents/history.context";
+import { navigate } from "@reach/router";
 
 export default function Meal(props) {
   const [plan, setPlan] = useState({ dow: [] });
+  const { getList } = useContext(HistoryContext);
   const Loaded = useLoaderState(
     getRequest,
     "/api/caldata/one/" + props.id,
@@ -15,6 +20,9 @@ export default function Meal(props) {
     data => setPlan({ ...data.data })
   );
 
+  function goTo(data, url) {
+    if (data.status === 200) return navigate(url);
+  }
   return (
     <MealWrapper
       header="Meal"
@@ -28,39 +36,31 @@ export default function Meal(props) {
             <h2 className="header-blue">Side</h2>
             {plan.sideOneId ? <Recipe id={plan.sideOneId._id} /> : null}
             {plan.sideOneSingleId ? (
-              <div style={{ display: "block", position: "relative" }}>
-                <div className="list-block" style={{ height: 100 }}>
-                  <img
-                    src={plan.sideOneSingleId.image}
-                    alt={plan.sideOneSingleId.title}
-                  />
-                  <div>{plan.sideOneSingleId.title}</div>
-                </div>
-              </div>
+              <SingleItem
+                add={() => addToList(null, plan.sideOneSingleId, getList)}
+                image={plan.sideOneSingleId.image}
+                title={plan.sideOneSingleId.title}
+              />
             ) : null}
             <h2 className="header-blue">Side</h2>
             {plan.sideTwoId ? <Recipe id={plan.sideTwoId._id} /> : null}
 
             {plan.sideTwoSingleId ? (
-              <div className="r-contain">
-                <div
-                  className="recipe"
-                  style={{ display: "block", position: "relative" }}
-                >
-                  <div className="ingredients-block" style={{ height: 100 }}>
-                    <img
-                      src={plan.sideTwoSingleId.image}
-                      alt={plan.sideTwoSingleId.title}
-                    />
-                    <h4>{plan.sideTwoSingleId.title}</h4>
-                  </div>
-                </div>
-              </div>
+              <SingleItem
+                add={() => addToList(null, plan.sideTwoSingleId, getList)}
+                image={plan.sideTwoSingleId.image}
+                title={plan.sideTwoSingleId.title}
+              />
             ) : null}
           </>
         )}
       </div>
-      <button>Delete</button>
+      <button
+        className="button-blue-full"
+        onClick={() => deleteCaldata("/", plan, goTo)}
+      >
+        Delete
+      </button>
     </MealWrapper>
   );
 }

@@ -9,7 +9,7 @@ export default function EditPlan(props) {
     sideOneId: [],
     sideTwoId: []
   });
-  console.log(plan);
+  console.log(plan.mainId._id);
   useEffect(() => {
     getRequest(`/api/caldata/one/${props.id}`, apiToken(), data =>
       setPlan({ ...data.data })

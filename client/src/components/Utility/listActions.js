@@ -43,3 +43,8 @@ export const updateCartCount = (data, i, callback) => {
   let id = obj._id;
   putRequest("/api/cart/update/" + id, apiToken(), obj, callback, i);
 };
+
+export const deleteCaldata = (nav, data, callback) => {
+  const id = data._id;
+  deleteRequest(`/api/caldata/delete/${id}`, apiToken(), callback, nav);
+};

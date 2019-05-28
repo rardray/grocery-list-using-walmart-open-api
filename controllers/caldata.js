@@ -62,10 +62,18 @@ exports.getCaldata = function(req, res, next) {
       select: "title image"
     })
     .populate({ path: "sideTwoId", select: "title image" })
-    .populate({ path: "sideOneSingleId", select: "title image" })
-    .populate({ path: "sideTwoSingleId", select: "title image" })
+    .populate({ path: "sideOneSingleId", select: "title image searchId count" })
+    .populate({ path: "sideTwoSingleId", select: "title image searchId count" })
     .exec(function(err, cal) {
       if (err) next(err);
       res.status(200).send(cal);
     });
+};
+
+exports.deleteCaldata = function(req, res, next) {
+  id = req.params.id;
+  Caldata.findByIdAndDelete(id, function(err, data) {
+    if (err) next(err);
+    res.status(200).send(data);
+  });
 };

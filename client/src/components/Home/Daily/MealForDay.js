@@ -56,12 +56,7 @@ export default function MealForDay(props) {
                 {today[0] ? (
                   <>
                     <ButtonLinks
-                      url="/recipe/caldata/edit"
-                      image={edit}
-                      label="edit meal"
-                    />
-                    <ButtonLinks
-                      url="/grocery/recipe"
+                      url={"/grocery/meal/" + today[0]._id}
                       image={go}
                       label="view meal"
                     />

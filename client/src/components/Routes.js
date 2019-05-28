@@ -48,7 +48,7 @@ const Routes = props => {
           <RecipesForm path={paths[0]} {...props} />
           <EditPlan path={`${SB_AD}/meal/edit/:id`} {...props} />
           <Recipe path={`${SB_AD}/recipe/:id`} spacing={true} />
-          <Meal path={`${SB_AD}/meal/:id`} />
+          <Meal path={`${SB_AD}/meal/:id`} {...props} />
           <Register path={`${SB_AD}/register`} setUser={props.setUser} />
           <Login path={`${SB_AD}/login`} setUser={props.setUser} />
         </Dash>
