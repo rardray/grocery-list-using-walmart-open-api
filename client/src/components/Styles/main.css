@@ -21,7 +21,7 @@ input {
   color: #0e5896;
 }
 input::placeholder {
-  color: light#377fbb;
+  color: #377fbb;
   font-size: 12pt;
   text-align: right;
 }
@@ -73,7 +73,7 @@ button:hover {
 }
 .button-blue-full {
   width: 100%;
-  background: #387fbb;
+  background: #377fbb;
   box-sizing: border-box;
   margin: 0px;
 }
@@ -203,7 +203,7 @@ a {
 
 .sub-nav {
   height: 24px;
-  background: #387fbb;
+  background: #377fbb;
   display: inline-block;
   position: absolute;
   bottom: -24px;
