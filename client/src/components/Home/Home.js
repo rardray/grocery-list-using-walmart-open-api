@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Calander from "./Calender/Calander";
 import RecipesPreview from "./RecipeBlock/RecipesPreview";
 import { apiToken } from "../Utility/appHelpers";
@@ -10,6 +10,7 @@ import { useLoaderState } from "../Utility/Hooks";
 import BoxContainer from "../BoxContainer";
 import H2 from "../H2";
 import HomeContainer from "./HomeContainer";
+import HistoryContext from "../contextComponents/history.context";
 
 export default function Home(props) {
   const [date, setDate] = useState({ day: null, year: null, month: null });
@@ -17,7 +18,7 @@ export default function Home(props) {
   const [yPosition, setYPosition] = useState(0);
   const [recipes, setRecipe] = useState([]);
   const [meals, setMeals] = useState([]);
-
+  const { getList } = useContext(HistoryContext);
   const loadState = useLoaderState(
     getRequest,
     "/api/caldata/all/" + props.user._id,
@@ -45,6 +46,9 @@ export default function Home(props) {
     return function cleanup() {
       clearInterval(getDates, 1000 * 60 * 60);
     };
+  }, []);
+  useEffect(() => {
+    getList();
   }, []);
 
   const moveUp = () => {

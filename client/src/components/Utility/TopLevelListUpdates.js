@@ -16,13 +16,14 @@ export default function(props) {
   }, [history]);
 
   useEffect(() => {
-    getList();
-  }, [user]);
-
+    if (!history.length) {
+      getList();
+    }
+  }, []);
   useEffect(() => {
     if (history.length) {
       getCart();
     }
   }, [history]);
-  return <></>;
+  return <>{props.children}</>;
 }
