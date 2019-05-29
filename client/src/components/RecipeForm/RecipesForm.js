@@ -7,6 +7,8 @@ import LeftRForm from "./LeftRForm";
 import IngredientsList from "./IngredientsList";
 import imageCompression from "browser-image-compression";
 import HistoryContext from "../contextComponents/history.context";
+import BoxContainer from "../BoxContainer";
+import Button from "../Button";
 
 export default function RecipesForm(props) {
   const [select, setSelect] = useState("");
@@ -89,7 +91,7 @@ export default function RecipesForm(props) {
   return (
     <div style={{ textAlign: "center" }}>
       <div className="list-items" style={{ marginBottom: 0 }}>
-        <div className="r-contain" style={{ marginTop: 10 }}>
+        <BoxContainer additionalStyles={{ margin: 10 }}>
           <br />
           <RightRForm
             changeText={e => setInstructions(e.target.value)}
@@ -125,10 +127,12 @@ export default function RecipesForm(props) {
             device={props.device}
           />
           <br />
-          <button className="button-blue-full" onClick={handleSubmit}>
-            Save Recipe
-          </button>
-        </div>
+          <Button
+            class={"button-blue-full"}
+            click={handleSubmit}
+            label={"Save Recipe"}
+          />
+        </BoxContainer>
       </div>
       <div style={{ textAlign: "center", marginBottom: 125 }} />
     </div>

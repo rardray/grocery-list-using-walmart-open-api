@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Styles/Button";
+import Button from "../Button";
 import Container from "./LogRegContainer";
 const formlogic = require("./formlogic");
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Default from "../Styles/default.svg";
+import Button from "../Button";
 
 export default function MealSelect(props) {
   const [single, setSingle] = useState(false);
@@ -22,9 +23,7 @@ export default function MealSelect(props) {
             : "Side (Recipe)"}
         </label>
         {props.main ? null : (
-          <button onClick={handleRec}>
-            {single ? "Recipe" : "Single Item"}
-          </button>
+          <Button click={handleRec} label={single ? "Recipe" : "Single Item"} />
         )}
         <select
           className="cust-select"

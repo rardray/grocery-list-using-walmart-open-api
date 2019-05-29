@@ -7,6 +7,9 @@ import "../Styles/home.css";
 import RecipeDrawer from "./RecipeBlock/RecipeDrawer";
 import MealForDay from "./Daily/MealForDay";
 import { useLoaderState } from "../Utility/Hooks";
+import BoxContainer from "../BoxContainer";
+import H2 from "../H2";
+
 export default function Home(props) {
   const [date, setDate] = useState({ day: null, year: null, month: null });
   const [position, setPosition] = useState(0);
@@ -65,13 +68,7 @@ export default function Home(props) {
     <>
       <div className="home" style={{ width: props.device ? "100%" : null }}>
         <div style={{ textAlign: "left" }} />
-        <div
-          style={{
-            background: "#dc5c36"
-          }}
-        >
-          <h2 style={{ color: "white" }}>Welcome, {user.firstName}</h2>
-        </div>
+        <H2 label={`Welcome, ${user.firstName}`} />
         <MealForDay {...{ day, month, year, meals }} loader={loadState} />
         {loadState || (
           <Calander
@@ -87,17 +84,15 @@ export default function Home(props) {
             }}
           />
         )}
-        <div className="r-contain" style={{ height: "auto" }}>
-          <div style={{ textAlign: "center" }}>
-            <h2 className="header-orange">Your Recipes</h2>
-          </div>
+        <BoxContainer additinalStyles={{ height: "auto" }}>
+          <H2 label={"Your Recipes"} />
           {loadRecipe || <RecipesPreview {...{ recipes }} expanded={false} />}
           {recipes.length > 6 ? (
             <RecipeDrawer {...{ recipes }}>
               <RecipesPreview {...{ recipes }} expanded={true} />
             </RecipeDrawer>
           ) : null}
-        </div>
+        </BoxContainer>
       </div>
     </>
   );

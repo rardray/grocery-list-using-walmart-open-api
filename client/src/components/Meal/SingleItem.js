@@ -1,9 +1,11 @@
 import React from "react";
+import BoxContainer from "../BoxContainer";
+import Button from "../Button";
 
 export default function SingleItem(props) {
   return (
     <div style={{ padding: 10 }}>
-      <div className="r-contain">
+      <BoxContainer>
         <div
           className="recipe"
           style={{
@@ -18,10 +20,10 @@ export default function SingleItem(props) {
           >
             <img src={props.image} alt={props.title} />
             <h4>{props.title}</h4>
-            <button onClick={props.add}>Add to List</button>
+            <Button click={props.add} label={"Add to List"} />
           </div>
         </div>
-      </div>
+      </BoxContainer>
     </div>
   );
 }

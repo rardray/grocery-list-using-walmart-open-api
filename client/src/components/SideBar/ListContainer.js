@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
-import Button from "../Styles/Button";
 import { clearList } from "../Utility/listActions";
 import CartContext from "../contextComponents/cart.context";
+import Button from "../Button";
+
 const ListContainer = props => {
   const { clearAll } = useContext(CartContext);
   return (
     <div>
       {props.children}
       <div id="list-block" style={{ marginBottom: 75 }}>
-        <Button label="CLEAR LIST" click={() => clearList(clearAll)} />
+        <Button label="Clear List" click={() => clearList(clearAll)} />
       </div>
     </div>
   );

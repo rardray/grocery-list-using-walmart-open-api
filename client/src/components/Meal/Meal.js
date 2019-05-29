@@ -9,6 +9,7 @@ import { addToList, deleteCaldata } from "../Utility/listActions";
 import SingleItem from "./SingleItem";
 import HistoryContext from "../contextComponents/history.context";
 import { navigate } from "@reach/router";
+import Button from "../Button";
 
 export default function Meal(props) {
   const [plan, setPlan] = useState({ dow: [] });
@@ -55,12 +56,11 @@ export default function Meal(props) {
           </>
         )}
       </div>
-      <button
-        className="button-blue-full"
-        onClick={() => deleteCaldata("/", plan, goTo)}
-      >
-        Delete
-      </button>
+      <Button
+        class={"button-blue-full"}
+        click={() => deleteCaldata("/", plan, goTo)}
+        label={"Delete"}
+      />
     </MealWrapper>
   );
 }

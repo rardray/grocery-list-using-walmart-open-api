@@ -1,9 +1,10 @@
 import React from "react";
+import H2 from "../H2";
 
 export default function MealWrapper(props) {
   return (
     <div className="meal-items">
-      <h2 className="header-orange">{props.header}</h2>
+      <H2 label={props.header} />
       <p>{props.subheader}</p>
       {props.children}
     </div>

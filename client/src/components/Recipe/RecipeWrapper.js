@@ -1,9 +1,10 @@
 import React from "react";
+import BoxContainer from "../BoxContainer";
 
 export default function RecipeWrapper(props) {
   return (
     <div className="recipe">
-      <div className="r-contain">{props.children}</div>
+      <BoxContainer>{props.children}</BoxContainer>
     </div>
   );
 }

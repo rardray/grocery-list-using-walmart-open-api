@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Button";
 
 export default function RecipeItems(props) {
   return (
@@ -10,14 +11,14 @@ export default function RecipeItems(props) {
         <button
           style={{
             color: "slategray",
-            background: "white",
+            background: "none",
             cursor: "default"
           }}
         >
           In Cart
         </button>
       ) : (
-        <button onClick={props.addToList}>Add to List</button>
+        <Button click={props.addToList} label={"Add to List"} />
       )}
     </div>
   );

@@ -6,6 +6,9 @@ import MealSelect from "./MealSelect";
 import HistoryContext from "../contextComponents/history.context";
 import "../Styles/meals.css";
 import { navigate } from "@reach/router";
+import BoxContainer from "../BoxContainer";
+import Button from "../Button";
+import H2 from "../H2";
 
 export default function AddPlan(props) {
   const [recipes, setRecipes] = useState([]);
@@ -43,21 +46,12 @@ export default function AddPlan(props) {
   return (
     <>
       <div className="meal">
-        <div className="r-contain" style={{ marginTop: 20 }}>
-          <h2
-            style={{
-              textAlign: "center",
-              width: "100%",
-              display: "block",
-              color: "white",
-              background: "#dc5c36",
-              margin: 0,
-              padding: 6,
-              boxSizing: "border-box"
-            }}
-          >
-            Create Meal for {months[props.mo]} {props.dy}, {props.ye}
-          </h2>
+        <BoxContainer additionalStyles={{ marginTop: 10 }}>
+          <H2
+            label={`Create Meal for ${months[props.mo]} ${props.dy}, ${
+              props.ye
+            }`}
+          />
           <div className="form-con">
             <MealSelect
               recipes={recipes}
@@ -83,11 +77,13 @@ export default function AddPlan(props) {
             />
           </div>
           <div style={{ textAlign: "center" }}>
-            <button onClick={handleSubmit} className="button-blue-full">
-              Save
-            </button>
+            <Button
+              click={handleSubmit}
+              class={"button-blue-full"}
+              label={"Save"}
+            />
           </div>
-        </div>
+        </BoxContainer>
       </div>
     </>
   );

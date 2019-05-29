@@ -1,15 +1,14 @@
 import React from "react";
 import Input from "../Forms/Input";
 import TextArea from "../Forms/TextArea";
+import H2 from "../H2";
 export default function RightRForm(props) {
   return (
     <div
       className="r-form-container"
       style={{ width: props.device ? "100%" : "40%" }}
     >
-      <h2 className="header-orange" style={{ padding: 10 }}>
-        Create New Recipe
-      </h2>
+      <H2 label={"Create New Recipe"} />
       <Input
         type="text"
         value={props.title}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ListContainer from "./ListContainer";
 import List from "./List";
-
+import BoxContainer from "../BoxContainer";
 import "../Styles/sidebar.css";
 
 export default function SideBarLogic(props) {
@@ -16,7 +16,7 @@ export default function SideBarLogic(props) {
   };
   return (
     <div className="sidebar">
-      <div className="r-contain">
+      <BoxContainer>
         <div id="bar-header">
           <button
             id={grocery ? "top-links" : "top-unselected"}
@@ -40,7 +40,7 @@ export default function SideBarLogic(props) {
             count={"count"}
           />
         </ListContainer>
-      </div>
+      </BoxContainer>
     </div>
   );
 }

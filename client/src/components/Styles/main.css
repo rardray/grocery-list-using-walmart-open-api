@@ -39,14 +39,6 @@ textarea::placeholder {
   font-size: 12pt;
   text-align: right;
 }
-.header-orange {
-  margin: 2px 0 8px 0;
-  padding: 6px;
-  width: 100%;
-  background: #dc5c36;
-  color: white;
-  box-shadow: 0px 2px 4px lightgrey;
-}
 
 .header-blue {
   margin: 2px 0 8px 0;
@@ -64,8 +56,6 @@ button {
   border: none;
   font-size: 1.25em;
   outline: none;
-  background: #377fbb;
-  color: white;
   font-weight: 600;
 }
 button:hover {
@@ -73,7 +63,6 @@ button:hover {
 }
 .button-blue-full {
   width: 100%;
-  background: #377fbb;
   box-sizing: border-box;
   margin: 0px;
 }

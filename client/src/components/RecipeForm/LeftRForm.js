@@ -1,6 +1,7 @@
 import React from "react";
 import Loader from "../Utility/Loader";
 import Input from "../Forms/Input";
+import Button from "../Button";
 
 export default function LeftRForm(props) {
   return (
@@ -55,7 +56,7 @@ export default function LeftRForm(props) {
           validation={false}
         />
       </div>
-      <button onClick={props.submit}>Add Ingredient</button>
+      <Button click={props.submit} label={"Add Ingredient"} />
       <label>Ingredients:</label>
       {props.lists}
     </div>

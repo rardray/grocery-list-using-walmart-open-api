@@ -10,6 +10,7 @@ import {
 import ListWrapper from "./SharedStateless/ListWrapper";
 import CartContext from "../contextComponents/cart.context";
 import HistoryContext from "../contextComponents/history.context";
+import Button from "../Button";
 
 const Cart = props => {
   const sTitle = "Grocery List";
@@ -54,9 +55,11 @@ const Cart = props => {
           />
         );
       })}
-      <button onClick={() => clearList(clearAll)} className="button-blue-full">
-        Clear List
-      </button>
+      <Button
+        click={() => clearList(clearAll)}
+        class={"button-blue-full"}
+        label={"Clear List"}
+      />
     </ListWrapper>
   );
 };

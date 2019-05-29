@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import Heart from "./Heart";
+import BoxContainer from "../../BoxContainer";
+import Button from "../../Button";
 
 const Items = props => {
   const [deletion, setDelete] = useState(false);
   return (
-    <div
+    <BoxContainer
+      class="list-block"
       key={props.id}
       id={props.id}
-      className="r-contain list-block"
-      style={{
+      additionalStyles={{
         marginTop: 0,
-        padding: deletion ? 0 : 10,
         marginBottom: deletion ? 0 : 10,
         height: deletion ? 0 : 123,
         opacity: deletion ? 0 : 1,
-        transition: "0.3s ease-in-out"
+        transition: "0.3s ease-in-out",
+        overflow: "hidden"
       }}
     >
       <div style={{ display: "block", marginBottom: 34, minHeight: 65 }}>
@@ -35,8 +37,7 @@ const Items = props => {
           width: "100%",
           textAlign: "right",
           boxSizing: "border-box",
-          borderTop: "1px solid #0c3450",
-          background: "white"
+          borderTop: "1px solid #0c3450"
         }}
       >
         <div
@@ -50,11 +51,9 @@ const Items = props => {
             onClick={props.del ? () => setDelete(true) : null}
             style={{ display: "inline-block" }}
           >
-            <button style={{ marginRight: 15 }} onClick={props.action}>
-              {props.bLabel}
-            </button>
+            <Button click={props.action} label={props.bLabel} />
           </div>
-          <span>Quantity:</span>
+          <span style={{ marginLeft: 15 }}>Quantity:</span>
           <button name="minus" className="minus" onClick={props.handleQuantity}>
             -
           </button>
@@ -71,7 +70,7 @@ const Items = props => {
           </div>
         </div>
       </div>
-    </div>
+    </BoxContainer>
   );
 };
 
