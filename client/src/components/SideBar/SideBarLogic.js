@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ListContainer from "./ListContainer";
 import List from "./List";
 import BoxContainer from "../BoxContainer";
+import Span from "../Span";
 import "../Styles/sidebar.css";
 
 export default function SideBarLogic(props) {
@@ -24,7 +25,7 @@ export default function SideBarLogic(props) {
           >
             Grocery List
           </button>
-          <span />
+          <Span />
           <button
             id={grocery ? "top-unselected" : "top-links"}
             onClick={handleColumn}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import x from "../Styles/x.png";
 import check2 from "../Styles/check2.png";
 import validate from "./validation";
+import Span from "../Span";
 
 export default function Input(props) {
   const [focus, setFocus] = useState(false);
@@ -88,7 +89,7 @@ export default function Input(props) {
         onBlur={() => setBlur(true)}
       />
       {validation ? (
-        <span>
+        <Span>
           <img
             src={valid ? check2 : x}
             alt={name}
@@ -102,7 +103,7 @@ export default function Input(props) {
                 : "hidden"
             }}
           />
-        </span>
+        </Span>
       ) : null}
     </div>
   );

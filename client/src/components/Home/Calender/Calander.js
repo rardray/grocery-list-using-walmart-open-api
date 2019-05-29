@@ -2,6 +2,8 @@ import React from "react";
 import calander from "./cal";
 import { navigate } from "@reach/router";
 import Directional from "../../Styles/expand-button.svg";
+import CalanderContainer from "./CalanderContainer";
+import CalHeadContainer from "./CalHeadContainer";
 
 export const months = [
   "January",
@@ -41,10 +43,12 @@ const Calander = props => {
     navigate("/grocery/addplan/" + el[0] + "/" + el[1] + "/" + ele);
   }
   return (
-    <div>
-      <h2>
-        {mn}, {year}
-      </h2>
+    <CalanderContainer>
+      <CalHeadContainer>
+        <h2>
+          {mn}, {year}
+        </h2>
+      </CalHeadContainer>
       <div
         className="cal-move"
         id="cal-move-l"
@@ -131,7 +135,7 @@ const Calander = props => {
             })}
         </tbody>
       </table>
-    </div>
+    </CalanderContainer>
   );
 };
 

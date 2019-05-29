@@ -46,7 +46,7 @@
   border-radius: 50%;
   box-sizing: border-box;
   margin: 0px;
-  box-shadow: 0 2px 8px lightgrey;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 .list-items h4 {
   margin: 4px;
@@ -124,5 +124,4 @@
   margin-bottom: 80px;
   padding-top: 90px;
   box-sizing: border-box;
-  background: #dceaf5;
 }

@@ -1,12 +1,14 @@
 import React from "react";
 import Button from "../Button";
+import H4 from "../H4";
+import P from "../P";
 
 export default function RecipeItems(props) {
   return (
     <div className="ingredients-block">
       <img src={props.image} alt={props.title} />
-      <h4>{props.title}</h4>
-      <p>{props.amount}</p>
+      <H4 label={props.title} />
+      <P>{props.amount}</P>
       {props.disableAdd(props.cart, props.item) ? (
         <button
           style={{

@@ -9,6 +9,7 @@ import HistoryContext from "../contextComponents/history.context";
 import FavoritesContext from "../contextComponents/favorites.context";
 import "../Styles/main.css";
 import Lists from "./Lists";
+import P from "../P";
 
 const List = props => {
   const { grocery } = props;
@@ -20,9 +21,9 @@ const List = props => {
   }, 0);
   return (
     <div>
-      <p>
+      <P>
         Products: {(grocery ? cart : favorites).length} {"Total Items:" + total}
-      </p>
+      </P>
       {grocery
         ? cart.map((el, i) => {
             return (

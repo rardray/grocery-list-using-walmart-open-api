@@ -16,6 +16,7 @@
   width: 40px;
   float: left;
   margin-bottom: 15px;
+  border-radius: 50%;
 }
 .sidebar p {
   display: inline-block;

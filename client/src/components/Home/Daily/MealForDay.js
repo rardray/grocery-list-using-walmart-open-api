@@ -3,6 +3,8 @@ import plus from "../../Styles/plus.svg";
 import go from "../../Styles/go.svg";
 import ButtonLinks from "./ButtonLinks";
 import BoxContainer from "../../BoxContainer";
+import H4 from "../../H4";
+import H3 from "../../H3";
 
 export default function MealForDay(props) {
   const today = props.meals.filter(el => {
@@ -20,13 +22,15 @@ export default function MealForDay(props) {
             <>
               {today[0] ? <img src={today[0].mainId.image} alt="meal" /> : null}
               <div style={{ display: "inline-block" }}>
-                <h4>What's For Dinner...</h4>
+                <H4 label={"What's For Dinner..."} />
                 <br />
-                <h3>
-                  {today[0]
-                    ? today[0].mainId.title
-                    : "Nothing planned for today."}
-                </h3>
+                <H3
+                  label={
+                    today[0]
+                      ? today[0].mainId.title
+                      : "Nothing planned for today."
+                  }
+                />
               </div>
               <div
                 style={{

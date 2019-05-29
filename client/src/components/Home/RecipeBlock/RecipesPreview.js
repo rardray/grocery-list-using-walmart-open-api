@@ -1,5 +1,6 @@
 import React from "react";
 import { navigate } from "@reach/router";
+
 export default function RecipesPreview(props) {
   return (
     <div

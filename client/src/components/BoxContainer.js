@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemesContext from "./contextComponents/themes.context";
 
 export default function BoxContainer(props) {
   const { additionalStyles } = props;
+  const { theme } = useContext(ThemesContext);
   return (
     <div style={additionalStyles}>
       <div
@@ -11,7 +13,7 @@ export default function BoxContainer(props) {
           position: "relative",
           boxSizing: "border-box",
           width: "100%",
-          background: "white",
+          background: theme.mainBgColor,
           margin: "0px 0 25px 0",
           padding: 10,
           textAlign: "center",

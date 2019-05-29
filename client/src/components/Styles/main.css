@@ -103,7 +103,6 @@ h1 {
 h2 {
   font-size: 1.5em;
   font-weight: 600;
-  color: #0c3450;
   box-sizing: border-box;
 }
 h4 {
@@ -120,7 +119,6 @@ p {
   margin: 0px;
   font-size: 0.75em;
   padding-bottom: 10px;
-  color: #0e5896;
 }
 a {
   text-decoration: none;
@@ -192,7 +190,7 @@ a {
 
 .sub-nav {
   height: 24px;
-  background: #377fbb;
+
   display: inline-block;
   position: absolute;
   bottom: -24px;

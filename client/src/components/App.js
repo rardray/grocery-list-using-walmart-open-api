@@ -5,6 +5,7 @@ import HistoryProvider from "./contextComponents/HistoryProvider";
 import CartProvider from "./contextComponents/CartProvider";
 import FavoritesProvider from "./contextComponents/FavoritesProvider";
 import ProductSearchProvider from "./contextComponents/ProductSearchProvider";
+import ThemesProvider from "./contextComponents/ThemesProvider";
 import Routes from "./Routes";
 import "./Styles/lists.css";
 
@@ -33,15 +34,17 @@ const App = function() {
   });
   return (
     <div className="App">
-      <FavoritesProvider>
-        <CartProvider>
-          <HistoryProvider>
-            <ProductSearchProvider>
-              <Routes {...{ setUser, logOutUser, device, user }} />
-            </ProductSearchProvider>
-          </HistoryProvider>
-        </CartProvider>
-      </FavoritesProvider>
+      <ThemesProvider>
+        <FavoritesProvider>
+          <CartProvider>
+            <HistoryProvider>
+              <ProductSearchProvider>
+                <Routes {...{ setUser, logOutUser, device, user }} />
+              </ProductSearchProvider>
+            </HistoryProvider>
+          </CartProvider>
+        </FavoritesProvider>
+      </ThemesProvider>
     </div>
   );
 };

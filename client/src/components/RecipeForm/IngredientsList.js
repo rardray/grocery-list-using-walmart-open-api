@@ -1,4 +1,6 @@
 import React from "react";
+import H4 from "../H4";
+import P from "../P";
 
 export default function IngredientsList(props) {
   return (
@@ -27,8 +29,12 @@ export default function IngredientsList(props) {
         alt={props.title}
       />
       <div style={{ display: "inline-block", position: "absolute", right: 10 }}>
-        <h4 style={{ margin: 0, marginLeft: 30 }}>{props.title}</h4>
-        <p style={{ float: "right" }}>{props.measure}</p>
+        <div style={{ margin: 0, marginLeft: 30 }}>
+          <H4 label={props.title} />
+        </div>
+        <div style={{ float: "right" }}>
+          <P>{props.measure}</P>
+        </div>
       </div>
     </div>
   );

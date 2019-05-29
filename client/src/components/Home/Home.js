@@ -9,6 +9,7 @@ import MealForDay from "./Daily/MealForDay";
 import { useLoaderState } from "../Utility/Hooks";
 import BoxContainer from "../BoxContainer";
 import H2 from "../H2";
+import HomeContainer from "./HomeContainer";
 
 export default function Home(props) {
   const [date, setDate] = useState({ day: null, year: null, month: null });
@@ -66,8 +67,7 @@ export default function Home(props) {
   const { day, month, year } = date;
   return (
     <>
-      <div className="home" style={{ width: props.device ? "100%" : null }}>
-        <div style={{ textAlign: "left" }} />
+      <HomeContainer device={props.device}>
         <H2 label={`Welcome, ${user.firstName}`} />
         <MealForDay {...{ day, month, year, meals }} loader={loadState} />
         {loadState || (
@@ -93,7 +93,7 @@ export default function Home(props) {
             </RecipeDrawer>
           ) : null}
         </BoxContainer>
-      </div>
+      </HomeContainer>
     </>
   );
 }

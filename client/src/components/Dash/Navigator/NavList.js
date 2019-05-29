@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { paths, titles } from "../../Utility/appHelpers";
+import SubNavContainer from "./SubNavContainer";
 
 export default function NavList(props) {
   let links = [];
@@ -25,7 +26,9 @@ export default function NavList(props) {
   }
   return (
     <div className="sub-nav">
-      <div style={{ padding: 2 }}>{links}</div>
+      <SubNavContainer>
+        <div style={{ padding: 2 }}>{links}</div>
+      </SubNavContainer>
     </div>
   );
 }

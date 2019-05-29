@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Expand from "../../Styles/expand-button.svg";
+import P from "../../P";
 
 export default function RecipeDrawer(props) {
   const [expanded, setExpand] = useState(false);
@@ -35,10 +36,10 @@ export default function RecipeDrawer(props) {
               transition: `transform ease-out 0.45s`
             }}
           />
-          <p style={{ padding: 4 }}>
+          <P style={{ padding: 4 }}>
             {expanded ? "Hide" : "Show"} remaining {props.recipes.length - 6}{" "}
             recipes
-          </p>
+          </P>
         </div>
       </div>
     </>

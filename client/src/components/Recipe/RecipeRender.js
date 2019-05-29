@@ -1,6 +1,8 @@
 import React from "react";
 import { addToList } from "../Utility/listActions";
 import RecipeItems from "./RecipeItems";
+import H3 from "../H3";
+import P from "../P";
 
 export default function RecipeRender(props) {
   function disableAdd(list, el) {
@@ -17,11 +19,11 @@ export default function RecipeRender(props) {
             <div id="header" style={{ backgroundImage: `url(${props.image})` }}>
               <h2>{props.title}</h2>
             </div>
-            <h3>Directions</h3>
-            <p style={{ whiteSpace: "pre-wrap", marginLeft: 10 }}>
+            <H3 label="Directions" />
+            <P whiteSpace="pre-wrap" margin={10}>
               {props.instructions}
-            </p>
-            <h3>Ingredients</h3>
+            </P>
+            <H3 label="Ingredients" />
           </div>
           {props.ingredients.map((el, i) => {
             return (

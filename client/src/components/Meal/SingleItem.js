@@ -1,6 +1,7 @@
 import React from "react";
 import BoxContainer from "../BoxContainer";
 import Button from "../Button";
+import H4 from "../H4";
 
 export default function SingleItem(props) {
   return (
@@ -19,7 +20,7 @@ export default function SingleItem(props) {
             style={{ height: 100, border: "none" }}
           >
             <img src={props.image} alt={props.title} />
-            <h4>{props.title}</h4>
+            <H4 label={props.title} />
             <Button click={props.add} label={"Add to List"} />
           </div>
         </div>

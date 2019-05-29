@@ -1,5 +1,6 @@
 import React from "react";
 import BoxContainer from "../BoxContainer";
+import P from "../P";
 
 const Container = props => {
   return (
@@ -17,7 +18,7 @@ const Container = props => {
         additionalStyles={{ width: "90%", textAlign: "center", margin: "auto" }}
       >
         <h1>{props.header}</h1>
-        <p>{props.subheader}</p>
+        <P>{props.subheader}</P>
         {props.children}
       </BoxContainer>
     </div>

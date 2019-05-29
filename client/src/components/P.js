@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import ThemesContext from "./contextComponents/themes.context";
 
-export default function Button(props) {
+export default function P(props) {
   const { theme } = useContext(ThemesContext);
   return (
-    <button
+    <p
       className={props.class}
-      onClick={props.click}
       style={{
-        background: theme.primaryColor,
-        color: theme.mainText
+        whiteSpace: props.whiteSpace,
+        marginLeft: props.margin,
+        color: theme.secondaryText
       }}
     >
-      {props.label}
-    </button>
+      {props.children}
+    </p>
   );
 }

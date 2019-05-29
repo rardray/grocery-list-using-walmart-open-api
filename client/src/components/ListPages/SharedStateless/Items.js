@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Heart from "./Heart";
 import BoxContainer from "../../BoxContainer";
 import Button from "../../Button";
+import H4 from "../../H4";
+import Span from "../../Span";
 
 const Items = props => {
   const [deletion, setDelete] = useState(false);
@@ -15,8 +17,7 @@ const Items = props => {
         marginBottom: deletion ? 0 : 10,
         height: deletion ? 0 : 123,
         opacity: deletion ? 0 : 1,
-        transition: "0.3s ease-in-out",
-        overflow: "hidden"
+        transition: "0.3s ease-in-out"
       }}
     >
       <div style={{ display: "block", marginBottom: 34, minHeight: 65 }}>
@@ -26,7 +27,7 @@ const Items = props => {
           draggable={true}
           onDragStart={props.handleDrag}
         />
-        <h4>{props.title}</h4>
+        <H4 label={props.title} />
       </div>
       <div
         style={{
@@ -53,12 +54,12 @@ const Items = props => {
           >
             <Button click={props.action} label={props.bLabel} />
           </div>
-          <span style={{ marginLeft: 15 }}>Quantity:</span>
+          <Span style={{ marginLeft: 15 }}>Quantity:</Span>
           <button name="minus" className="minus" onClick={props.handleQuantity}>
             -
           </button>
 
-          <span className="quantity"> {props.count} </span>
+          <Span className="quantity"> {props.count} </Span>
           <button name="plus" className="minus" onClick={props.handleQuantity}>
             +
           </button>

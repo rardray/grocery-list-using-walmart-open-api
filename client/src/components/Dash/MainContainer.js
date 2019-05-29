@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemesContext from "../contextComponents/themes.context";
 
 export default function MainContainer(props) {
+  const { theme } = useContext(ThemesContext);
   return (
     <div
       style={{
-        background: "#dceaf5",
+        background: theme.secondaryBgColor,
         margin: "auto",
         display: "inline-block",
         position: "relative",

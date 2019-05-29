@@ -32,7 +32,7 @@
   display: inline-block;
   position: relative;
   padding: 4px;
-  border: 1px solid #dceaf5;
+  border: 1px solid rgba(100, 100, 225, 0.25);
   height: 65px;
   overflow: hidden;
   text-align: left;

@@ -5,6 +5,7 @@ import axios from "axios";
 import { searchURL, apiKeyGr } from "../../Utility/appHelpers";
 import ProductSearchContext from "../../contextComponents/productSearch.context";
 import FavoritesContext from "../../contextComponents/favorites.context";
+import SearchContainer from "./SearchContainer";
 
 const Searchbar = props => {
   const { getProductSearch } = useContext(ProductSearchContext);
@@ -25,32 +26,33 @@ const Searchbar = props => {
 
   return (
     <>
-      <form
-        style={{
-          width: "100%",
-          zIndex: 0,
-          overflow: "hidden",
-          margin: 0
-        }}
-        onSubmit={searchSubmit}
-      >
-        <input
-          type="text"
-          id="searchbar"
-          onChange={e => setQuery(e.target.value)}
-          name="query"
-          value={query}
+      <SearchContainer>
+        <form
           style={{
             width: "100%",
-            height: 20,
-            border: "none",
-            backgroundImage: `url(${SearchIco})`,
-
-            textAlign: "left"
+            zIndex: 0,
+            margin: 0
           }}
-          placeholder="Search"
-        />
-      </form>
+          onSubmit={searchSubmit}
+        >
+          <input
+            type="text"
+            id="searchbar"
+            onChange={e => setQuery(e.target.value)}
+            name="query"
+            value={query}
+            style={{
+              width: "100%",
+              height: 20,
+              border: "none",
+              backgroundImage: `url(${SearchIco})`,
+
+              textAlign: "left"
+            }}
+            placeholder="Search"
+          />
+        </form>
+      </SearchContainer>
     </>
   );
 };
