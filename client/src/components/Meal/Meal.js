@@ -10,7 +10,7 @@ import SingleItem from "./SingleItem";
 import HistoryContext from "../contextComponents/history.context";
 import { navigate } from "@reach/router";
 import Button from "../Button";
-
+import H2Blue from "../H2Blue";
 export default function Meal(props) {
   const [plan, setPlan] = useState({ dow: [] });
   const { getList } = useContext(HistoryContext);
@@ -32,9 +32,9 @@ export default function Meal(props) {
       <div>
         {Loaded || (
           <>
-            <h2 className="header-blue">Main Course</h2>
+            <H2Blue label={"Main Course"} />
             <Recipe id={plan.mainId._id} />
-            <h2 className="header-blue">Side</h2>
+            <H2Blue label={"Side"} />
             {plan.sideOneId ? <Recipe id={plan.sideOneId._id} /> : null}
             {plan.sideOneSingleId ? (
               <SingleItem
@@ -43,7 +43,7 @@ export default function Meal(props) {
                 title={plan.sideOneSingleId.title}
               />
             ) : null}
-            <h2 className="header-blue">Side</h2>
+            <H2Blue label={"Side"} />
             {plan.sideTwoId ? <Recipe id={plan.sideTwoId._id} /> : null}
 
             {plan.sideTwoSingleId ? (

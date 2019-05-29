@@ -7,6 +7,8 @@ const ThemesProvider = ({ children }) => {
       setTheme(prevTheme => {
         return { ...prevTheme, theme: { ...dark } };
       });
+    } else {
+      setTheme({ ...defaultTheme });
     }
   };
   const dark = {
