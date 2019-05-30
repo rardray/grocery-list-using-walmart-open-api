@@ -11,8 +11,9 @@ export default function MainContainer(props) {
         display: "inline-block",
         position: "relative",
         minWidth: "90%",
-        width: props.device ? "100%" : "90%",
-        textAlign: "center"
+        width: props.device ? "100%" : props.min,
+        textAlign: "center",
+        transition: ".3s ease-in-out"
       }}
     >
       {props.children}

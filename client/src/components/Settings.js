@@ -3,9 +3,10 @@ import ThemeContext from "./contextComponents/themes.context";
 import BoxContainer from "./BoxContainer";
 import ListWrapper from "./ListPages/SharedStateless/ListWrapper";
 import H2Blue from "./H2Blue";
+import Label from "./Label";
 
 export default function Settings(props) {
-  const { theme, changeTheme } = useContext(ThemeContext);
+  const { title, theme, changeTheme } = useContext(ThemeContext);
 
   return (
     <ListWrapper header="Settings">
@@ -19,22 +20,35 @@ export default function Settings(props) {
           }}
         >
           <div style={{ display: "inline-block", position: "relative" }}>
-            <label>Default</label>
+            <Label>Default</Label>
             <br />
             <input
               name="theme"
+              checked={title === "default" ? true : false}
               type="radio"
               value="default"
               onChange={e => changeTheme(e.target.value)}
             />
           </div>
           <div style={{ display: "inline-block", position: "relative" }}>
-            <label>Dark</label>
+            <Label>Dark</Label>
             <br />
             <input
               name="theme"
+              checked={title === "dark" ? true : false}
               type="radio"
               value="dark"
+              onChange={e => changeTheme(e.target.value)}
+            />
+          </div>
+          <div style={{ display: "inline-block", position: "relative" }}>
+            <Label>Desert</Label>
+            <br />
+            <input
+              name="theme"
+              checked={title === "desert" ? true : false}
+              type="radio"
+              value="desert"
               onChange={e => changeTheme(e.target.value)}
             />
           </div>

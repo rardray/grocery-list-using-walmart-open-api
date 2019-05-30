@@ -17,7 +17,8 @@ export default function BoxContainer(props) {
           margin: "0px 0 25px 0",
           padding: 10,
           textAlign: "center",
-          boxShadow: "0px 2px 4px #0c3450"
+          boxShadow: "0px 2px 4px #0c3450",
+          transition: "background .3s ease-in-out"
         }}
       >
         {props.children}

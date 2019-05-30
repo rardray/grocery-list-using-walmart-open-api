@@ -18,6 +18,8 @@ import { paths, SB_AD } from "../Utility/appHelpers";
 import BackButton from "./BackButton";
 import CartContext from "../contextComponents/cart.context";
 import TopLevelListUpdates from "../Utility/TopLevelListUpdates";
+import SearchContainer from "./Navigator/SearchContainer";
+import Gear from "../Gear";
 
 export default function Dash(props) {
   const [path, setPath] = useState(null);
@@ -45,13 +47,16 @@ export default function Dash(props) {
         {props.user ? (
           <>
             <BackButton {...{ path }} />
-            <div id="p-search" className={"show-search"}>
-              {props.Searchbar}
+
+            <div className="p-search">
+              <SearchContainer>{props.Searchbar}</SearchContainer>
             </div>
+
             <Licon cart={cart} handleCartIcon={handleCartIcon} svgs={List} />
             <Menu image={menuicon}>
               <MenuList>
                 <Link to={`${SB_AD}/settings`} className="nav-link">
+                  <Gear />
                   Settings...
                 </Link>
                 <p className="nav-link" onClick={handleLogout}>
@@ -71,21 +76,23 @@ export default function Dash(props) {
           </>
         )}
       </NavBar>
-      {props.user ? (
-        <SwipeFunction device={props.device}>
-          <TopLevelListUpdates user={props.user} />
+      <MainContainer device={props.device} min={"100%"}>
+        {props.user ? (
+          <SwipeFunction device={props.device}>
+            <TopLevelListUpdates user={props.user} />
+            <MainContainer device={props.device} min={"95%"}>
+              {props.user ? props.ListBar : null}
+              {props.children}
+              <Footer user={props.user} handleLogout={handleLogout} />
+            </MainContainer>
+          </SwipeFunction>
+        ) : (
           <MainContainer device={props.device}>
-            {props.user ? props.ListBar : null}
             {props.children}
             <Footer user={props.user} handleLogout={handleLogout} />
           </MainContainer>
-        </SwipeFunction>
-      ) : (
-        <MainContainer device={props.device}>
-          {props.children}
-          <Footer user={props.user} handleLogout={handleLogout} />
-        </MainContainer>
-      )}
+        )}
+      </MainContainer>
     </>
   );
 }

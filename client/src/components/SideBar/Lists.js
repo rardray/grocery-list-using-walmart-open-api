@@ -17,7 +17,8 @@ export default function Lists(props) {
           display: "flex",
           flexFlow: "row wrap",
           justifyContent: "space-evenly",
-          margin: 0
+          margin: 0,
+          boxSizing: "border-box"
         }}
       >
         <Button click={props.action} label={props.buttonLabel} />

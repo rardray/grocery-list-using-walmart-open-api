@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import LinkWrap from "./LinkWrap";
 
 export default function ButtonLinks(props) {
   return (
@@ -11,15 +12,17 @@ export default function ButtonLinks(props) {
         marginRight: 10
       }}
     >
-      <Link to={props.url}>
-        <img
-          src={props.image}
-          alt={props.image}
-          style={{ width: 25, height: 25, margin: 0 }}
-        />
-        <br />
-        {props.label}
-      </Link>
+      <LinkWrap>
+        <Link to={props.url} style={{ color: "inherit" }}>
+          <img
+            src={props.image}
+            alt={props.image}
+            style={{ width: 25, height: 25, margin: 0 }}
+          />
+          <br />
+          {props.label}
+        </Link>
+      </LinkWrap>
     </div>
   );
 }

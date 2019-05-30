@@ -1,19 +1,14 @@
 import React, { useContext } from "react";
 import ThemesContext from "./contextComponents/themes.context";
 
-export default function P(props) {
+export default function Label(props) {
   const { theme } = useContext(ThemesContext);
   return (
-    <p
+    <label
       className={props.class}
-      style={{
-        whiteSpace: props.whiteSpace,
-        marginLeft: props.margin,
-        color: theme.secondaryText,
-        transition: ".3s ease-in-out"
-      }}
+      style={{ color: theme.tertiaryText, transition: ".3s ease-in-out" }}
     >
       {props.children}
-    </p>
+    </label>
   );
 }

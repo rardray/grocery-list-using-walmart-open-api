@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import x from "../Styles/x.png";
 import check2 from "../Styles/check2.png";
 import validate from "./validation";
 import Span from "../Span";
+import ThemesContext from "../contextComponents/themes.context";
 
 export default function Input(props) {
   const [focus, setFocus] = useState(false);
   const [blurred, setBlur] = useState(false);
+  const { theme } = useContext(ThemesContext);
   const {
     name,
     value,
@@ -43,7 +45,7 @@ export default function Input(props) {
     width: props.width || null
   };
   const Label = {
-    color: props.validation ? null : valid ? null : "red",
+    color: props.validation ? (valid ? null : "red") : theme.tertiaryText,
     margin: 0,
     padding: 0,
     fontSize: focus ? (blurred ? "10pt" : 0) : "12pt",

@@ -2,6 +2,8 @@ import React from "react";
 import Loader from "../Utility/Loader";
 import Input from "../Forms/Input";
 import Button from "../Button";
+import P from "../P";
+import Label from "../Label";
 
 export default function LeftRForm(props) {
   return (
@@ -27,7 +29,7 @@ export default function LeftRForm(props) {
         onChange={props.changeFile}
       />{" "}
       <br />
-      <label>Select Ingredient From History</label>
+      <Label>Select Ingredient From History</Label>
       <br />
       <select
         className="cust-select"
@@ -57,7 +59,7 @@ export default function LeftRForm(props) {
         />
       </div>
       <Button click={props.submit} label={"Add Ingredient"} />
-      <label>Ingredients:</label>
+      <P>Ingredients:</P>
       {props.lists}
     </div>
   );

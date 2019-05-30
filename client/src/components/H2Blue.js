@@ -12,7 +12,8 @@ export default function H2Blue(props) {
         margin: "2px 0 8px 0",
         padding: 6,
         width: "100%",
-        boxShadow: "0px 2px 4px rgba(0,0,0,0.25)"
+        boxShadow: "0px 2px 4px rgba(0,0,0,0.25)",
+        transition: ".3s ease-in-out"
       }}
     >
       {props.label}

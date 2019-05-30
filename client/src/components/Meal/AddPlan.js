@@ -15,13 +15,18 @@ export default function AddPlan(props) {
   const [main, setMain] = useState(props.main);
   const [sideOne, setSideOne] = useState(props.sideOne);
   const [sideTwo, setSideTwo] = useState(props.sideTwo);
+  const [disabled, setDisabled] = useState(true);
   const { history } = useContext(HistoryContext);
   useEffect(() => {
     getRequest("/api/recipe/all/" + props.user._id, apiToken(), data =>
       setRecipes(data.data)
     );
   }, []);
-
+  useEffect(() => {
+    if (main) {
+      setDisabled(false);
+    }
+  });
   const handleSubmit = e => {
     e.preventDefault();
     if (!main) {
@@ -78,6 +83,7 @@ export default function AddPlan(props) {
           </div>
           <div style={{ textAlign: "center" }}>
             <Button
+              disabled={disabled}
               click={handleSubmit}
               class={"button-blue-full"}
               label={"Save"}

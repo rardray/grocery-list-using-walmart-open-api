@@ -21,6 +21,7 @@ export default function RecipesForm(props) {
     "https://rardrayrails.s3.amazonaws.com/1554662862340"
   );
   const [load, setLoad] = useState(true);
+  const [disabled, setDisabled] = useState(true);
   const { history } = useContext(HistoryContext);
 
   const show = [];
@@ -35,6 +36,11 @@ export default function RecipesForm(props) {
       }
     }
   }
+  useEffect(() => {
+    if (title && show.length) {
+      setDisabled(false);
+    }
+  });
   useEffect(() => {
     async function handleImage() {
       if (!file) {
@@ -74,7 +80,7 @@ export default function RecipesForm(props) {
   }, []);
 
   const handleSubmit = () => {
-    if (!title || !show) {
+    if (!title && !show.length) {
       return;
     }
     const submitData = {
@@ -128,6 +134,7 @@ export default function RecipesForm(props) {
           />
           <br />
           <Button
+            disabled={disabled}
             class={"button-blue-full"}
             click={handleSubmit}
             label={"Save Recipe"}

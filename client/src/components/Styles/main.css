@@ -142,27 +142,29 @@ a {
 }
 
 #searchbar {
-  background: #0c3450;
+  background-color: inherit;
   background-repeat: no-repeat;
   background-position-x: 98%;
   background-size: 20px;
   color: white;
   outline: none;
+  border-radius: 20%;
+  padding: 4px;
+  box-sizing: border-box;
 }
 #searchbar::placeholder {
   text-align: left;
 }
 
-#p-search {
+.p-search {
   display: inline-block;
-  padding: 0 4px 0 4px;
-  margin: 15px 30px 0px 0px;
+  padding: 4px;
+  margin: 8px 30px 0px 0px;
   position: relative;
   vertical-align: middle;
-  background: #0c3450;
   text-align: center;
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: 25%;
+  height: auto;
   width: 50%;
   box-sizing: border-box;
 }

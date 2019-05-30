@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Default from "../Styles/default.svg";
 import Button from "../Button";
+import Label from "../Label";
 
 export default function MealSelect(props) {
   const [single, setSingle] = useState(false);
@@ -15,13 +16,13 @@ export default function MealSelect(props) {
     <>
       <div className="meals">
         <img src={d[0] ? d[0].image : Default} alt="select" className="meals" />
-        <label>
+        <Label>
           {props.main
             ? "Main Course (required)"
             : single
             ? "Side (single Item)"
             : "Side (Recipe)"}
-        </label>
+        </Label>
         {props.main ? null : (
           <Button click={handleRec} label={single ? "Recipe" : "Single Item"} />
         )}

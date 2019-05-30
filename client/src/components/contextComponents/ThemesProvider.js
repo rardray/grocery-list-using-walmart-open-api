@@ -5,7 +5,11 @@ const ThemesProvider = ({ children }) => {
   const changeTheme = data => {
     if (data === "dark") {
       setTheme(prevTheme => {
-        return { ...prevTheme, theme: { ...dark } };
+        return { ...prevTheme, title: "dark", theme: { ...dark } };
+      });
+    } else if (data === "desert") {
+      setTheme(prevTheme => {
+        return { ...prevTheme, title: "desert", theme: { ...desert } };
       });
     } else {
       setTheme({ ...defaultTheme });
@@ -16,21 +20,32 @@ const ThemesProvider = ({ children }) => {
     secondaryColor: "#0c3450",
     mainText: "white",
     secondaryText: "lightgrey",
-    thirdText: "lightgrey",
+    tertiaryText: "lightgrey",
     mainBgColor: "#152633",
     secondaryBgColor: "black",
-    thirdBgColor: "#8fa8e4"
+    tertiaryBgColor: "#8fa8e4"
+  };
+  const desert = {
+    primaryColor: "#861320",
+    secondaryColor: "#775a43",
+    mainText: "white",
+    secondaryText: "#4a070f",
+    tertiaryText: "#861320",
+    mainBgColor: "#fff2e8",
+    secondaryBgColor: "#f7d6bc",
+    tertiaryBgColor: "#4a070f"
   };
   const defaultTheme = {
+    title: "default",
     theme: {
       primaryColor: "#377fbb",
       secondaryColor: "#dc5c36",
       mainText: "white",
       secondaryText: "#0c3450",
-      thirdText: "#377fbb",
+      tertiaryText: "#377fbb",
       mainBgColor: "white",
       secondaryBgColor: "#dceaf5",
-      thirdBgColor: "#0c3450"
+      tertiaryBgColor: "#0c3450"
     },
     changeTheme
   };
@@ -41,3 +56,9 @@ const ThemesProvider = ({ children }) => {
 };
 
 export default ThemesProvider;
+
+/* 
+#775a43
+#861320
+#f7d6bc
+*/
