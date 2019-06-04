@@ -6,7 +6,8 @@ const AuthenticationController = require("../controllers/authentication"),
   RecipeController = require("../controllers/recipe"),
   UploadController = require("../controllers/upload"),
   CaldataController = require("../controllers/caldata"),
-  CartController = require("../controllers/cart");
+  CartController = require("../controllers/cart"),
+  UserController = require("../controllers/user");
 
 //middleware
 const requireAuth = passport.authenticate("jwt", { session: false });
@@ -19,7 +20,8 @@ module.exports = function(app) {
     recipeRoutes = express.Router(),
     uploadRoutes = express.Router(),
     caldataRoutes = express.Router(),
-    cartRoutes = express.Router();
+    cartRoutes = express.Router(),
+    userRoutes = express.Router();
 
   apiRoutes.use("/auth", authRoutes);
   //login Route
@@ -59,6 +61,8 @@ module.exports = function(app) {
   );
   cartRoutes.delete("/clearall/:id", requireAuth, CartController.clearCart);
   cartRoutes.put("/update/:id", requireAuth, CartController.editCart);
+  apiRoutes.use("/user", userRoutes);
+  userRoutes.put("/:id", requireAuth, UserController.updateThemne);
 
   app.use("/api", apiRoutes); //<---- calls login function from authentication and passport
 };

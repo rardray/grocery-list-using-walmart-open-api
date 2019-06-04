@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ThemesContext from "./contextComponents/themes.context";
+import ThemesContext from "../contextComponents/themes.context";
 
 export default function H2(props) {
   const { theme } = useContext(ThemesContext);

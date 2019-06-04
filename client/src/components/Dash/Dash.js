@@ -47,11 +47,9 @@ export default function Dash(props) {
         {props.user ? (
           <>
             <BackButton {...{ path }} />
-
             <div className="p-search">
               <SearchContainer>{props.Searchbar}</SearchContainer>
             </div>
-
             <Licon cart={cart} handleCartIcon={handleCartIcon} svgs={List} />
             <Menu image={menuicon}>
               <MenuList>

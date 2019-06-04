@@ -1,6 +1,6 @@
 import React from "react";
-import H2 from "../H2";
-import P from "../P";
+import H2 from "../ThemedTags/H2";
+import P from "../ThemedTags/P";
 
 export default function MealWrapper(props) {
   return (

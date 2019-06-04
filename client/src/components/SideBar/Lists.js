@@ -1,8 +1,8 @@
 import React from "react";
 import Heart from "../ListPages/SharedStateless/Heart";
-import Button from "../Button";
-import H5 from "../H5";
-import Span from "../Span";
+import Button from "../ThemedTags/Button";
+import H5 from "../ThemedTags/H5";
+import Span from "../ThemedTags/Span";
 
 export default function Lists(props) {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
-import H2 from "../H2";
+import H2 from "../ThemedTags/H2";
 import { Link } from "@reach/router";
-import Span from "../Span";
+import Span from "../ThemedTags/Span";
 
 export default function DefaultHome(props) {
   return (

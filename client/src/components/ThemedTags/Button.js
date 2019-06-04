@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import ThemesContext from "./contextComponents/themes.context";
+import ThemesContext from "../contextComponents/themes.context";
 
 export default function Button(props) {
   const [hover, setHover] = useState(false);

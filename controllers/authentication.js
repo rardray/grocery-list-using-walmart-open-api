@@ -15,7 +15,8 @@ function setUserInfo(request) {
     _id: request._id,
     firstName: request.profile.firstName,
     lastName: request.profile.lastName,
-    email: request.email
+    email: request.email,
+    theme: request.profile.theme
   };
 }
 //login route : used in router.js api/auth/login

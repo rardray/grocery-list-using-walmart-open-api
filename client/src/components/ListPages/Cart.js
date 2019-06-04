@@ -10,7 +10,7 @@ import {
 import ListWrapper from "./SharedStateless/ListWrapper";
 import CartContext from "../contextComponents/cart.context";
 import HistoryContext from "../contextComponents/history.context";
-import Button from "../Button";
+import Button from "../ThemedTags/Button";
 
 const Cart = props => {
   const sTitle = "Grocery List";

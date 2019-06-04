@@ -8,7 +8,7 @@ import IngredientsList from "./IngredientsList";
 import imageCompression from "browser-image-compression";
 import HistoryContext from "../contextComponents/history.context";
 import BoxContainer from "../BoxContainer";
-import Button from "../Button";
+import Button from "../ThemedTags/Button";
 
 export default function RecipesForm(props) {
   const [select, setSelect] = useState("");

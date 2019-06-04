@@ -3,7 +3,7 @@ import ThemesProvider from "../contextComponents/themes.context";
 import ListContainer from "./ListContainer";
 import List from "./List";
 import BoxContainer from "../BoxContainer";
-import Span from "../Span";
+import Span from "../ThemedTags/Span";
 import "../Styles/sidebar.css";
 
 export default function SideBarLogic(props) {

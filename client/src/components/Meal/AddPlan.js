@@ -7,8 +7,8 @@ import HistoryContext from "../contextComponents/history.context";
 import "../Styles/meals.css";
 import { navigate } from "@reach/router";
 import BoxContainer from "../BoxContainer";
-import Button from "../Button";
-import H2 from "../H2";
+import Button from "../ThemedTags/Button";
+import H2 from "../ThemedTags/H2";
 
 export default function AddPlan(props) {
   const [recipes, setRecipes] = useState([]);

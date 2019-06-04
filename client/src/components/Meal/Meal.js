@@ -9,8 +9,8 @@ import { addToList, deleteCaldata } from "../Utility/listActions";
 import SingleItem from "./SingleItem";
 import HistoryContext from "../contextComponents/history.context";
 import { navigate } from "@reach/router";
-import Button from "../Button";
-import H2Blue from "../H2Blue";
+import Button from "../ThemedTags/Button";
+import H2Blue from "../ThemedTags/H2Blue";
 export default function Meal(props) {
   const [plan, setPlan] = useState({ dow: [] });
   const { getList } = useContext(HistoryContext);

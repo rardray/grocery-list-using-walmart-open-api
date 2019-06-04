@@ -1,6 +1,6 @@
 import React from "react";
 import BoxContainer from "../BoxContainer";
-import P from "../P";
+import P from "../ThemedTags/P";
 
 const Container = props => {
   return (

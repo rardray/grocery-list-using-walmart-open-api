@@ -3,8 +3,8 @@ import plus from "../../Styles/plus.svg";
 import go from "../../Styles/go.svg";
 import ButtonLinks from "./ButtonLinks";
 import BoxContainer from "../../BoxContainer";
-import H4 from "../../H4";
-import H3 from "../../H3";
+import H4 from "../../ThemedTags/H4";
+import H3 from "../../ThemedTags/H3";
 
 export default function MealForDay(props) {
   const today = props.meals.filter(el => {

@@ -52,7 +52,7 @@ const Routes = props => {
           <Meal path={`${SB_AD}/meal/:id`} {...props} />
           <Register path={`${SB_AD}/register`} setUser={props.setUser} />
           <Login path={`${SB_AD}/login`} setUser={props.setUser} />
-          <Settings path={`${SB_AD}/settings`} />
+          <Settings path={`${SB_AD}/settings`} {...props} />
         </Dash>
       </Router>
     </>

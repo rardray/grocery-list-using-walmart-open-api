@@ -1,7 +1,7 @@
 import React from "react";
 import BoxContainer from "../BoxContainer";
-import Button from "../Button";
-import H4 from "../H4";
+import Button from "../ThemedTags/Button";
+import H4 from "../ThemedTags/H4";
 
 export default function SingleItem(props) {
   return (

@@ -9,7 +9,7 @@ import HistoryContext from "../contextComponents/history.context";
 import FavoritesContext from "../contextComponents/favorites.context";
 import "../Styles/main.css";
 import Lists from "./Lists";
-import P from "../P";
+import P from "../ThemedTags/P";
 
 const List = props => {
   const { grocery } = props;

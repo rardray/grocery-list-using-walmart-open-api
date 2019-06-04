@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "../Forms/Input";
 import TextArea from "../Forms/TextArea";
-import H2 from "../H2";
+import H2 from "../ThemedTags/H2";
 export default function RightRForm(props) {
   return (
     <div

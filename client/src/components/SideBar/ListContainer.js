@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { clearList } from "../Utility/listActions";
 import CartContext from "../contextComponents/cart.context";
-import Button from "../Button";
+import Button from "../ThemedTags/Button";
 
 const ListContainer = props => {
   const { clearAll } = useContext(CartContext);

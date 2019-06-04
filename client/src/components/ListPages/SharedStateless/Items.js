@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Heart from "./Heart";
 import BoxContainer from "../../BoxContainer";
-import Button from "../../Button";
-import H4 from "../../H4";
-import Span from "../../Span";
+import Button from "../../ThemedTags/Button";
+import H4 from "../../ThemedTags/H4";
+import Span from "../../ThemedTags/Span";
 
 const Items = props => {
   const [deletion, setDelete] = useState(false);

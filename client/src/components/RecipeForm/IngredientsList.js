@@ -1,6 +1,6 @@
 import React from "react";
-import H4 from "../H4";
-import P from "../P";
+import H4 from "../ThemedTags/H4";
+import P from "../ThemedTags/P";
 
 export default function IngredientsList(props) {
   return (

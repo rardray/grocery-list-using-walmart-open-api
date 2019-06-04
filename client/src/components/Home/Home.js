@@ -8,7 +8,7 @@ import RecipeDrawer from "./RecipeBlock/RecipeDrawer";
 import MealForDay from "./Daily/MealForDay";
 import { useLoaderState } from "../Utility/Hooks";
 import BoxContainer from "../BoxContainer";
-import H2 from "../H2";
+import H2 from "../ThemedTags/H2";
 import HomeContainer from "./HomeContainer";
 import HistoryContext from "../contextComponents/history.context";
 

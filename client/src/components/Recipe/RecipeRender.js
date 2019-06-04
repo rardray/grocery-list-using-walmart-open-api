@@ -1,8 +1,8 @@
 import React from "react";
 import { addToList } from "../Utility/listActions";
 import RecipeItems from "./RecipeItems";
-import H3 from "../H3";
-import P from "../P";
+import H3 from "../ThemedTags/H3";
+import P from "../ThemedTags/P";
 
 export default function RecipeRender(props) {
   function disableAdd(list, el) {

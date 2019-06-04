@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Default from "../Styles/default.svg";
-import Button from "../Button";
-import Label from "../Label";
+import Button from "../ThemedTags/Button";
+import Label from "../ThemedTags/Label";
 
 export default function MealSelect(props) {
   const [single, setSingle] = useState(false);

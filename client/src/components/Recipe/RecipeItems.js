@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../Button";
-import H4 from "../H4";
-import P from "../P";
+import Button from "../ThemedTags/Button";
+import H4 from "../ThemedTags/H4";
+import P from "../ThemedTags/P";
 
 export default function RecipeItems(props) {
   return (

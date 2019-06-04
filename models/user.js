@@ -16,7 +16,8 @@ const UserSchema = new Schema(
     },
     profile: {
       firstName: { type: String },
-      lastName: { type: String }
+      lastName: { type: String },
+      theme: { type: String, default: "default" }
     },
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date }

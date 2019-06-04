@@ -1,9 +1,9 @@
 import React from "react";
 import Loader from "../Utility/Loader";
 import Input from "../Forms/Input";
-import Button from "../Button";
-import P from "../P";
-import Label from "../Label";
+import Button from "../ThemedTags/Button";
+import P from "../ThemedTags/P";
+import Label from "../ThemedTags/Label";
 
 export default function LeftRForm(props) {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Expand from "../../Styles/expand-button.svg";
-import P from "../../P";
+import P from "../../ThemedTags/P";
 
 export default function RecipeDrawer(props) {
   const [expanded, setExpand] = useState(false);

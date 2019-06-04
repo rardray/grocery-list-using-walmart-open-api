@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import x from "../Styles/x.png";
 import check2 from "../Styles/check2.png";
 import validate from "./validation";
-import Span from "../Span";
+import Span from "../ThemedTags/Span";
 import ThemesContext from "../contextComponents/themes.context";
 
 export default function Input(props) {

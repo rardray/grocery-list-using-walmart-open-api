@@ -1,17 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import cookie from "react-cookies";
+import { putRequest } from "./Utility/httpRequests";
+import { apiToken } from "./Utility/appHelpers";
 import ThemeContext from "./contextComponents/themes.context";
 import BoxContainer from "./BoxContainer";
 import ListWrapper from "./ListPages/SharedStateless/ListWrapper";
-import H2Blue from "./H2Blue";
-import Label from "./Label";
+import H2Blue from "./ThemedTags/H2Blue";
+import Label from "./ThemedTags/Label";
+import Button from "./ThemedTags/Button";
 
 export default function Settings(props) {
-  const { title, theme, changeTheme } = useContext(ThemeContext);
+  const { title, changeTheme } = useContext(ThemeContext);
+  const [message, setMessage] = useState("");
+
+  const saveTheme = () => {
+    putRequest(
+      `/api/user/${props.user._id}`,
+      apiToken(),
+      { theme: title },
+      data => {
+        cookie.save("user", { ...props.user, theme: data.data.profile.theme });
+      },
+      null,
+      () => setMessage("Theme Saved")
+    );
+  };
+
+  useEffect(() => {
+    let user = cookie.load("user");
+    if (title !== user.theme) {
+      setMessage(() => "");
+    }
+  });
 
   return (
     <ListWrapper header="Settings">
       <BoxContainer>
         <H2Blue label="Theme" />
+        <h3 style={{ color: "green", height: 25 }}>{message}</h3>
         <div
           style={{
             display: "flex",
@@ -53,6 +79,12 @@ export default function Settings(props) {
             />
           </div>
         </div>
+        <br />
+        <Button
+          label={"Save Theme"}
+          click={saveTheme}
+          class={"button-blue-full"}
+        />
       </BoxContainer>
     </ListWrapper>
   );
