@@ -33,9 +33,7 @@ export default function SwipeFunction(props) {
     window.addEventListener("touchend", swipeEnd);
     setTimeout(touchLimit, 500);
   };
-  const finishAn = () => {
-    setTransition({ transform: tf[0], transition: ts[0] });
-  };
+
   const transAn = () => {
     let pathname = window.location.pathname;
     if (pathname === paths[4]) {
@@ -44,8 +42,6 @@ export default function SwipeFunction(props) {
       let navi = paths.indexOf(pathname);
       navigate(paths[navi + 1]);
     }
-    setTimeout(finishAn, 200);
-    setTransition({ transform: tf[1], transition: ts[1] });
   };
   const transAnB = () => {
     let pathname = window.location.pathname;
@@ -61,8 +57,6 @@ export default function SwipeFunction(props) {
       let navi = paths.indexOf(pathname);
       navigate(paths[navi - 1]);
     }
-    setTimeout(finishAn, 200);
-    setTransition({ transform: tf[2], transition: ts[1] });
   };
   const swipeEnd = e => {
     var deltaX = e.changedTouches[0].clientX;

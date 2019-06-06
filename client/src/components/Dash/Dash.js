@@ -20,6 +20,7 @@ import CartContext from "../contextComponents/cart.context";
 import TopLevelListUpdates from "../Utility/TopLevelListUpdates";
 import SearchContainer from "./Navigator/SearchContainer";
 import Gear from "../Gear";
+import AnimationWrapper from "../AnimationWrapper";
 
 export default function Dash(props) {
   const [path, setPath] = useState(null);
@@ -77,12 +78,13 @@ export default function Dash(props) {
       <MainContainer device={props.device} min={"100%"}>
         {props.user ? (
           <SwipeFunction device={props.device}>
-            <TopLevelListUpdates user={props.user} />
-            <MainContainer device={props.device} min={"95%"}>
-              {props.user ? props.ListBar : null}
-              {props.children}
-              <Footer user={props.user} handleLogout={handleLogout} />
-            </MainContainer>
+            <AnimationWrapper>
+              <MainContainer device={props.device} min={"95%"}>
+                {props.user ? props.ListBar : null}
+                {props.children}
+                <Footer user={props.user} handleLogout={handleLogout} />
+              </MainContainer>
+            </AnimationWrapper>
           </SwipeFunction>
         ) : (
           <MainContainer device={props.device}>

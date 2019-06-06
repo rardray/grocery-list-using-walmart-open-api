@@ -31,7 +31,7 @@ export const handleSubmit = function(url, def, e) {
         }
       })
       .then(() => this.props.setUser())
-      .then(() => navigate("/grocery/settings"));
+      .then(() => window.history.back());
   }
   if (url === "/changepassword") {
     let pwordData = { ...data, _id: user._id };

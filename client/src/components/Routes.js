@@ -20,12 +20,15 @@ import EditPlan from "./Meal/EditPlan";
 import Settings from "./Settings";
 import ChangeUserSettings from "./ChangeUserSettings";
 import ChangePassword from "./ChangePassword";
+import TopLevelListUpdates from "./Utility/TopLevelListUpdates";
 const Routes = props => {
   return (
     <>
+      <TopLevelListUpdates user={props.user} />
       <Location>
         {({ location }) => (
           <Dash
+            key={location.key}
             {...props}
             Searchbar={<Searchbar {...props} />}
             ListBar={props.device ? null : <SideBarLogic {...props} />}
@@ -36,9 +39,7 @@ const Routes = props => {
               ) : (
                 <DefaultHome path="/" />
               )}
-
               <Search path={`${SB_AD}/search/:query`} {...props} />
-
               <Favorites path={paths[3]} />
               <Cart path={paths[1]} />
               <History path={paths[4]} />

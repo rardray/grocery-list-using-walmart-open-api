@@ -237,11 +237,13 @@ a {
   max-height: 100px;
   display: inline-block;
   position: absolute;
-  bottom: 0px;
+  bottom: -10px;
   left: 0px;
   text-align: center;
   background: black;
   color: white;
+  padding: 4px;
+  box-sizing: border-box;
 }
 .footer a {
   display: inline-block;
