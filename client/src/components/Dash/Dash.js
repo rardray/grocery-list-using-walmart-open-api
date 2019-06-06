@@ -79,6 +79,7 @@ export default function Dash(props) {
         {props.user ? (
           <SwipeFunction device={props.device}>
             <AnimationWrapper>
+              <TopLevelListUpdates user={props.user} />
               <MainContainer device={props.device} min={"95%"}>
                 {props.user ? props.ListBar : null}
                 {props.children}

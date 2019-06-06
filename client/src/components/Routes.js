@@ -24,7 +24,6 @@ import TopLevelListUpdates from "./Utility/TopLevelListUpdates";
 const Routes = props => {
   return (
     <>
-      <TopLevelListUpdates user={props.user} />
       <Location>
         {({ location }) => (
           <Dash
