@@ -4,7 +4,8 @@ const HistoryContext = createContext({
   history: [],
   getList: () => {},
   setHist: () => {},
-  addHistCount: () => {}
+  addHistCount: () => {},
+  clearHistory: () => {}
 });
 
 export default HistoryContext;

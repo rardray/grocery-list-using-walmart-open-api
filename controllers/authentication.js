@@ -79,14 +79,10 @@ exports.register = function(req, res, next) {
   });
 };
 
-exports.updateUser = function(req, res, next) {
+exports.updatePassword = function(req, res, next) {
   let id = req.body._id;
-  let firstName = req.body.firstName;
-  let lastName = req.body.lastName;
-  let email = req.body.email;
   let password = req.body.password;
   let newPassword = req.body.newPassword;
-  console.log(req.body);
   User.findById(id, function(err, user) {
     bcrypt.compare(password, user.password, function(err, result) {
       if (err) next(err);
@@ -98,10 +94,7 @@ exports.updateUser = function(req, res, next) {
             id,
             {
               $set: {
-                email: email,
-                password: hash,
-                "profile.firstName": firstName,
-                "profile.lastName": lastName
+                password: hash
               }
             },
             function(err, update) {
@@ -113,4 +106,27 @@ exports.updateUser = function(req, res, next) {
       });
     });
   });
+};
+
+exports.updateUser = function(req, res, next) {
+  let id = req.body._id;
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let email = req.body.email;
+  User.findByIdAndUpdate(
+    id,
+    {
+      $set: {
+        email: email,
+        "profile.firstName": firstName,
+        "profile.lastName": lastName
+      }
+    },
+    { new: true },
+    function(err, data) {
+      let newInfo = setUserInfo(data);
+      if (err) next(err);
+      res.status(201).send(newInfo), console.log(newInfo);
+    }
+  );
 };

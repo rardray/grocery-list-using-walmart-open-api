@@ -3,22 +3,21 @@ import RegLogData from "./Forms/RegLogData";
 import ListWrapper from "./ListPages/SharedStateless/ListWrapper";
 const utility = require("./Forms/utility");
 
-const ChangeUserSettings = props => {
+const ChangePassword = props => {
   const [error, setError] = useState("");
   return (
     <>
       <ListWrapper>
         <RegLogData
           state={{
-            firstName: props.user.firstName,
-            lastName: props.user.lastName,
-            email: props.user.email
+            password: "",
+            newPassword: ""
           }}
-          url="/update"
+          url="/changepassword"
           subheader=""
-          header="Change User Settings"
+          header="Change Password"
           label="Save Changes"
-          types={utility.changeUserData}
+          types={utility.changeUserPassword}
           messages={utility.changeErrors}
           renderInputs={utility.renderInputs}
           setUser={props.setUser}
@@ -31,4 +30,4 @@ const ChangeUserSettings = props => {
   );
 };
 
-export default ChangeUserSettings;
+export default ChangePassword;

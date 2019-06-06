@@ -21,10 +21,24 @@ export const handleSubmit = function(url, def, e) {
   }
   if (url === "/update") {
     let newData = { ...data, _id: user._id };
-    return axios.put("/api/auth" + url, newData).then(response => {
+    return axios
+      .put("/api/auth" + url, newData, {
+        headers: apiToken()
+      })
+      .then(response => {
+        if (!response.error) {
+          cookie.save("user", response.data, { path: "/" });
+        }
+      })
+      .then(() => this.props.setUser())
+      .then(() => navigate("/grocery/settings"));
+  }
+  if (url === "/changepassword") {
+    let pwordData = { ...data, _id: user._id };
+    return axios.put("/api/auth" + url, pwordData).then(response => {
       if (!response.error) {
         navigate("/grocery/settings");
-        alert("settings successfully saved");
+        alert("Password Saved Succesfully");
       }
     });
   }
@@ -47,7 +61,6 @@ export const handleSubmit = function(url, def, e) {
       }
     })
     .then(() => this.props.setUser())
-    .then(() => this.props.getList())
     .catch(err => {
       if (err.response.status === 422) {
         return this.props.setError(err.response.data.error);

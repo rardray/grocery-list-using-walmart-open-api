@@ -5,6 +5,7 @@ export default function Label(props) {
   const { theme } = useContext(ThemesContext);
   return (
     <label
+      htmlFor={props.label}
       className={props.class}
       style={{ color: theme.tertiaryText, transition: ".3s ease-in-out" }}
     >

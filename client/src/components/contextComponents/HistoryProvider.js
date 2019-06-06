@@ -28,12 +28,15 @@ const HistoryProvider = ({ children }) => {
     setHistory(prevHistory => {
       return { ...prevHistory, history: [...data] };
     });
-
+  const clearHistory = () => {
+    setHistory(() => histDef);
+  };
   const histDef = {
     history: [],
     getList,
     setHist,
-    addHistCount
+    addHistCount,
+    clearHistory
   };
   const [history, setHistory] = useState(histDef);
   return (

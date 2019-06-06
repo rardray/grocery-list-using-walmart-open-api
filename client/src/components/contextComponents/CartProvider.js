@@ -37,12 +37,16 @@ const CartProvider = ({ children }) => {
       () => {}
     );
   };
+  const clearCart = () => {
+    setCart(cartDef);
+  };
   const cartDef = {
     cart: [],
     updateCart,
     getCart,
     deleteOne,
-    clearAll
+    clearAll,
+    clearCart
   };
   const [cart, setCart] = useState(cartDef);
   return <CartContext.Provider value={cart}>{children}</CartContext.Provider>;

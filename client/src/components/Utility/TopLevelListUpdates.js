@@ -7,8 +7,8 @@ import ThemeContext from "../contextComponents/themes.context";
 export default function(props) {
   const { getFavorites } = useContext(FavoritesContext);
   const { getCart } = useContext(CartContext);
-  const { history, getList } = useContext(HistoryContext);
-  const { theme, changeTheme } = useContext(ThemeContext);
+  const { history, getList, clearHistory } = useContext(HistoryContext);
+  const { changeTheme } = useContext(ThemeContext);
   const { user } = props;
 
   useEffect(() => {
@@ -18,9 +18,10 @@ export default function(props) {
   }, [history]);
 
   useEffect(() => {
-    if (!history.length) {
-      getList();
-    }
+    getList();
+    return function cleanup() {
+      clearHistory();
+    };
   }, []);
   useEffect(() => {
     if (history.length) {

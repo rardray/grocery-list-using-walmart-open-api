@@ -4,6 +4,7 @@ import Input from "./Input";
 //login register texts
 export const registerType = ["text", "text", "email", "password"];
 export const changeUserData = ["text", "text", "email", "password", "password"];
+export const changeUserPassword = ["password", "password"];
 export const registerErrors = [
   "First Name Cannot Be Left Blank",
   "Last Name Cannot Be Left Blank",
