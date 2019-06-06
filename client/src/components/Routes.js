@@ -18,7 +18,7 @@ import Meal from "./Meal/Meal";
 import DefaultHome from "./Home/DefaultHome";
 import EditPlan from "./Meal/EditPlan";
 import Settings from "./Settings";
-
+import ChangeUserSettings from "./ChangeUserSettings";
 const Routes = props => {
   return (
     <>
@@ -53,6 +53,7 @@ const Routes = props => {
           <Register path={`${SB_AD}/register`} setUser={props.setUser} />
           <Login path={`${SB_AD}/login`} setUser={props.setUser} />
           <Settings path={`${SB_AD}/settings`} {...props} />
+          <ChangeUserSettings path={`${SB_AD}/update`} {...props} />
         </Dash>
       </Router>
     </>

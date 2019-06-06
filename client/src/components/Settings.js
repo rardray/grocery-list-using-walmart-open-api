@@ -19,7 +19,11 @@ export default function Settings(props) {
       apiToken(),
       { theme: title },
       data => {
-        cookie.save("user", { ...props.user, theme: data.data.profile.theme });
+        cookie.save(
+          "user",
+          { ...props.user, theme: data.data.profile.theme },
+          { path: "/" }
+        );
       },
       null,
       () => setMessage("Theme Saved")
@@ -28,13 +32,16 @@ export default function Settings(props) {
 
   useEffect(() => {
     let user = cookie.load("user");
-    if (title !== user.theme) {
+    if (user && title !== user.theme) {
       setMessage(() => "");
     }
   });
-
+  let labels = ["default", "dark", "desert"];
   return (
     <ListWrapper header="Settings">
+      <BoxContainer>
+        <H2Blue label="profile" />
+      </BoxContainer>
       <BoxContainer>
         <H2Blue label="Theme" />
         <h3 style={{ color: "green", height: 25 }}>{message}</h3>
@@ -45,39 +52,27 @@ export default function Settings(props) {
             flexFlow: "row wrap"
           }}
         >
-          <div style={{ display: "inline-block", position: "relative" }}>
-            <Label>Default</Label>
-            <br />
-            <input
-              name="theme"
-              checked={title === "default" ? true : false}
-              type="radio"
-              value="default"
-              onChange={e => changeTheme(e.target.value)}
-            />
-          </div>
-          <div style={{ display: "inline-block", position: "relative" }}>
-            <Label>Dark</Label>
-            <br />
-            <input
-              name="theme"
-              checked={title === "dark" ? true : false}
-              type="radio"
-              value="dark"
-              onChange={e => changeTheme(e.target.value)}
-            />
-          </div>
-          <div style={{ display: "inline-block", position: "relative" }}>
-            <Label>Desert</Label>
-            <br />
-            <input
-              name="theme"
-              checked={title === "desert" ? true : false}
-              type="radio"
-              value="desert"
-              onChange={e => changeTheme(e.target.value)}
-            />
-          </div>
+          {labels.map((el, i) => {
+            return (
+              <div
+                key={i}
+                style={{
+                  display: "inline-block",
+                  position: "relative"
+                }}
+              >
+                <Label>{el.charAt(0).toUpperCase() + el.slice(1)}</Label>
+                <br />
+                <input
+                  name="theme"
+                  checked={title === el ? true : false}
+                  type="radio"
+                  value={el}
+                  onChange={e => changeTheme(e.target.value)}
+                />
+              </div>
+            );
+          })}
         </div>
         <br />
         <Button

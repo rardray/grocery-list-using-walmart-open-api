@@ -2,7 +2,8 @@
 const jwt = require("jsonwebtoken"),
   crypto = require("crypto"),
   User = require("../models/user"),
-  config = require("../config/main");
+  config = require("../config/main"),
+  bcrypt = require("bcrypt-nodejs");
 
 function generateToken(user) {
   //<---- generate token
@@ -73,6 +74,42 @@ exports.register = function(req, res, next) {
         token: "JWT " + generateToken(userInfo), // <---generate token
         user: userInfo,
         groceryApi: process.env.GROCERY_API
+      });
+    });
+  });
+};
+
+exports.updateUser = function(req, res, next) {
+  let id = req.body._id;
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let email = req.body.email;
+  let password = req.body.password;
+  let newPassword = req.body.newPassword;
+  console.log(req.body);
+  User.findById(id, function(err, user) {
+    bcrypt.compare(password, user.password, function(err, result) {
+      if (err) next(err);
+      bcrypt.genSalt(5, function(error, salt) {
+        if (error) return next(error);
+        bcrypt.hash(newPassword, salt, null, function(err, hash) {
+          if (err) next(err);
+          User.findByIdAndUpdate(
+            id,
+            {
+              $set: {
+                email: email,
+                password: hash,
+                "profile.firstName": firstName,
+                "profile.lastName": lastName
+              }
+            },
+            function(err, update) {
+              if (err) next(err);
+              res.status(201).send("successfully updated");
+            }
+          );
+        });
       });
     });
   });

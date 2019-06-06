@@ -1,6 +1,7 @@
 import axios from "axios";
 import cookie from "react-cookies";
 import { navigate } from "@reach/router";
+import { apiToken } from "../Utility/appHelpers";
 
 export const handleChange = function(e) {
   const target = e.target;
@@ -13,9 +14,19 @@ export const handleChange = function(e) {
 
 export const handleSubmit = function(url, def, e) {
   e.preventDefault();
+  let user = cookie.load("user");
   const data = this.state;
   if (data.email) {
     data.email = data.email.toLowerCase();
+  }
+  if (url === "/update") {
+    let newData = { ...data, _id: user._id };
+    return axios.put("/api/auth" + url, newData).then(response => {
+      if (!response.error) {
+        navigate("/grocery/settings");
+        alert("settings successfully saved");
+      }
+    });
   }
   axios
     .post("/api/auth" + url, data)

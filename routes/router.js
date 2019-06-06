@@ -27,6 +27,7 @@ module.exports = function(app) {
   //login Route
   authRoutes.post("/register", AuthenticationController.register);
   authRoutes.post("/login", requireLogin, AuthenticationController.login);
+  authRoutes.put("/update", requireLogin, AuthenticationController.updateUser);
   //list Routes
   apiRoutes.use("/list", listRoutes);
   listRoutes.get("/:id", requireAuth, ListController.getLists);

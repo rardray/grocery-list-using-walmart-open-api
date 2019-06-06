@@ -1,6 +1,7 @@
 import React from "react";
 import BoxContainer from "../BoxContainer";
 import P from "../ThemedTags/P";
+import H2 from "../ThemedTags/H2";
 
 const Container = props => {
   return (
@@ -8,7 +9,7 @@ const Container = props => {
       style={{
         textAlign: "center",
         display: "block",
-        background: "#377fbb",
+
         paddingTop: "20%",
         paddingBottom: "20%",
         height: "100%"
@@ -17,7 +18,7 @@ const Container = props => {
       <BoxContainer
         additionalStyles={{ width: "90%", textAlign: "center", margin: "auto" }}
       >
-        <h1>{props.header}</h1>
+        <H2 label={props.header} />
         <P>{props.subheader}</P>
         {props.children}
       </BoxContainer>

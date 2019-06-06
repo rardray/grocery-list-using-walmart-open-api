@@ -3,6 +3,7 @@ import x from "../Styles/x.png";
 import check2 from "../Styles/check2.png";
 import validate from "./validation";
 import Span from "../ThemedTags/Span";
+
 import ThemesContext from "../contextComponents/themes.context";
 export default function Input(props) {
   const [focus, setFocus] = useState(false);
@@ -44,7 +45,11 @@ export default function Input(props) {
     width: props.width || null
   };
   const Label = {
-    color: validation ? (valid ? null : "red") : theme.tertiaryText,
+    color: validation
+      ? valid
+        ? theme.tertiaryText
+        : "red"
+      : theme.tertiaryText,
     margin: 0,
     padding: 0,
     fontSize: focus ? (blurred ? "10pt" : 0) : "12pt",
