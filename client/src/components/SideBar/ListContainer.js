@@ -9,7 +9,10 @@ const ListContainer = props => {
     <div>
       {props.children}
       <div id="list-block" style={{ marginBottom: 75 }}>
-        <Button label="Clear List" click={() => clearList(clearAll)} />
+        <Button
+          label="Clear List"
+          click={() => clearList(clearAll, props.user._id)}
+        />
       </div>
     </div>
   );

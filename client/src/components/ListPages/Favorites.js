@@ -34,7 +34,9 @@ const Favorites = props => {
             id={el._id}
             image={el.image}
             title={el.title}
-            action={() => addToList(i, el, getCart)}
+            action={() =>
+              addToList(i, { ...el, userId: props.user._id }, getCart)
+            }
             handleQuantity={handleQuantity.bind(
               this,
               i,
@@ -48,7 +50,15 @@ const Favorites = props => {
             count={el.count}
             favorite={el.favorite}
             addFavorite={() =>
-              setTimeout(() => addFavoriteFromSearch(i, el, getList), 300)
+              setTimeout(
+                () =>
+                  addFavoriteFromSearch(
+                    i,
+                    { ...el, userId: props.user._id },
+                    getList
+                  ),
+                300
+              )
             }
           />
         );

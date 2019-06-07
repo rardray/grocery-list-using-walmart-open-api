@@ -1,16 +1,12 @@
 import { postRequest, putRequest, deleteRequest } from "./httpRequests";
 import { postListUrl, apiToken } from "./appHelpers";
-import cookie from "react-cookies";
-
-const user = cookie.load("user");
 
 export const addToList = (i, item, callback) => {
-  const data = { ...item, userId: user._id };
+  const data = { ...item };
   postRequest(postListUrl, apiToken(), data, callback, i);
 };
 
-export const clearList = callback => {
-  let id = user._id;
+export const clearList = (callback, id) => {
   deleteRequest("/api/cart/clearall/" + id, apiToken(), callback);
 };
 
@@ -20,7 +16,7 @@ export const handleDelete = (i, data, callback) => {
 };
 
 export const addFavoriteFromSearch = (i, item, callback) => {
-  const data = { ...item, userId: user._id };
+  const data = { ...item };
   data.favorite = !data.favorite;
   postRequest("/api/list/favorite", apiToken(), data, callback, i);
 };

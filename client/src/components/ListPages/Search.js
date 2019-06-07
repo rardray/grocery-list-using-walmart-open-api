@@ -34,7 +34,9 @@ const Search = props => {
             id={el.id}
             image={el.image}
             title={el.title}
-            action={() => addToList(i, el, getList)}
+            action={() =>
+              addToList(i, { ...el, userId: props.user._id }, getList)
+            }
             bLabel="Add to List"
             handleQuantity={handleQuantity.bind(
               this,
@@ -46,7 +48,13 @@ const Search = props => {
             )}
             count={el.count}
             favorite={el.favorite}
-            addFavorite={() => addFavoriteFromSearch(i, el, setSearch)}
+            addFavorite={() =>
+              addFavoriteFromSearch(
+                i,
+                { ...el, userId: props.user._id },
+                setSearch
+              )
+            }
           />
         );
       })}

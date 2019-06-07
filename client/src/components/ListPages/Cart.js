@@ -51,12 +51,18 @@ const Cart = props => {
             del={true}
             count={el.count}
             favorite={el.historyId.favorite}
-            addFavorite={() => addFavoriteFromSearch(i, el.historyId, getList)}
+            addFavorite={() =>
+              addFavoriteFromSearch(
+                i,
+                { ...el.historyId, userId: props.user._id },
+                getList
+              )
+            }
           />
         );
       })}
       <Button
-        click={() => clearList(clearAll)}
+        click={() => clearList(clearAll, props.user._id)}
         class={"button-blue-full"}
         label={"Clear List"}
       />

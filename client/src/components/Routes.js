@@ -24,6 +24,7 @@ import TopLevelListUpdates from "./Utility/TopLevelListUpdates";
 const Routes = props => {
   return (
     <>
+      {props.user ? <TopLevelListUpdates {...props} /> : null}
       <Location>
         {({ location }) => (
           <Dash
@@ -39,9 +40,9 @@ const Routes = props => {
                 <DefaultHome path="/" />
               )}
               <Search path={`${SB_AD}/search/:query`} {...props} />
-              <Favorites path={paths[3]} />
-              <Cart path={paths[1]} />
-              <History path={paths[4]} />
+              <Favorites path={paths[3]} {...props} />
+              <Cart path={paths[1]} {...props} />
+              <History path={paths[4]} {...props} />
               <AddPlan
                 path={`${SB_AD}/addplan/:mo/:ye/:dy`}
                 {...props}

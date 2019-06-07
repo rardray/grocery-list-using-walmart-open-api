@@ -47,7 +47,9 @@ const History = props => {
             id={el._id}
             image={el.image}
             title={el.title}
-            action={() => addToList(i, el, getCart)}
+            action={() =>
+              addToList(i, { ...el, userId: props.user._id }, getCart)
+            }
             handleQuantity={handleQuantity.bind(
               this,
               i,
@@ -58,7 +60,13 @@ const History = props => {
             )}
             bLabel="Add to List"
             count={el.count}
-            addFavorite={() => addFavoriteFromSearch(i, el, setHist)}
+            addFavorite={() =>
+              addFavoriteFromSearch(
+                i,
+                { ...el, userId: props.user._id },
+                setHist
+              )
+            }
             favorite={el.favorite}
           />
         );

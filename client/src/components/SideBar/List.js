@@ -36,7 +36,11 @@ const List = props => {
                 action={() => handleDelete(i, el, deleteOne)}
                 buttonLabel="Remove"
                 addFavorite={() =>
-                  addFavoriteFromSearch(i, el.historyId, getList)
+                  addFavoriteFromSearch(
+                    i,
+                    { ...el.historyId, userId: props.user._id },
+                    getList
+                  )
                 }
               />
             );
@@ -49,9 +53,17 @@ const List = props => {
                 title={el.title}
                 favorite={el.favorite}
                 count={el.count}
-                action={() => addToList(i, el, getCart)}
+                action={() =>
+                  addToList(i, { ...el, userId: props.user._id }, getCart)
+                }
                 buttonLabel="Add to Cart"
-                addFavorite={() => addFavoriteFromSearch(i, el, getList)}
+                addFavorite={() =>
+                  addFavoriteFromSearch(
+                    i,
+                    { ...el, userId: props.user._id },
+                    getList
+                  )
+                }
               />
             );
           })}
