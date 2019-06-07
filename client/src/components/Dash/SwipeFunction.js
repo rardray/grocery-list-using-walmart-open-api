@@ -8,7 +8,7 @@ const tf = [
   `translateX(${$(window).width()}px)`,
   `translateX(-${$(window).width()}px)`
 ];
-const ts = [`transform  ease-out 0.4s`, `transform 0.0s`];
+const ts = [`transform  ease-out 0.3s`, `transform 0.0s`];
 
 export default function SwipeFunction(props) {
   const [transition, setTransition] = useState({
