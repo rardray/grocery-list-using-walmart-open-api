@@ -33,18 +33,28 @@ export default function Meal(props) {
         {Loaded || (
           <>
             <H2Blue label={"Main Course"} />
-            <Recipe id={plan.mainId._id} />
+            <Recipe id={plan.mainId._id} user={props.user} />
             <H2Blue label={"Side"} />
-            {plan.sideOneId ? <Recipe id={plan.sideOneId._id} /> : null}
+            {plan.sideOneId ? (
+              <Recipe id={plan.sideOneId._id} user={props.user} />
+            ) : null}
             {plan.sideOneSingleId ? (
               <SingleItem
-                add={() => addToList(null, plan.sideOneSingleId, getList)}
+                add={() =>
+                  addToList(
+                    null,
+                    { ...plan.sideOneSingleId, userId: props.user._id },
+                    getList
+                  )
+                }
                 image={plan.sideOneSingleId.image}
                 title={plan.sideOneSingleId.title}
               />
             ) : null}
             <H2Blue label={"Side"} />
-            {plan.sideTwoId ? <Recipe id={plan.sideTwoId._id} /> : null}
+            {plan.sideTwoId ? (
+              <Recipe id={plan.sideTwoId._id} user={props.user} />
+            ) : null}
 
             {plan.sideTwoSingleId ? (
               <SingleItem
