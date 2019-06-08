@@ -28,7 +28,7 @@ const Cart = props => {
     <ListWrapper
       header={sTitle}
       subheader={
-        cart.length ? `Shwoing ${total} items on grocery list` : "List is empty"
+        cart.length ? `Showing ${total} items on grocery list` : "List is empty"
       }
     >
       {cart.map((el, i) => {

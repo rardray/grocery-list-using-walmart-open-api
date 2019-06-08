@@ -7,7 +7,7 @@ const ChangeUserSettings = props => {
   const [error, setError] = useState("");
   return (
     <>
-      <ListWrapper>
+      <ListWrapper header={"Settings"}>
         <RegLogData
           state={{
             firstName: props.user.firstName,

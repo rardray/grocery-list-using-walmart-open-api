@@ -10,7 +10,6 @@ export default function Button(props) {
       onMouseLeave={() => setHover(false)}
       className={props.class}
       onClick={props.click}
-      onTouchEnd={() => setHover(false)}
       style={{
         cursor: props.disabled ? "default" : "pointer",
         background: props.disabled
