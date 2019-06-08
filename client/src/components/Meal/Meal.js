@@ -48,7 +48,13 @@ export default function Meal(props) {
 
             {plan.sideTwoSingleId ? (
               <SingleItem
-                add={() => addToList(null, plan.sideTwoSingleId, getList)}
+                add={() =>
+                  addToList(
+                    null,
+                    { ...plan.sideTwoSingleId, userId: props.user._id },
+                    getList
+                  )
+                }
                 image={plan.sideTwoSingleId.image}
                 title={plan.sideTwoSingleId.title}
               />
