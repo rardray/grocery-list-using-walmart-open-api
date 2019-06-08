@@ -29,7 +29,6 @@ const Routes = props => {
         {({ location }) => (
           <Dash
             locKey={location.key}
-            timeout={400}
             {...props}
             Searchbar={<Searchbar {...props} />}
             ListBar={props.device ? null : <SideBarLogic {...props} />}
