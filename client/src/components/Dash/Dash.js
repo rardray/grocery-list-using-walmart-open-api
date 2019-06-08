@@ -17,7 +17,6 @@ import MainContainer from "./MainContainer";
 import { paths, SB_AD } from "../Utility/appHelpers";
 import BackButton from "./BackButton";
 import CartContext from "../contextComponents/cart.context";
-import RouteTransitions from "../RoutTransitions";
 import SearchContainer from "./Navigator/SearchContainer";
 import Gear from "../Gear";
 import AnimationWrapper from "../AnimationWrapper";

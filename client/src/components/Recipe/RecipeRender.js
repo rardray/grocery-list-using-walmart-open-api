@@ -35,7 +35,13 @@ export default function RecipeRender(props) {
                 disableAdd={disableAdd}
                 cart={props.cart}
                 item={el}
-                addToList={() => addToList(i, el.historyId, props.getCart)}
+                addToList={() =>
+                  addToList(
+                    i,
+                    { ...el.historyId, userId: props.user._id },
+                    props.getCart
+                  )
+                }
               />
             );
           })}
